@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="no-js">
+  <head>
+    <meta name="robots" content="noindex" />
+    <!-- 使用 noindex 禁止 Google 搜尋建立索引，套版時請工程師刪掉這行 -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HyUI kit</title>
+    <!-- style css -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/blue.css" />
+    <!-- favicon -->
+    <link href="images/favicon.png" rel="icon" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- wrapper Start -->
+    <div class="wrapper">
+      <!-- 直接跳主內容區 -->
+      <a class="goCenter" href="#aC">按Enter到主內容區</a>
+
+      <!-- header Start -->
+      <header>
+        <div class="headTop">
+          <div class="container">
+            <button id="mobileMainMenuBtn" type="button">主選單</button>
+            <h1>
+              <a href="index.html"><img src="images/footer_logo.png" alt="網站標題" />HyUI<span>Kit5</span></a>
+            </h1>
+            <!-- navigation Start -->
+            <nav class="topNav" role="navigation" aria-label="頁首功能列">
+              <a class="accessKeyItem" href="#aU" id="aU" accesskey="U" aria-label="功能區塊">:::</a>
+              <!-- navList Start -->
+              <div class="navList">
+                <ul>
+                  <li><a href="#">回首頁</a></li>
+                  <li><a href="#">網站導覽</a></li>
+                  <li><a href="#">常見問答</a></li>
+                </ul>
+              </div>
+              <!-- navList End -->
+              <div class="subNavList">
+                <!-- fontSize Start -->
+                <div class="fontSize sliderFn">
+                  <button type="button">文字大小</button>
+                  <ul>
+                    <li><button type="button" class="smallSize">小</button></li>
+                    <li><button type="button" class="mediumSize">中</button></li>
+                    <li><button type="button" class="largeSize">大</button></li>
+                  </ul>
+                </div>
+                <!-- fontSize End -->
+                <!-- language Start -->
+                <div class="language sliderFn">
+                  <button type="button">語言選擇</button>
+                  <ul id="languageList">
+                    <li><a href="#">繁體中文</a></li>
+                    <li><a href="#">简体中文</a></li>
+                    <li><a href="#">ENGLISH</a></li>
+                  </ul>
+                </div>
+                <!-- language End -->
+
+                <div class="topSearch sliderFn">
+                  <button id="topSearchBtn" type="button">網站搜尋</button>
+                </div>
+              </div>
+            </nav>
+            <!-- navigation End -->
+            <!-- Search Start -->
+            <button id="mobileSearchBtn" type="button" aria-label="搜尋按鈕"></button>
+            <div class="webSearch" role="search">
+              <div class="webSearchContent">
+                <div class="formList">
+                  <label for="topSearchInput" class="srOnly">搜尋</label>
+                  <input name="topSearchInput" id="topSearchInput" type="text" placeholder="請輸入文字" accesskey="S" aria-label="搜尋網站內容" />
+                  <button type="button" class="btnPrimary">查詢</button>
+                  <button type="button">進階搜尋</button>
+                </div>
+                <div class="hotKeyword">
+                  <ul>
+                    <li><a href="#">熱門熱門</a></li>
+                    <li><a href="#">查詢</a></li>
+                    <li><a href="#">字詞三</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Search End -->
+          </div>
+        </div>
+        <!-- noscript -->
+        <noscript>
+          您的瀏覽器不支援JavaScript語法，JavaScript語法並不影響內容的陳述。您可使用按鍵盤上的Ctrl鍵+ (+)鍵放大/(-)鍵縮小來改變字型大小；回到上一頁可使用瀏覽器提供的 Alt+左方向鍵(←) 快速鍵功能；列印可使用瀏覽器提供的(Ctrl+P)功能。您的瀏覽器，不支援script語法，若您的瀏覽器無法支援請點選此超連結
+          <a href="#">網站導覽</a>
+        </noscript>
+        <!-- menu Start -->
+        <div class="mainMenu">
+          <div class="container">
+            <nav class="menu" role="navigation" aria-label="主選單">
+              <ul>
+                <li>
+                  <a href="#">第一層選單</a>
+                  <ul>
+                    <li><a href="#">第二層選單</a></li>
+                    <li><a href="#">第二層選單</a></li>
+                    <li><a href="#">第二層選單</a></li>
+                    <li><a href="#">第二層選單</a></li>
+                  </ul>
+                </li>
+                <li><a href="http://www.google.com">第一層有連結</a></li>
+                <li>
+                  <a href="http://www.google.com">第一層有連結</a>
+                  <ul>
+                    <li><a href="http://www.google.com">第二層有連結</a></li>
+                    <li><a href="#">第二層選單</a></li>
+                    <li><a href="#">第二層選單</a></li>
+                    <li><a href="#">第二層選單</a></li>
+                    <li><a href="#">第二層選單</a></li>
+                    <li><a href="#">第二層選單</a></li>
+                    <li><a href="#">第二層選單</a></li>
+                    <li><a href="#">第二層選單</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">第一層選單</a>
+                  <ul>
+                    <li><a href="#">第二層選單</a></li>
+                    <li><a href="#">第二層選單</a></li>
+                    <li>
+                      <a href="http://www.google.com">第二層有連結</a>
+                      <ul>
+                        <li>
+                          <a href="http://www.google.com">第三層選單有下層</a>
+                          <ul>
+                            <li><a href="#">第四層選單</a></li>
+                            <li><a href="#">第四層選單</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <a href="http://www.google.com">第三層選單有連結</a>
+                        </li>
+                        <li><a href="#">第三層選單</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">第二層選單</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">第一層選單</a>
+                  <ul>
+                    <li><a href="#">第二層選單</a></li>
+                    <li>
+                      <a href="#">第二層選單</a>
+                      <ul>
+                        <li><a href="#">第三層選單</a></li>
+                        <li>
+                          <a href="#">第三層選單</a>
+                          <ul>
+                            <li>
+                              <a href="http://www.google.com">第四層選單有下層</a>
+                              <ul>
+                                <li><a href="#">第五層選單</a></li>
+                                <li><a href="#">第五層選單</a></li>
+                              </ul>
+                            </li>
+                            <li>
+                              <a href="http://www.google.com">第四層選單有連結</a>
+                            </li>
+                            <li><a href="#">第四層選單</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="#">第三層選單</a></li>
+                        <li><a href="#">第三層選單</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">第二層選單</a></li>
+                    <li><a href="#">第二層選單</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">第一層選單</a>
+                  <ul>
+                    <li><a href="#">第二層選單</a></li>
+                    <li>
+                      <a href="#">第二層選單</a>
+                      <ul>
+                        <li>
+                          <a href="http://www.google.com">第三層選單有下層</a>
+                          <ul>
+                            <li><a href="#">第四層選單</a></li>
+                            <li><a href="#">第四層選單</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <a href="http://www.google.com">第三層選單有連結</a>
+                        </li>
+                        <li><a href="#">第三層選單</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">第二層選單</a></li>
+                    <li><a href="#">第二層選單</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- menu End -->
+      </header>
+      <!-- header End -->
+
+      <!-- main Start -->
+      <main class="innerPage">
+        <a class="accessKeyItem" href="#aC" id="aC" accesskey="C" aria-label="主要內容區">:::</a>
+        <div class="container">
+          <div class="mainBox">
+            <!-- 主內容區 Start -->
+            <section class="mainContentBox">
+              <!-- breadcrumb Start -->
+              <nav class="breadcrumb" role="navigation" aria-label="麵包屑">
+                <ul>
+                  <li><a href="#">首頁</a></li>
+                  <li><a href="#">節點</a></li>
+                  <li aria-current="page">節點</li>
+                </ul>
+              </nav>
+              <!-- breadcrumb Start -->
+
+              <h2 class="pageTitle">節點標題</h2>
+
+              <!-- 功能列 Start -->
+              <div class="functionPanel">
+                <div class="fontSizeInner">
+                  <span>字型大小：</span>
+                  <ul>
+                    <li><button type="button" class="smallSize">小</button></li>
+                    <li><button type="button" class="mediumSize">中</button></li>
+                    <li><button type="button" class="largeSize">大</button></li>
+                  </ul>
+                </div>
+                <a class="functionPanelBtn back" href="javascript:history.back()">回上一頁</a>
+                <a class="functionPanelBtn print" href="#">列印</a>
+                <a class="functionPanelBtn email" href="#">Email</a>
+
+                <div class="shareBox">
+                  <button class="functionPanelBtn share">share分享按鈕</button>
+                  <div class="shareBoxList">
+                    <ul>
+                      <li>
+                        <a href="#"><img src="images/basic/icon/share/facebook.svg" alt="facebook" /></a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="images/basic/icon/share/x.svg" alt="x" /></a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="images/basic/icon/share/threads.svg" alt="Threads" /></a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="images/basic/icon/share/line.svg" alt="line" /></a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="images/basic/icon/share/youtube.svg" alt="youtube" /></a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="images/basic/icon/share/instagram.svg" alt="instagram" /></a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="images/basic/icon/share/linkedin.svg" alt="LinkedIn" /></a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="images/basic/icon/share/pinterest.svg" alt="Pinterest" /></a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="images/basic/icon/share/whatsapp.svg" alt="Whatsapp" /></a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="images/basic/icon/share/telegram.svg" alt="Telegram" /></a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="images/basic/icon/share/talk.svg" alt="Talk" /></a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="images/basic/icon/share/podcast.svg" alt="Podcast" /></a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="images/basic/icon/share/discord.svg" alt="Discord" /></a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="images/basic/icon/share/plurk.svg" alt="Plurk" /></a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="images/basic/icon/share/rss.svg" alt="RSS" /></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- 功能列 End -->
+
+              <!-- tag Start -->
+              <div class="tagBox">
+                <ul>
+                  <li><a href="#" class="active">全部</a></li>
+                  <li><a href="#">標籤一</a></li>
+                  <li><a href="#">標籤二</a></li>
+                  <li><a href="#">標籤三</a></li>
+                  <li><a href="#">標籤四</a></li>
+                  <li><a href="#">標籤五</a></li>
+                  <li><a href="#">標籤六</a></li>
+                </ul>
+              </div>
+              <!-- tag End -->
+
+              <div class="mainContent">
+                <!-- cp Start -->
+                <div class="cp">
+                  <!-- template 可移除，內容的<div>也可移除，各項目內容以註解Start和End標記-->
+                  <div class="template">
+                    <div>
+                      <h3>燈箱內容</h3>
+                      如果要一開始就要開啟燈箱script中請增加這段<br />
+                      Fancybox.show([{ src: '#popup', type: 'inline' }]);
+                      <br />
+                      <!-- 燈箱內容 Start -->
+                      <button type="button" data-fancybox data-src="#popup">彈出對話框(大)</button>
+                      <br />
+                      <button type="button" data-fancybox data-src="#popupDialog">彈出對話框(小)</button>
+                      <div id="popup">
+                        <h3>我是標題我是標題我是標題我是標題我是標題我是標題我是標題我是標題我是標題</h3>
+                        <div class="content">
+                          <p>Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</p>
+
+                          <div class="tableList">
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>編號</th>
+                                  <th>標題</th>
+                                  <th>日期</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td class="num">1</td>
+                                  <td>通勤搭車看預報 環保集點10倍送</td>
+                                  <td class="date">2025/01/01</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <p>
+                            <a href="#">連結文字</a
+                            >樣式大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+                          </p>
+                          <p>
+                            <a href="#">連結文字</a
+                            >樣式大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+                          </p>
+                        </div>
+                        <div class="btnBox">
+                          <button class="cancel btnSecondary" type="button">取消</button>
+                          <button class="submit btnPrimary" type="submit">確認</button>
+                        </div>
+                      </div>
+                      <div id="popupDialog">
+                        <h3>標題</h3>
+                        <div class="content">Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</div>
+                        <div class="btnBox">
+                          <button class="cancel btnSecondary" type="button">取消</button>
+                          <button class="submit btnPrimary" type="submit">確認</button>
+                        </div>
+                      </div>
+                      <!-- 燈箱內容 End -->
+                    </div>
+                    <div>
+                      <!-- 左圖右文 Start -->
+                      <h3>左圖右文</h3>
+                      <div class="flexTpl_5_7">
+                        <div class="col">
+                          <div class="picBox">
+                            <figure class="pic">
+                              <img src="images/demo/01.jpg" alt />
+                              <figcaption>圖說</figcaption>
+                            </figure>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <p>
+                            <a href="#">連結文字樣式</a
+                            >更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+                          </p>
+                          <h3>標題</h3>
+                          <p>
+                            大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直
+                          </p>
+                          <p>
+                            大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直
+                          </p>
+                        </div>
+                      </div>
+                      <!-- 左圖右文 End -->
+                    </div>
+
+                    <div>
+                      <!-- 右圖左文 Start -->
+                      <h3>右圖左文</h3>
+                      <div class="flexTpl_7_5">
+                        <div class="col">
+                          <p>
+                            <a href="#">連結文字樣式</a
+                            >更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+                          </p>
+                          <h3>標題</h3>
+                          <p>
+                            大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直
+                          </p>
+                          <p>
+                            大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直
+                          </p>
+                        </div>
+                        <div class="col">
+                          <div class="picBox">
+                            <figure class="pic">
+                              <img src="images/demo/01.jpg" alt />
+                              <figcaption>圖說</figcaption>
+                            </figure>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- 右圖左文 End -->
+                    </div>
+
+                    <div>
+                      <!-- 左圖右文 文繞圖 Start -->
+                      <h3>左圖右文 文繞圖</h3>
+                      <div class="floatBox">
+                        <div class="picBox floatLeft">
+                          <figure class="pic">
+                            <img src="images/demo/01.jpg" alt />
+                            <figcaption>圖說</figcaption>
+                          </figure>
+                        </div>
+                        <p>
+                          <a href="#">連結文字樣式</a
+                          >更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+                        </p>
+                        <h3>標題</h3>
+                        <p>
+                          大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直
+                        </p>
+                        <p>
+                          大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直
+                        </p>
+                      </div>
+                      <!-- 左圖右文 文繞圖 End -->
+                    </div>
+
+                    <div>
+                      <!-- 右圖左文 文繞圖 Start -->
+                      <h3>右圖左文 文繞圖</h3>
+                      <div class="floatBox">
+                        <div class="picBox floatRight">
+                          <figure class="pic">
+                            <img src="images/demo/01.jpg" alt />
+                            <figcaption>圖說</figcaption>
+                          </figure>
+                        </div>
+                        <p>
+                          <a href="#">連結文字樣式</a
+                          >更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+                        </p>
+                        <h3>標題</h3>
+                        <p>
+                          大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直
+                        </p>
+                        <p>
+                          大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直
+                        </p>
+                      </div>
+                      <!-- 右圖左文 文繞圖 End -->
+                    </div>
+
+                    <div>
+                      <!-- 標題大小 Start -->
+                      <h3>標題</h3>
+                      <p>大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。</p>
+                      <div class="cpInfo">大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。</div>
+                      <h2>標題</h2>
+                      <p>
+                        <a href="#">連結文字樣式</a
+                        >更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+                      </p>
+                      <h2>標題二</h2>
+                      <p>
+                        <a href="#">連結文字樣式</a
+                        >更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+                      </p>
+                      <h3>標題三</h3>
+                      <p>
+                        <a href="#">連結文字樣式</a
+                        >更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+                      </p>
+                      <h4>標題四</h4>
+                      <p>
+                        <a href="#">連結文字樣式</a
+                        >更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+                      </p>
+                      <h5>標題五</h5>
+                      <p>
+                        <a href="#">連結文字樣式</a
+                        >更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+                      </p>
+                      <h6>標題六</h6>
+                      <p>
+                        <a href="#">連結文字樣式</a
+                        >更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+                      </p>
+                      <!-- 標題大小 End -->
+                    </div>
+
+                    <div>
+                      <!-- 列表樣式 Start -->
+                      <h3>列表樣式</h3>
+                      <ul>
+                        <li>影開兒中不們西動會味理化由子常洲國有標題</li>
+                        <li>首動我行得流事個要使著獨操大</li>
+                        <li>推列黃上道有畫走長市上</li>
+                        <li>證會不就人推陸跑公片重</li>
+                        <li>處來在山工國生即工球一，易心個長什去實用當們公有也候</li>
+                      </ul>
+                      <ol>
+                        <li>影開兒中不們西動會味理化由子常洲國有標題</li>
+                        <li>首動我行得流事個要使著獨操大</li>
+                        <li>推列黃上道有畫走長市上</li>
+                        <li>證會不就人推陸跑公片重</li>
+                        <li>處來在山工國生即工球一，易心個長什去實用當們公有也候</li>
+                      </ol>
+                      <!-- 列表樣式 End -->
+                    </div>
+
+                    <div>
+                      <!-- 表格樣式 Start -->
+                      <h3>表格樣式</h3>
+
+                      <div class="tableWrapper">
+                        <!-- 如果要能夠左右滾動 則須在最外層增加 class “tableWrapper”，在table同層 增加 scrollTablePrevBtn, scrollTableNextBtn按鈕元件 -->
+                        <button class="scrollTablePrevBtn" type="button">往左捲動</button>
+                        <button class="scrollTableNextBtn" type="button">往右捲動</button>
+                        <table>
+                          <!-- 無障礙 caption 標題 -->
+                          <caption>
+                            <!-- 若表格內容複雜，可以補充摘要(summary)來加強說明表格內容，但 內容不要與標題重複 -->
+                            <!-- <span class="summary">表格摘要</span> -->
+                          </caption>
+                          <thead>
+                            <tr>
+                              <th scope="col">th 1</th>
+                              <th scope="col">th 2</th>
+                              <th scope="col">th 3</th>
+                              <th scope="col">th 4</th>
+                              <th scope="col">th 5</th>
+                              <th scope="col">th 6</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">th A</th>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">th B</th>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">th C</th>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="tableDefault">
+                        <table>
+                          <!-- 無障礙 caption 標題 -->
+                          <caption>
+                            <!-- 若表格內容複雜，可以補充摘要(summary)來加強說明表格內容，但 內容不要與標題重複 -->
+                            <!-- <span class="summary">表格摘要</span> -->
+                          </caption>
+                          <tbody>
+                            <tr>
+                              <th scope="row">th A</th>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">th B</th>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">th C</th>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                              <td>td 資料</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- 表格樣式 End -->
+                    </div>
+
+                    <div>
+                      <!-- 燈箱照片 Start -->
+                      <h3>燈箱照片</h3>
+                      <div class="cpSlider">
+                        <!-- 如果需要自動播放，無障礙需要增加此按鈕 -->
+                        <button type="button" class="autoPlaySwitch" data-info-play="暫停中，點我播放" data-info-stop="播放中，點我暫停"></button>
+                        <div class="swiperBox">
+                          <!-- swiper 左邊箭頭-->
+                          <button type="button" class="prevSlider swiperArrow"></button>
+                          <div class="swiper">
+                            <div class="swiper-wrapper">
+                              <div class="swiper-slide">
+                                <a class="item" href="images/demo/06.jpg" data-fancybox="gallery" data-caption="第1張圖說">
+                                  <div class="pic">
+                                    <img src="images/demo/06.jpg" alt />
+                                  </div>
+                                  <div class="caption"><span>第1張圖說</span></div>
+                                </a>
+                              </div>
+
+                              <div class="swiper-slide">
+                                <a class="item" href="images/demo/07.jpg" data-fancybox="gallery" data-caption="第2張圖說" data-alt="第2張圖說">
+                                  <div class="pic">
+                                    <img src="images/demo/07.jpg" alt />
+                                  </div>
+                                  <div class="caption"><span>第2張圖說</span></div>
+                                </a>
+                              </div>
+                              <div class="swiper-slide">
+                                <a class="item" href="images/demo/08.jpg" data-fancybox="gallery" data-caption="第3張圖說" data-alt="第3張圖說">
+                                  <div class="pic">
+                                    <img src="images/demo/08.jpg" alt />
+                                  </div>
+                                  <div class="caption"><span>第3張圖說</span></div>
+                                </a>
+                              </div>
+                              <div class="swiper-slide">
+                                <a class="item" href="images/demo/10.jpg" data-fancybox="gallery" data-caption="第4張圖說" data-alt="第4張圖說">
+                                  <div class="pic">
+                                    <img src="images/demo/10.jpg" alt />
+                                  </div>
+                                  <div class="caption"><span>第4張圖說</span></div>
+                                </a>
+                              </div>
+                              <div class="swiper-slide">
+                                <a class="item" href="images/demo/12.jpg" data-fancybox="gallery" data-caption="第5張圖說" data-alt="第5張圖說">
+                                  <div class="pic">
+                                    <img src="images/demo/12.jpg" alt />
+                                  </div>
+                                  <div class="caption"><span>第5張圖說</span></div>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <button type="button" class="nextSlider swiperArrow"></button>
+                          <!-- swiper 右邊箭頭-->
+                        </div>
+                      </div>
+                      <!-- 燈箱照片 End -->
+                    </div>
+
+                    <div>
+                      <!-- 跑馬燈 Start -->
+                      <h3>跑馬燈</h3>
+                      <div class="marqueeSlider">
+                        <!-- 如果需要自動播放，無障礙需要增加此按鈕 -->
+                        <button type="button" class="autoPlaySwitch" data-info-play="暫停中，點我播放" data-info-stop="播放中，點我暫停"></button>
+                        <div class="swiperBox">
+                          <div class="swiper">
+                            <div class="swiper-wrapper">
+                              <div class="swiper-slide">
+                                <a href="#"><span>2018-11-13</span>因尼莎颱風來襲，7/31下午2時之我國化學物質管理政策綱領第一次跨部會研商會取消。1</a>
+                              </div>
+                              <div class="swiper-slide">
+                                <a href="#"><span>2018-11-13</span>因尼莎颱風來襲，7/31下午2時之我國化學物質管理政策綱領第一次跨部會研商會取消。2</a>
+                              </div>
+                              <div class="swiper-slide">
+                                <a href="#"><span>2018-11-13</span>因尼莎颱風來襲，7/31下午2時之我國化學物質管理政策綱領第一次跨部會研商會取消。3</a>
+                              </div>
+                              <div class="swiper-slide">
+                                <a href="#"><span>2018-11-13</span>因尼莎颱風來襲，7/31下午2時之我國化學物質管理政策綱領第一次跨部會研商會取消。4</a>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- swiper 往上-->
+                          <button class="prevSlider swiperArrow"></button>
+                          <!-- swiper 往下-->
+                          <button class="nextSlider swiperArrow"></button>
+                        </div>
+                      </div>
+                      <!-- 跑馬燈 End -->
+                    </div>
+
+                    <div>
+                      <!-- 相關連結 Start -->
+                      <h3>相關連結</h3>
+                      <div class="cpLinkBox">
+                        <ul>
+                          <li><a href="#">首動我行得流事個要使著獨操大</a></li>
+                          <li><a href="#">影開兒中不們西動會味理化由子常洲國有標題</a></li>
+                          <li><a href="#">處來在山工國生即工球一，易心個長什去實用當們公有也候</a></li>
+                          <li><a href="#">證會不就人推陸跑公片重</a></li>
+                        </ul>
+                      </div>
+                      <!-- 相關連結 End -->
+                    </div>
+
+                    <div>
+                      <!-- 檔案下載 Start -->
+                      <h3>檔案下載</h3>
+                      <div class="cpDownloadBox">
+                        <ul>
+                          <li>
+                            <span>檔案名稱</span>
+                            <ul class="downloadFiles">
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType doc">doc</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType docx">docx</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType odt">odt</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <span>檔案名稱</span>
+                            <ul class="downloadFiles">
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType xls">xls</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType xlsx">xlsx</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType ods">ods</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <span>檔案名稱</span>
+                            <ul class="downloadFiles">
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType ppt">ppt</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType pptx">pptx</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType odp">odp</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <span>檔案名稱</span>
+                            <ul class="downloadFiles">
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType jpg">jpg</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType jpeg">jpeg</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType png">png</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType bmp">bmp</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType gif">gif</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <span>檔案名稱</span>
+                            <ul class="downloadFiles">
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType zip">zip</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType rar">rar</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType z7">7z</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <span>檔案名稱</span>
+                            <ul class="downloadFiles">
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType txt">txt</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType json">json</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType htm">htm</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType html">html</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <span>檔案名稱</span>
+                            <ul class="downloadFiles">
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType mp3">mp3</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType wav">wav</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType flac">flac</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <span>檔案名稱</span>
+                            <ul class="downloadFiles">
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType mp4">mp4</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType wmv">wmv</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType avi">avi</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType webm">webm</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType mov">mov</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <span>檔案名稱</span>
+                            <ul class="downloadFiles">
+                              <li>
+                                <a href="#" title="檔案名稱"><span class="fileType pdf">pdf</span></a>
+                                <div class="fileSize">149.48 KB，下載 245 次</div>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                      <!-- 檔案下載 End -->
+                    </div>
+
+                    <div>
+                      <!-- 頁面資訊 Start -->
+                      <div class="pageInfo">
+                        <ul>
+                          <li>發布日期：<span>2025-03-05</span></li>
+                          <li>發布單位：<span>移民事務組‧移民輔導科</span></li>
+                          <li>聯絡電話：<span>(02)2388-9393 分機2689</span></li>
+                          <li>更新頻率：<span>不定期</span></li>
+                          <li>點閱次數：<span>123456</span></li>
+                        </ul>
+                      </div>
+                      <!-- 檔案下載 End -->
+                    </div>
+                  </div>
+                </div>
+                <!-- cp End -->
+              </div>
+            </section>
+            <!-- 主內容區 End -->
+          </div>
+        </div>
+      </main>
+      <!-- main End -->
+
+      <!-- footer Start-->
+      <!-- fatFooter Start -->
+      <div class="fatFooter">
+        <div class="container">
+          <button type="button" aria-expanded="true" id="fatFooterBtn" aria-label="開關頁尾網站導覽"></button>
+          <nav aria-label="頁尾網站導覽">
+            <ul>
+              <li>
+                <a href="#">關於本局</a>
+                <ul>
+                  <li><a href="#">本局沿革</a></li>
+                  <li><a href="#">本局願景</a></li>
+                  <li><a href="#">組織介紹</a></li>
+                  <li><a href="#">本局願景</a></li>
+                  <li><a href="#">局處執掌</a></li>
+                  <li><a href="#">重大政策</a></li>
+                  <li><a href="#">施政重點</a></li>
+                  <li><a href="#">本局位置</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">訊息公告</a>
+                <ul>
+                  <li><a href="#">本局公告</a></li>
+                  <li><a href="#">環保署公告</a></li>
+                  <li><a href="#">環境用藥公告</a></li>
+                  <li><a href="#">環保專案成果報告</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">業務專區</a>
+                <ul>
+                  <li><a href="#">化學物質</a></li>
+                  <li><a href="#">毒性化學物質</a></li>
+                  <li><a href="#">危害性化學物質災害防救</a></li>
+                  <li><a href="#">環境用藥</a></li>
+                  <li><a href="#">石綿危害資訊</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">便民服務</a>
+                <ul>
+                  <li><a href="#">線上服務</a></li>
+                  <li><a href="#">教育宣導</a></li>
+                  <li><a href="#">影音專區</a></li>
+                  <li><a href="#">下載專區</a></li>
+                  <li><a href="#">常見問答</a></li>
+                  <li><a href="#">相關連結</a></li>
+                  <li><a href="#">訂閱電子報</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">政府資訊公開</a>
+                <ul>
+                  <li><a href="#">行政院環境保護署資訊公開要點</a></li>
+                  <li><a href="#">預算及會計月報</a></li>
+                  <li><a href="#">性別平等專區</a></li>
+                  <li><a href="#">人權專區</a></li>
+                  <li><a href="#">環境統計資料庫</a></li>
+                  <li><a href="#">業務標準作業流程</a></li>
+                  <li><a href="#">行政院環保署Open Data資料集</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">法規專區</a>
+                <ul>
+                  <li><a href="#">主管法規查詢系統</a></li>
+                  <li><a href="#">全國法規資料庫</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- fatFooter End -->
+      <!-- footer Start-->
+      <footer>
+        <a class="accessKeyItem" href="#aZ" id="aZ" accesskey="Z" aria-label="頁尾區">:::</a>
+        <div class="footerBox">
+          <div class="container">
+            <div class="infoBox">
+              <div class="footerLogo">
+                <a href="index.html"><img src="images/footer_logo.png" alt="網站標題" />HyUI<span>Kit5</span></a>
+              </div>
+
+              <p class="copyright">Hyweb Technology Co., Ltd.© 2015 All Rights Reserved</p>
+
+              <ul class="footerInfo">
+                <li>總公司：新竹縣竹北市台元一街8號5樓之6TEL：03-5601296</li>
+                <li>台北分公司：台北市重慶南路二段51號5樓 TEL：02-2395-6966</li>
+                <li>台中分公司：台中市西屯區臺灣大道三段658號6樓A1 TEL：04-2706-3968</li>
+                <li>高雄分公司：高雄市新興區中正三路55號26樓之5 TEL：07-2223606</li>
+              </ul>
+
+              <ul class="footerLink">
+                <li><a href="#" class="btnSecondary">隱私權政策</a></li>
+                <li><a href="#" class="btnSecondary">網站安全政策</a></li>
+                <li><a href="#" class="btnSecondary">政府網站資料開放宣告</a></li>
+              </ul>
+            </div>
+            <div class="infoBox">
+              <div class="footerIcon">
+                <a target="_blank" href="#">
+                  <img src="images/basic/accessibility.jpg" alt="通過AA檢測等級無障礙網頁檢測" />
+                </a>
+                <a target="_blank" href="#">
+                  <img src="images/basic/egov.png" alt="我的e政府" />
+                </a>
+              </div>
+              <div class="footerInfo2">
+                <div class="update">更新日期:<span>2018/01/01</span></div>
+                <div class="counter">累計瀏覽人次:<span>46476653</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- wrapper End -->
+
+    <!-- 回到頂部 Start -->
+    <button id="scrollTop" type="button" aria-label="回到頂部">TOP</button>
+    <!-- 回到頂部 End -->
+
+    <!-- fancyBox -->
+    <script src="vendor/fancybox/fancybox.umd.js"></script>
+    <script src="vendor/fancybox/l10n/zh_TW.umd.js"></script>
+    <!-- Swiper -->
+    <script src="vendor/swiper/swiper-bundle.min.js"></script>
+    <!-- js -->
+    <script src="js/main.js"></script>
+    <script src="js/customize.js"></script>
+
+    <script>
+      Fancybox.show([
+        {
+          src: '#popup',
+          type: 'inline',
+        },
+      ]);
+
+      const closeBtn = document.querySelectorAll('.submit');
+      closeBtn.forEach((item) => {
+        item.addEventListener('click', (e) => {
+          Fancybox.close();
+        });
+      });
+    </script>
+  </body>
+</html>

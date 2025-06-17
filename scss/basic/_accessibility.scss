@@ -1,0 +1,40 @@
+// 設定當物件被:focus-visible時的效果
+*:focus-visible {
+  outline: $colorAccessibility 2px solid;
+  outline-offset: 1px;
+}
+
+// 導盲磚
+.accessKeyItem {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 9;
+  text-decoration: none;
+
+  @include screen('mobile') {
+    display: none;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: $colorAccessibility 2px solid;
+    outline-offset: 1px;
+  }
+}
+
+// no-js
+.no-js {
+  noscript {
+    display: block;
+    padding: 0.5em;
+    border: 2px solid $colorAccessibility;
+    background: #fff;
+    color: #666;
+    overflow: hidden;
+    line-height: 1.45em;
+    font-size: 0.813em;
+    margin: 0 0.5em 0.5em;
+    border-radius: var(--borderRadius);
+  }
+}

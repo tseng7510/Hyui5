@@ -1,0 +1,103 @@
+// 分頁
+.pagination {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0 32px;
+
+  .formInline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: #555;
+
+    span {
+      color: #3772CC;
+    }
+
+    button {
+      border-radius: var(--borderRadius2);
+      line-height: 2;
+    }
+  }
+
+  ul {
+    @include liReset;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  li {
+    a {
+      display: flex;
+      width: 40px;
+      height: 40px;
+      padding: 8px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: var(--borderRadius2);
+      color: $colorWord;
+
+      &:hover {
+        background: $colorPrimary;
+        border-color: $colorPrimary;
+        color: #fff;
+      }
+    }
+
+    &[class*="Arrow"] {
+      a {
+        color: transparent;
+        background: none;
+        border: none;
+        font-size: 0px;
+        position: relative;
+
+        &::before {
+          content: '';
+          width: 20px;
+          height: 20px;
+          background-repeat: no-repeat;
+          background-size: contain;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          transform-origin: center;
+        }
+      }
+
+      &.firstArrow {
+        a::before {
+          background-image: url('../images/basic/icon/first_page.svg');
+        }
+      }
+
+      &.lastArrow {
+        a::before {
+          transform: scale(-1) translate(50%, 50%);
+          background-image: url('../images/basic/icon/first_page.svg');
+        }
+      }
+
+      &.prevArrow {
+        a::before {
+          background-image: url('../images/basic/icon/arrow_left.svg');
+        }
+      }
+
+      &.nextArrow {
+        a::before {
+          transform: scale(-1) translate(50%, 50%);
+          background-image: url('../images/basic/icon/arrow_left.svg');
+        }
+      }
+    }
+  }
+
+}

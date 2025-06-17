@@ -1,0 +1,508 @@
+.swiperArrow {
+  width: 52px;
+  height: 84px;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  position: relative;
+  background: none;
+  opacity: 1;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+
+  @include screen('tablet') {
+    width: 30px;
+    height: 50px;
+  }
+
+  &::before {
+    content: '';
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    background-image: url('../images/basic/icon/arrow_left.svg');
+
+    @include screen('tablet') {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  &.prevSlider {
+    left: 0;
+  }
+
+  &.nextSlider {
+    right: 0;
+
+    &::before {
+      transform: translate(-50%, -50%) scale(-1);
+    }
+  }
+
+  &.swiperArrow-disabled {
+    opacity: 0.3;
+    background: none !important;
+  }
+
+  &:hover {
+    background: none !important;
+  }
+}
+
+.swiperPagination {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  .swiper-pagination-bullet {
+    margin: 0 !important;
+    width: 12px;
+    height: 12px;
+    background: #D9D9D9;
+    opacity: 1 !important;
+
+    &.swiper-pagination-bullet-active {
+      background: $colorPrimary;
+    }
+  }
+
+  .swiper-pagination-current {
+    color: $colorPrimary;
+  }
+}
+
+*:has(.autoPlaySwitch) {
+  .swiperBox {
+    margin-bottom: 20px;
+    position: relative;
+  }
+}
+
+button.autoPlaySwitch {
+  background: #326DC7;
+  border-radius: 50px;
+  color: #fff;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 15px 10px;
+  font-size: 13px;
+  width: 44px;
+  height: 44px;
+  line-height: 1;
+  margin: 0;
+  border: none;
+  white-space: nowrap;
+  position: relative;
+
+  &.stop {
+    background: rgba(#000, 0.20);
+    color: #000;
+
+    &::before {
+      content: '';
+      width: 4px;
+      height: 12px;
+      top: 16px;
+      left: 16px;
+      background-color: #fff;
+      box-shadow: #fff 8px 0px 0px;
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+    }
+  }
+
+  &.play {
+    &::before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 7px 0 7px 9px;
+      border-color: transparent transparent transparent #FFFFFF;
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+    }
+  }
+
+  &:hover {
+    background: $colorSecondary;
+  }
+}
+
+// mp
+.mpSlider {
+  width: 100%;
+  isolation: isolate;
+  margin-top: 32px;
+  margin-bottom: 32px;
+
+  .autoPlaySwitch {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 2;
+
+    @include screen('mobile') {
+      top: 10px;
+    }
+  }
+
+  .swiper {
+    width: 100%;
+
+    a {
+      display: block;
+      position: relative;
+    }
+  }
+
+  .swiperArrow {
+    background: rgba(#fff, 0.4);
+  }
+
+  .swiperPagination {
+    // position: absolute;
+    top: 100%;
+    height: 30px;
+  }
+
+  &:has(.contentBox) {
+    img {
+      min-height: 300px;
+    }
+  }
+
+  .contentBox {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+
+    .content {
+      width: 100%;
+      max-width: 270px;
+      display: flex;
+      flex-direction: column;
+      margin-left: 13%;
+      color: #fff;
+
+      .title {
+        font-size: Rem(36);
+        line-height: 1.2;
+      }
+
+      .subtitle {
+        font-size: Rem(28);
+      }
+
+      .description {
+        font-weight: 300;
+        @include lineClamp(2);
+      }
+    }
+  }
+}
+
+// cp
+// cpSlider
+.cpSlider {
+  position: relative;
+  isolation: isolate;
+
+  .swiperBox {
+    padding: 30px 70px;
+
+    @include screen('tablet') {
+      padding: 10px 40px;
+    }
+  }
+
+  .item {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+    &:focus-visible,
+    &:hover {
+      .caption {
+        transform: translateY(0);
+      }
+    }
+
+    &:focus-visible {
+      outline-width: 4px;
+      outline-offset: -4px;
+    }
+  }
+
+  .swiperDots {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(100%);
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .pic {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    img {
+      aspect-ratio: 4/3;
+    }
+  }
+
+  .caption {
+    width: 100%;
+    text-align: center;
+    padding: 5px 10px;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(100%);
+    background: rgba(#000, 0.8);
+    @include transition(0.3);
+
+    @include screen('mobile') {
+      transform: translateY(0);
+    }
+
+    span {
+      @include lineClamp(1);
+      color: #fff;
+    }
+  }
+}
+
+// cp_album
+.cpAlbum {
+  width: 100%;
+}
+
+//跑馬燈
+.marqueeSlider {
+  list-style: none;
+  overflow: hidden;
+  background: #fff;
+  text-align: left;
+  position: relative;
+  min-height: 1px;
+  padding-left: 16px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-bottom: 1px solid #dadada;
+
+  &:has(.swiperArrow) {
+    display: flex;
+    gap: 20px;
+  }
+
+  .swiperBox {
+    margin-bottom: 0;
+    flex-grow: 1;
+    padding: 8px 40px 8px 0;
+  }
+
+  .swiper {
+    padding: 4px;
+    flex-grow: 1;
+    height: 40px;
+    margin: 0 auto 0 0;
+  }
+
+  .swiperArrow {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    position: absolute;
+    cursor: pointer;
+    right: 5px;
+    z-index: 9;
+    top: 50%;
+    transform: translateY(-100%);
+    padding: 0;
+    margin: 0;
+    border: none;
+
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      display: block;
+      transform: rotate(90deg);
+      transform-origin: center top;
+    }
+
+    &.prevSlider {
+      left: auto;
+    }
+
+    &.nextSlider {
+      transform: translateY(0%);
+
+      &::before {
+        transform: rotate(-90deg);
+        transform-origin: center left;
+      }
+    }
+  }
+
+  a {
+    display: block;
+    line-height: Rem(32);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-decoration: none;
+
+    &:not(:hover) {
+      color: $colorSecondary;
+    }
+
+    span {
+      color: #69707D;
+      margin-right: 15px;
+    }
+  }
+}
+
+// cp_album
+// 大圖slider
+.sliderFor {
+  position: relative;
+
+  .autoPlaySwitch {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 5;
+  }
+
+  .pic {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    img {
+      aspect-ratio: 16/9;
+    }
+  }
+}
+
+// 小圖slider
+.navSlider {
+  position: relative;
+  isolation: isolate;
+
+  .swiperArrow {
+    background: rgba(#fff, 0.4);
+  }
+
+  .item {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+
+    &:focus-visible,
+    &:hover {
+      .caption {
+        transform: translateY(0);
+      }
+    }
+
+    &:focus-visible {
+      outline-width: 4px;
+      outline-offset: -4px;
+    }
+  }
+
+  .swiperDots {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(100%);
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .pic {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    img {
+      aspect-ratio: 4/3;
+    }
+  }
+
+  .caption {
+    width: 100%;
+    text-align: center;
+    padding: 5px 10px;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(100%);
+    background: rgba(#000, 0.8);
+    @include transition(0.3);
+
+    @include screen('mobile') {
+      transform: translateY(0);
+    }
+
+    span {
+      @include lineClamp(1);
+      color: #fff;
+    }
+  }
+}
+
+.linkSlider {
+  position: relative;
+  isolation: isolate;
+
+  .swiperBox {
+    padding: 30px 70px;
+
+    @include screen('tablet') {
+      padding: 10px 40px;
+    }
+  }
+
+  a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

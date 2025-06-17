@@ -1,0 +1,45 @@
+.np {
+  ul {
+    @include liReset;
+
+    @include screen('mobile') {
+      gap: 10px;
+    }
+
+    .col {
+      @include screen('mobile') {
+        flex: 1 1 100%;
+      }
+    }
+  }
+
+  a.card {
+    height: 100%;
+    display: flex;
+    padding: 16px;
+    gap: 12px;
+    border-radius: var(--borderRadius);
+    border: 1px solid #DEE0E3;
+    background: #fff;
+    text-decoration: none;
+
+    &:not(:hover) {
+      color: $colorWord;
+    }
+
+    .num {
+      &::after {
+        content: '.';
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+
+    &:hover {
+      color: $colorPrimary;
+      border-color: $colorPrimary;
+    }
+  }
+}
