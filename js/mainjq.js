@@ -289,6 +289,8 @@ fontSizeInner();
 // -----------------------------------------------------------------------
 function mainMenu(obj) {
   const { sticky = true, needLink = false, mega = false } = obj;
+  const closeBtnText = $('.mainMenu').data('closeBtn');
+
   const menu = $('.mainMenu nav');
   if (menu.length === 0) return;
 
@@ -379,7 +381,7 @@ function mainMenu(obj) {
   const mobileMainMenuBox = $('<div class="mobileMainMenuBox"></div>');
 
   // 新增手機版主選單關閉按鈕
-  const mobileMainMenuClose = $('<button id="mobileMainMenuClose" aria-expanded="true"></button>');
+  const mobileMainMenuClose = $(`<button id="mobileMainMenuClose" aria-expanded="true">${closeBtnText}</button>`);
 
   // 複製主選單
   const mainMenuClone = $(menu).clone(true);
@@ -987,8 +989,8 @@ function accordionFunction(obj) {
   // console.warn('手風琴功能: accordionSet 無法抓到(請檢查Html結構)，或是沒有使用到此功能');
   // return;
 
-  const infoOpen = accordionSet.attr('data-state-open');
-  const infoClose = accordionSet.attr('data-state-close');
+  const infoOpen = accordionSet.data('stateOpen');
+  const infoClose = accordionSet.data('stateClose');
   const accordionBtn = accordionSet.find('.accordionBtn');
   const accordionCon = accordionSet.find('.accordionContent');
 
@@ -1315,7 +1317,7 @@ function tableAddDataAttributes() {
     trList.each(function () {
       const tdList = $(this).find('td');
       tdList.each(function (i) {
-        $(this).attr('data-td-title', thList.eq(i).text());
+        $(this).data('tdTitle', thList.eq(i).text());
       });
     });
   }
@@ -1393,8 +1395,8 @@ function swiperAutoPlaysFn(swiper, elem) {
   const autoPlaySwitch = $(swiper.el).parents().find('.autoPlaySwitch');
   if (autoPlaySwitch.length === 0) return;
   let nowState = swiper.autoplay.running ? true : false;
-  let infoPlay = autoPlaySwitch.attr('data-info-play');
-  let infoStop = autoPlaySwitch.attr('data-info-stop');
+  let infoPlay = autoPlaySwitch.data('infoPlay');
+  let infoStop = autoPlaySwitch.data('infoStop');
   nowState ? autoPlaySwitch.addClass('stop') : autoPlaySwitch.addClass('play');
   autoPlaySwitch.attr({
     'aria-label': infoStop,
@@ -1461,12 +1463,12 @@ function swiperA11Fn(swiper) {
 function swiperNavKeyDownFn(swiper, mainSwiper) {
   if ($(swiper).length === 0) return;
   $(swiper.slides).each(function (i) {
-    $(this).attr('data-swiper-slide-index', i);
+    $(this).data('swiperSlideIndex', i);
   });
 
   $(window).on('keydown', function (e) {
-    if (e.code === 'Enter' && $(e.target).parent().attr('data-swiper-slide-index') !== undefined) {
-      let index = $(e.target).parent().attr('data-swiper-slide-index');
+    if (e.code === 'Enter' && $(e.target).parent().data('swiperSlideIndex') !== undefined) {
+      let index = $(e.target).parent().data('swiperSlideIndex');
       mainSwiper.slideTo(index, 1000, false);
       $(e.target).attr('aria-pressed', 'true');
       $(e.target).parent().siblings().find('.item').attr('aria-pressed', 'false');
@@ -1482,9 +1484,9 @@ function formEye() {
   const checkEye = $('.formEyes');
   if (checkEye.length === 0) return;
   const password = checkEye.parent().find('.password');
-  const showPassword = checkEye.attr('data-show');
+  const showPassword = checkEye.data('show');
 
-  const hidePassword = checkEye.attr('data-hide');
+  const hidePassword = checkEye.data('hide');
   checkEye.attr({
     'aria-label': showPassword,
     'aria-pressed': 'false',

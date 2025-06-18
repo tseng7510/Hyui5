@@ -118,6 +118,16 @@
                 width: 30px;
                 position: relative;
                 margin: 0 0 0 auto;
+                border-radius: var(--borderRadius2);
+                overflow: hidden;
+
+                &::before {
+                  content: '';
+                  inset: 0;
+                  position: absolute;
+                  background: linear-gradient(90deg, #00428E 0%, #057BB7 100%);
+                  opacity: 0;
+                }
               }
             }
 
@@ -196,25 +206,32 @@
             }
 
             &.active,
-            &:hover {
-              & > a {
-                color: #fff !important;
+            & > a:hover {
+              color: #fff !important;
+
+              &::before {
+                opacity: 1;
+              }
+
+              &::after {
+                border-color: #fff !important;
+              }
+
+              .icon {
+                filter: brightness(50);
+              }
+            }
+
+            &.needLink {
+              & > button:hover {
 
                 &::before {
                   opacity: 1;
                 }
 
                 &::after {
-                  border-color: #fff !important;
-                }
-
-                .icon {
                   filter: brightness(50);
                 }
-              }
-
-              & > button::after {
-                filter: brightness(50);
               }
             }
 

@@ -646,8 +646,10 @@ window.addEventListener('load', fontSizeInner);
 // -----------------------------------------------------------------------
 function mainMenu(obj) {
   const { sticky = true, needLink = false, mega = false } = obj;
+  const mainMenu = document.querySelector('.mainMenu');
+  const closeBtnText = mainMenu.dataset.closeBtn;
 
-  const menu = document.querySelector('.mainMenu nav');
+  const menu = mainMenu.querySelector('nav');
 
   if (menu === null) return;
   // 有下層的增加 hasChild 的 class
@@ -743,6 +745,7 @@ function mainMenu(obj) {
   const mobileMainMenuClose = document.createElement('button');
   mobileMainMenuClose.setAttribute('id', 'mobileMainMenuClose');
   mobileMainMenuClose.setAttribute('aria-expanded', 'true');
+  mobileMainMenuClose.insertAdjacentHTML('afterbegin', closeBtnText);
 
   // 複製主選單
   const mainMenuClone = menu.cloneNode(true);

@@ -32,7 +32,7 @@
     }
 
     .formListTitle {
-      width: $titleWidth;
+      width: $titleWidth !important;
       flex-shrink: 0;
     }
 
@@ -68,15 +68,6 @@
         & + .formList {
           border-top: 1px dashed $tableNormal;
         }
-
-        &:first-child {
-          padding-top: 0;
-        }
-
-        &:last-child {
-          border: none;
-          padding-bottom: 0;
-        }
       }
     }
   }
@@ -93,9 +84,9 @@
     all: unset;
   }
 
-  legend {
-    transform: translateY(15px);
-  }
+  // legend {
+  //   transform: translateY(15px);
+  // }
 
   .formList {
     display: flex;
@@ -187,51 +178,6 @@
       position: relative;
       isolation: isolate;
       gap: 8px;
-
-      .inputBox {
-        position: relative;
-
-        input {
-          width: 100%;
-        }
-
-        // icon
-        i {
-          position: absolute;
-          top: 10px;
-          z-index: 2;
-
-          &::before {
-            content: '';
-            width: 24px;
-            height: 24px;
-            display: block;
-          }
-        }
-
-        // icon在前面
-        &:has(i + input) {
-          i {
-            left: 10px;
-          }
-
-          input:not([type="checkBox"], [type="radio"]),
-          select,
-          textarea {
-            padding-left: 40px;
-          }
-        }
-
-        * + i {
-          right: 10px;
-
-          input:not([type="checkBox"], [type="radio"]),
-          select,
-          textarea {
-            padding-right: 52px;
-          }
-        }
-      }
 
       .formEyes {
         position: absolute;
@@ -336,6 +282,57 @@
       font-size: Rem(15);
       font-weight: 400;
     }
+
+    &:not(.inline) {
+      legend {
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  .inputBox {
+    position: relative;
+
+    input {
+      width: 100%;
+    }
+
+    // icon
+    i {
+      position: absolute;
+      top: 10px;
+      z-index: 2;
+
+      &::before {
+        content: '';
+        width: 24px;
+        height: 24px;
+        display: block;
+      }
+    }
+
+    // icon在前面
+    &:has(i + input) {
+      i {
+        left: 10px;
+      }
+
+      input:not([type="checkBox"], [type="radio"]),
+      select,
+      textarea {
+        padding-left: 40px;
+      }
+    }
+
+    * + i {
+      right: 10px;
+
+      input:not([type="checkBox"], [type="radio"]),
+      select,
+      textarea {
+        padding-right: 52px;
+      }
+    }
   }
 
   $itemGap: 14px;
@@ -357,8 +354,8 @@
       word-break: break-all;
     }
 
-    & > label {
-      & + label {
+    & > .inputOption {
+      & + .inputOption {
         margin-left: 10px;
       }
 
@@ -393,11 +390,13 @@
 
   .noFull {
 
-    .select,
-    input:not([type="checkBox"], [type="radio"]),
-    select,
-    textarea {
+    & > *:not(label, [type="checkBox"], [type="radio"]) {
+      width: auto;
       flex-grow: unset !important;
+    }
+
+    .inputBox {
+      width: fit-content;
     }
   }
 

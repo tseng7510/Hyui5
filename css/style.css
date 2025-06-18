@@ -1535,7 +1535,7 @@ button.active, button:hover {
   top: 20px;
 }
 .formBox .gridBox .formListTitle {
-  width: 160px;
+  width: 160px !important;
   flex-shrink: 0;
 }
 .formBox .gridBox > .formList {
@@ -1568,13 +1568,6 @@ button.active, button:hover {
 .formBox .gridBox > .formList .formList + .formList {
   border-top: 1px dashed #DEE0E3;
 }
-.formBox .gridBox > .formList .formList:first-child {
-  padding-top: 0;
-}
-.formBox .gridBox > .formList .formList:last-child {
-  border: none;
-  padding-bottom: 0;
-}
 .formBox .btnBox {
   display: flex;
   gap: 10px;
@@ -1582,9 +1575,6 @@ button.active, button:hover {
 .formBox fieldset,
 .formBox legend {
   all: unset;
-}
-.formBox legend {
-  transform: translateY(15px);
 }
 .formBox .formList {
   display: flex;
@@ -1668,39 +1658,6 @@ button.active, button:hover {
   position: relative;
   isolation: isolate;
   gap: 8px;
-}
-.formBox .formList .formContent .inputBox {
-  position: relative;
-}
-.formBox .formList .formContent .inputBox input {
-  width: 100%;
-}
-.formBox .formList .formContent .inputBox i {
-  position: absolute;
-  top: 10px;
-  z-index: 2;
-}
-.formBox .formList .formContent .inputBox i::before {
-  content: "";
-  width: 24px;
-  height: 24px;
-  display: block;
-}
-.formBox .formList .formContent .inputBox:has(i + input) i {
-  left: 10px;
-}
-.formBox .formList .formContent .inputBox:has(i + input) input:not([type=checkBox], [type=radio]),
-.formBox .formList .formContent .inputBox:has(i + input) select,
-.formBox .formList .formContent .inputBox:has(i + input) textarea {
-  padding-left: 40px;
-}
-.formBox .formList .formContent .inputBox * + i {
-  right: 10px;
-}
-.formBox .formList .formContent .inputBox * + i input:not([type=checkBox], [type=radio]),
-.formBox .formList .formContent .inputBox * + i select,
-.formBox .formList .formContent .inputBox * + i textarea {
-  padding-right: 52px;
 }
 .formBox .formList .formContent .formEyes {
   position: absolute;
@@ -1801,6 +1758,42 @@ button.active, button:hover {
   font-size: 0.9375rem;
   font-weight: 400;
 }
+.formBox .formList:not(.inline) legend {
+  margin-bottom: 8px;
+}
+.formBox .inputBox {
+  position: relative;
+}
+.formBox .inputBox input {
+  width: 100%;
+}
+.formBox .inputBox i {
+  position: absolute;
+  top: 10px;
+  z-index: 2;
+}
+.formBox .inputBox i::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+.formBox .inputBox:has(i + input) i {
+  left: 10px;
+}
+.formBox .inputBox:has(i + input) input:not([type=checkBox], [type=radio]),
+.formBox .inputBox:has(i + input) select,
+.formBox .inputBox:has(i + input) textarea {
+  padding-left: 40px;
+}
+.formBox .inputBox * + i {
+  right: 10px;
+}
+.formBox .inputBox * + i input:not([type=checkBox], [type=radio]),
+.formBox .inputBox * + i select,
+.formBox .inputBox * + i textarea {
+  padding-right: 52px;
+}
 .formBox .inline {
   flex-direction: row !important;
   flex-wrap: wrap;
@@ -1817,10 +1810,10 @@ button.active, button:hover {
 .formBox .inline label:has([type=radio]) {
   word-break: break-all;
 }
-.formBox .inline > label + label {
+.formBox .inline > .inputOption + .inputOption {
   margin-left: 10px;
 }
-.formBox .inline > label + input {
+.formBox .inline > .inputOption + input {
   width: auto;
   flex-grow: 1;
 }
@@ -1842,11 +1835,13 @@ button.active, button:hover {
   top: 0px;
   transform: none;
 }
-.formBox .noFull .select,
-.formBox .noFull input:not([type=checkBox], [type=radio]),
-.formBox .noFull select,
-.formBox .noFull textarea {
+.formBox .noFull > *:not(label, [type=checkBox], [type=radio]) {
+  width: auto;
   flex-grow: unset !important;
+}
+.formBox .noFull .inputBox {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .formBox .inputOption label {
   cursor: pointer;
@@ -2685,6 +2680,15 @@ button.active, button:hover {
   width: 30px;
   position: relative;
   margin: 0 0 0 auto;
+  border-radius: var(--borderRadius2);
+  overflow: hidden;
+}
+.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul .hasChild.needLink button::before {
+  content: "";
+  inset: 0;
+  position: absolute;
+  background: linear-gradient(90deg, #00428E 0%, #057BB7 100%);
+  opacity: 0;
 }
 .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul .hasChild.needLink > button::after, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul .hasChild:not(.needLink) > a::after {
   content: "";
@@ -2741,19 +2745,22 @@ button.active, button:hover {
 .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a i {
   line-height: 0;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active > a, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li:hover > a {
+.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover {
   color: #fff !important;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active > a::before, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li:hover > a::before {
+.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active::before, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover::before {
   opacity: 1;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active > a::after, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li:hover > a::after {
+.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active::after, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover::after {
   border-color: #fff !important;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active > a .icon, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li:hover > a .icon {
+.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active .icon, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover .icon {
   filter: brightness(50);
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active > button::after, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li:hover > button::after {
+.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.needLink > button:hover::before {
+  opacity: 1;
+}
+.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.needLink > button:hover::after {
   filter: brightness(50);
 }
 .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li li a {

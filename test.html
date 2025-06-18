@@ -1,23 +1,15 @@
-<form class="formBox">
-  <div class="formList">
-    <div class="formContent">
-      <input type="text" name="" id="" placeholder="請輸入文字" disabled />
-      <div class="inputOption">
-        <input type="radio" name="" id="radioenable1" value="enable" />
-        <label for="radioenable1">Enable</label>
-      </div>
-      <div class="inputOption">
-        <input type="checkbox" name="" id="radioGrp1enable1" value="enable" />
-        <label for="radioGrp1enable1">Enable</label>
-      </div>
-      <div class="select">
-        <select name="" id="formItem4Select" disabled>
-          <option value="">請選擇</option>
-          <option value="option">option</option>
-          <option value="option">option</option>
-        </select>
-      </div>
-      <textarea disabled></textarea>
+<fieldset class="formList inline noFull" aria-labelledby="fieldset1">
+  <legend class="formListTitle" id="fieldset1">Title</legend>
+  <div class="formContent inline">
+    <label for="formItem4" class="srOnly">輸入文字：</label>
+    <input type="text" name="" id="formItem4" placeholder="請輸入文字" />
+    <div class="select">
+      <label for="formItem2Select" class="srOnly">選擇項目：</label>
+      <select name="" id="formItem2Select">
+        <option value="">請選擇</option>
+        <option value="option">option</option>
+        <option value="option">option</option>
+      </select>
     </div>
   </div>
-</form>
+</fieldset>
