@@ -1,35 +1,8 @@
-#popup {
-  max-width: 1000px;
-  width: 80vw;
+.popupB,
+.popupS {
   border-radius: 12px;
   overflow: hidden;
   display: none;
-
-  h3 {
-    margin: 0 40px 25px 0;
-  }
-
-  .content {
-    border-top: #d4d4d4 1px solid;
-    margin: 0 0 20px;
-    padding-top: 20px;
-
-    p {
-      &:first-child {
-        margin-top: 0;
-      }
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  .btnBox {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
 
   .f-button.is-close-btn {
     opacity: 1 !important;
@@ -50,42 +23,52 @@
   }
 }
 
-#popupDialog {
-  max-width: 500px;
+.popupB {
+  max-width: 1000px;
   width: 80vw;
-  border-radius: 12px;
-  overflow: hidden;
-  display: none;
 
-  h3 {
-    margin: 0 40px 15px 0;
+  .popupContent {
+    border-top: #d4d4d4 1px solid;
+    margin: 0 0 20px;
+    padding-top: 20px;
+
+    h3 {
+      margin: 0 40px 25px 0;
+    }
+
+    p {
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
-  .content {
+  .btnBox {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+.popupS {
+  max-width: 500px;
+  width: 80vw;
+
+  .popupContent {
     margin: 0 0 20px;
+
+    h3 {
+      margin: 0 40px 15px 0;
+    }
   }
 
   .btnBox {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
-  }
-
-  .f-button.is-close-btn {
-    opacity: 1 !important;
-    top: 24px !important;
-    right: 24px !important;
-    background: none !important;
-    border-radius: 50% !important;
-
-    svg {
-      stroke: #555;
-    }
-
-    &:focus-visible {
-      outline: #e50012 2px solid;
-      outline-offset: 1px;
-      box-shadow: none;
-    }
   }
 }

@@ -624,6 +624,64 @@ body .mainContent.largeSize {
   zoom: 1.25;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+@media screen and (max-width: 991px) {
+  .wrapper {
+    padding-top: 60px;
+  }
+}
+
+main {
+  width: 100%;
+  position: relative;
+  padding-bottom: 80px;
+  flex-grow: 1;
+}
+main.innerPage {
+  padding-top: 40px;
+  background: #F8F8F8;
+}
+main .hasSide {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+@media screen and (max-width: 991px) {
+  main .hasSide {
+    flex-direction: column;
+  }
+}
+main .hasSide .mainContentBox {
+  flex-grow: 1;
+  transition: all 0.3s ease;
+}
+@media screen and (max-width: 991px) {
+  main .hasSide .mainContentBox {
+    width: 100%;
+  }
+}
+main .mainContentBox {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+main .mainContentBox .pageTitle {
+  font-size: 2.25rem;
+  margin: 0;
+  font-weight: 600;
+}
+main .mainContentBox .mainContent {
+  width: 100%;
+}
+main.innerPage:not(.hasSide) section {
+  width: 100%;
+  margin: 0 auto;
+}
+
 .codeBox {
   padding: 20px;
   border-radius: 8px;
@@ -740,10 +798,11 @@ h6 + p {
 
 .overlay {
   position: fixed;
-  z-index: 90;
+  z-index: 50;
   inset: 0;
   display: none;
   background: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
 }
 
 .srOnly {
@@ -840,6 +899,10 @@ nav ul {
   -o-object-fit: cover;
      object-fit: cover;
 }
+.pic figcaption {
+  line-height: 1.4;
+  margin-top: 5px;
+}
 
 .navFloat {
   position: fixed;
@@ -875,6 +938,14 @@ nav ul {
     width: 40px;
     height: 40px;
   }
+}
+
+[data-fancybox-close] span {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .testBox {
@@ -936,10 +1007,10 @@ nav ul {
 }
 
 .flexTpl_8_4 .col:nth-child(1) {
-  width: calc((100% - 24px * 11) / 12 * 8 + 24px * (8 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 8 + 24px * (8 - 1));
 }
 .flexTpl_8_4 .col:nth-child(2) {
-  width: calc((100% - 24px * 11) / 12 * 4 + 24px * (4 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 4 + 24px * (4 - 1));
 }
 @media screen and (max-width: 767px) {
   .flexTpl_8_4 .col {
@@ -948,10 +1019,10 @@ nav ul {
 }
 
 .flexTpl_4_8 .col:nth-child(1) {
-  width: calc((100% - 24px * 11) / 12 * 4 + 24px * (4 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 4 + 24px * (4 - 1));
 }
 .flexTpl_4_8 .col:nth-child(2) {
-  width: calc((100% - 24px * 11) / 12 * 8 + 24px * (8 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 8 + 24px * (8 - 1));
 }
 @media screen and (max-width: 767px) {
   .flexTpl_4_8 .col {
@@ -960,10 +1031,10 @@ nav ul {
 }
 
 .flexTpl_5_7 .col:nth-child(1) {
-  width: calc((100% - 24px * 11) / 12 * 5 + 24px * (5 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 5 + 24px * (5 - 1));
 }
 .flexTpl_5_7 .col:nth-child(2) {
-  width: calc((100% - 24px * 11) / 12 * 7 + 24px * (7 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 7 + 24px * (7 - 1));
 }
 @media screen and (max-width: 767px) {
   .flexTpl_5_7 .col {
@@ -972,10 +1043,10 @@ nav ul {
 }
 
 .flexTpl_7_5 .col:nth-child(1) {
-  width: calc((100% - 24px * 11) / 12 * 7 + 24px * (7 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 7 + 24px * (7 - 1));
 }
 .flexTpl_7_5 .col:nth-child(2) {
-  width: calc((100% - 24px * 11) / 12 * 5 + 24px * (5 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 5 + 24px * (5 - 1));
 }
 @media screen and (max-width: 767px) {
   .flexTpl_7_5 .col {
@@ -984,19 +1055,19 @@ nav ul {
 }
 
 .flexTpl_9_3 .col:nth-child(1) {
-  width: calc((100% - 24px * 11) / 12 * 9 + 24px * (9 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 9 + 24px * (9 - 1));
 }
 @media screen and (max-width: 991px) {
   .flexTpl_9_3 .col:nth-child(1) {
-    width: calc((100% - 24px * 11) / 12 * 8 + 24px * (8 - 1));
+    flex: 1 1 calc((100% - 24px * 11) / 12 * 8 + 24px * (8 - 1));
   }
 }
 .flexTpl_9_3 .col:nth-child(2) {
-  width: calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
 }
 @media screen and (max-width: 991px) {
   .flexTpl_9_3 .col:nth-child(2) {
-    width: calc((100% - 24px * 11) / 12 * 4 + 24px * (4 - 1));
+    flex: 1 1 calc((100% - 24px * 11) / 12 * 4 + 24px * (4 - 1));
   }
 }
 @media screen and (max-width: 767px) {
@@ -1006,19 +1077,19 @@ nav ul {
 }
 
 .flexTpl_3_9 .col:nth-child(1) {
-  width: calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
 }
 @media screen and (max-width: 991px) {
   .flexTpl_3_9 .col:nth-child(1) {
-    width: calc((100% - 24px * 11) / 12 * 4 + 24px * (4 - 1));
+    flex: 1 1 calc((100% - 24px * 11) / 12 * 4 + 24px * (4 - 1));
   }
 }
 .flexTpl_3_9 .col:nth-child(2) {
-  width: calc((100% - 24px * 11) / 12 * 9 + 24px * (9 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 9 + 24px * (9 - 1));
 }
 @media screen and (max-width: 991px) {
   .flexTpl_3_9 .col:nth-child(2) {
-    width: calc((100% - 24px * 11) / 12 * 8 + 24px * (8 - 1));
+    flex: 1 1 calc((100% - 24px * 11) / 12 * 8 + 24px * (8 - 1));
   }
 }
 @media screen and (max-width: 767px) {
@@ -1028,13 +1099,13 @@ nav ul {
 }
 
 .flexTpl_3_6_3 .col:nth-child(1) {
-  width: calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
 }
 .flexTpl_3_6_3 .col:nth-child(2) {
-  width: calc((100% - 24px * 11) / 12 * 6 + 24px * (6 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 6 + 24px * (6 - 1));
 }
 .flexTpl_3_6_3 .col:nth-child(3) {
-  width: calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
 }
 @media screen and (max-width: 991px) {
   .flexTpl_3_6_3 .col {
@@ -1043,13 +1114,13 @@ nav ul {
 }
 
 .flexTpl_3_3_6 .col:nth-child(1) {
-  width: calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
 }
 .flexTpl_3_3_6 .col:nth-child(2) {
-  width: calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
 }
 .flexTpl_3_3_6 .col:nth-child(3) {
-  width: calc((100% - 24px * 11) / 12 * 6 + 24px * (6 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 6 + 24px * (6 - 1));
 }
 @media screen and (max-width: 991px) {
   .flexTpl_3_3_6 .col {
@@ -1058,13 +1129,13 @@ nav ul {
 }
 
 .flexTpl_6_3_3 .col:nth-child(1) {
-  width: calc((100% - 24px * 11) / 12 * 6 + 24px * (6 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 6 + 24px * (6 - 1));
 }
 .flexTpl_6_3_3 .col:nth-child(2) {
-  width: calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
 }
 .flexTpl_6_3_3 .col:nth-child(3) {
-  width: calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
 }
 @media screen and (max-width: 991px) {
   .flexTpl_6_3_3 .col {
@@ -1074,14 +1145,14 @@ nav ul {
 
 .flexTpl_2_2_8 .col:nth-child(1) {
   flex-shrink: 0;
-  width: calc((100% - 24px * 11) / 12 * 2 + 24px * (2 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 2 + 24px * (2 - 1));
 }
 .flexTpl_2_2_8 .col:nth-child(2) {
   flex-shrink: 0;
-  width: calc((100% - 24px * 11) / 12 * 2 + 24px * (2 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 2 + 24px * (2 - 1));
 }
 .flexTpl_2_2_8 .col:nth-child(3) {
-  width: calc((100% - 24px * 11) / 12 * 8 + 24px * (8 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 8 + 24px * (8 - 1));
 }
 @media screen and (max-width: 991px) {
   .flexTpl_2_2_8 .col {
@@ -1090,15 +1161,15 @@ nav ul {
 }
 
 .flexTpl_8_2_2 .col:nth-child(1) {
-  width: calc((100% - 24px * 11) / 12 * 8 + 24px * (8 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 8 + 24px * (8 - 1));
 }
 .flexTpl_8_2_2 .col:nth-child(2) {
   flex-shrink: 0;
-  width: calc((100% - 24px * 11) / 12 * 2 + 24px * (2 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 2 + 24px * (2 - 1));
 }
 .flexTpl_8_2_2 .col:nth-child(3) {
   flex-shrink: 0;
-  width: calc((100% - 24px * 11) / 12 * 2 + 24px * (2 - 1));
+  flex: 1 1 calc((100% - 24px * 11) / 12 * 2 + 24px * (2 - 1));
 }
 @media screen and (max-width: 991px) {
   .flexTpl_8_2_2 .col {
@@ -1434,80 +1505,69 @@ button.active, button:hover {
   align-items: center;
 }
 
-#popup {
-  max-width: 1000px;
-  width: 80vw;
+.popupB,
+.popupS {
   border-radius: 12px;
   overflow: hidden;
   display: none;
 }
-#popup h3 {
-  margin: 0 40px 25px 0;
-}
-#popup .content {
-  border-top: #d4d4d4 1px solid;
-  margin: 0 0 20px;
-  padding-top: 20px;
-}
-#popup .content p:first-child {
-  margin-top: 0;
-}
-#popup .content p:last-child {
-  margin-bottom: 0;
-}
-#popup .btnBox {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-#popup .f-button.is-close-btn {
+.popupB .f-button.is-close-btn,
+.popupS .f-button.is-close-btn {
   opacity: 1 !important;
   top: 24px !important;
   right: 24px !important;
   background: none !important;
   border-radius: 50% !important;
 }
-#popup .f-button.is-close-btn svg {
+.popupB .f-button.is-close-btn svg,
+.popupS .f-button.is-close-btn svg {
   stroke: #555;
 }
-#popup .f-button.is-close-btn:focus-visible {
+.popupB .f-button.is-close-btn:focus-visible,
+.popupS .f-button.is-close-btn:focus-visible {
   outline: #e50012 2px solid;
   outline-offset: 1px;
   box-shadow: none;
 }
 
-#popupDialog {
+.popupB {
+  max-width: 1000px;
+  width: 80vw;
+}
+.popupB .popupContent {
+  border-top: #d4d4d4 1px solid;
+  margin: 0 0 20px;
+  padding-top: 20px;
+}
+.popupB .popupContent h3 {
+  margin: 0 40px 25px 0;
+}
+.popupB .popupContent p:first-child {
+  margin-top: 0;
+}
+.popupB .popupContent p:last-child {
+  margin-bottom: 0;
+}
+.popupB .btnBox {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.popupS {
   max-width: 500px;
   width: 80vw;
-  border-radius: 12px;
-  overflow: hidden;
-  display: none;
 }
-#popupDialog h3 {
-  margin: 0 40px 15px 0;
-}
-#popupDialog .content {
+.popupS .popupContent {
   margin: 0 0 20px;
 }
-#popupDialog .btnBox {
+.popupS .popupContent h3 {
+  margin: 0 40px 15px 0;
+}
+.popupS .btnBox {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-}
-#popupDialog .f-button.is-close-btn {
-  opacity: 1 !important;
-  top: 24px !important;
-  right: 24px !important;
-  background: none !important;
-  border-radius: 50% !important;
-}
-#popupDialog .f-button.is-close-btn svg {
-  stroke: #555;
-}
-#popupDialog .f-button.is-close-btn:focus-visible {
-  outline: #e50012 2px solid;
-  outline-offset: 1px;
-  box-shadow: none;
 }
 
 .notionInfo {
@@ -1521,6 +1581,7 @@ button.active, button:hover {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  --titleWidth: 160px;
 }
 .formBox .formGrp {
   display: flex;
@@ -1528,44 +1589,48 @@ button.active, button:hover {
   gap: 5px 16px;
   align-items: flex-start;
 }
-.formBox .gridBox {
+.formBox:has(.gridBox) .gridBox {
   border-top: 2px solid #DEE0E3;
 }
-.formBox .gridBox fieldset.inline legend {
-  top: 20px;
-}
-.formBox .gridBox .formListTitle {
-  width: 160px !important;
+.formBox:has(.gridBox) .gridBox .formListTitle {
+  width: var(--titleWidth) !important;
   flex-shrink: 0;
 }
-.formBox .gridBox > .formList {
+@media screen and (max-width: 767px) {
+  .formBox:has(.gridBox) .gridBox .formList .formListTitle {
+    width: 100% !important;
+  }
+}
+.formBox:has(.gridBox) .gridBox > .formList {
+  flex-wrap: nowrap;
   flex-grow: 1;
   padding: 20px 0;
   border-bottom: 1px dashed #DEE0E3;
 }
+.formBox:has(.gridBox) .gridBox > .formList.inline {
+  flex-wrap: nowrap;
+}
 @media screen and (max-width: 767px) {
-  .formBox .gridBox > .formList {
+  .formBox:has(.gridBox) .gridBox > .formList.inline {
     flex-direction: column !important;
+    gap: 8px;
   }
 }
-.formBox .gridBox > .formList .formContent {
+.formBox:has(.gridBox) .gridBox > .formList .formContent {
   flex-grow: 1;
 }
-.formBox .gridBox > .formList .formContent:has(.formList) {
+.formBox:has(.gridBox) .gridBox > .formList .formContent:has(.formList) {
   gap: 0;
 }
-.formBox .gridBox > .formList .formList {
+.formBox:has(.gridBox) .gridBox > .formList .formList {
   padding: 12px 0;
 }
 @media screen and (max-width: 767px) {
-  .formBox .gridBox > .formList .formList {
+  .formBox:has(.gridBox) .gridBox > .formList .formList {
     width: 100%;
   }
 }
-.formBox .gridBox > .formList .formList legend {
-  top: 10px;
-}
-.formBox .gridBox > .formList .formList + .formList {
+.formBox:has(.gridBox) .gridBox > .formList .formList + .formList {
   border-top: 1px dashed #DEE0E3;
 }
 .formBox .btnBox {
@@ -1607,16 +1672,18 @@ button.active, button:hover {
   position: absolute;
   right: 5px;
   top: 10px;
+  pointer-events: none;
 }
 .formBox .formList .select > select {
   width: 100%;
-  padding-right: 40px;
+  padding-right: 30px;
 }
 .formBox .formList .select > select[disabled] {
   background: #DEE0E3;
   opacity: 1;
 }
 .formBox .formList .inputFile {
+  flex-grow: 1;
   min-width: 200px;
   color: #333333;
   padding: 4px 12px;
@@ -1654,10 +1721,16 @@ button.active, button:hover {
 .formBox .formList .formContent {
   flex-grow: 1;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   position: relative;
   isolation: isolate;
   gap: 8px;
+}
+@media screen and (max-width: 767px) {
+  .formBox .formList .formContent {
+    width: 100%;
+  }
 }
 .formBox .formList .formContent .formEyes {
   position: absolute;
@@ -1728,8 +1801,7 @@ button.active, button:hover {
 .formBox .formList textarea {
   min-height: 100px;
 }
-.formBox .formList.required .formListTitle::before {
-  content: "*";
+.formBox .formList .formListTitle em {
   color: #C40000;
   margin-right: 4px;
 }
@@ -1758,10 +1830,8 @@ button.active, button:hover {
   font-size: 0.9375rem;
   font-weight: 400;
 }
-.formBox .formList:not(.inline) legend {
-  margin-bottom: 8px;
-}
 .formBox .inputBox {
+  flex-grow: 1;
   position: relative;
 }
 .formBox .inputBox input {
@@ -1800,12 +1870,6 @@ button.active, button:hover {
   align-items: flex-start;
   gap: 14px;
 }
-@media screen and (max-width: 767px) {
-  .formBox .inline {
-    flex-direction: column !important;
-    gap: 8px;
-  }
-}
 .formBox .inline label:has([type=checkbox]),
 .formBox .inline label:has([type=radio]) {
   word-break: break-all;
@@ -1823,20 +1887,37 @@ button.active, button:hover {
 .formBox .inline textarea {
   flex-grow: 1;
 }
+.formBox fieldset {
+  position: relative;
+}
+.formBox fieldset .legendBox {
+  width: var(--titleWidth);
+  display: block;
+  position: relative;
+}
 .formBox fieldset.inline {
   display: flex;
   flex-direction: row;
-  padding-left: 174px !important;
+  padding-left: var(--titleWidth)14px !important;
   position: relative;
+}
+.formBox fieldset.inline .legendBox {
+  flex-shrink: 0;
 }
 .formBox fieldset.inline legend {
   position: absolute;
   left: 0;
-  top: 0px;
+  top: 0;
   transform: none;
 }
+@media screen and (max-width: 767px) {
+  .formBox fieldset.inline legend {
+    position: relative;
+  }
+}
 .formBox .noFull > *:not(label, [type=checkBox], [type=radio]) {
-  width: auto;
+  width: -moz-fit-content;
+  width: fit-content;
   flex-grow: unset !important;
 }
 .formBox .noFull .inputBox {
@@ -1924,6 +2005,7 @@ button.active, button:hover {
 }
 .formBox [class^=formNotice] {
   position: relative;
+  width: 100%;
   padding: 4px 42px 4px 12px;
   color: #333;
   background: #DEE0E3;
@@ -2670,7 +2752,7 @@ button.active, button:hover {
 .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul .hasChild.needLink a {
   position: relative;
   flex-grow: 1;
-  padding-right: 40px;
+  padding-right: 10px;
 }
 .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul .hasChild.needLink button {
   padding: 0;
@@ -2745,23 +2827,32 @@ button.active, button:hover {
 .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a i {
   line-height: 0;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover {
+.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active > a, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover {
   color: #fff !important;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active::before, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover::before {
+.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active > a::before, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover::before {
   opacity: 1;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active::after, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover::after {
+.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active > a::after, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover::after {
   border-color: #fff !important;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active .icon, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover .icon {
+.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active > a .icon, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover .icon {
   filter: brightness(50);
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.needLink > button:hover::before {
+.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.needLink.active > a::before {
+  width: calc(100% + 30px) !important;
+  left: 0 !important;
+}
+.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.needLink.active > button::after {
+  border-color: #fff !important;
+}
+.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.needLink:has(button:hover) > a::before {
+  width: 30px;
+  left: 100%;
   opacity: 1;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.needLink > button:hover::after {
-  filter: brightness(50);
+.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.needLink:has(button:hover) > button::after {
+  border-color: #fff !important;
 }
 .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li li a {
   display: flex;
@@ -2782,9 +2873,6 @@ button.active, button:hover {
   width: 12px;
   background: #555;
   margin: 0 3px;
-}
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li:has(button) li a::before {
-  width: calc(100% + 30px);
 }
 .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul ul {
   width: 100%;
@@ -2935,60 +3023,6 @@ button.active, button:hover {
   background: #0156A2;
 }
 
-.shareBox {
-  width: -moz-fit-content;
-  width: fit-content;
-  position: relative;
-}
-.shareBox .share {
-  color: transparent !important;
-}
-.shareBox .share::before {
-  content: "";
-  background-image: url("../images/basic/icon/share_dark.svg");
-}
-.shareBox .shareBoxList {
-  padding: 5px;
-  display: none;
-  position: absolute;
-  top: calc(100% + 5px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff;
-  border-radius: 50px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  overflow: hidden;
-  z-index: 5;
-}
-.shareBox .shareBoxList ul {
-  flex-direction: column;
-}
-.shareBox ul {
-  display: flex;
-  gap: 5px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.shareBox ul li {
-  line-height: 0;
-}
-.shareBox ul a {
-  display: block;
-  line-height: 0;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-.shareBox ul a:hover {
-  transform: translate(-2px, -2px);
-  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
-}
-.shareBox ul img {
-  width: 32px;
-  height: 32px;
-}
-
 .contentSearchBtn {
   width: -moz-fit-content;
   width: fit-content;
@@ -3044,7 +3078,7 @@ button.active, button:hover {
     display: none;
   }
 }
-.contentSearchBox .searchContent label {
+.contentSearchBox .searchContent .label {
   max-width: 160px;
   white-space: nowrap;
   width: 30%;
@@ -3142,7 +3176,7 @@ button.active, button:hover {
   background: #fff;
   border-radius: 50px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-  width: 100%;
+  width: 42px;
   overflow: hidden;
   z-index: 5;
 }
@@ -3171,7 +3205,7 @@ button.active, button:hover {
 }
 .shareBox ul img {
   width: 32px;
-  height: 32px;
+  aspect-ratio: 1;
 }
 
 .pagination {
@@ -3204,6 +3238,14 @@ button.active, button:hover {
   justify-content: center;
   gap: 8px;
 }
+.pagination li.active a {
+  color: #fff;
+  background: #0156A2 !important;
+  border-color: #0156A2;
+}
+.pagination li.active a::before {
+  filter: brightness(100);
+}
 .pagination li a {
   display: flex;
   width: 40px;
@@ -3212,20 +3254,25 @@ button.active, button:hover {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  border-radius: var(--borderRadius2);
   color: #333333;
+  background: #DEE0E3;
+  border-radius: var(--borderRadius2);
+  text-decoration: none;
 }
 .pagination li a:hover {
-  background: #0156A2;
-  border-color: #0156A2;
   color: #fff;
+  background: #0156A2 !important;
+  border-color: #0156A2;
+}
+.pagination li a:hover::before {
+  filter: brightness(100);
 }
 .pagination li[class*=Arrow] a {
   color: transparent;
-  background: none;
   border: none;
   font-size: 0px;
   position: relative;
+  background: #fff;
 }
 .pagination li[class*=Arrow] a::before {
   content: "";
@@ -3238,6 +3285,10 @@ button.active, button:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   transform-origin: center;
+}
+.pagination li[class*=Arrow].prevArrow a::before, .pagination li[class*=Arrow].nextArrow a::before {
+  width: 12px;
+  height: 12px;
 }
 .pagination li[class*=Arrow].firstArrow a::before {
   background-image: url("../images/basic/icon/first_page.svg");
@@ -3312,7 +3363,7 @@ button.active, button:hover {
   vertical-align: top;
   margin: 0 0 0 auto;
   order: 3;
-  z-index: 10;
+  z-index: 55;
 }
 @media screen and (max-width: 991px) {
   .webSearch {
@@ -3361,6 +3412,9 @@ button.active, button:hover {
 .webSearch .hotKeyword ul li {
   margin: 0;
   flex: 0 0 auto;
+}
+.webSearch .hotKeyword a {
+  text-decoration: none;
 }
 .webSearch .hotKeyword a:not(:hover) {
   color: #333333;
@@ -3699,7 +3753,7 @@ button.active, button:hover {
 #mobileMenu .mobileMainMenu ul li.hasChild > a {
   position: relative;
 }
-#mobileMenu .mobileMainMenu ul li.hasChild:not(:has(button)) a:after {
+#mobileMenu .mobileMainMenu ul li.hasChild:not(:has(button)) > a:after {
   content: "";
   position: absolute;
   right: 15px;
@@ -4163,7 +4217,7 @@ button.active, button:hover {
   transform: translateY(-50%);
   border: none;
 }
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1200px) {
   .swiperArrow {
     width: 30px;
     height: 50px;
@@ -4182,7 +4236,7 @@ button.active, button:hover {
   transform-origin: center;
   background-image: url("../images/basic/icon/arrow_left.svg");
 }
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1200px) {
   .swiperArrow::before {
     width: 30px;
     height: 30px;
@@ -4323,7 +4377,7 @@ button.autoPlaySwitch:hover {
   display: flex;
   align-items: center;
 }
-.mpSlider .contentBox .content {
+.mpSlider .contentBox .infoBox {
   width: 100%;
   max-width: 270px;
   display: flex;
@@ -4331,14 +4385,14 @@ button.autoPlaySwitch:hover {
   margin-left: 13%;
   color: #fff;
 }
-.mpSlider .contentBox .content .title {
+.mpSlider .contentBox .infoBox .title {
   font-size: 2.25rem;
   line-height: 1.2;
 }
-.mpSlider .contentBox .content .subtitle {
+.mpSlider .contentBox .infoBox .subtitle {
   font-size: 1.75rem;
 }
-.mpSlider .contentBox .content .description {
+.mpSlider .contentBox .infoBox .description {
   font-weight: 300;
   -webkit-line-clamp: 2;
   display: -webkit-box !important;
@@ -4741,7 +4795,7 @@ button.autoPlaySwitch:hover {
   position: fixed;
   right: 22px;
   bottom: 20%;
-  z-index: 50;
+  z-index: 40;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -4776,6 +4830,10 @@ button.autoPlaySwitch:hover {
     height: 40px;
   }
 }
+.floatNav ul.typeA a img {
+  width: 100%;
+  aspect-ratio: 1;
+}
 .floatNav .floatSwitchBtn {
   width: 44px;
   height: 44px;
@@ -4785,6 +4843,12 @@ button.autoPlaySwitch:hover {
   background: #111;
   position: relative;
   transition: all 0.3s ease;
+}
+@media screen and (max-width: 991px) {
+  .floatNav .floatSwitchBtn {
+    width: 40px;
+    height: 40px;
+  }
 }
 .floatNav .floatSwitchBtn.active {
   transform: rotate(45deg);
@@ -4932,22 +4996,22 @@ main.innerPage {
   padding-top: 40px;
   background: #F8F8F8;
 }
-main.hasSide .mainBox {
+main .hasSide {
   display: flex;
   justify-content: space-between;
   gap: 40px;
 }
 @media screen and (max-width: 991px) {
-  main.hasSide .mainBox {
+  main .hasSide {
     flex-direction: column;
   }
 }
-main.hasSide .mainContentBox {
+main .hasSide .mainContentBox {
   flex-grow: 1;
   transition: all 0.3s ease;
 }
 @media screen and (max-width: 991px) {
-  main.hasSide .mainContentBox {
+  main .hasSide .mainContentBox {
     width: 100%;
   }
 }
@@ -6023,6 +6087,16 @@ section:last-child {
 }
 .pageInfo li {
   width: calc((100% - 32px * (3 - 1)) / 3);
+}
+@media screen and (max-width: 991px) {
+  .pageInfo li {
+    width: calc((100% - 32px * (2 - 1)) / 2);
+  }
+}
+@media screen and (max-width: 575px) {
+  .pageInfo li {
+    width: 100%;
+  }
 }
 
 .cpLinkBox > ul {

@@ -20,55 +20,67 @@
     align-items: flex-start;
   }
 
-  $titleWidth: 160px;
+  --titleWidth: 160px;
 
-  .gridBox {
-    border-top: 2px solid $tableNormal;
 
-    fieldset.inline {
-      legend {
-        top: 20px;
-      }
-    }
+  &:has(.gridBox) {
+    .gridBox {
+      border-top: 2px solid $tableNormal;
 
-    .formListTitle {
-      width: $titleWidth !important;
-      flex-shrink: 0;
-    }
-
-    & > .formList {
-      // flex-direction: row;
-      flex-grow: 1;
-      padding: 20px 0;
-      border-bottom: 1px dashed $tableNormal;
-
-      @include screen('mobile') {
-        flex-direction: column !important;
-      }
-
-      .formContent {
-        flex-grow: 1;
-
-        &:has(.formList) {
-          gap: 0;
-        }
+      .formListTitle {
+        width: var(--titleWidth) !important;
+        flex-shrink: 0;
       }
 
       .formList {
-        padding: 12px 0;
-
         @include screen('mobile') {
-          width: 100%;
-        }
-
-        legend {
-          top: 10px;
-        }
-
-        & + .formList {
-          border-top: 1px dashed $tableNormal;
+          .formListTitle {
+            width: 100% !important;
+          }
         }
       }
+
+      & > .formList {
+        // flex-direction: row;
+        flex-wrap: nowrap;
+        flex-grow: 1;
+        padding: 20px 0;
+        border-bottom: 1px dashed $tableNormal;
+
+        &.inline {
+          flex-wrap: nowrap;
+
+          @include screen('mobile') {
+            flex-direction: column !important;
+            gap: 8px;
+          }
+        }
+
+        .formContent {
+          flex-grow: 1;
+
+          &:has(.formList) {
+            gap: 0;
+          }
+        }
+
+        .formList {
+          padding: 12px 0;
+
+          @include screen('mobile') {
+            width: 100%;
+          }
+
+          // legend {
+          //   top: 10px;
+          // }
+
+          & + .formList {
+            border-top: 1px dashed $tableNormal;
+          }
+        }
+      }
+
     }
   }
 
@@ -83,10 +95,6 @@
   legend {
     all: unset;
   }
-
-  // legend {
-  //   transform: translateY(15px);
-  // }
 
   .formList {
     display: flex;
@@ -120,11 +128,12 @@
         position: absolute;
         right: 5px;
         top: 10px;
+        pointer-events: none;
       }
 
       & > select {
         width: 100%;
-        padding-right: 40px;
+        padding-right: 30px;
 
         &[disabled] {
           background: $formDisabled;
@@ -135,6 +144,7 @@
     }
 
     .inputFile {
+      flex-grow: 1;
       min-width: 200px;
       color: $colorWord;
       padding: 4px 12px;
@@ -174,10 +184,15 @@
     .formContent {
       flex-grow: 1;
       display: flex;
+      flex-wrap: wrap;
       flex-direction: column;
       position: relative;
       isolation: isolate;
       gap: 8px;
+
+      @include screen('mobile') {
+        width: 100%;
+      }
 
       .formEyes {
         position: absolute;
@@ -247,13 +262,10 @@
     }
 
     // 必填
-    &.required {
-      .formListTitle {
-        &::before {
-          content: '*';
-          color: $colorError;
-          margin-right: 4px;
-        }
+    .formListTitle {
+      em {
+        color: $colorError;
+        margin-right: 4px;
       }
     }
 
@@ -283,14 +295,15 @@
       font-weight: 400;
     }
 
-    &:not(.inline) {
-      legend {
-        margin-bottom: 8px;
-      }
-    }
+    // &:not(.inline) {
+    //   legend {
+    //     margin-bottom: 8px;
+    //   }
+    // }
   }
 
   .inputBox {
+    flex-grow: 1;
     position: relative;
 
     input {
@@ -344,11 +357,6 @@
     align-items: flex-start;
     gap: $itemGap;
 
-    @include screen('mobile') {
-      flex-direction: column !important;
-      gap: 8px;
-    }
-
     label:has([type="checkbox"]),
     label:has([type="radio"]) {
       word-break: break-all;
@@ -373,17 +381,35 @@
     }
   }
 
-  fieldset.inline {
-    display: flex;
-    flex-direction: row;
-    padding-left: $titleWidth + $itemGap !important;
+  fieldset {
     position: relative;
 
-    legend {
-      position: absolute;
-      left: 0;
-      top: 0px;
-      transform: none;
+    .legendBox {
+      width: var(--titleWidth);
+      display: block;
+      position: relative;
+    }
+
+    &.inline {
+      display: flex;
+      flex-direction: row;
+      padding-left: var(--titleWidth) + $itemGap !important;
+      position: relative;
+
+      .legendBox {
+        flex-shrink: 0;
+      }
+
+      legend {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: none;
+
+        @include screen('mobile') {
+          position: relative;
+        }
+      }
     }
   }
 
@@ -391,7 +417,7 @@
   .noFull {
 
     & > *:not(label, [type="checkBox"], [type="radio"]) {
-      width: auto;
+      width: fit-content;
       flex-grow: unset !important;
     }
 
@@ -509,6 +535,7 @@
   // form notice
   [class^='formNotice'] {
     position: relative;
+    width: 100%;
     padding: 4px 42px 4px 12px;
     color: $noticeNormalGWord;
     background: $noticeNormalGBg;

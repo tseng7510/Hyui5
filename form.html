@@ -21,6 +21,7 @@
 
       <!-- header Start -->
       <header>
+        <a class="accessKeyItem" href="#aU" id="aU" accesskey="U" aria-label="功能區塊">:::</a>
         <div class="headTop">
           <div class="container">
             <button id="mobileMainMenuBtn" type="button">主選單</button>
@@ -29,7 +30,6 @@
             </h1>
             <!-- navigation Start -->
             <nav class="topNav" role="navigation" aria-label="頁首功能列">
-              <a class="accessKeyItem" href="#aU" id="aU" accesskey="U" aria-label="功能區塊">:::</a>
               <!-- navList Start -->
               <div class="navList">
                 <ul>
@@ -234,28 +234,27 @@
                 <!-- form Start -->
                 <form class="formBox" action="">
                   <h3>一般文字表單</h3>
-                  <!-- required為必填標記 -->
-                  <div class="formList required">
-                    <label class="formListTitle" for="formItem1">一般狀態 + 顯示提示文字</label>
+                  <div class="formList">
+                    <label class="formListTitle" for="formItem1"><em aria-label="必填">*</em>一般狀態 + 顯示提示文字</label>
                     <div class="formContent">
                       <input type="text" name="" id="formItem1" placeholder="請輸入文字" required />
                       <div class="help">文字標準表單</div>
                     </div>
                   </div>
-                  <div class="formList required error">
-                    <label class="formListTitle" for="formItem2">錯誤狀態</label>
+                  <div class="formList error">
+                    <label class="formListTitle" for="formItem2"><em aria-label="必填">*</em>錯誤狀態</label>
                     <div class="formContent">
                       <input type="text" name="" id="formItem2" placeholder="請輸入文字" required />
                     </div>
                   </div>
-                  <div class="formList required">
-                    <label class="formListTitle" for="formItem3">Disable 狀態</label>
+                  <div class="formList">
+                    <label class="formListTitle" for="formItem3"><em aria-label="必填">*</em>Disable 狀態</label>
                     <div class="formContent">
                       <input type="text" name="" id="formItem3" placeholder="請輸入文字" required disabled />
                     </div>
                   </div>
-                  <div class="formList required">
-                    <label class="formListTitle" for="formItem1Select">下拉選單</label>
+                  <div class="formList">
+                    <label class="formListTitle" for="formItem1Select"><em aria-label="必填">*</em>下拉選單</label>
                     <div class="select">
                       <select name="" id="formItem1Select" required>
                         <option value="">請選擇</option>
@@ -283,8 +282,8 @@
                     </div>
                   </fieldset>
                   <div class="formList inline">
-                    <div class="formList inline required">
-                      <label class="formListTitle" for="formItem5">帳號</label>
+                    <div class="formList inline">
+                      <label class="formListTitle" for="formItem5"><em aria-label="必填">*</em>帳號</label>
                       <input type="text" name="username" id="formItem5" autocomplete="username" placeholder="請輸入帳號" required />
                     </div>
                     <div class="formList inline">
@@ -316,12 +315,12 @@
                           <button type="button" class="noticeClose" aria-label="關閉提醒"></button>
                         </div>
                       </div>
+                      <div class="inputOption">
+                        <input type="checkbox" name="checkboxGrememberrp2" id="remember" value="remember" />
+                        <label for="remember">記住我</label>
+                      </div>
                     </div>
 
-                    <div class="inputOption">
-                      <input type="checkbox" name="checkboxGrememberrp2" id="remember" value="remember" />
-                      <label for="remember">記住我</label>
-                    </div>
                     <div class="btnBox">
                       <button type="reset">清除</button>
                       <button class="btnPrimary" type="submit">送出</button>
@@ -331,20 +330,20 @@
                   <h3>格線式表單</h3>
                   <!-- required為必填標記 -->
                   <div class="gridBox">
-                    <div class="formList inline required">
-                      <label class="formListTitle" for="formItem7">帳號</label>
+                    <div class="formList inline">
+                      <label class="formListTitle" for="formItem7"><em aria-label="必填">*</em>帳號</label>
                       <input type="text" name="username" id="formItem7" autocomplete="username" placeholder="請輸入帳號" required />
                     </div>
-                    <div class="formList inline required">
-                      <label class="formListTitle" for="formItem8">帳號</label>
+                    <div class="formList inline">
+                      <label class="formListTitle" for="formItem8"><em aria-label="必填">*</em>帳號</label>
                       <input type="text" name="username" id="formItem8" autocomplete="username" placeholder="請輸入帳號" required disabled />
                     </div>
-                    <div class="formList inline required error">
-                      <label class="formListTitle" for="formItem9">帳號</label>
+                    <div class="formList inline error">
+                      <label class="formListTitle" for="formItem9"><em aria-label="必填">*</em>帳號</label>
                       <input type="text" name="username" id="formItem9" autocomplete="username" placeholder="請輸入帳號" required />
                     </div>
-                    <div class="formList inline required">
-                      <label class="formListTitle" for="formItem10">E-mail</label>
+                    <div class="formList inline">
+                      <label class="formListTitle" for="formItem10"><em aria-label="必填">*</em>E-mail</label>
                       <div class="formContent">
                         <div class="inputBox">
                           <i class="i_email_dark"></i>
@@ -400,15 +399,15 @@
                       <div class="formContent">
                         <div class="inputOption">
                           <input type="radio" name="radioGrp2" id="RE2" value="enable" />
-                          <label for="enable2">Enable</label>
+                          <label for="RE2">Enable</label>
                         </div>
                         <div class="inputOption">
                           <input type="radio" name="radioGrp2" id="RD2" value="disable" disabled />
-                          <label for="disable2">Disable</label>
+                          <label for="RD2">Disable</label>
                         </div>
                         <div class="inputOption">
                           <input type="radio" name="radioGrp2" id="RC2" value="checked" />
-                          <label for="checked2">Checked</label>
+                          <label for="RC2">Checked</label>
                         </div>
                         <div class="inputOption">
                           <input type="radio" name="radioGrp2" id="RCD2" value="checkedDisabled" checked disabled />
@@ -536,12 +535,12 @@
                     <fieldset class="formList inline" aria-labelledby="fieldset8">
                       <legend class="formListTitle" id="fieldset8">個人資料</legend>
                       <div class="formContent">
-                        <div class="formList inline required">
-                          <label class="formListTitle" for="formItem14">姓名</label>
+                        <div class="formList inline">
+                          <label class="formListTitle" for="formItem14"><em aria-label="必填">*</em>姓名</label>
                           <input type="text" name="" id="formItem14" autocomplete="name" placeholder="" required />
                         </div>
-                        <fieldset class="formList inline required" aria-labelledby="fieldset9">
-                          <legend class="formListTitle" id="fieldset9">性別</legend>
+                        <fieldset class="formList inline" aria-labelledby="fieldset9">
+                          <legend class="formListTitle" id="fieldset9"><em aria-label="必填">*</em>性別</legend>
                           <div class="formContent inline">
                             <div class="inputOption">
                               <input type="radio" name="genderGrp" id="male" />
@@ -554,8 +553,8 @@
                           </div>
                         </fieldset>
 
-                        <fieldset class="formList inline required" aria-labelledby="fieldset10">
-                          <legend class="formListTitle" id="fieldset10">出生年月日</legend>
+                        <fieldset class="formList inline" aria-labelledby="fieldset10">
+                          <legend class="formListTitle" id="fieldset10"><em aria-label="必填">*</em>出生年月日</legend>
                           <div class="formContent inline">
                             <div class="select">
                               <select name="" id="formItem5Select" required>
@@ -584,8 +583,8 @@
                           </div>
                         </fieldset>
 
-                        <div class="formList inline required">
-                          <label class="formListTitle" for="formItem15">出生年月日</label>
+                        <div class="formList inline">
+                          <label class="formListTitle" for="formItem15"><em aria-label="必填">*</em>出生年月日</label>
                           <input type="date" name="" id="formItem15" required />
                         </div>
                       </div>
@@ -652,7 +651,7 @@
 
                         <fieldset class="formList inline" aria-labelledby="fieldset13">
                           <legend class="formListTitle" id="fieldset13">聯絡地址</legend>
-                          <div class="formContent">
+                          <div class="formContent inline">
                             <div class="flexTpl_2_2_8">
                               <div class="col">
                                 <div class="select">
@@ -1030,131 +1029,137 @@
                       </div>
                     </fieldset>
 
-                    <div class="formList flexTpl_3">
-                      <div class="col">
-                        <fieldset class="formList" aria-labelledby="fieldset27">
-                          <legend class="formListTitle" id="fieldset27">三欄 欄目Ａ</legend>
-                          <div class="formContent inline">
-                            <label for="startDate3" class="srOnly">開始日期</label>
-                            <input type="date" name="" id="startDate3" />
-                            <span>—</span>
-                            <label for="endDate3" class="srOnly">結束日期</label>
-                            <input type="date" name="" id="endDate3" />
-                          </div>
-                        </fieldset>
-                      </div>
-                      <div class="col">
-                        <div class="formList">
-                          <label class="formListTitle" for="formItem19Select">三欄 欄目B</label>
-                          <div class="select">
-                            <select name="" id="formItem19Select">
-                              <option value="">請選擇</option>
-                              <option value="option">option</option>
-                              <option value="option">option</option>
-                            </select>
-                          </div>
+                    <div class="formList">
+                      <div class="flexTpl_3">
+                        <div class="col">
+                          <fieldset class="formList" aria-labelledby="fieldset27">
+                            <legend class="formListTitle" id="fieldset27">三欄 欄目Ａ</legend>
+                            <div class="formContent inline">
+                              <label for="startDate3" class="srOnly">開始日期</label>
+                              <input type="date" name="" id="startDate3" />
+                              <span>—</span>
+                              <label for="endDate3" class="srOnly">結束日期</label>
+                              <input type="date" name="" id="endDate3" />
+                            </div>
+                          </fieldset>
                         </div>
-                      </div>
-                      <div class="col">
-                        <fieldset class="formList" aria-labelledby="fieldset28">
-                          <legend class="formListTitle" id="fieldset28">三欄 欄目C</legend>
-                          <div class="formContent inline">
-                            <div class="inputOption">
-                              <input type="checkbox" name="checkboxGrp4" id="CE7" value="enable" />
-                              <label for="CE7">Enable</label>
-                            </div>
-                            <div class="inputOption">
-                              <input type="checkbox" name="checkboxGrp4" id="CD15" value="disable" disabled />
-                              <label for="CD15">Disable</label>
-                            </div>
-                            <div class="inputOption">
-                              <input type="checkbox" name="checkboxGrp4" id="CC5" value="checked" />
-                              <label for="CC5">Checked</label>
+                        <div class="col">
+                          <div class="formList">
+                            <label class="formListTitle" for="formItem19Select">三欄 欄目B</label>
+                            <div class="select">
+                              <select name="" id="formItem19Select">
+                                <option value="">請選擇</option>
+                                <option value="option">option</option>
+                                <option value="option">option</option>
+                              </select>
                             </div>
                           </div>
-                        </fieldset>
-                      </div>
-                    </div>
-
-                    <div class="formList flexTpl_4">
-                      <div class="col">
-                        <div class="formList">
-                          <label class="formListTitle" for="formItem38">四欄 欄目Ａ</label>
-                          <input type="text" name="" id="formItem38" placeholder="" />
                         </div>
-                      </div>
-                      <div class="col">
-                        <div class="formList">
-                          <label class="formListTitle" for="formItem39">四欄 欄目B</label>
-                          <input type="text" name="" id="formItem39" placeholder="" />
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="formList">
-                          <label class="formListTitle" for="formItem20Select">四欄 欄目C</label>
-                          <div class="select">
-                            <select name="" id="formItem20Select">
-                              <option value="">請選擇</option>
-                              <option value="option">option</option>
-                              <option value="option">option</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="formList">
-                          <label class="formListTitle" for="formItem21Select">四欄 欄目D</label>
-                          <div class="select">
-                            <select name="" id="formItem21Select">
-                              <option value="">請選擇</option>
-                              <option value="option">option</option>
-                              <option value="option">option</option>
-                            </select>
-                          </div>
+                        <div class="col">
+                          <fieldset class="formList" aria-labelledby="fieldset28">
+                            <legend class="formListTitle" id="fieldset28">三欄 欄目C</legend>
+                            <div class="formContent inline">
+                              <div class="inputOption">
+                                <input type="checkbox" name="checkboxGrp4" id="CE7" value="enable" />
+                                <label for="CE7">Enable</label>
+                              </div>
+                              <div class="inputOption">
+                                <input type="checkbox" name="checkboxGrp4" id="CD15" value="disable" disabled />
+                                <label for="CD15">Disable</label>
+                              </div>
+                              <div class="inputOption">
+                                <input type="checkbox" name="checkboxGrp4" id="CC5" value="checked" />
+                                <label for="CC5">Checked</label>
+                              </div>
+                            </div>
+                          </fieldset>
                         </div>
                       </div>
                     </div>
 
-                    <div class="formList flexTpl_6">
-                      <div class="col">
-                        <div class="formList">
-                          <label class="formListTitle" for="formItem40">五欄 欄目A</label>
-                          <input type="text" name="" id="formItem40" placeholder="" />
+                    <div class="formList">
+                      <div class="flexTpl_4">
+                        <div class="col">
+                          <div class="formList">
+                            <label class="formListTitle" for="formItem38">四欄 欄目Ａ</label>
+                            <input type="text" name="" id="formItem38" placeholder="" />
+                          </div>
                         </div>
-                      </div>
-                      <div class="col">
-                        <div class="formList">
-                          <label class="formListTitle" for="formItem41">五欄 欄目B</label>
-                          <input type="text" name="" id="formItem41" placeholder="" />
+                        <div class="col">
+                          <div class="formList">
+                            <label class="formListTitle" for="formItem39">四欄 欄目B</label>
+                            <input type="text" name="" id="formItem39" placeholder="" />
+                          </div>
                         </div>
-                      </div>
-                      <div class="col">
-                        <div class="formList">
-                          <label class="formListTitle" for="formItem42">五欄 欄目C</label>
-                          <input type="text" name="" id="formItem42" placeholder="" />
+                        <div class="col">
+                          <div class="formList">
+                            <label class="formListTitle" for="formItem20Select">四欄 欄目C</label>
+                            <div class="select">
+                              <select name="" id="formItem20Select">
+                                <option value="">請選擇</option>
+                                <option value="option">option</option>
+                                <option value="option">option</option>
+                              </select>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col">
-                        <div class="formList">
-                          <label class="formListTitle" for="formItem22Select">五欄 欄目D</label>
-                          <div class="select">
-                            <select name="" id="formItem22Select">
-                              <option value="">請選擇</option>
-                              <option value="option">option</option>
-                              <option value="option">option</option>
-                            </select>
+                        <div class="col">
+                          <div class="formList">
+                            <label class="formListTitle" for="formItem21Select">四欄 欄目D</label>
+                            <div class="select">
+                              <select name="" id="formItem21Select">
+                                <option value="">請選擇</option>
+                                <option value="option">option</option>
+                                <option value="option">option</option>
+                              </select>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col">
-                        <div class="formList">
-                          <label class="formListTitle" for="formItem23Select">五欄 欄目E</label>
-                          <div class="select">
-                            <select name="" id="formItem23Select">
-                              <option value="">請選擇</option>
-                              <option value="option">option</option>
-                              <option value="option">option</option>
-                            </select>
+                    </div>
+
+                    <div class="formList">
+                      <div class="flexTpl_5">
+                        <div class="col">
+                          <div class="formList">
+                            <label class="formListTitle" for="formItem40">五欄 欄目A</label>
+                            <input type="text" name="" id="formItem40" placeholder="" />
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="formList">
+                            <label class="formListTitle" for="formItem41">五欄 欄目B</label>
+                            <input type="text" name="" id="formItem41" placeholder="" />
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="formList">
+                            <label class="formListTitle" for="formItem42">五欄 欄目C</label>
+                            <input type="text" name="" id="formItem42" placeholder="" />
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="formList">
+                            <label class="formListTitle" for="formItem22Select">五欄 欄目D</label>
+                            <div class="select">
+                              <select name="" id="formItem22Select">
+                                <option value="">請選擇</option>
+                                <option value="option">option</option>
+                                <option value="option">option</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="formList">
+                            <label class="formListTitle" for="formItem23Select">五欄 欄目E</label>
+                            <div class="select">
+                              <select name="" id="formItem23Select">
+                                <option value="">請選擇</option>
+                                <option value="option">option</option>
+                                <option value="option">option</option>
+                              </select>
+                            </div>
                           </div>
                         </div>
                       </div>

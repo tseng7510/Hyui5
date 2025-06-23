@@ -155,7 +155,7 @@
           }
 
           &:not(:has(button)) {
-            a {
+            & > a {
               &:after {
                 content: '';
                 position: absolute;

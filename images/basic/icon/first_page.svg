@@ -8,7 +8,7 @@
       }
 
       .st1 {
-        fill: #d9d9d9;
+        fill: #D9D9D9;
       }
     </style>
     <mask id="mask" x="0" y="0" width="24" height="24" maskUnits="userSpaceOnUse">
@@ -17,7 +17,7 @@
       </g>
     </mask>
   </defs>
-  <g id="first_page">
+  <g id="first_page" fill=" #333333">
     <g class="st0">
       <path id="first_page_2" d="M6,18V6h2v12h-2ZM17,18l-6-6,6-6,1.4,1.4-4.6,4.6,4.6,4.6-1.4,1.4Z"/>
     </g>

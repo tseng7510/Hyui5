@@ -5,9 +5,8 @@ mainMenu({
 });
 // -----  基本功能開關   ---------------------------------------------------
 
+// 側邊選單
 sideNav({
-  // 側邊選單
-  hideSwitch: false, // hideSwitch 可以開關側邊選單
   needLink: true, // 如果同時需要連結和下層功能時
 });
 
@@ -35,8 +34,8 @@ accordionFunction({
 });
 
 window.addEventListener('load', () => {
-  toggleSlider('header .language > button', 'header .language ul'); //語系開關切換
-  // toggleSlider('header .navList .language > button', 'header .navList .language ul'); //語系開關切換
+  toggleSlider('header .subNavList .language > button', 'header .subNavList .language ul'); //語系開關切換
+  toggleSlider('header .navList .language > button', 'header .navList .language ul'); //語系開關切換
   toggleSlider('#mobileMenu .language > button', '#mobileMenu .language ul'); //語系開關切換手機版
   toggleSlider('header .fontSize > button', 'header .fontSize ul'); //文字大小展開開關切換
   toggleSlider('.shareBox .share', '.shareBox .shareBoxList'); //分享開關切換
@@ -151,10 +150,6 @@ window.addEventListener('load', () => {
       nextEl: '.marqueeSlider .nextSlider', //自行設定樣式
       prevEl: '.marqueeSlider .prevSlider', //自行設定樣式
       disabledClass: 'swiperArrow-disabled', //不可點選樣式
-    },
-    keyboard: {
-      enabled: true,
-      onlyInViewport: false,
     },
     autoplay: {
       delay: 5000,

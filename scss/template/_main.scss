@@ -21,15 +21,13 @@ main {
     background: #F8F8F8;
   }
 
-  &.hasSide {
-    .mainBox {
-      display: flex;
-      justify-content: space-between;
-      gap: 40px;
+  .hasSide {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
 
-      @include screen('tablet') {
-        flex-direction: column;
-      }
+    @include screen('tablet') {
+      flex-direction: column;
     }
 
     .mainContentBox {

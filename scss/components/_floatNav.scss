@@ -2,7 +2,7 @@
   position: fixed;
   right: 22px;
   bottom: 20%;
-  z-index: 50;
+  z-index: 40;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -35,6 +35,11 @@
         width: 40px;
         height: 40px;
       }
+
+      img {
+        width: 100%;
+        aspect-ratio: 1;
+      }
     }
   }
 
@@ -47,6 +52,11 @@
     background: #111;
     position: relative;
     @include transition(0.3);
+
+    @include screen('tablet') {
+      width: 40px;
+      height: 40px;
+    }
 
     &.active {
       transform: rotate(45deg);

@@ -21,6 +21,7 @@
 
       <!-- header Start -->
       <header>
+        <a class="accessKeyItem" href="#aU" id="aU" accesskey="U" aria-label="功能區塊">:::</a>
         <div class="headTop">
           <div class="container">
             <button id="mobileMainMenuBtn" type="button">主選單</button>
@@ -29,7 +30,6 @@
             </h1>
             <!-- navigation Start -->
             <nav class="topNav" role="navigation" aria-label="頁首功能列">
-              <a class="accessKeyItem" href="#aU" id="aU" accesskey="U" aria-label="功能區塊">:::</a>
               <!-- navList Start -->
               <div class="navList">
                 <ul>
@@ -320,18 +320,16 @@
                   <div class="template">
                     <div>
                       <h3>燈箱內容</h3>
-                      如果要一開始就要開啟燈箱script中請增加這段<br />
-                      Fancybox.show([{ src: '#popup', type: 'inline' }]);
+                      如果要一開始就要開啟燈箱請在內容區增加class 'showPopup'<br />
                       <br />
                       <!-- 燈箱內容 Start -->
                       <button type="button" data-fancybox data-src="#popup">彈出對話框(大)</button>
                       <br />
                       <button type="button" data-fancybox data-src="#popupDialog">彈出對話框(小)</button>
-                      <div id="popup">
+                      <div id="popup" class="popupB showPopup">
                         <h3>我是標題我是標題我是標題我是標題我是標題我是標題我是標題我是標題我是標題</h3>
-                        <div class="content">
+                        <div class="popupContent">
                           <p>Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</p>
-
                           <div class="tableList">
                             <table>
                               <thead>
@@ -364,9 +362,10 @@
                           <button class="submit btnPrimary" type="submit">確認</button>
                         </div>
                       </div>
-                      <div id="popupDialog">
+
+                      <div id="popupDialog" class="popupS">
                         <h3>標題</h3>
-                        <div class="content">Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</div>
+                        <div class="popupContent">Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</div>
                         <div class="btnBox">
                           <button class="cancel btnSecondary" type="button">取消</button>
                           <button class="submit btnPrimary" type="submit">確認</button>
@@ -1070,13 +1069,6 @@
     <script src="js/customize.js"></script>
 
     <script>
-      Fancybox.show([
-        {
-          src: '#popup',
-          type: 'inline',
-        },
-      ]);
-
       const closeBtn = document.querySelectorAll('.submit');
       closeBtn.forEach((item) => {
         item.addEventListener('click', (e) => {

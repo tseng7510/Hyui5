@@ -21,6 +21,7 @@
 
       <!-- header Start -->
       <header>
+        <a class="accessKeyItem" href="#aU" id="aU" accesskey="U" aria-label="功能區塊">:::</a>
         <div class="headTop">
           <div class="container">
             <button id="mobileMainMenuBtn" type="button">主選單</button>
@@ -29,7 +30,6 @@
             </h1>
             <!-- navigation Start -->
             <nav class="topNav" role="navigation" aria-label="頁首功能列">
-              <a class="accessKeyItem" href="#aU" id="aU" accesskey="U" aria-label="功能區塊">:::</a>
               <!-- navList Start -->
               <div class="navList">
                 <ul>
@@ -212,12 +212,12 @@
       <!-- header End -->
 
       <!-- main Start -->
-      <main class="innerPage hasSide">
+      <main class="innerPage">
         <a class="accessKeyItem" href="#aC" id="aC" accesskey="C" aria-label="主要內容區">:::</a>
         <div class="container">
           <div class="mainBox">
             <!-- sideNav Start -->
-            <aside class="sideNav">
+            <aside class="sideNav" data-next-open="開啟下層選單" data-next-close="收合下層選單">
               <button id="sideNavBtn" type="button">次選單開關</button>
               <nav id="sideMenu" aria-label="側選單">
                 <div class="sideMenuContent">
@@ -377,36 +377,36 @@
                       </div>
 
                       <div class="formList inline required">
-                        <div class="formListTitle">水平單選核取表單</div>
+                        <div class="formListTitle" id="radioTitle1">水平單選核取表單</div>
                         <div class="formContent inline">
                           <div class="inputOption">
-                            <input type="radio" name="radioGrp1" id="radio1" value="類別一" />
+                            <input type="radio" name="radioGrp1" id="radio1" aria-labelledby="radioTitle1" value="類別一" />
                             <label for="radio1" checked>類別一</label>
                           </div>
                           <div class="inputOption">
-                            <input type="radio" name="radioGrp1" id="radio2" value="類別二" />
+                            <input type="radio" name="radioGrp1" id="radio2" aria-labelledby="radioTitle1" value="類別二" />
                             <label for="radio2" checked>類別二</label>
                           </div>
                           <div class="inputOption">
-                            <input type="radio" name="radioGrp1" id="radio3" value="類別三" />
+                            <input type="radio" name="radioGrp1" id="radio3" aria-labelledby="radioTitle1" value="類別三" />
                             <label for="radio3" checked>類別三</label>
                           </div>
                         </div>
                       </div>
 
                       <div class="formList inline required">
-                        <div class="formListTitle">意見類別</div>
+                        <div class="formListTitle" id="checkboxTitle1">意見類別</div>
                         <div class="formContent inline">
                           <div class="inputOption">
-                            <input type="checkbox" id="check1" value="類別一" />
+                            <input type="checkbox" id="check1" aria-labelledby="checkboxTitle1" value="類別一" />
                             <label for="check1">類別一</label>
                           </div>
                           <div class="inputOption">
-                            <input type="checkbox" id="check2" value="類別二" />
+                            <input type="checkbox" id="check2" aria-labelledby="checkboxTitle1" value="類別二" />
                             <label for="check2">類別二</label>
                           </div>
                           <div class="inputOption">
-                            <input type="checkbox" id="check3" value="類別三" />
+                            <input type="checkbox" id="check3" aria-labelledby="checkboxTitle1" value="類別三" />
                             <label for="check3">類別三</label>
                           </div>
                         </div>
@@ -568,6 +568,8 @@
     <!-- Swiper -->
     <script src="vendor/swiper/swiper-bundle.min.js"></script>
     <!-- js -->
+    <!-- <script src="vendor/jquery-3.7.1.min.js"></script>
+    <script src="js/mainjq.js"></script> -->
     <script src="js/main.js"></script>
     <script src="js/customize.js"></script>
   </body>

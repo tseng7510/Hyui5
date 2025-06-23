@@ -107,7 +107,7 @@
               a {
                 position: relative;
                 flex-grow: 1;
-                padding-right: 40px;
+                padding-right: 10px;
               }
 
               button {
@@ -205,7 +205,7 @@
               }
             }
 
-            &.active,
+            &.active > a,
             & > a:hover {
               color: #fff !important;
 
@@ -222,15 +222,33 @@
               }
             }
 
-            &.needLink {
-              & > button:hover {
-
+            &.needLink.active {
+              & > a {
                 &::before {
+                  width: calc(100% + 30px) !important;
+                  left: 0 !important;
+                }
+              }
+
+              & > button {
+                &::after {
+                  border-color: #fff !important;
+                }
+              }
+            }
+
+            &.needLink:has(button:hover) {
+              & > a {
+                &::before {
+                  width: 30px;
+                  left: 100%;
                   opacity: 1;
                 }
+              }
 
+              & > button {
                 &::after {
-                  filter: brightness(50);
+                  border-color: #fff !important;
                 }
               }
             }
@@ -262,12 +280,6 @@
                     margin: 0 3px;
                   }
                 }
-              }
-            }
-
-            &:has(button) {
-              li a::before {
-                width: calc(100% + 30px);
               }
             }
           }

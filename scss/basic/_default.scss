@@ -32,6 +32,70 @@ body {
   }
 }
 
+// wrapper
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  @include screen('tablet') {
+    padding-top: 60px;
+  }
+}
+
+// main
+main {
+  width: 100%;
+  position: relative;
+  padding-bottom: 80px;
+  flex-grow: 1;
+
+  &.innerPage {
+    padding-top: 40px;
+    background: #F8F8F8;
+  }
+
+  .hasSide {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+
+    @include screen('tablet') {
+      flex-direction: column;
+    }
+
+    .mainContentBox {
+      flex-grow: 1;
+      @include transition(0.3);
+
+      @include screen('tablet') {
+        width: 100%;
+      }
+    }
+  }
+
+  .mainContentBox {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .pageTitle {
+      font-size: Rem(36);
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .mainContent {
+      width: 100%;
+    }
+  }
+
+  &.innerPage:not(.hasSide) section {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
 .codeBox {
   padding: 20px;
   border-radius: 8px;
@@ -149,10 +213,11 @@ h6 {
 
 .overlay {
   position: fixed;
-  z-index: 90;
+  z-index: 50;
   inset: 0;
   display: none;
   background: rgba(#000, 0.8);
+  cursor: pointer;
 }
 
 .srOnly {
@@ -252,6 +317,11 @@ nav {
     height: 100%;
     object-fit: cover;
   }
+
+  figcaption {
+    line-height: 1.4;
+    margin-top: 5px;
+  }
 }
 
 .navFloat {
@@ -286,5 +356,15 @@ nav {
         height: 40px;
       }
     }
+  }
+}
+
+[data-fancybox-close] {
+  span {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
   }
 }

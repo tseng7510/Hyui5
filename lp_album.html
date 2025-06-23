@@ -21,6 +21,7 @@
 
       <!-- header Start -->
       <header>
+        <a class="accessKeyItem" href="#aU" id="aU" accesskey="U" aria-label="功能區塊">:::</a>
         <div class="headTop">
           <div class="container">
             <button id="mobileMainMenuBtn" type="button">主選單</button>
@@ -29,7 +30,6 @@
             </h1>
             <!-- navigation Start -->
             <nav class="topNav" role="navigation" aria-label="頁首功能列">
-              <a class="accessKeyItem" href="#aU" id="aU" accesskey="U" aria-label="功能區塊">:::</a>
               <!-- navList Start -->
               <div class="navList">
                 <ul>
@@ -243,18 +243,16 @@
                     </div>
                     <div class="formList">
                       <label for="conSearchTA" class="label">內文：</label>
-                      <textarea name="textarea" id="" cols="30" rows="30" id="conSearchTA"></textarea>
+                      <textarea name="textarea" cols="30" rows="30" id="conSearchTA"></textarea>
                     </div>
-                    <div class="formList">
-                      <div class="formList">
-                        <div class="label">張貼日期</div>
-                        <label for="startDate" class="srOnly">開始日期</label>
-                        <input type="date" name="" id="startDate" />
-                        <span>—</span>
-                        <label for="endDate" class="srOnly">結束日期</label>
-                        <input type="date" name="" id="endDate" />
-                      </div>
-                    </div>
+                    <fieldset class="formList" aria-labelledby="tsearch">
+                      <legend class="label" id="tsearch">張貼日期</legend>
+                      <label for="startDate" class="srOnly">開始日期</label>
+                      <input type="date" name="" id="startDate" />
+                      <span>—</span>
+                      <label for="endDate" class="srOnly">結束日期</label>
+                      <input type="date" name="" id="endDate" />
+                    </fieldset>
                     <div class="btnBox">
                       <button class="btnSecondary" type="reset">重設</button>
                       <button class="btnPrimary" type="submit">查詢</button>

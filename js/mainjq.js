@@ -39,17 +39,14 @@ function getHiddenElementWidth(element) {
   return rect.width;
 }
 
-// 增加透明黑底
-$('.wrapper').prepend('<div class="overlay"></div>');
-const overlay = $('.overlay');
-
 function toggleSlider(elem, con) {
   const targetSelect = $(elem);
+  let checkDisplay;
   targetSelect.each(function () {
     let id = `ts_${randomLetter(3)}${randomFloor(0, 999)}`;
     let targetSelectCon = $(con);
 
-    const checkDisplay = targetSelectCon.css('display') === 'none';
+    checkDisplay = targetSelectCon.css('display') === 'none';
 
     if (checkDisplay) {
       $(this).attr('aria-expanded', 'false');
@@ -90,18 +87,30 @@ function toggleSlider(elem, con) {
 
   $(window).on('keydown', function (e) {
     targetSelect.each(function () {
+      const target = $(e.target);
       const targetCon = $(this).parent().children(con);
+      const isInsideTarget = target.parents(con).length === 0;
+
       let allTarget = targetCon.find('a, button, input, textarea, select');
-      if ($(this).attr('aria-expanded') === 'true') {
-        if (e.code === 'Tab' && e.shiftKey && $(e.target).is($(this))) {
-          e.preventDefault();
-          allTarget.last().focus();
-        } else if (e.code === 'Tab' && !e.shiftKey && $(e.target).is(allTarget.last())) {
-          e.preventDefault();
-          $(this).focus();
+
+      if ($(this).attr('aria-expanded') === 'true' || !isInsideTarget) {
+        if (e.code === 'Tab') {
+          const firstTarget = allTarget.first();
+          const lastTarget = allTarget.last();
+          const shift = e.shiftKey;
+
+          if (target === item) {
+            e.preventDefault();
+            // 當焦點在 item 上，依據 shift 條件決定移到第一或最後一個目標
+            (shift ? lastTarget : firstTarget).focus();
+          } else if ((shift && target === firstTarget) || (!shift && target === lastTarget)) {
+            e.preventDefault();
+            // 當焦點在 allTarget 的首或尾時，則循環回到 item
+            item.focus();
+          }
         }
         //Escape
-        else if (e.code === 'Escape') {
+        else if (e.code === 'Escape' && !isInsideTarget) {
           $(this).attr({
             'aria-expanded': 'false',
             'aria-pressed': 'false',
@@ -116,10 +125,10 @@ function toggleSlider(elem, con) {
   // 點擊其他地方關閉;
   $(window).on('click', function (e) {
     const targetSelectCon = $(con);
-    let parents = $(e.target).parents(targetSelectCon).length === 0;
+    let isInsideTarget = $(e.target).parents(targetSelectCon).length === 0;
 
     targetSelect.each(function () {
-      if ($(this).attr('aria-expanded') === 'true' && !$(e.target).is($(this)) && parents) {
+      if ($(this).attr('aria-expanded') === 'true' && !$(e.target).is($(this)) && isInsideTarget) {
         $(this).attr({
           'aria-expanded': 'false',
           'aria-pressed': 'false',
@@ -129,7 +138,22 @@ function toggleSlider(elem, con) {
       }
     });
   });
+
+  $(window).on('resize', (e) => {
+    if (!checkDisplay) return;
+    targetSelect.each(function () {
+      $(this).attr({
+        'aria-expanded': 'false',
+        'aria-pressed': 'false',
+      });
+      $(con).slideUp(200);
+    });
+  });
 }
+
+// 增加透明黑底
+$('.wrapper').prepend('<div class="overlay"></div>');
+const overlay = $('.overlay');
 
 // -----------------------------------------------------------------------
 // -----  FontSize   -----------------------------------------------------
@@ -206,7 +230,9 @@ function fontSize() {
     toggleBodyClass(cookie);
   }
 }
-fontSize();
+$(window).on('load', function () {
+  fontSize();
+});
 
 // -----------------------------------------------------------------------
 // -----  內頁fontSize   -----------------------------------------------------
@@ -283,7 +309,9 @@ function fontSizeInner() {
     toggleBodyClass(cookie);
   }
 }
-fontSizeInner();
+$(window).on('load', function () {
+  fontSizeInner();
+});
 // -----------------------------------------------------------------------
 // -----  menu   ------------------------------------------------------
 // -----------------------------------------------------------------------
@@ -455,6 +483,7 @@ function mainMenu(obj) {
 
     mobileMainMenuClose.focus();
     body.addClass('noscroll');
+    overlay.css({ 'z-index': '90', top: '0' });
     overlay.show();
   }
 
@@ -476,6 +505,8 @@ function mainMenu(obj) {
     mobileMenu.removeClass('open');
     body.removeClass('noscroll');
     mobileMainMenuBtn.focus();
+    overlay.hide();
+    overlay.css('z-index', '');
   }
 
   mobileMainMenuBtn.on('click', function (e) {
@@ -485,9 +516,10 @@ function mainMenu(obj) {
 
   mobileMainMenuClose.on('click', function (e) {
     hideSidebar();
-    mobileMainMenuBtn.focus();
   });
-
+  overlay.on('click', function () {
+    hideSidebar();
+  });
   // 手機版選單展開功能
   const mobileMenuLiHasChild = $('#mobileMenu li.hasChild');
   mobileMenuLiHasChild.each(function () {
@@ -594,7 +626,7 @@ function mainMenu(obj) {
 // -----------------------------------------------------------------------
 
 function webSearch() {
-  const webSearch = $('.wrapper .webSearch');
+  const webSearch = $('header .webSearch');
 
   if (webSearch.length === 0) return;
   // console.warn('網站搜尋功能: webSearch 無法抓到(請檢查Html結構)，或是沒有使用到此功能');
@@ -635,6 +667,7 @@ function webSearch() {
   // 6. 切換搜尋展開/關閉的函式
   function toggleContent(elem, focus = false) {
     const isExpanded = $(elem).attr('aria-expanded') === 'true';
+    overlay.css('top', `${$('header').height()}px`);
     if (isExpanded) {
       $(elem).attr({
         'aria-expanded': 'false',
@@ -643,6 +676,7 @@ function webSearch() {
       $(elem).removeClass('active');
       webSearch.slideUp(200);
       $(elem).focus();
+      overlay.hide();
     } else {
       $(elem).attr({
         'aria-expanded': 'true',
@@ -655,19 +689,9 @@ function webSearch() {
       });
       webSearch.slideDown(200);
       if (focus && webSearchAllTarget.length > 0) webSearchAllTarget.eq(0).focus();
+      overlay.show();
     }
   }
-  // 共用函式：重置按鈕的 ARIA 狀態
-  const resetAria = (elem) => {
-    if ($(elem).attr('aria-expanded') === 'true') {
-      $(elem).focus();
-    }
-    $(elem).attr({
-      'aria-expanded': 'false',
-      'aria-pressed': 'false',
-    });
-    $(elem).removeClass('active');
-  };
 
   // 鍵盤事件設定，支援 Tab、Enter、Alt+S 快捷鍵以及 Escape 關閉
   $(window).on('keydown', function (e) {
@@ -702,17 +726,15 @@ function webSearch() {
       const checkDisplay = webSearch.css('display');
       if (checkDisplay === 'none') return;
       if ($(window).outerWidth() >= setRWDWidth && webSearchBtn) {
-        resetAria(webSearchBtn);
-        webSearch.slideUp(200);
+        toggleContent(webSearchBtn, true);
       } else if ($(window).outerWidth() < setRWDWidth && mobileSearchBtn) {
-        resetAria(mobileSearchBtn);
-        webSearch.slideUp(200);
+        toggleContent(mobileSearchBtn, true);
       }
     }
   });
 
   $(window).on('click', function (e) {
-    const isInsideSearch = $(e.target).closest(webSearch).length !== 0;
+    const isInsideSearch = $(e.target).closest(webSearch).length === 0;
     searchTargetSelect.each(function () {
       if ($(this).attr('aria-expanded') === 'true' && !$(e.target).is($(this)) && isInsideSearch && webSearchBtn !== null) {
         $(this).attr({
@@ -721,12 +743,14 @@ function webSearch() {
         });
         $(this).removeClass('active');
         webSearch.slideUp();
+        overlay.hide();
       }
     });
   });
 }
-webSearch();
-
+$(window).on('load', function () {
+  webSearch();
+});
 // -----------------------------------------------------------------------
 // -----  Tab   ------------------------------------------------------
 // -----------------------------------------------------------------------
@@ -1112,19 +1136,23 @@ function fatFooter() {
     });
   });
 }
-fatFooter();
-
+$(window).on('load', function () {
+  fatFooter();
+});
 // -----------------------------------------------------------------------
 // -----  sideNav   ------------------------------------------------------
 // -----------------------------------------------------------------------
 function sideNav(options) {
   const { showDefault = true, needLink = false, duration = 200 } = options;
-  const mainBox = $('.mainBox');
-  const sideNav = $('.sideNav');
-  const mainContentBox = $('.mainContentBox');
+  const mainBox = $('.innerPage .mainBox');
+  const sideNav = $('.innerPage .mainBox .sideNav');
+  const mainContentBox = $('.innerPage .mainBox .mainContentBox');
 
   if (sideNav.length === 0 || mainContentBox.length === 0) return;
+  mainBox.addClass('hasSide');
 
+  const nextOpen = sideNav.data('nextOpen') || '開啟下層選單 ';
+  const nextClose = sideNav.data('nextClose') || '收合下層選單';
   const hasSideNavGap = parseInt(mainBox.css('gap').replace('px', ''));
   let sideNavWidth = sideNav.outerWidth();
   mainContentBox.css('width', `calc(100% - ${hasSideNavGap + sideNavWidth}px)`);
@@ -1221,7 +1249,7 @@ function sideNav(options) {
       childControl.attr('role', 'button');
     } else {
       $(this).addClass('needLink');
-      const nextBtn = $(`<button class="nextLvl" aria-expanded ="false"></button>`);
+      const nextBtn = $(`<button class="nextLvl" aria-expanded ="false" type="button" aria-label="${nextOpen}"></button>`);
       $(this).children('a').after(nextBtn);
       childControl = nextBtn;
     }
@@ -1249,10 +1277,14 @@ function sideNav(options) {
     control.attr('aria-expanded', isVisible ? 'false' : 'true');
     parent.parent().toggleClass('active');
     content.slideToggle(200);
+
+    if (needLink) {
+      control.attr('aria-label', isVisible ? nextOpen : nextClose);
+    }
     // 收合同層其他項目
     parent.parent().siblings().find(selector).slideUp(200);
     if (needLink) {
-      parent.parent().siblings().children('button').attr('aria-expanded', 'false');
+      parent.parent().siblings().children('button').attr({ 'aria-expanded': 'false', 'aria-label': nextOpen });
     } else {
       parent.parent().siblings().children('a').attr('aria-expanded', 'false');
     }
@@ -1322,8 +1354,9 @@ function tableAddDataAttributes() {
     });
   }
 }
-tableAddDataAttributes();
-
+$(window).on('load', function () {
+  tableAddDataAttributes();
+});
 // -----------------------------------------------------------------------
 // -----   scrollTables   ------------------------------------------------
 // -----------------------------------------------------------------------
@@ -1386,8 +1419,9 @@ function scrollTables() {
     });
   });
 }
-scrollTables();
-
+$(window).on('load', function () {
+  scrollTables();
+});
 // -----------------------------------------------------------------------
 // -----   swiperAutoPlay切換功能   -----------------------------------
 // -----------------------------------------------------------------------
@@ -1510,8 +1544,9 @@ function formEye() {
     }
   });
 }
-formEye();
-
+$(window).on('load', function () {
+  formEye();
+});
 // -----------------------------------------------------------------------
 // -----   scroll top   ------------------------------------------------
 // -----------------------------------------------------------------------
@@ -1537,8 +1572,9 @@ function scrollTopFn() {
     });
   });
 }
-scrollTopFn();
-
+$(window).on('load', function () {
+  scrollTopFn();
+});
 // -----------------------------------------------------------------------
 // -----  form notice訊息區塊關閉按鈕   -------------------------------------
 // -----------------------------------------------------------------------
@@ -1569,8 +1605,9 @@ function noticeBoxFn() {
     }
   });
 }
-noticeBoxFn();
-
+$(window).on('load', function () {
+  noticeBoxFn();
+});
 // -----------------------------------------------------------------------
 // -----  form 檔案上傳  ---------------------------------------------------
 // -----------------------------------------------------------------------
@@ -1588,8 +1625,9 @@ function addFile() {
     uploadInput.html(allFileName.join(', '));
   }
 }
-addFile();
-
+$(window).on('load', function () {
+  addFile();
+});
 // -----------------------------------------------------------------------
 // -----  無障礙快捷鍵盤組合 a11yKeyCode   ----------------------------------
 // -----------------------------------------------------------------------
@@ -1612,12 +1650,72 @@ function a11yKeyCode() {
     }
   });
 }
-a11yKeyCode();
+$(window).on('load', function () {
+  a11yKeyCode();
+});
 // -----------------------------------------------------------------------
 // -----   fancyBox新增需要綁定才有效果   -----------------------------------
 // -----------------------------------------------------------------------
-if (document.querySelectorAll('[data-fancybox]').length > 0) {
-  Fancybox.bind('[data-fancybox]', {
-    l10n: Fancybox.l10n.zh_TW,
-  });
+
+function fancyBoxFn() {
+  if (document.querySelectorAll('[data-fancybox]').length > 0) {
+    // 確認引入語系
+    let checkLang = document.querySelectorAll('script');
+    let lang;
+    $('script').each(function () {
+      const path = $(this).attr('src');
+      if (path === undefined) return;
+      const match = path?.match(/fancybox\/l10n/);
+      const fancyboxPath = match ? match[0] : null;
+      if (fancyboxPath === null) return;
+      const fileName = path?.split('/').pop();
+      const locale = fileName?.split('.')[0];
+      lang = locale;
+    });
+
+    // 一般設定
+    Fancybox.bind('[data-fancybox]', {
+      l10n: Fancybox.l10n[lang],
+      on: {
+        '*': (fancyboxRef, eventName) => {
+          // 關閉按鈕無障礙問題
+          if (eventName === 'done') {
+            let closeBtn = $(fancyboxRef.container).find('[data-fancybox-close]');
+            closeBtn.append(`<span>${fancyboxRef.options.l10n.CLOSE}</span>`);
+            closeBtn.attr('aria-label', fancyboxRef.options.l10n.CLOSE);
+          }
+        },
+      },
+    });
+
+    // 進入網頁開啟燈箱
+    let showPopup = $('.showPopup');
+    if (showPopup !== null) {
+      Fancybox.show(
+        [
+          {
+            src: `#${showPopup.attr('id')}`,
+            type: 'inline',
+          },
+        ],
+        {
+          l10n: Fancybox.l10n[lang],
+          on: {
+            '*': (fancyboxRef, eventName) => {
+              // 關閉按鈕無障礙問題
+              if (eventName === 'done') {
+                let closeBtn = $(fancyboxRef.container).find('[data-fancybox-close]');
+                closeBtn.append(`<span>${fancyboxRef.options.l10n.CLOSE}</span>`);
+                closeBtn.attr('aria-label', fancyboxRef.options.l10n.CLOSE);
+              }
+            },
+          },
+        }
+      );
+    }
+  }
 }
+
+$(window).on('load', function () {
+  fancyBoxFn();
+});

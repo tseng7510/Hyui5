@@ -13,7 +13,7 @@
   transform: translateY(-50%);
   border: none;
 
-  @include screen('tablet') {
+  @include screenMax('1200') {
     width: 30px;
     height: 50px;
   }
@@ -31,7 +31,7 @@
     transform-origin: center;
     background-image: url('../images/basic/icon/arrow_left.svg');
 
-    @include screen('tablet') {
+    @include screenMax('1200') {
       width: 30px;
       height: 30px;
     }
@@ -197,7 +197,7 @@ button.autoPlaySwitch {
     display: flex;
     align-items: center;
 
-    .content {
+    .infoBox {
       width: 100%;
       max-width: 270px;
       display: flex;

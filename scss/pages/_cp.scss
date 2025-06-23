@@ -35,8 +35,12 @@
   li {
     width: itemWidth(32, 3);
 
-    @include screen('mobilet') {
-      width: auto;
+    @include screen('tablet') {
+      width: itemWidth(32, 2);
+    }
+
+    @include screen('xsMobile') {
+      width: 100%;
     }
   }
 }
