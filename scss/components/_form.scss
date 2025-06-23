@@ -528,6 +528,10 @@
         cursor: not-allowed !important;
       }
     }
+
+    label {
+      order: 2;
+    }
   }
 
   // form notice

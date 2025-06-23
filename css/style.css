@@ -2003,6 +2003,9 @@ button.active, button:hover {
 .formBox .inputOption:has(input[disabled]) input {
   cursor: not-allowed !important;
 }
+.formBox .inputOption label {
+  order: 2;
+}
 .formBox [class^=formNotice] {
   position: relative;
   width: 100%;
