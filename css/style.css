@@ -951,13 +951,13 @@ nav ul {
 .testBox {
   position: fixed;
   z-index: 99;
-  width: 100% !important;
+  flex: 1 1 100% !important;
   pointer-events: none;
   opacity: 0.05;
 }
 .testBox .container {
   display: flex;
-  width: 100% !important;
+  flex: 1 1 100% !important;
   height: 100vh;
 }
 .testBox span {
@@ -1014,7 +1014,7 @@ nav ul {
 }
 @media screen and (max-width: 767px) {
   .flexTpl_8_4 .col {
-    width: 100% !important;
+    flex: 1 1 100% !important;
   }
 }
 
@@ -1026,7 +1026,7 @@ nav ul {
 }
 @media screen and (max-width: 767px) {
   .flexTpl_4_8 .col {
-    width: 100% !important;
+    flex: 1 1 100% !important;
   }
 }
 
@@ -1038,7 +1038,7 @@ nav ul {
 }
 @media screen and (max-width: 767px) {
   .flexTpl_5_7 .col {
-    width: 100% !important;
+    flex: 1 1 100% !important;
   }
 }
 
@@ -1050,7 +1050,7 @@ nav ul {
 }
 @media screen and (max-width: 767px) {
   .flexTpl_7_5 .col {
-    width: 100% !important;
+    flex: 1 1 100% !important;
   }
 }
 
@@ -1072,7 +1072,7 @@ nav ul {
 }
 @media screen and (max-width: 767px) {
   .flexTpl_9_3 .col {
-    width: 100% !important;
+    flex: 1 1 100% !important;
   }
 }
 
@@ -1094,7 +1094,7 @@ nav ul {
 }
 @media screen and (max-width: 767px) {
   .flexTpl_3_9 .col {
-    width: 100% !important;
+    flex: 1 1 100% !important;
   }
 }
 
@@ -1109,7 +1109,7 @@ nav ul {
 }
 @media screen and (max-width: 991px) {
   .flexTpl_3_6_3 .col {
-    width: 100% !important;
+    flex: 1 1 100% !important;
   }
 }
 
@@ -1124,7 +1124,7 @@ nav ul {
 }
 @media screen and (max-width: 991px) {
   .flexTpl_3_3_6 .col {
-    width: 100% !important;
+    flex: 1 1 100% !important;
   }
 }
 
@@ -1139,7 +1139,7 @@ nav ul {
 }
 @media screen and (max-width: 991px) {
   .flexTpl_6_3_3 .col {
-    width: 100% !important;
+    flex: 1 1 100% !important;
   }
 }
 
@@ -1156,7 +1156,7 @@ nav ul {
 }
 @media screen and (max-width: 991px) {
   .flexTpl_2_2_8 .col {
-    width: 100% !important;
+    flex: 1 1 100% !important;
   }
 }
 
@@ -1173,7 +1173,7 @@ nav ul {
 }
 @media screen and (max-width: 991px) {
   .flexTpl_8_2_2 .col {
-    width: 100% !important;
+    flex: 1 1 100% !important;
   }
 }
 
@@ -1182,7 +1182,7 @@ nav ul {
 }
 @media screen and (max-width: 767px) {
   .flexTpl_2 .col {
-    width: 100% !important;
+    flex: 1 1 100% !important;
   }
 }
 
@@ -1191,7 +1191,7 @@ nav ul {
 }
 @media screen and (max-width: 991px) {
   .flexTpl_3 .col {
-    width: 100% !important;
+    flex: 1 1 100% !important;
   }
 }
 
@@ -1205,7 +1205,7 @@ nav ul {
 }
 @media screen and (max-width: 767px) {
   .flexTpl_4 .col {
-    width: 100% !important;
+    flex: 1 1 100% !important;
   }
 }
 
@@ -1219,7 +1219,7 @@ nav ul {
 }
 @media screen and (max-width: 767px) {
   .flexTpl_5 .col {
-    width: 100% !important;
+    flex: 1 1 100% !important;
   }
 }
 
@@ -1924,7 +1924,7 @@ button.active, button:hover {
   width: -moz-fit-content;
   width: fit-content;
 }
-.formBox .inputOption label {
+.formBox .inputOption {
   cursor: pointer;
 }
 .formBox .inputOption:has([type=checkbox]) {
@@ -2962,8 +2962,8 @@ button.active, button:hover {
 @media screen and (max-width: 991px) {
   .fontSizeInner button,
   .functionPanelBtn {
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
   }
 }
 .fontSizeInner button.active, .fontSizeInner button:hover,
@@ -2992,17 +2992,15 @@ button.active, button:hover {
   background-position: center;
   transition: all 0.3s ease;
 }
-@media screen and (max-width: 991px) {
-  .fontSizeInner button::before,
-  .functionPanelBtn::before {
-    width: 18px;
-    height: 18px;
-  }
-}
 
 .fontSizeInner {
   display: flex;
   align-items: center;
+}
+@media screen and (max-width: 991px) {
+  .fontSizeInner {
+    display: none;
+  }
 }
 @media screen and (max-width: 991px) {
   .fontSizeInner span {
@@ -3185,6 +3183,7 @@ button.active, button:hover {
 }
 .shareBox ul {
   display: flex;
+  flex-wrap: wrap;
   gap: 5px;
   margin: 0;
   padding: 0;

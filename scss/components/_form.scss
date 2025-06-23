@@ -427,9 +427,7 @@
   }
 
   .inputOption {
-    label {
-      cursor: pointer;
-    }
+    cursor: pointer;
 
     // checkbox
     &:has([type="checkbox"]) {

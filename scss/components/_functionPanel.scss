@@ -58,8 +58,8 @@
   @include transition(0.3);
 
   @include screen('tablet') {
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
   }
 
   &.active,
@@ -85,11 +85,6 @@
     background-repeat: no-repeat;
     background-position: center;
     @include transition(0.3);
-
-    @include screen('tablet') {
-      width: 18px;
-      height: 18px;
-    }
   }
 }
 
@@ -97,6 +92,10 @@
 .fontSizeInner {
   display: flex;
   align-items: center;
+
+  @include screen('tablet') {
+    display: none;
+  }
 
   span {
     @include screen('tablet') {

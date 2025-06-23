@@ -3,13 +3,13 @@
 .testBox {
   position: fixed;
   z-index: 99;
-  width: 100% !important;
+  flex: 1 1 100% !important;
   pointer-events: none;
   opacity: 0.05;
 
   .container {
     display: flex;
-    width: 100% !important;
+    flex: 1 1 100% !important;
     height: 100vh;
   }
 
@@ -80,7 +80,7 @@
     }
 
     @include screen('mobile') {
-      width: 100% !important;
+      flex: 1 1 100% !important;
     }
   }
 }
@@ -96,7 +96,7 @@
     }
 
     @include screen('mobile') {
-      width: 100% !important;
+      flex: 1 1 100% !important;
     }
   }
 }
@@ -112,7 +112,7 @@
     }
 
     @include screen('mobile') {
-      width: 100% !important;
+      flex: 1 1 100% !important;
     }
   }
 
@@ -129,7 +129,7 @@
     }
 
     @include screen('mobile') {
-      width: 100% !important;
+      flex: 1 1 100% !important;
     }
   }
 }
@@ -153,7 +153,7 @@
     }
 
     @include screen('mobile') {
-      width: 100% !important;
+      flex: 1 1 100% !important;
     }
   }
 }
@@ -177,7 +177,7 @@
     }
 
     @include screen('mobile') {
-      width: 100% !important;
+      flex: 1 1 100% !important;
     }
   }
 }
@@ -197,7 +197,7 @@
     }
 
     @include screen('tablet') {
-      width: 100% !important;
+      flex: 1 1 100% !important;
     }
   }
 }
@@ -217,7 +217,7 @@
     }
 
     @include screen('tablet') {
-      width: 100% !important;
+      flex: 1 1 100% !important;
     }
   }
 }
@@ -237,7 +237,7 @@
     }
 
     @include screen('tablet') {
-      width: 100% !important;
+      flex: 1 1 100% !important;
     }
   }
 }
@@ -260,7 +260,7 @@
     }
 
     @include screen('tablet') {
-      width: 100% !important;
+      flex: 1 1 100% !important;
     }
   }
 }
@@ -282,7 +282,7 @@
     }
 
     @include screen('tablet') {
-      width: 100% !important;
+      flex: 1 1 100% !important;
     }
   }
 }
@@ -292,7 +292,7 @@
     width: itemWidth($flexTemplateGap, 2);
 
     @include screen('mobile') {
-      width: 100% !important;
+      flex: 1 1 100% !important;
     }
   }
 }
@@ -302,7 +302,7 @@
     width: itemWidth($flexTemplateGap, 3);
 
     @include screen('tablet') {
-      width: 100% !important;
+      flex: 1 1 100% !important;
     }
   }
 }
@@ -316,7 +316,7 @@
     }
 
     @include screen('mobile') {
-      width: 100% !important;
+      flex: 1 1 100% !important;
     }
   }
 }
@@ -330,7 +330,7 @@
     }
 
     @include screen('mobile') {
-      width: 100% !important;
+      flex: 1 1 100% !important;
     }
   }
 }
