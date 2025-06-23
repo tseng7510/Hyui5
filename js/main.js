@@ -1545,10 +1545,10 @@ window.addEventListener('load', () => fatFooter());
 function sideNav(options) {
   const { showDefault = true, needLink = false, duration = 200 } = options;
   const mainBox = document.querySelector('.innerPage .mainBox');
+  if (mainBox === null) return;
   const sideNav = mainBox.querySelector('.sideNav');
   const mainContentBox = mainBox.querySelector('.mainContentBox');
 
-  if (sideNav === null || mainContentBox === null) return;
   mainBox.classList.add('hasSide');
   const nextOpen = sideNav.dataset.nextOpen || '開啟下層選單 ';
   const nextClose = sideNav.dataset.nextClose || '收合下層選單';
