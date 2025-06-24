@@ -71,9 +71,9 @@
             width: 100%;
           }
 
-          // legend {
-          //   top: 10px;
-          // }
+          legend {
+            top: 10px;
+          }
 
           & + .formList {
             border-top: 1px dashed $tableNormal;
@@ -295,11 +295,11 @@
       font-weight: 400;
     }
 
-    // &:not(.inline) {
-    //   legend {
-    //     margin-bottom: 8px;
-    //   }
-    // }
+    &:not(.inline) {
+      legend {
+        margin-bottom: 8px;
+      }
+    }
   }
 
   .inputBox {
@@ -384,7 +384,7 @@
   fieldset {
     position: relative;
 
-    .legendBox {
+    .legend {
       width: var(--titleWidth);
       display: block;
       position: relative;
@@ -393,7 +393,7 @@
     &.inline {
       display: flex;
       flex-direction: row;
-      padding-left: var(--titleWidth) + $itemGap !important;
+      padding-left: calc(var(--titleWidth) + $itemGap) !important;
       position: relative;
 
       .legendBox {
@@ -401,9 +401,10 @@
       }
 
       legend {
+        width: var(--titleWidth);
         position: absolute;
         left: 0;
-        top: 0;
+        top: 20px;
         transform: none;
 
         @include screen('mobile') {

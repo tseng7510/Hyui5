@@ -1630,6 +1630,9 @@ button.active, button:hover {
     width: 100%;
   }
 }
+.formBox:has(.gridBox) .gridBox > .formList .formList legend {
+  top: 10px;
+}
 .formBox:has(.gridBox) .gridBox > .formList .formList + .formList {
   border-top: 1px dashed #DEE0E3;
 }
@@ -1830,6 +1833,9 @@ button.active, button:hover {
   font-size: 0.9375rem;
   font-weight: 400;
 }
+.formBox .formList:not(.inline) legend {
+  margin-bottom: 8px;
+}
 .formBox .inputBox {
   flex-grow: 1;
   position: relative;
@@ -1890,7 +1896,7 @@ button.active, button:hover {
 .formBox fieldset {
   position: relative;
 }
-.formBox fieldset .legendBox {
+.formBox fieldset .legend {
   width: var(--titleWidth);
   display: block;
   position: relative;
@@ -1898,16 +1904,17 @@ button.active, button:hover {
 .formBox fieldset.inline {
   display: flex;
   flex-direction: row;
-  padding-left: var(--titleWidth)14px !important;
+  padding-left: calc(var(--titleWidth) + 14px) !important;
   position: relative;
 }
 .formBox fieldset.inline .legendBox {
   flex-shrink: 0;
 }
 .formBox fieldset.inline legend {
+  width: var(--titleWidth);
   position: absolute;
   left: 0;
-  top: 0;
+  top: 20px;
   transform: none;
 }
 @media screen and (max-width: 767px) {

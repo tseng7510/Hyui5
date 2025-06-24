@@ -1,2 +1,26 @@
-const mpSlider = new Swiper('.mpSlider .swiper', { // 切換點 pagination: { el: '.mpSlider .swiperPagination', clickable: true, }, // 切換箭頭 navigation: { nextEl: '.mpSlider .nextSlider', //自行設定樣式 prevEl: '.mpSlider .prevSlider', //自行設定樣式 disabledClass: 'swiperArrow-disabled',
-//不可點選樣式 }, autoplay: { delay: 5000, }, on: { init: function (swiper) { swiperAutoPlaysFn(swiper); swiperA11Fn(swiper); }, }, });
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea id="myTextarea" oninput="limitTextareaLength(this, 20)"></textarea>
+    <div id="textLength">0/20</div>
+
+    <script>
+      function limitTextareaLength(element, maxLength) {
+        let text = element.value;
+        let currentLength = text.length;
+        let textLengthDiv = document.getElementById('textLength');
+
+        if (currentLength > maxLength) {
+          element.value = text.slice(0, maxLength);
+          currentLength = maxLength;
+        }
+        textLengthDiv.textContent = currentLength + '/' + maxLength;
+      }
+    </script>
+  </body>
+</html>
