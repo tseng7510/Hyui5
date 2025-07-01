@@ -1140,7 +1140,7 @@ function sideNav(options) {
     setTransitionBtn(sideNavBtn, showDefault);
 
     function setTransition(elem, width, toWidth, dn) {
-      if (floatType) {
+      if (($(window).outerWidth() <= setRWDWidth && floatType) || $(window).outerWidth() > setRWDWidth) {
         if (!dn) {
           elem.css('display', 'block');
         }
@@ -1159,7 +1159,7 @@ function sideNav(options) {
             elem.hide();
           }, duration);
         }
-      } else {
+      } else if ($(window).outerWidth() <= setRWDWidth && !floatType) {
         sideMenu.slideToggle(200);
       }
     }

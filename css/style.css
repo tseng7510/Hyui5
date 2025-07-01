@@ -800,11 +800,11 @@ h6 + p {
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1460px;
+  width: 100%;
   padding: 0 30px;
   margin: 0 auto;
   position: relative;
-  box-sizing: content-box;
 }
 
 .overlay {
@@ -2873,8 +2873,6 @@ button.active, button:hover {
     gap: 0;
     height: calc(100vh - var(--sideFixTop) - 40px);
   }
-}
-@media screen and (max-width: 991px) {
   .sideNav.typeA button#sideNavBtn {
     width: 30px;
     position: fixed;
@@ -2882,43 +2880,39 @@ button.active, button:hover {
     order: 4;
     top: 0;
   }
-}
-@media screen and (max-width: 991px) {
   .sideNav.typeA #sideMenu {
     display: none;
     height: 100%;
   }
 }
-.sideNav.typeB {
-  flex-direction: column;
-}
-.sideNav.typeB button#sideNavBtn {
-  width: 100%;
-  writing-mode: unset;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 8px 20px 8px 20px;
-}
-.sideNav.typeB button#sideNavBtn::before {
-  order: 2;
-  position: relative;
-  top: auto;
-  left: auto;
-  transform: rotate(45deg);
-}
-.sideNav.typeB button#sideNavBtn.active::before {
-  transform: rotate(-135deg);
-}
-.sideNav.typeB #sideMenu {
-  width: 100%;
-}
 @media screen and (max-width: 991px) {
+  .sideNav.typeB {
+    flex-direction: column;
+  }
+  .sideNav.typeB button#sideNavBtn {
+    width: 100%;
+    writing-mode: unset;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px 20px 8px 20px;
+  }
+  .sideNav.typeB button#sideNavBtn::before {
+    order: 2;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: rotate(45deg);
+  }
+  .sideNav.typeB button#sideNavBtn.active::before {
+    transform: rotate(-135deg);
+  }
   .sideNav.typeB #sideMenu {
+    width: 100%;
     display: none;
   }
-}
-.sideNav.typeB #sideMenu .sideMenuContent {
-  width: 100%;
+  .sideNav.typeB #sideMenu .sideMenuContent {
+    width: 100%;
+  }
 }
 
 .breadcrumb ul {

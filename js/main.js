@@ -972,10 +972,14 @@ function webSearch() {
     elem.setAttribute('aria-pressed', 'false');
     elem.classList.remove('active');
     jsSlideUp(webSearch);
-    setTimeout(() => {
-      elem.focus();
-    });
-    if (overLayFn) jsFadeOut(overlay);
+    console.log(overLayFn);
+
+    if (overLayFn) {
+      jsFadeOut(overlay);
+      setTimeout(() => {
+        elem.focus();
+      });
+    }
   }
 
   // 鍵盤事件設定，支援 Tab、Enter、Alt+S 快捷鍵以及 Escape 關閉
@@ -1040,7 +1044,6 @@ function webSearch() {
   if (!mobileMainMenuBtn) return;
   mobileMainMenuBtn.addEventListener('click', () => _hideSearchBox(mobileSearchBtn, false));
 }
-// webSearch();
 window.addEventListener('load', () => webSearch());
 
 // -----------------------------------------------------------------------
@@ -1538,7 +1541,7 @@ function sideNav(options) {
     setTransitionBtn(sideNavBtn, showDefault);
 
     function setTransition(elem, width, toWidth, dn) {
-      if (floatType) {
+      if ((window.outerWidth <= setRWDWidth && floatType) || window.outerWidth > setRWDWidth) {
         if (!dn) {
           elem.style.display = 'block';
         }
@@ -1560,7 +1563,7 @@ function sideNav(options) {
             elem.style.display = 'none';
           }, duration);
         }
-      } else {
+      } else if (window.outerWidth <= setRWDWidth && !floatType) {
         jsSlideToggle(sideMenu);
       }
     }
