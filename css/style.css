@@ -568,6 +568,12 @@ template {
   outline-offset: 1px;
 }
 
+header h1 a:focus-visible,
+#mobileSearchBtn:focus-visible,
+#mobileMainMenuBtn:focus-visible {
+  outline-offset: -2px !important;
+}
+
 .accessKeyItem {
   position: absolute;
   top: 5px;
@@ -693,11 +699,15 @@ textarea,
 select,
 input:not([type=checkBox], [type=radio]) {
   display: block;
-  height: 44px;
   padding: 6px 12px;
   border-radius: 4px;
   border: #DEE0E3 1px solid;
   background: #FFF;
+}
+
+select,
+input:not([type=checkBox], [type=radio]) {
+  height: 44px;
 }
 
 a {
@@ -711,6 +721,7 @@ a:hover {
 p {
   margin-top: 16px;
   margin-bottom: 16px;
+  word-break: break-all;
 }
 
 .floatLeft {
@@ -803,6 +814,11 @@ h6 + p {
   display: none;
   background: rgba(0, 0, 0, 0.8);
   cursor: pointer;
+}
+@media screen and (max-width: 767px) {
+  .overlay {
+    top: 60px;
+  }
 }
 
 .srOnly {
@@ -951,13 +967,13 @@ nav ul {
 .testBox {
   position: fixed;
   z-index: 99;
-  flex: 1 1 100% !important;
+  width: 100%;
   pointer-events: none;
   opacity: 0.05;
 }
 .testBox .container {
   display: flex;
-  flex: 1 1 100% !important;
+  width: 100%;
   height: 100vh;
 }
 .testBox span {
@@ -998,8 +1014,18 @@ nav ul {
   gap: 24px;
   position: relative;
 }
+@media screen and (max-width: 767px) {
+  [class*=flexTpl] {
+    flex-direction: column;
+  }
+}
 [class*=flexTpl] .col {
   flex-grow: 1;
+}
+@media screen and (max-width: 767px) {
+  [class*=flexTpl] .col {
+    width: 100% !important;
+  }
 }
 
 .flexTpl_12 {
@@ -1012,22 +1038,12 @@ nav ul {
 .flexTpl_8_4 .col:nth-child(2) {
   flex: 1 1 calc((100% - 24px * 11) / 12 * 4 + 24px * (4 - 1));
 }
-@media screen and (max-width: 767px) {
-  .flexTpl_8_4 .col {
-    flex: 1 1 100% !important;
-  }
-}
 
 .flexTpl_4_8 .col:nth-child(1) {
   flex: 1 1 calc((100% - 24px * 11) / 12 * 4 + 24px * (4 - 1));
 }
 .flexTpl_4_8 .col:nth-child(2) {
   flex: 1 1 calc((100% - 24px * 11) / 12 * 8 + 24px * (8 - 1));
-}
-@media screen and (max-width: 767px) {
-  .flexTpl_4_8 .col {
-    flex: 1 1 100% !important;
-  }
 }
 
 .flexTpl_5_7 .col:nth-child(1) {
@@ -1036,22 +1052,12 @@ nav ul {
 .flexTpl_5_7 .col:nth-child(2) {
   flex: 1 1 calc((100% - 24px * 11) / 12 * 7 + 24px * (7 - 1));
 }
-@media screen and (max-width: 767px) {
-  .flexTpl_5_7 .col {
-    flex: 1 1 100% !important;
-  }
-}
 
 .flexTpl_7_5 .col:nth-child(1) {
   flex: 1 1 calc((100% - 24px * 11) / 12 * 7 + 24px * (7 - 1));
 }
 .flexTpl_7_5 .col:nth-child(2) {
   flex: 1 1 calc((100% - 24px * 11) / 12 * 5 + 24px * (5 - 1));
-}
-@media screen and (max-width: 767px) {
-  .flexTpl_7_5 .col {
-    flex: 1 1 100% !important;
-  }
 }
 
 .flexTpl_9_3 .col:nth-child(1) {
@@ -1068,11 +1074,6 @@ nav ul {
 @media screen and (max-width: 991px) {
   .flexTpl_9_3 .col:nth-child(2) {
     flex: 1 1 calc((100% - 24px * 11) / 12 * 4 + 24px * (4 - 1));
-  }
-}
-@media screen and (max-width: 767px) {
-  .flexTpl_9_3 .col {
-    flex: 1 1 100% !important;
   }
 }
 
@@ -1092,11 +1093,6 @@ nav ul {
     flex: 1 1 calc((100% - 24px * 11) / 12 * 8 + 24px * (8 - 1));
   }
 }
-@media screen and (max-width: 767px) {
-  .flexTpl_3_9 .col {
-    flex: 1 1 100% !important;
-  }
-}
 
 .flexTpl_3_6_3 .col:nth-child(1) {
   flex: 1 1 calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
@@ -1106,11 +1102,6 @@ nav ul {
 }
 .flexTpl_3_6_3 .col:nth-child(3) {
   flex: 1 1 calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
-}
-@media screen and (max-width: 991px) {
-  .flexTpl_3_6_3 .col {
-    flex: 1 1 100% !important;
-  }
 }
 
 .flexTpl_3_3_6 .col:nth-child(1) {
@@ -1122,11 +1113,6 @@ nav ul {
 .flexTpl_3_3_6 .col:nth-child(3) {
   flex: 1 1 calc((100% - 24px * 11) / 12 * 6 + 24px * (6 - 1));
 }
-@media screen and (max-width: 991px) {
-  .flexTpl_3_3_6 .col {
-    flex: 1 1 100% !important;
-  }
-}
 
 .flexTpl_6_3_3 .col:nth-child(1) {
   flex: 1 1 calc((100% - 24px * 11) / 12 * 6 + 24px * (6 - 1));
@@ -1136,11 +1122,6 @@ nav ul {
 }
 .flexTpl_6_3_3 .col:nth-child(3) {
   flex: 1 1 calc((100% - 24px * 11) / 12 * 3 + 24px * (3 - 1));
-}
-@media screen and (max-width: 991px) {
-  .flexTpl_6_3_3 .col {
-    flex: 1 1 100% !important;
-  }
 }
 
 .flexTpl_2_2_8 .col:nth-child(1) {
@@ -1154,11 +1135,6 @@ nav ul {
 .flexTpl_2_2_8 .col:nth-child(3) {
   flex: 1 1 calc((100% - 24px * 11) / 12 * 8 + 24px * (8 - 1));
 }
-@media screen and (max-width: 991px) {
-  .flexTpl_2_2_8 .col {
-    flex: 1 1 100% !important;
-  }
-}
 
 .flexTpl_8_2_2 .col:nth-child(1) {
   flex: 1 1 calc((100% - 24px * 11) / 12 * 8 + 24px * (8 - 1));
@@ -1171,19 +1147,9 @@ nav ul {
   flex-shrink: 0;
   flex: 1 1 calc((100% - 24px * 11) / 12 * 2 + 24px * (2 - 1));
 }
-@media screen and (max-width: 991px) {
-  .flexTpl_8_2_2 .col {
-    flex: 1 1 100% !important;
-  }
-}
 
 .flexTpl_2 .col {
   width: calc((100% - 24px * (2 - 1)) / 2);
-}
-@media screen and (max-width: 767px) {
-  .flexTpl_2 .col {
-    flex: 1 1 100% !important;
-  }
 }
 
 .flexTpl_3 .col {
@@ -1191,7 +1157,7 @@ nav ul {
 }
 @media screen and (max-width: 991px) {
   .flexTpl_3 .col {
-    flex: 1 1 100% !important;
+    width: 100%;
   }
 }
 
@@ -1203,11 +1169,6 @@ nav ul {
     width: calc((100% - 24px * (2 - 1)) / 2);
   }
 }
-@media screen and (max-width: 767px) {
-  .flexTpl_4 .col {
-    flex: 1 1 100% !important;
-  }
-}
 
 .flexTpl_5 .col {
   width: calc((100% - 24px * (5 - 1)) / 5);
@@ -1215,11 +1176,6 @@ nav ul {
 @media screen and (max-width: 991px) {
   .flexTpl_5 .col {
     width: calc((100% - 24px * (3 - 1)) / 3);
-  }
-}
-@media screen and (max-width: 767px) {
-  .flexTpl_5 .col {
-    flex: 1 1 100% !important;
   }
 }
 
@@ -1236,11 +1192,6 @@ nav ul {
     width: calc((100% - 24px * (3 - 1)) / 3);
   }
 }
-@media screen and (max-width: 767px) {
-  .flexTpl_6 .col {
-    width: calc((100% - 24px * (2 - 1)) / 2);
-  }
-}
 
 [class^=i_]::before {
   content: "";
@@ -1250,18 +1201,6 @@ nav ul {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-}
-
-.i_sound_w::before {
-  background-image: url("../images/basic/icon/sound_w.svg");
-}
-
-.i_refresh_w::before {
-  background-image: url("../images/basic/icon/refresh_w.svg");
-}
-
-.i_lock_dark::before {
-  background-image: url("../images/basic/icon/lock_dark.svg");
 }
 
 .i_email_w::before {
@@ -1276,8 +1215,8 @@ nav ul {
   background-image: url("../images/basic/icon/visibility_off_dark.svg");
 }
 
-.i_search_dark::before {
-  background-image: url("../images/basic/icon/search_dark.svg");
+.i_language_w::before {
+  background-image: url("../images/basic/icon/language_w.svg");
 }
 
 .i_language_dark::before {
@@ -1288,13 +1227,30 @@ nav ul {
   background-image: url("../images/basic/icon/language_b.svg");
 }
 
-.i_language_w::before {
-  background-image: url("../images/basic/icon/language_w.svg");
+.i_lock_dark::before {
+  background-image: url("../images/basic/icon/lock_dark.svg");
+}
+
+.i_refresh_w::before {
+  background-image: url("../images/basic/icon/refresh_w.svg");
+}
+
+.i_search_dark::before {
+  background-image: url("../images/basic/icon/search_dark.svg");
+}
+
+.i_sound_w::before {
+  background-image: url("../images/basic/icon/sound_w.svg");
+}
+
+.i_tag_dark::before {
+  background-image: url("../images/basic/icon/tag_dark.svg");
 }
 
 button {
   color: #333333;
   border: 1px solid #333333;
+  white-space: nowrap;
   width: -moz-fit-content;
   width: fit-content;
   cursor: pointer;
@@ -1339,6 +1295,7 @@ button.active, button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
   width: -moz-fit-content;
   width: fit-content;
   cursor: pointer;
@@ -1381,6 +1338,7 @@ button.active, button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
   width: -moz-fit-content;
   width: fit-content;
   cursor: pointer;
@@ -1423,6 +1381,7 @@ button.active, button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
   width: -moz-fit-content;
   width: fit-content;
   cursor: pointer;
@@ -1464,6 +1423,7 @@ button.active, button:hover {
   gap: 80px;
   padding: 30px;
   background: #fff;
+  overflow: auto;
 }
 .bp .btnGrp {
   width: -moz-fit-content;
@@ -1510,12 +1470,13 @@ button.active, button:hover {
   border-radius: 12px;
   overflow: hidden;
   display: none;
+  padding: 40px 10px 20px;
 }
 .popupB .f-button.is-close-btn,
 .popupS .f-button.is-close-btn {
   opacity: 1 !important;
-  top: 24px !important;
-  right: 24px !important;
+  top: 5px !important;
+  right: 5px !important;
   background: none !important;
   border-radius: 50% !important;
 }
@@ -1533,14 +1494,21 @@ button.active, button:hover {
 .popupB {
   max-width: 1000px;
   width: 80vw;
+  max-height: 80vh;
+}
+.popupB .popupBox {
+  overflow: auto;
+  height: 100%;
+  padding: 0px 10px 10px;
+}
+.popupB .popupBox .popTitle {
+  margin: 0 20px 10px 0;
+  font-size: 1.5rem;
+  line-height: 1.4;
 }
 .popupB .popupContent {
   border-top: #d4d4d4 1px solid;
   margin: 0 0 20px;
-  padding-top: 20px;
-}
-.popupB .popupContent h3 {
-  margin: 0 40px 25px 0;
 }
 .popupB .popupContent p:first-child {
   margin-top: 0;
@@ -1597,6 +1565,10 @@ button.active, button:hover {
   flex-shrink: 0;
 }
 @media screen and (max-width: 767px) {
+  .formBox:has(.gridBox) .gridBox .formList {
+    padding-left: 0 !important;
+    padding-top: 20px !important;
+  }
   .formBox:has(.gridBox) .gridBox .formList .formListTitle {
     width: 100% !important;
   }
@@ -1614,6 +1586,10 @@ button.active, button:hover {
   .formBox:has(.gridBox) .gridBox > .formList.inline {
     flex-direction: column !important;
     gap: 8px;
+    align-items: stretch;
+  }
+  .formBox:has(.gridBox) .gridBox > .formList.inline legend {
+    margin-bottom: 5px;
   }
 }
 .formBox:has(.gridBox) .gridBox > .formList .formContent {
@@ -1630,11 +1606,17 @@ button.active, button:hover {
     width: 100%;
   }
 }
+.formBox:has(.gridBox) .gridBox > .formList .formList:first-child {
+  padding-top: 0;
+}
 .formBox:has(.gridBox) .gridBox > .formList .formList legend {
-  top: 10px;
+  top: 13px;
 }
 .formBox:has(.gridBox) .gridBox > .formList .formList + .formList {
   border-top: 1px dashed #DEE0E3;
+}
+.formBox:has(.gridBox) .gridBox .inline legend {
+  top: 20px;
 }
 .formBox .btnBox {
   display: flex;
@@ -1887,10 +1869,7 @@ button.active, button:hover {
   width: auto;
   flex-grow: 1;
 }
-.formBox .inline .select,
-.formBox .inline input:not([type=checkBox], [type=radio]),
-.formBox .inline select,
-.formBox .inline textarea {
+.formBox .inline .select {
   flex-grow: 1;
 }
 .formBox fieldset {
@@ -1909,12 +1888,13 @@ button.active, button:hover {
 }
 .formBox fieldset.inline .legendBox {
   flex-shrink: 0;
+  flex-grow: 1;
 }
 .formBox fieldset.inline legend {
   width: var(--titleWidth);
   position: absolute;
   left: 0;
-  top: 20px;
+  top: 0px;
   transform: none;
 }
 @media screen and (max-width: 767px) {
@@ -2095,6 +2075,14 @@ button.active, button:hover {
 .formBox [class*=flexTpl]:not(:has(.inline)) select,
 .formBox [class*=flexTpl]:not(:has(.inline)) textarea {
   width: 100%;
+}
+.formBox [class*=flexTpl] {
+  flex-wrap: nowrap;
+}
+@media screen and (max-width: 991px) {
+  .formBox [class*=flexTpl] {
+    flex-wrap: wrap;
+  }
 }
 
 img.captcha {
@@ -2448,6 +2436,7 @@ header .topNav {
 button {
   color: #333333;
   border: 1px solid #333333;
+  white-space: nowrap;
   width: -moz-fit-content;
   width: fit-content;
   cursor: pointer;
@@ -2492,6 +2481,7 @@ button.active, button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
   width: -moz-fit-content;
   width: fit-content;
   cursor: pointer;
@@ -2534,6 +2524,7 @@ button.active, button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
   width: -moz-fit-content;
   width: fit-content;
   cursor: pointer;
@@ -2576,6 +2567,7 @@ button.active, button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
   width: -moz-fit-content;
   width: fit-content;
   cursor: pointer;
@@ -2617,6 +2609,7 @@ button.active, button:hover {
   gap: 80px;
   padding: 30px;
   background: #fff;
+  overflow: auto;
 }
 .bp .btnGrp {
   width: -moz-fit-content;
@@ -2663,16 +2656,6 @@ button.active, button:hover {
   align-items: flex-start;
   gap: 12px;
 }
-@media screen and (max-width: 991px) {
-  .sideNav {
-    position: fixed;
-    z-index: 80;
-    left: 0;
-    top: var(--sideFixTop);
-    gap: 0;
-    height: calc(100vh - var(--sideFixTop) - 40px);
-  }
-}
 .sideNav button#sideNavBtn {
   width: 35px;
   padding: 34px 8px 12px 8px;
@@ -2691,15 +2674,6 @@ button.active, button:hover {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   transition: none;
 }
-@media screen and (max-width: 991px) {
-  .sideNav button#sideNavBtn {
-    width: 30px;
-    position: fixed;
-    border-radius: 0 var(--borderRadius) var(--borderRadius) 0;
-    order: 4;
-    top: 0;
-  }
-}
 .sideNav button#sideNavBtn::before {
   content: "";
   width: 7px;
@@ -2716,7 +2690,7 @@ button.active, button:hover {
   left: 40%;
   transform: rotate(135deg);
 }
-.sideNav nav#sideMenu {
+.sideNav #sideMenu {
   flex-grow: 1;
   overflow: hidden;
   border-radius: var(--borderRadius);
@@ -2725,13 +2699,7 @@ button.active, button:hover {
   position: sticky;
   top: var(--sideFixTop);
 }
-@media screen and (max-width: 991px) {
-  .sideNav nav#sideMenu {
-    display: none;
-    height: 100%;
-  }
-}
-.sideNav nav#sideMenu .sideMenuContent {
+.sideNav #sideMenu .sideMenuContent {
   width: 260px;
   display: flex;
   padding: 20px 15px;
@@ -2740,7 +2708,7 @@ button.active, button:hover {
   gap: 16px;
   height: 100%;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideTitle {
+.sideNav #sideMenu .sideMenuContent .sideTitle {
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 10px;
@@ -2748,23 +2716,23 @@ button.active, button:hover {
   letter-spacing: 1.6px;
   text-align: center;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox {
+.sideNav #sideMenu .sideMenuContent .sideNavBox {
   overflow-y: auto;
   padding: 4px;
   width: 100%;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul .hasChild.needLink a {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul .hasChild.needLink a {
   position: relative;
   flex-grow: 1;
   padding-right: 10px;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul .hasChild.needLink button {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul .hasChild.needLink button {
   padding: 0;
   margin: 0;
   border: none;
@@ -2775,14 +2743,14 @@ button.active, button:hover {
   border-radius: var(--borderRadius2);
   overflow: hidden;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul .hasChild.needLink button::before {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul .hasChild.needLink button::before {
   content: "";
   inset: 0;
   position: absolute;
   background: linear-gradient(90deg, #00428E 0%, #057BB7 100%);
   opacity: 0;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul .hasChild.needLink > button::after, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul .hasChild:not(.needLink) > a::after {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul .hasChild.needLink > button::after, .sideNav #sideMenu .sideMenuContent .sideNavBox > ul .hasChild:not(.needLink) > a::after {
   content: "";
   width: 7px;
   height: 7px;
@@ -2794,18 +2762,18 @@ button.active, button:hover {
   transform: rotate(-45deg);
   transform-origin: center center;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul .hasChild.active > a, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul .hasChild.active > button {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul .hasChild.active > a, .sideNav #sideMenu .sideMenuContent .sideNavBox > ul .hasChild.active > button {
   color: #0156A2;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul .hasChild.active.needLink > button::after, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul .hasChild.active:not(.needLink) > a::after {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul .hasChild.active.needLink > button::after, .sideNav #sideMenu .sideMenuContent .sideNavBox > ul .hasChild.active:not(.needLink) > a::after {
   top: 20px;
   transform: rotate(135deg);
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li {
   background: #F8F8F8;
   border-radius: var(--borderRadius2);
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li > a {
   flex-grow: 1;
   display: flex;
   align-items: center;
@@ -2818,10 +2786,10 @@ button.active, button:hover {
   background: #F8F8F8;
   position: relative;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:not(:hover) {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li > a:not(:hover) {
   color: #333333;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a::before {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li > a::before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -2834,37 +2802,37 @@ button.active, button:hover {
   border-radius: var(--borderRadius2);
   transition: all 0.3s ease;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a i {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li > a i {
   line-height: 0;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active > a, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li.active > a, .sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover {
   color: #fff !important;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active > a::before, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover::before {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li.active > a::before, .sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover::before {
   opacity: 1;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active > a::after, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover::after {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li.active > a::after, .sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover::after {
   border-color: #fff !important;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.active > a .icon, .sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover .icon {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li.active > a .icon, .sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li > a:hover .icon {
   filter: brightness(50);
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.needLink.active > a::before {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li.needLink.active > a::before {
   width: calc(100% + 30px) !important;
   left: 0 !important;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.needLink.active > button::after {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li.needLink.active > button::after {
   border-color: #fff !important;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.needLink:has(button:hover) > a::before {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li.needLink:has(button:hover) > a::before {
   width: 30px;
   left: 100%;
   opacity: 1;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li.needLink:has(button:hover) > button::after {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li.needLink:has(button:hover) > button::after {
   border-color: #fff !important;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li li a {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li li a {
   display: flex;
   flex-grow: 1;
   align-items: center;
@@ -2874,27 +2842,83 @@ button.active, button:hover {
   line-height: 2;
   padding: 8px 12px 8px 48px;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li li a:not(:hover) {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li li a:not(:hover) {
   color: #333333;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul > li li li a::before {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li li li a::before {
   content: "";
   height: 1px;
   width: 12px;
   background: #555;
   margin: 0 3px;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul ul {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul ul {
   width: 100%;
   display: none;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul li {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul li {
   display: flex;
   flex-wrap: wrap;
   position: relative;
 }
-.sideNav nav#sideMenu .sideMenuContent .sideNavBox > ul a {
+.sideNav #sideMenu .sideMenuContent .sideNavBox > ul a {
   text-decoration: none;
+}
+@media screen and (max-width: 991px) {
+  .sideNav.typeA {
+    position: fixed;
+    z-index: 80;
+    left: 0;
+    top: var(--sideFixTop);
+    gap: 0;
+    height: calc(100vh - var(--sideFixTop) - 40px);
+  }
+}
+@media screen and (max-width: 991px) {
+  .sideNav.typeA button#sideNavBtn {
+    width: 30px;
+    position: fixed;
+    border-radius: 0 var(--borderRadius) var(--borderRadius) 0;
+    order: 4;
+    top: 0;
+  }
+}
+@media screen and (max-width: 991px) {
+  .sideNav.typeA #sideMenu {
+    display: none;
+    height: 100%;
+  }
+}
+.sideNav.typeB {
+  flex-direction: column;
+}
+.sideNav.typeB button#sideNavBtn {
+  width: 100%;
+  writing-mode: unset;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 8px 20px 8px 20px;
+}
+.sideNav.typeB button#sideNavBtn::before {
+  order: 2;
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: rotate(45deg);
+}
+.sideNav.typeB button#sideNavBtn.active::before {
+  transform: rotate(-135deg);
+}
+.sideNav.typeB #sideMenu {
+  width: 100%;
+}
+@media screen and (max-width: 991px) {
+  .sideNav.typeB #sideMenu {
+    display: none;
+  }
+}
+.sideNav.typeB #sideMenu .sideMenuContent {
+  width: 100%;
 }
 
 .breadcrumb ul {
@@ -3061,10 +3085,20 @@ button.active, button:hover {
   display: flex;
   flex-direction: column;
 }
+.contentSearchBox .searchContent fieldset.formList {
+  padding-left: 125px;
+  border: none;
+}
+.contentSearchBox .searchContent fieldset.formList legend {
+  position: absolute;
+  left: 0;
+}
 .contentSearchBox .searchContent .formList {
   padding: 12px 0;
   display: flex;
   gap: 5px;
+  position: relative;
+  margin: 0;
 }
 @media screen and (max-width: 767px) {
   .contentSearchBox .searchContent .formList {
@@ -3087,9 +3121,8 @@ button.active, button:hover {
   }
 }
 .contentSearchBox .searchContent .label {
-  max-width: 160px;
+  width: 120px;
   white-space: nowrap;
-  width: 30%;
 }
 .contentSearchBox .searchContent input[type=text],
 .contentSearchBox .searchContent textarea {
@@ -3122,6 +3155,11 @@ button.active, button:hover {
   padding: 0;
   list-style: none;
 }
+@media screen and (max-width: 767px) {
+  .tagBox ul li {
+    flex-grow: 1;
+  }
+}
 .tagBox ul a,
 .tagBox ul button {
   display: flex;
@@ -3141,23 +3179,16 @@ button.active, button:hover {
     padding: 4px 16px;
   }
 }
-.tagBox ul a::before,
-.tagBox ul button::before {
-  content: "";
-  width: 18px;
-  height: 18px;
-  background-image: url("../images/basic/icon/tag_dark.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
 .tagBox ul a.active, .tagBox ul a:hover,
 .tagBox ul button.active,
 .tagBox ul button:hover {
   color: #fff;
   background: #0156A2;
 }
-.tagBox ul a.active::before, .tagBox ul a:hover::before,
+.tagBox ul a.active i::before, .tagBox ul a.active::before, .tagBox ul a:hover i::before, .tagBox ul a:hover::before,
+.tagBox ul button.active i::before,
 .tagBox ul button.active::before,
+.tagBox ul button:hover i::before,
 .tagBox ul button:hover::before {
   filter: invert(100%);
 }
@@ -3247,6 +3278,11 @@ button.active, button:hover {
   justify-content: center;
   gap: 8px;
 }
+@media screen and (max-width: 767px) {
+  .pagination ul {
+    gap: 5px;
+  }
+}
 .pagination li.active a {
   color: #fff;
   background: #0156A2 !important;
@@ -3259,7 +3295,6 @@ button.active, button:hover {
   display: flex;
   width: 40px;
   height: 40px;
-  padding: 8px;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -3298,6 +3333,11 @@ button.active, button:hover {
 .pagination li[class*=Arrow].prevArrow a::before, .pagination li[class*=Arrow].nextArrow a::before {
   width: 12px;
   height: 12px;
+}
+@media screen and (max-width: 767px) {
+  .pagination li[class*=Arrow].firstArrow, .pagination li[class*=Arrow].lastArrow {
+    display: none;
+  }
 }
 .pagination li[class*=Arrow].firstArrow a::before {
   background-image: url("../images/basic/icon/first_page.svg");
@@ -3399,7 +3439,6 @@ button.active, button:hover {
 }
 .webSearch .formList {
   display: flex;
-  flex-wrap: wrap;
   gap: 5px;
 }
 .webSearch .formList input {
@@ -3409,6 +3448,9 @@ button.active, button:hover {
   .webSearch .formList > * {
     flex-grow: 1;
   }
+}
+.webSearch .formList button {
+  white-space: nowrap;
 }
 .webSearch .hotKeyword ul {
   margin: 0;
@@ -3621,7 +3663,10 @@ button.active, button:hover {
     display: block;
   }
 }
-#mobileMainMenuBtn::before {
+#mobileMainMenuBtn:focus-visible {
+  outline-offset: -2px !important;
+}
+#mobileMainMenuBtn::after, #mobileMainMenuBtn::before {
   content: "";
   position: absolute;
   left: 50%;
@@ -3631,19 +3676,20 @@ button.active, button:hover {
   height: 2px;
   background: #fff;
   box-shadow: #fff 0 7px 0 0, #fff 0 -7px 0 0;
-  transition: 0.2s linear;
+  transition: all 0.3s ease;
 }
 #mobileMainMenuBtn::after {
-  position: absolute;
-  content: "";
-  width: 20px;
-  height: 2px;
-  background: #0156A2;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  box-shadow: none;
   opacity: 0;
-  transition: 0.2s linear;
+  transition: all 0.3s ease;
+}
+#mobileMainMenuBtn.active::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+  box-shadow: none;
+}
+#mobileMainMenuBtn.active::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 #mobileMenu {
@@ -3651,10 +3697,10 @@ button.active, button:hover {
   background: #0156A2;
   position: fixed;
   left: 0;
-  top: 0;
+  top: 60px;
   bottom: 0;
   z-index: 99;
-  padding: 50px 20px 20px;
+  padding: 30px 20px 20px;
   display: none;
   transform: translateX(-100%);
   transition: all 0.3s ease;
@@ -4225,6 +4271,8 @@ button.active, button:hover {
   top: 50%;
   transform: translateY(-50%);
   border: none;
+  text-indent: -9999px;
+  overflow: hidden;
 }
 @media screen and (max-width: 1200px) {
   .swiperArrow {
@@ -4251,13 +4299,13 @@ button.active, button:hover {
     height: 30px;
   }
 }
-.swiperArrow.prevSlider {
+.swiperArrow.swiperPrev {
   left: 0;
 }
-.swiperArrow.nextSlider {
+.swiperArrow.swiperNext {
   right: 0;
 }
-.swiperArrow.nextSlider::before {
+.swiperArrow.swiperNext::before {
   transform: translate(-50%, -50%) scale(-1);
 }
 .swiperArrow.swiperArrow-disabled {
@@ -4528,13 +4576,13 @@ button.autoPlaySwitch:hover {
   transform: rotate(90deg);
   transform-origin: center top;
 }
-.marqueeSlider .swiperArrow.prevSlider {
+.marqueeSlider .swiperArrow.swiperPrev {
   left: auto;
 }
-.marqueeSlider .swiperArrow.nextSlider {
+.marqueeSlider .swiperArrow.swiperNext {
   transform: translateY(0%);
 }
-.marqueeSlider .swiperArrow.nextSlider::before {
+.marqueeSlider .swiperArrow.swiperNext::before {
   transform: rotate(-90deg);
   transform-origin: center left;
 }
@@ -4677,7 +4725,8 @@ button.autoPlaySwitch:hover {
   justify-content: flex-start;
   gap: 16px;
   font-weight: 500;
-  line-height: 1.7;
+  line-height: 1.4;
+  white-space: unset;
 }
 .accordion .accordionList .accordionBtn::before {
   content: "Q";
@@ -4690,15 +4739,20 @@ button.autoPlaySwitch:hover {
   display: flex;
   align-items: center;
 }
-.accordion .accordionList .accordionBtn span {
-  padding: 12px 0;
+.accordion .accordionList .accordionBtn > span {
+  word-break: break-all;
+  margin: 12px 0;
+  flex-grow: 1;
+  -webkit-line-clamp: 2;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .accordion .accordionList.active .accordionState::after {
   margin-top: 3px;
   transform: rotate(-135deg);
 }
 .accordion .accordionContent {
-  line-height: 1.45em;
   overflow: hidden;
 }
 .accordion .accordionContent.hidden {
@@ -4721,14 +4775,23 @@ button.autoPlaySwitch:hover {
   color: #333;
   font-size: 0.875rem;
 }
+@media screen and (max-width: 767px) {
+  .accordion .accordionState {
+    padding: 10px;
+    aspect-ratio: 1;
+  }
+  .accordion .accordionState span {
+    display: none;
+  }
+}
 .accordion .accordionState:after {
   content: "";
   border: 1.5px solid #555555;
   border-top: none;
   border-left: none;
   display: block;
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
   margin-top: -2px;
   transform: rotate(45deg);
 }
@@ -4736,11 +4799,12 @@ button.autoPlaySwitch:hover {
 .tabSet {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 15px;
 }
 .tabSet .tabBtnBox {
   overflow-x: auto;
   display: flex;
+  padding-bottom: 5px;
 }
 .tabSet .tabItems {
   display: flex;
@@ -5005,13 +5069,13 @@ main.innerPage {
   padding-top: 40px;
   background: #F8F8F8;
 }
-main .hasSide {
+main .hasSide .container {
   display: flex;
   justify-content: space-between;
   gap: 40px;
 }
 @media screen and (max-width: 991px) {
-  main .hasSide {
+  main .hasSide .container {
     flex-direction: column;
   }
 }
@@ -5052,14 +5116,12 @@ footer a {
 }
 footer .footerBox {
   padding: 28px 0;
-}
-footer .footerBox .container {
   display: flex;
   justify-content: space-between;
   gap: 20px;
 }
 @media screen and (max-width: 991px) {
-  footer .footerBox .container {
+  footer .footerBox {
     flex-direction: column;
   }
 }
@@ -5223,14 +5285,14 @@ section:last-child {
     gap: 8px;
   }
 }
-.blockTypeA ul.listBox a:not(:hover) h3 {
+.blockTypeA ul.listBox a:not(:hover) .title {
   color: #333333;
 }
 .blockTypeA ul.listBox time {
   color: #555555;
   line-height: 2;
 }
-.blockTypeA ul.listBox h3 {
+.blockTypeA ul.listBox .title {
   -webkit-line-clamp: 4;
   display: -webkit-box !important;
   -webkit-box-orient: vertical;
@@ -5271,7 +5333,7 @@ section:last-child {
     gap: 8px;
   }
 }
-.blockTypeB ul.listBox li a:not(:hover) h3 {
+.blockTypeB ul.listBox li a:not(:hover) .title {
   color: #333333;
 }
 .blockTypeB ul.listBox li i {
@@ -5294,7 +5356,7 @@ section:last-child {
   -o-object-fit: contain;
      object-fit: contain;
 }
-.blockTypeB ul.listBox li h3 {
+.blockTypeB ul.listBox li .title {
   -webkit-line-clamp: 2;
   display: -webkit-box !important;
   -webkit-box-orient: vertical;
@@ -5603,14 +5665,14 @@ section:last-child {
     gap: 8px;
   }
 }
-.blockTypeI ul.listBox a:not(:hover) h3 {
+.blockTypeI ul.listBox a:not(:hover) .title {
   color: #333333;
 }
 .blockTypeI ul.listBox time {
   color: #555555;
   line-height: 2;
 }
-.blockTypeI ul.listBox h3 {
+.blockTypeI ul.listBox .title {
   -webkit-line-clamp: 1;
   display: -webkit-box !important;
   -webkit-box-orient: vertical;
@@ -5679,7 +5741,7 @@ section:last-child {
     text-align: center;
   }
 }
-.blockTypeJ ul.listBox li a:not(:hover) h3 {
+.blockTypeJ ul.listBox li a:not(:hover) .title {
   color: #333333;
 }
 .blockTypeJ ul.listBox li i {
@@ -5701,7 +5763,7 @@ section:last-child {
   -o-object-fit: contain;
      object-fit: contain;
 }
-.blockTypeJ ul.listBox li h3 {
+.blockTypeJ ul.listBox li .title {
   margin: 0;
   font-size: 1.125rem;
   line-height: 1.4;
@@ -5732,11 +5794,6 @@ section:last-child {
 @media screen and (max-width: 767px) {
   .np ul {
     gap: 10px;
-  }
-}
-@media screen and (max-width: 767px) {
-  .np ul .col {
-    flex: 1 1 100%;
   }
 }
 .np a.card {
@@ -6064,6 +6121,7 @@ section:last-child {
 
 .cp {
   color: #111;
+  font-size: 1.125rem;
 }
 .cp .template {
   display: flex;

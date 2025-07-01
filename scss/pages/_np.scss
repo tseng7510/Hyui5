@@ -5,12 +5,6 @@
     @include screen('mobile') {
       gap: 10px;
     }
-
-    .col {
-      @include screen('mobile') {
-        flex: 1 1 100%;
-      }
-    }
   }
 
   a.card {

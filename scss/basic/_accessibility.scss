@@ -4,6 +4,14 @@
   outline-offset: 1px;
 }
 
+header h1 a,
+#mobileSearchBtn,
+#mobileMainMenuBtn {
+  &:focus-visible {
+    outline-offset: -2px !important;
+  }
+}
+
 // 導盲磚
 .accessKeyItem {
   position: absolute;

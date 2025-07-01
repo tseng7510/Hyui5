@@ -3,15 +3,6 @@
   align-items: flex-start;
   gap: 12px;
 
-  @include screen('tablet') {
-    position: fixed;
-    z-index: 80;
-    left: 0;
-    top: var(--sideFixTop);
-    gap: 0;
-    height: calc(100vh - var(--sideFixTop) - 40px);
-  }
-
   button#sideNavBtn {
     width: 35px;
     padding: 34px 8px 12px 8px;
@@ -30,13 +21,6 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     transition: none;
 
-    @include screen('tablet') {
-      width: 30px;
-      position: fixed;
-      border-radius: 0 var(--borderRadius) var(--borderRadius) 0;
-      order: 4;
-      top: 0;
-    }
 
     &::before {
       content: '';
@@ -59,7 +43,7 @@
     }
   }
 
-  nav#sideMenu {
+  #sideMenu {
     flex-grow: 1;
     overflow: hidden;
     border-radius: var(--borderRadius);
@@ -67,11 +51,6 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     position: sticky;
     top: var(--sideFixTop);
-
-    @include screen('tablet') {
-      display: none;
-      height: 100%;
-    }
 
     .sideMenuContent {
       width: 260px;
@@ -299,6 +278,72 @@
             text-decoration: none;
           }
         }
+      }
+    }
+  }
+
+  &.typeA {
+    @include screen('tablet') {
+      position: fixed;
+      z-index: 80;
+      left: 0;
+      top: var(--sideFixTop);
+      gap: 0;
+      height: calc(100vh - var(--sideFixTop) - 40px);
+    }
+
+    button#sideNavBtn {
+      @include screen('tablet') {
+        width: 30px;
+        position: fixed;
+        border-radius: 0 var(--borderRadius) var(--borderRadius) 0;
+        order: 4;
+        top: 0;
+      }
+    }
+
+    #sideMenu {
+      @include screen('tablet') {
+        display: none;
+        height: 100%;
+      }
+    }
+  }
+
+  &.typeB {
+    flex-direction: column;
+
+    button#sideNavBtn {
+      width: 100%;
+      writing-mode: unset;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 8px 20px 8px 20px;
+
+      &::before {
+        order: 2;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: rotate(45deg);
+      }
+
+      &.active {
+        &::before {
+          transform: rotate(-135deg);
+        }
+      }
+    }
+
+    #sideMenu {
+      width: 100%;
+
+      @include screen('tablet') {
+        display: none;
+      }
+
+      .sideMenuContent {
+        width: 100%;
       }
     }
   }

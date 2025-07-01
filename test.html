@@ -4,23 +4,612 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <textarea id="myTextarea" oninput="limitTextareaLength(this, 20)"></textarea>
-    <div id="textLength">0/20</div>
+    <header>
+      <a class="accessKeyItem" href="#aU" id="aU" accesskey="U" aria-label="功能區塊">:::</a>
+      <div class="headTop">
+        <div class="container">
+          <!-- 手機版主選單按鈕 Start -->
+          <button id="mobileMainMenuBtn" type="button">主選單</button>
+          <!-- 手機版主選單按鈕 End -->
+          <!-- 網站標題 Start -->
+          <h1>
+            <a href="index.html"><img src="images/footer_logo.png" alt="網站標題" />HyUI<span>Kit5</span></a>
+          </h1>
+          <!-- 網站標題 End -->
+          <!-- navigation Start -->
+          <nav class="topNav" role="navigation" aria-label="頁首功能列">
+            <!-- navList Start -->
+            <div class="navList">
+              <ul>
+                <li><a href="#">回首頁</a></li>
+                <li><a href="#">網站導覽</a></li>
+                <li><a href="#">常見問答</a></li>
+              </ul>
+            </div>
+            <!-- navList End -->
+            <!-- subNavList Start -->
+            <div class="subNavList">
+              <!-- fontSize Start -->
+              <div class="fontSize sliderFn">
+                <button type="button">文字大小</button>
+                <ul>
+                  <li><button type="button" class="smallSize">小</button></li>
+                  <li><button type="button" class="mediumSize">中</button></li>
+                  <li><button type="button" class="largeSize">大</button></li>
+                </ul>
+              </div>
+              <!-- fontSize End -->
+              <!-- language Start -->
+              <div class="language sliderFn">
+                <button type="button">語言選擇</button>
+                <ul id="languageList">
+                  <li><a href="#">繁體中文</a></li>
+                  <li><a href="#">简体中文</a></li>
+                  <li><a href="#">ENGLISH</a></li>
+                </ul>
+              </div>
+              <!-- language End -->
+              <!-- topSearch 按鈕 Start -->
+              <div class="topSearch sliderFn">
+                <button id="topSearchBtn" type="button">網站搜尋</button>
+              </div>
+              <!-- topSearch 按鈕 End -->
+            </div>
+            <!-- subNavList End -->
+          </nav>
+          <!-- navigation End -->
+          <!-- topSearch 手機版按鈕 Start -->
+          <button id="mobileSearchBtn" type="button" aria-label="搜尋按鈕"></button>
+          <!-- topSearch 手機版按鈕 End -->
+          <!-- topSearch 內容 Start -->
+          <div class="webSearch" role="search">
+            <div class="webSearchContent">
+              <div class="formList">
+                <label for="topSearchInput" class="srOnly">搜尋</label>
+                <input name="topSearchInput" id="topSearchInput" type="text" placeholder="請輸入文字" accesskey="S" aria-label="搜尋網站內容" />
+                <button type="button" class="btnPrimary">查詢</button>
+                <button type="button">進階搜尋</button>
+              </div>
+              <div class="hotKeyword">
+                <ul>
+                  <li><a href="#">熱門熱門</a></li>
+                  <li><a href="#">查詢</a></li>
+                  <li><a href="#">字詞三</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- topSearch 內容 End -->
+        </div>
+      </div>
+      <!-- noscript -->
+      <noscript>
+        您的瀏覽器不支援JavaScript語法，JavaScript語法並不影響內容的陳述。您可使用按鍵盤上的Ctrl鍵+ (+)鍵放大/(-)鍵縮小來改變字型大小；回到上一頁可使用瀏覽器提供的 Alt+左方向鍵(←) 快速鍵功能；列印可使用瀏覽器提供的(Ctrl+P)功能。您的瀏覽器，不支援script語法，若您的瀏覽器無法支援請點選此超連結
+        <a href="#">網站導覽</a>
+      </noscript>
+      <!-- menu Start -->
+      <!-- data-close-btn 提供手機主選單關閉按鈕抓取用-->
+      <div class="mainMenu" data-close-btn="關閉選單">
+        <div class="container">
+          <nav class="menu" role="navigation" aria-label="主選單">
+            <ul>
+              <li>
+                <a href="#">第一層選單</a>
+                <ul>
+                  <li><a href="#">第二層選單</a></li>
+                  <li><a href="#">第二層選單</a></li>
+                  <li><a href="#">第二層選單</a></li>
+                  <li><a href="#">第二層選單</a></li>
+                </ul>
+              </li>
+              <li><a href="http://www.google.com">第一層有連結</a></li>
+              <li>
+                <a href="http://www.google.com">第一層有連結</a>
+                <ul>
+                  <li><a href="http://www.google.com">第二層有連結</a></li>
+                  <li><a href="#">第二層選單</a></li>
+                  <li><a href="#">第二層選單</a></li>
+                  <li><a href="#">第二層選單</a></li>
+                  <li><a href="#">第二層選單</a></li>
+                  <li><a href="#">第二層選單</a></li>
+                  <li><a href="#">第二層選單</a></li>
+                  <li><a href="#">第二層選單</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">第一層選單</a>
+                <ul>
+                  <li><a href="#">第二層選單</a></li>
+                  <li><a href="#">第二層選單</a></li>
+                  <li>
+                    <a href="http://www.google.com">第二層有連結</a>
+                    <ul>
+                      <li>
+                        <a href="http://www.google.com">第三層選單有下層</a>
+                        <ul>
+                          <li><a href="#">第四層選單</a></li>
+                          <li><a href="#">第四層選單</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="http://www.google.com">第三層選單有連結</a>
+                      </li>
+                      <li><a href="#">第三層選單</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">第二層選單</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">第一層選單</a>
+                <ul>
+                  <li><a href="#">第二層選單</a></li>
+                  <li>
+                    <a href="#">第二層選單</a>
+                    <ul>
+                      <li><a href="#">第三層選單</a></li>
+                      <li>
+                        <a href="#">第三層選單</a>
+                        <ul>
+                          <li>
+                            <a href="http://www.google.com">第四層選單有下層</a>
+                            <ul>
+                              <li><a href="#">第五層選單</a></li>
+                              <li><a href="#">第五層選單</a></li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="http://www.google.com">第四層選單有連結</a>
+                          </li>
+                          <li><a href="#">第四層選單</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#">第三層選單</a></li>
+                      <li><a href="#">第三層選單</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">第二層選單</a></li>
+                  <li><a href="#">第二層選單</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">第一層選單</a>
+                <ul>
+                  <li><a href="#">第二層選單</a></li>
+                  <li>
+                    <a href="#">第二層選單</a>
+                    <ul>
+                      <li>
+                        <a href="http://www.google.com">第三層選單有下層</a>
+                        <ul>
+                          <li><a href="#">第四層選單</a></li>
+                          <li><a href="#">第四層選單</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="http://www.google.com">第三層選單有連結</a>
+                      </li>
+                      <li><a href="#">第三層選單</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">第二層選單</a></li>
+                  <li><a href="#">第二層選單</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- menu End -->
+    </header>
 
     <script>
-      function limitTextareaLength(element, maxLength) {
-        let text = element.value;
-        let currentLength = text.length;
-        let textLengthDiv = document.getElementById('textLength');
-
-        if (currentLength > maxLength) {
-          element.value = text.slice(0, maxLength);
-          currentLength = maxLength;
-        }
-        textLengthDiv.textContent = currentLength + '/' + maxLength;
+      const setRWDWidth = '1000';
+      const overlay = document.createElement('div');
+      overlay.classList.add('overlay');
+      document.body.insertAdjacentElement('afterbegin', overlay);
+      // 亂數數字
+      function randomFloor(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
       }
+
+      // 亂數英文字
+      function randomLetter(max, letter = 'abcdefghijklmnopqrstuvwxyz') {
+        let text = '';
+
+        for (let i = 0; i < max; i++) text += letter.charAt(Math.floor(Math.random() * letter.length));
+        return text;
+      }
+      // 改變標籤
+
+      function jsFadeIn(element, time = 200) {
+        let ele = window.getComputedStyle(element);
+        let display = ele.display;
+        let speed = time;
+
+        if (display === 'none') {
+          display = 'block';
+          let opacity = 0;
+          element.style.display = display;
+          element.style.opacity = 0;
+
+          element.style.transitionProperty = 'opacity';
+          element.style.transitionDuration = `${speed}ms`;
+          setTimeout(() => {
+            element.style.opacity = `1`;
+          }, 0);
+          setTimeout(() => {
+            element.style.display = 'block';
+            element.style.removeProperty('opacity');
+            element.style.removeProperty('transition-duration');
+            element.style.removeProperty('transition-property');
+          }, speed);
+        }
+      }
+
+      function jsFadeOut(element, time = 200) {
+        let ele = window.getComputedStyle(element);
+        let display = ele.display;
+        let speed = time;
+
+        if (display !== 'none') {
+          element.style.transitionProperty = 'opacity';
+          element.style.transitionDuration = `${speed}ms`;
+          setTimeout(() => {
+            element.style.opacity = `0`;
+          }, 0);
+          setTimeout(() => {
+            element.style.display = 'none';
+            element.style.removeProperty('opacity');
+            element.style.removeProperty('transition-duration');
+            element.style.removeProperty('transition-property');
+          }, speed);
+        }
+      }
+      // 改變標籤
+      function changeTag(oldTag, newTag) {
+        // 檢查 oldTag 是否存在於 DOM 中
+        if (!oldTag || !oldTag.parentNode) return;
+
+        const newTagElem = document.createElement(newTag);
+        // 複製所有屬性
+        for (const attr of oldTag.attributes) {
+          newTagElem.setAttribute(attr.name, attr.value);
+        }
+
+        // 移動所有子節點
+        while (oldTag.firstChild) {
+          newTagElem.appendChild(oldTag.firstChild);
+        }
+
+        // 使用 replaceWith 替換舊標籤，語法更簡潔
+        oldTag.replaceWith(newTagElem);
+      }
+
+      function mainMenu(obj) {
+        // ----- 初始設定
+        const body = document.querySelector('body');
+        const { sticky = true, needLink = false, mega = false } = obj;
+        const mainMenu = document.querySelector('.mainMenu');
+        if (!mainMenu) return;
+
+        const closeBtnText = mainMenu.dataset.closeBtn || '關閉選單';
+        const menu = mainMenu.querySelector('nav');
+        if (!menu) return;
+
+        // ----- Helper Functions
+
+        // 檢查子選單是否超出視窗邊界
+        function _checkMenuBoundary(targetLi) {
+          if (mega) return;
+          // 抓出該項目以下有多少層級
+          const nextUl = e.querySelectorAll('ul');
+          //確定最後一層ul的父層li共有幾個
+          const hasChildLi = jsParents(nextUl[nextUl.length - 1], 'li');
+
+          // 如果只有一層就不需要
+          if (hasChildLi.length <= 1) return;
+
+          // 確定選項的寬度 * 選項有幾層，由於第一層是直接向下不會左右展開，所以需要-1
+          const checkUlWidth = hasChildLi[0].offsetWidth * hasChildLi.length - 1 || 0;
+
+          //查詢第一層的位置
+          const objectRect = hasChildLi[0].getBoundingClientRect();
+
+          // 如果第一層左邊 + 其他層寬度超過視窗的寬度，則新增leftSlider
+          if (window.outerWidth < objectRect.left + checkUlWidth) {
+            hasChildLi[0].classList.add('leftSlider');
+          } else {
+            hasChildLi[0].classList.remove('leftSlider');
+          }
+        }
+
+        // 顯示手機版側邊欄
+        function _showSidebar(mobileMenu, mobileMainMenuBtn, mobileMainMenuClose) {
+          mobileMenu.style.opacity = '1';
+          mobileMenu.style.display = 'block';
+          mobileMainMenuBtn?.setAttribute('aria-expanded', 'true');
+          mobileMainMenuBtn?.setAttribute('aria-pressed', 'true');
+
+          setTimeout(() => {
+            mobileMenu.style.transform = 'translateX(0px)';
+            mobileMenu.classList.add('open');
+          }, 0);
+          mobileMainMenuClose.focus();
+          body.classList.add('noscroll');
+          jsFadeIn(overlay);
+          overlay.style.zIndex = '90';
+          overlay.style.top = '0';
+        }
+
+        // 隱藏手機版側邊欄
+        function _hideSidebar(mobileMenu, mobileMainMenuBtn) {
+          jsFadeOut(overlay);
+          mobileMenu.style.transform = 'translateX(-100%)';
+          mobileMainMenuBtn?.setAttribute('aria-expanded', 'false');
+          mobileMainMenuBtn?.setAttribute('aria-pressed', 'false');
+
+          setTimeout(() => {
+            mobileMenu.removeAttribute('style');
+          }, 300);
+          mobileMenu.classList.remove('open');
+          body.classList.remove('noscroll');
+          mobileMainMenuBtn?.focus();
+          overlay.style.zIndex = '';
+        }
+
+        // 手機版子選單開合
+        function _toggleMobileAccordion(item) {
+          const parentLi = item.closest('li');
+          if (!parentLi.classList.contains('hasChild')) return;
+
+          const content = parentLi.querySelector('ul');
+          const isExpanded = parentLi.classList.contains('active');
+
+          // 自動關閉同層其他已開啟的選單
+          if (!isExpanded) {
+            const parentUl = parentLi.closest('ul');
+            parentUl.querySelectorAll(':scope > .hasChild.active').forEach((siblingLi) => {
+              siblingLi.classList.remove('active');
+              siblingLi.querySelector(':scope > a, :scope > .nextLvl').setAttribute('aria-expanded', 'false');
+              jsSlideUp(siblingLi.querySelector(':scope > ul'));
+            });
+          }
+
+          parentLi.classList.toggle('active');
+          item.setAttribute('aria-expanded', !isExpanded);
+          jsSlideToggle(content);
+        }
+
+        // -------------------------------------------------------------------------------------------
+        // ----- 桌面版選單初始化與事件綁定
+        // -------------------------------------------------------------------------------------------
+        function _initDesktopMenu() {
+          menu.querySelectorAll('li ul').forEach((ul) => ul.parentElement.classList.add('hasChild'));
+
+          if (mega) {
+            menu.classList.add('megaMenu');
+            menu.classList.remove('menu');
+            menu.querySelectorAll('ul ul .hasChild > a').forEach((a) => a.removeAttribute('aria-haspopup'));
+          }
+
+          menu.querySelectorAll('.hasChild').forEach((li) => {
+            const id = `menu_${randomLetter(3)}${randomFloor(0, 999)}`;
+            const childA = li.querySelector('a');
+            const childUl = li.querySelector('ul');
+            childA.setAttribute('aria-expanded', 'false');
+            childA.setAttribute('aria-haspopup', 'true');
+            childA.setAttribute('id', id);
+            childA.setAttribute('aria-controls', `${id}_con`);
+            childUl.setAttribute('id', `${id}_con`);
+            childUl.setAttribute('aria-labelledby', id);
+          });
+
+          // --- 使用事件委派 ---
+          menu.addEventListener(
+            'mouseenter',
+            (e) => {
+              const targetLi = e.target.closest('li.hasChild');
+              if (!targetLi || window.outerWidth <= setRWDWidth) return;
+              targetLi.classList.add('active');
+              targetLi.querySelector('a').setAttribute('aria-expanded', 'true');
+              _checkMenuBoundary(targetLi);
+            },
+            true
+          );
+
+          menu.addEventListener(
+            'mouseleave',
+            (e) => {
+              const targetLi = e.target.closest('li.hasChild');
+              if (!targetLi || window.outerWidth <= setRWDWidth) return;
+              targetLi.classList.remove('active');
+              targetLi.querySelector('a').setAttribute('aria-expanded', 'false');
+              targetLi.querySelector('ul').style.removeProperty('top');
+            },
+            true
+          );
+
+          // --- 鍵盤無障礙操作 ---
+          menu.addEventListener('focusin', (e) => {
+            if (window.outerWidth <= setRWDWidth || !e.target.matches('a')) return;
+            const parentLi = e.target.closest('li');
+            if (!parentLi) return;
+
+            parentLi.classList.add('active');
+            parentLi.querySelector('a').setAttribute('aria-expanded', 'true');
+            _checkMenuBoundary(parentLi);
+
+            const siblings = [...parentLi.parentElement.children].filter((child) => child !== parentLi);
+            siblings.forEach((li) => {
+              li.classList.remove('active');
+              if (li.classList.contains('hasChild')) {
+                li.querySelector('a').setAttribute('aria-expanded', 'false');
+              }
+            });
+          });
+
+          const lastA = Array.from(menu.querySelectorAll('a')).pop();
+          lastA?.addEventListener('focusout', () => {
+            if (window.outerWidth > setRWDWidth) {
+              menu.querySelectorAll('li.active').forEach((li) => li.classList.remove('active'));
+            }
+          });
+        }
+
+        // -------------------------------------------------------------------------------------------
+        // ----- 手機版選單初始化與事件綁定
+        // -------------------------------------------------------------------------------------------
+        function _initMobileMenu() {
+          const header = document.querySelector('header');
+          const mobileMenu = document.createElement('nav');
+          mobileMenu.id = 'mobileMenu';
+          mobileMenu.setAttribute('aria-labelledby', 'mobileMainMenuBtn mobileMainMenuClose');
+
+          const mobileMainMenuBox = document.createElement('div');
+          mobileMainMenuBox.className = 'mobileMainMenuBox';
+
+          const mobileMainMenuClose = document.createElement('button');
+          mobileMainMenuClose.id = 'mobileMainMenuClose';
+          mobileMainMenuClose.innerHTML = closeBtnText;
+
+          const mainMenuClone = menu.cloneNode(true);
+          mainMenuClone.className = 'mobileMainMenu';
+          changeTag(mainMenuClone, 'div');
+
+          const topNav = document.querySelector('.topNav');
+          if (topNav) {
+            const topNavClone = topNav.cloneNode(true);
+            topNavClone.querySelector('.fontSize')?.remove();
+            topNavClone.querySelector('.topSearch')?.remove();
+            topNavClone.querySelector('#aU')?.remove();
+            mobileMainMenuBox.append(topNavClone);
+            changeTag(topNavClone, 'div');
+          }
+
+          mobileMainMenuBox.prepend(mainMenuClone);
+          mobileMainMenuBox.append(mobileMainMenuClose);
+          mobileMenu.append(mobileMainMenuBox);
+          header?.insertAdjacentElement('beforebegin', mobileMenu);
+
+          const mobileMainMenuBtn = document.querySelector('#mobileMainMenuBtn');
+          mobileMainMenuBtn?.setAttribute('aria-controls', 'mobileMenu');
+          mobileMainMenuBtn?.setAttribute('aria-expanded', 'false');
+
+          // --- 事件綁定 ---
+          mobileMainMenuBtn?.addEventListener('click', (e) => {
+            e.preventDefault();
+            _showSidebar(mobileMenu, mobileMainMenuBtn, mobileMainMenuClose);
+          });
+          mobileMainMenuClose.addEventListener('click', () => _hideSidebar(mobileMenu, mobileMainMenuBtn));
+          overlay.addEventListener('click', () => _hideSidebar(mobileMenu, mobileMainMenuBtn));
+
+          // --- 子選單設定 (使用事件委派) ---
+          mainMenuClone.addEventListener('click', (e) => {
+            const control = e.target.closest('a[role="button"], button.nextLvl');
+            if (!control) return;
+            if (!needLink && control.tagName === 'A') e.preventDefault();
+            _toggleMobileAccordion(control);
+          });
+
+          mainMenuClone.querySelectorAll('li.hasChild').forEach((li) => {
+            const id = `mobileMenu_${randomLetter(3)}${randomFloor(0, 999)}`;
+            const childA = li.querySelector('a');
+            const childUl = li.querySelector('ul');
+            let control = childA;
+
+            if (needLink) {
+              li.classList.add('needLink');
+              const nextBtn = document.createElement('button');
+              nextBtn.className = 'nextLvl';
+              childA.after(nextBtn);
+              control = nextBtn;
+            } else {
+              childA.setAttribute('role', 'button');
+            }
+
+            control.setAttribute('aria-expanded', 'false');
+            control.setAttribute('aria-haspopup', 'true');
+            control.id = id;
+            control.setAttribute('aria-controls', `${id}_con`);
+            childUl.id = `${id}_con`;
+            childUl.setAttribute('aria-labelledby', id);
+          });
+
+          // --- 鍵盤無障礙 ---
+          const allMobileMenuTarget = mobileMenu.querySelectorAll('a,button,input,select');
+          const firstFocusable = allMobileMenuTarget[0];
+          body.addEventListener('keydown', (e) => {
+            if (mobileMenu.classList.contains('open')) {
+              if (e.code === 'Escape') _hideSidebar(mobileMenu, mobileMainMenuBtn);
+              if (e.code === 'Tab' && !e.shiftKey && e.target === mobileMainMenuClose) {
+                e.preventDefault();
+                firstFocusable?.focus();
+              }
+              if (e.code === 'Tab' && e.shiftKey && e.target === firstFocusable) {
+                e.preventDefault();
+                mobileMainMenuClose.focus();
+              }
+            }
+          });
+
+          window.addEventListener('resize', () => {
+            if (window.outerWidth > setRWDWidth) {
+              body.classList.remove('noscroll');
+              _hideSidebar(mobileMenu, mobileMainMenuBtn);
+            }
+          });
+        }
+
+        // -------------------------------------------------------------------------------------------
+        // ----- 置頂選單初始化
+        // -------------------------------------------------------------------------------------------
+        function _initSticky() {
+          if (!sticky) return;
+          const header = document.querySelector('header');
+          const headTop = document.querySelector('.headTop');
+          if (!header || !headTop || !menu) return;
+
+          const headerMargin = parseInt(window.getComputedStyle(header).marginBottom);
+          let isSticky = false;
+
+          const handleScroll = () => {
+            if (window.outerWidth <= setRWDWidth) return;
+            const shouldBeSticky = headTop.clientHeight < window.scrollY;
+            if (shouldBeSticky !== isSticky) {
+              isSticky = shouldBeSticky;
+              menu.classList.toggle('sticky', isSticky);
+              headTop.style.marginBottom = isSticky ? `${headerMargin + menu.clientHeight}px` : `${headerMargin}px`;
+            }
+          };
+
+          const handleResize = () => {
+            if (window.outerWidth <= setRWDWidth) {
+              menu.classList.remove('sticky');
+              headTop.style.removeProperty('margin-bottom');
+              isSticky = false;
+            }
+          };
+
+          window.addEventListener('scroll', handleScroll);
+          window.addEventListener('resize', handleResize);
+        }
+
+        // -------------------------------------------------------------------------------------------
+        // ----- 執行初始化
+        // -------------------------------------------------------------------------------------------
+        _initDesktopMenu();
+        _initMobileMenu();
+        _initSticky();
+      }
+      mainMenu({
+        sticky: true, // 是否置頂
+        mega: false, // 是否megaMenu
+        needLink: false, // 如果同時需要連結和下層功能時(手機版選單)
+      });
     </script>
   </body>
 </html>

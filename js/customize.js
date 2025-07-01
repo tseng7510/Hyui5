@@ -8,6 +8,7 @@ mainMenu({
 // 側邊選單
 sideNav({
   needLink: true, // 如果同時需要連結和下層功能時
+  floatType: true, // 切換是否由左側展開或是下方展開
 });
 
 // tab功能
@@ -46,15 +47,13 @@ window.addEventListener('load', () => {
   const multipleSlider = document.querySelectorAll('.blockTypeG .multipleSlider');
 
   multipleSlider.forEach((item, index) => {
-    item.classList.add(`ms${index}`);
-
-    let multipleSwiper = new Swiper(`.blockTypeG .ms${index} .swiper`, {
+    let multipleSwiper = new Swiper(item.querySelector('.swiper'), {
       slideToClickedSlide: true,
       slidesPerView: 5,
       watchSlidesProgress: true,
       navigation: {
-        nextEl: `.blockTypeG .ms${index} .nextSlider`,
-        prevEl: `.blockTypeG .ms${index} .prevSlider`,
+        nextEl: item.querySelector('.swiperNext'),
+        prevEl: item.querySelector('.swiperPrev'),
         disabledClass: 'swiperArrow-disabled', //不可點選樣式
       },
       autoplay: {
@@ -62,9 +61,7 @@ window.addEventListener('load', () => {
       },
       on: {
         init: function (swiper) {
-          console.log(swiper);
-
-          swiperAutoPlaysFn(swiper);
+          swiperA11Fn(swiper);
         },
       },
       breakpoints: {
@@ -93,8 +90,8 @@ window.addEventListener('load', () => {
     },
     // 切換箭頭
     navigation: {
-      nextEl: '.mpSlider .nextSlider', //自行設定樣式
-      prevEl: '.mpSlider .prevSlider', //自行設定樣式
+      nextEl: '.mpSlider .swiperNext', //自行設定樣式
+      prevEl: '.mpSlider .swiperPrev', //自行設定樣式
       disabledClass: 'swiperArrow-disabled', //不可點選樣式
     },
     autoplay: {
@@ -102,7 +99,6 @@ window.addEventListener('load', () => {
     },
     on: {
       init: function (swiper) {
-        swiperAutoPlaysFn(swiper);
         swiperA11Fn(swiper);
       },
     },
@@ -116,8 +112,8 @@ window.addEventListener('load', () => {
     loop: false,
     // 切換箭頭
     navigation: {
-      nextEl: '.cpSlider .nextSlider', //自行設定樣式
-      prevEl: '.cpSlider .prevSlider', //自行設定樣式
+      nextEl: '.cpSlider .swiperNext', //自行設定樣式
+      prevEl: '.cpSlider .swiperPrev', //自行設定樣式
       disabledClass: 'swiperArrow-disabled', //不可點選樣式
     },
     breakpoints: {
@@ -136,7 +132,7 @@ window.addEventListener('load', () => {
     },
     on: {
       init: function (swiper) {
-        swiperAutoPlaysFn(swiper);
+        swiperA11Fn(swiper);
       },
     },
   });
@@ -147,8 +143,8 @@ window.addEventListener('load', () => {
     // 切換點
     // 切換箭頭
     navigation: {
-      nextEl: '.marqueeSlider .nextSlider', //自行設定樣式
-      prevEl: '.marqueeSlider .prevSlider', //自行設定樣式
+      nextEl: '.marqueeSlider .swiperNext', //自行設定樣式
+      prevEl: '.marqueeSlider .swiperPrev', //自行設定樣式
       disabledClass: 'swiperArrow-disabled', //不可點選樣式
     },
     autoplay: {
@@ -156,7 +152,7 @@ window.addEventListener('load', () => {
     },
     on: {
       init: function (swiper) {
-        swiperAutoPlaysFn(swiper);
+        swiperA11Fn(swiper);
       },
     },
   });
@@ -184,17 +180,9 @@ window.addEventListener('load', () => {
         slidesPerView: 4,
         watchSlidesVisibility: true,
         navigation: {
-          nextEl: '.navSlider .nextSlider',
-          prevEl: '.navSlider .prevSlider',
+          nextEl: '.navSlider .swiperNext',
+          prevEl: '.navSlider .swiperPrev',
           disabledClass: 'swiperArrow-disabled', //不可點選樣式
-        },
-        on: {
-          init: function (swiper) {
-            swiperA11Fn(swiper);
-          },
-          setTransition: function (swiper) {
-            swiperA11Fn(swiper);
-          },
         },
         breakpoints: {
           100: {
@@ -212,7 +200,7 @@ window.addEventListener('load', () => {
     },
     on: {
       init: function (swiper) {
-        swiperAutoPlaysFn(swiper);
+        swiperA11Fn(swiper);
       },
     },
   });
@@ -226,8 +214,8 @@ window.addEventListener('load', () => {
     loop: false,
     // 切換箭頭
     navigation: {
-      nextEl: '.linkSlider .nextSlider', //自行設定樣式
-      prevEl: '.linkSlider .prevSlider', //自行設定樣式
+      nextEl: '.linkSlider .swiperNext', //自行設定樣式
+      prevEl: '.linkSlider .swiperPrev', //自行設定樣式
       disabledClass: 'swiperArrow-disabled', //不可點選樣式
     },
     breakpoints: {
@@ -246,7 +234,6 @@ window.addEventListener('load', () => {
     },
     on: {
       init: function (swiper) {
-        swiperAutoPlaysFn(swiper);
         swiperA11Fn(swiper);
       },
     },

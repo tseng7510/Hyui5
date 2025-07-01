@@ -20,7 +20,8 @@
       justify-content: flex-start;
       gap: 16px;
       font-weight: 500;
-      line-height: 1.7;
+      line-height: 1.4;
+      white-space: unset;
 
       &::before {
         content: 'Q';
@@ -34,8 +35,11 @@
         align-items: center;
       }
 
-      span {
-        padding: 12px 0;
+      & > span {
+        word-break: break-all;
+        margin: 12px 0;
+        flex-grow: 1;
+        @include lineClamp(2);
       }
     }
 
@@ -51,7 +55,6 @@
 
 
   .accordionContent {
-    line-height: 1.45em;
     overflow: hidden;
 
     &.hidden {
@@ -77,14 +80,23 @@
     color: #333;
     font-size: Rem(14);
 
+    @include screen('mobile') {
+      padding: 10px;
+      aspect-ratio: 1;
+
+      span {
+        display: none;
+      }
+    }
+
     &:after {
       content: '';
       border: 1.5px solid #555555;
       border-top: none;
       border-left: none;
       display: block;
-      width: 4px;
-      height: 4px;
+      width: 6px;
+      height: 6px;
       margin-top: -2px;
       transform: rotate(45deg);
     }

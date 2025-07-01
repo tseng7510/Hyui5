@@ -34,6 +34,9 @@
 
       .formList {
         @include screen('mobile') {
+          padding-left: 0 !important;
+          padding-top: 20px !important;
+
           .formListTitle {
             width: 100% !important;
           }
@@ -53,6 +56,11 @@
           @include screen('mobile') {
             flex-direction: column !important;
             gap: 8px;
+            align-items: stretch;
+
+            legend {
+              margin-bottom: 5px;
+            }
           }
         }
 
@@ -71,8 +79,12 @@
             width: 100%;
           }
 
+          &:first-child {
+            padding-top: 0;
+          }
+
           legend {
-            top: 10px;
+            top: 13px;
           }
 
           & + .formList {
@@ -81,6 +93,11 @@
         }
       }
 
+      .inline {
+        legend {
+          top: 20px;
+        }
+      }
     }
   }
 
@@ -373,10 +390,7 @@
       }
     }
 
-    .select,
-    input:not([type="checkBox"], [type="radio"]),
-    select,
-    textarea {
+    .select {
       flex-grow: 1;
     }
   }
@@ -398,13 +412,14 @@
 
       .legendBox {
         flex-shrink: 0;
+        flex-grow: 1;
       }
 
       legend {
         width: var(--titleWidth);
         position: absolute;
         left: 0;
-        top: 20px;
+        top: 0px;
         transform: none;
 
         @include screen('mobile') {
@@ -633,6 +648,14 @@
       textarea {
         width: 100%;
       }
+    }
+  }
+
+  [class*="flexTpl"] {
+    flex-wrap: nowrap;
+
+    @include screen('tablet') {
+      flex-wrap: wrap;
     }
   }
 }

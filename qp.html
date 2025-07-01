@@ -214,8 +214,8 @@
       <!-- main Start -->
       <main class="innerPage">
         <a class="accessKeyItem" href="#aC" id="aC" accesskey="C" aria-label="主要內容區">:::</a>
-        <div class="container">
-          <div class="mainBox">
+        <div class="mainBox hasSide">
+          <div class="container">
             <!-- sideNav Start -->
             <aside class="sideNav" data-next-open="開啟下層選單" data-next-close="收合下層選單">
               <button id="sideNavBtn" type="button">次選單開關</button>
@@ -354,20 +354,20 @@
                   <div class="notionInfo">註：<span>* </span>為必填(選)欄位，不能為空白。</div>
                   <form action="" class="formBox">
                     <div class="gridBox">
-                      <div class="formList inline required">
-                        <label class="formListTitle" for="formItem1">您的真實姓名</label>
+                      <div class="formList inline">
+                        <label class="formListTitle" for="formItem1"><em aria-label="必填">*</em>您的真實姓名</label>
                         <div class="formContent">
                           <input type="text" name="formItem1" id="formItem1" />
                         </div>
                       </div>
-                      <div class="formList inline required">
-                        <label class="formListTitle" for="formItem2">聯絡電話</label>
+                      <div class="formList inline">
+                        <label class="formListTitle" for="formItem2"><em aria-label="必填">*</em>聯絡電話</label>
                         <div class="formContent">
                           <input type="tel" name="formItem2" id="formItem2" />
                         </div>
                       </div>
-                      <div class="formList inline required">
-                        <label class="formListTitle" for="formItem3">收件者電子信箱</label>
+                      <div class="formList inline">
+                        <label class="formListTitle" for="formItem3"><em aria-label="必填">*</em>收件者電子信箱</label>
                         <div class="formContent">
                           <div class="inputBox">
                             <i class="email"></i>
@@ -376,83 +376,44 @@
                         </div>
                       </div>
 
-                      <fieldset class="formList inline required">
-                        <legend class="formListTitle" id="radioTitle1">水平單選核取表單</legend>
+                      <fieldset class="formList inline">
+                        <legend class="formListTitle"><em aria-label="必填">*</em>水平單選核取表單</legend>
                         <div class="formContent inline">
                           <div class="inputOption">
-                            <input type="radio" name="radioGrp2" id="radio1_1"  value="類別一" />
+                            <input type="radio" name="radioGrp2" id="radio1_1" value="類別一" />
                             <label for="radio1_1">類別一</label>
                           </div>
                           <div class="inputOption">
-                            <input type="radio" name="radioGrp2" id="radio2_1"  value="類別一" />
+                            <input type="radio" name="radioGrp2" id="radio2_1" value="類別一" />
                             <label for="radio2_1">類別二</label>
                           </div>
                           <div class="inputOption">
-                            <input type="radio" name="radioGrp2" id="radio3_1"  value="類別一" />
+                            <input type="radio" name="radioGrp2" id="radio3_1" value="類別一" />
                             <label for="radio3_1">類別三</label>
                           </div>
                         </div>
                       </fieldset>
 
-                      <fieldset class="formList inline required">
-                        <legend class="formListTitle" id="radioTitle1">水平單選核取表單</legend>
-                        <div class="formContent inline">
-                          <div class="inputOption" ">
-                            <label for="radio1_2">類別一</label>
-                            <input type="radio" name="radioGrp2" id="radio1_2"  value="類別一" />
-                          </label>
-                          <div class="inputOption" ">
-                            <label for="radio2_2">類別二</label>
-                            <input type="radio" name="radioGrp2" id="radio2_2"  value="類別一" />
-                          </div>
-                          <div class="inputOption" ">
-                            <label for="radio3_2">類別三</label>
-                            <input type="radio" name="radioGrp2" id="radio3_2"  value="類別一" />
-                          </div>
-                        </div>
-                      </fieldset>
-
-
-
-                      <fieldset class="formList inline required">
-                        <legend class="formListTitle" id="radioTitle1">水平單選核取表單</legend>
-                        <div class="formContent inline">
-                          <label class="inputOption" for="radio1_3">
-                            <input type="radio" name="radioGrp2" id="radio1_3"  value="類別一" />
-                            類別一
-                          </div>
-                          <label class="inputOption" for="radio2_3">
-                            <input type="radio" name="radioGrp2" id="radio2_3"  value="類別一" />
-                            類別二
-                          </label>
-                          <label class="inputOption" for="radio3_3">
-                            <input type="radio" name="radioGrp2" id="radio3_3"  value="類別一" />
-                            類別三
-                          </label>
-                        </div>
-                      </fieldset>
-
-
-                      <fieldset class="formList inline required">
-                        <legend class="formListTitle">意見類別</legend>
+                      <fieldset class="formList inline">
+                        <legend class="formListTitle"><em aria-label="必填">*</em>意見類別</legend>
                         <div class="formContent inline">
                           <div class="inputOption">
-                            <input type="checkbox" id="check1" aria-labelledby="checkboxTitle1" value="類別一" />
+                            <input type="checkbox" id="check1" value="類別一" />
                             <label for="check1">類別一</label>
                           </div>
                           <div class="inputOption">
-                            <input type="checkbox" id="check2" aria-labelledby="checkboxTitle1" value="類別二" />
+                            <input type="checkbox" id="check2" value="類別二" />
                             <label for="check2">類別二</label>
                           </div>
                           <div class="inputOption">
-                            <input type="checkbox" id="check3" aria-labelledby="checkboxTitle1" value="類別三" />
+                            <input type="checkbox" id="check3" value="類別三" />
                             <label for="check3">類別三</label>
                           </div>
                         </div>
                       </fieldset>
 
-                      <div class="formList inline required">
-                        <label class="formListTitle" for="code">驗證碼</label>
+                      <div class="formList inline">
+                        <label class="formListTitle" for="code"><em aria-label="必填">*</em>驗證碼</label>
                         <div class="formContent inline">
                           <img src="images/basic/captcha.gif" class="captcha" alt="驗證碼圖片" tabindex="0" />
                           <button class="btnPrimary" type="button"><i class="i_sound_w"></i>語音播放</button>
@@ -607,8 +568,6 @@
     <!-- Swiper -->
     <script src="vendor/swiper/swiper-bundle.min.js"></script>
     <!-- js -->
-    <!-- <script src="vendor/jquery-3.7.1.min.js"></script>
-    <script src="js/mainjq.js"></script> -->
     <script src="js/main.js"></script>
     <script src="js/customize.js"></script>
   </body>

@@ -11,24 +11,8 @@
 }
 
 // icon List
-.i_sound_w {
-  &::before {
-    background-image: url('../images/basic/icon/sound_w.svg');
-  }
-}
 
-.i_refresh_w {
-  &::before {
-    background-image: url('../images/basic/icon/refresh_w.svg');
-  }
-}
-
-.i_lock_dark {
-  &::before {
-    background-image: url('../images/basic/icon/lock_dark.svg');
-  }
-}
-
+// E
 .i_email_w {
   &::before {
     background-image: url('../images/basic/icon/email_w.svg');
@@ -41,15 +25,17 @@
   }
 }
 
+// F
 .i_formEyes_dark {
   &::before {
     background-image: url('../images/basic/icon/visibility_off_dark.svg');
   }
 }
 
-.i_search_dark {
+// L
+.i_language_w {
   &::before {
-    background-image: url('../images/basic/icon/search_dark.svg');
+    background-image: url('../images/basic/icon/language_w.svg');
   }
 }
 
@@ -65,8 +51,35 @@
   }
 }
 
-.i_language_w {
+.i_lock_dark {
   &::before {
-    background-image: url('../images/basic/icon/language_w.svg');
+    background-image: url('../images/basic/icon/lock_dark.svg');
+  }
+}
+
+// R
+.i_refresh_w {
+  &::before {
+    background-image: url('../images/basic/icon/refresh_w.svg');
+  }
+}
+
+// S
+.i_search_dark {
+  &::before {
+    background-image: url('../images/basic/icon/search_dark.svg');
+  }
+}
+
+.i_sound_w {
+  &::before {
+    background-image: url('../images/basic/icon/sound_w.svg');
+  }
+}
+
+// T
+.i_tag_dark {
+  &::before {
+    background-image: url('../images/basic/icon/tag_dark.svg');
   }
 }

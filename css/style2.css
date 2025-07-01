@@ -3372,13 +3372,13 @@ header .fontSize.sliderFn ul button {
     height: 30px;
   }
 }
-.swiperArrow.prevSlider {
+.swiperArrow.swiperPrev {
   left: 0;
 }
-.swiperArrow.nextSlider {
+.swiperArrow.swiperNext {
   right: 0;
 }
-.swiperArrow.nextSlider::before {
+.swiperArrow.swiperNext::before {
   transform: translate(-50%, -50%) scale(-1);
 }
 .swiperArrow.swiperArrow-disabled {
@@ -3634,13 +3634,13 @@ button.autoPlaySwitch.play::before {
   transform: rotate(90deg);
   transform-origin: center top;
 }
-.marqueeSlider .swiperArrow.prevSlider {
+.marqueeSlider .swiperArrow.swiperPrev {
   left: auto;
 }
-.marqueeSlider .swiperArrow.nextSlider {
+.marqueeSlider .swiperArrow.swiperNext {
   transform: translateY(0%);
 }
-.marqueeSlider .swiperArrow.nextSlider::before {
+.marqueeSlider .swiperArrow.swiperNext::before {
   transform: rotate(-90deg);
   transform-origin: center left;
 }

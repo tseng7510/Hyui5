@@ -18,7 +18,6 @@
         max-width: 1000px;
         margin: 0em auto 1em;
         padding: 15px 15px 3em;
-        clear: both;
       }
 
       .demo_wrap h1 {
@@ -42,13 +41,23 @@
         align-items: flex-start;
         padding: 20px;
       }
+      @media screen and (max-width: 768px) {
+        .demo_wrap .demoTableWrapper {
+          flex-direction: column;
+        }
+      }
+      .demoTableBox {
+        width: 100%;
+        overflow: auto;
+        padding-bottom: 10px;
+      }
       .demo_wrap .demoTableWrapper + .demoTableWrapper {
         border-top: 1px solid #ddd;
       }
       .demo_wrap h2 {
-        flex: 0 1 150px;
+        min-width: 100px;
         font-size: 1rem;
-        margin: 5px 0 0;
+        margin: 5px 0 10px;
         white-space: nowrap;
       }
 
@@ -62,6 +71,9 @@
       table {
         flex-grow: 1;
         border-collapse: collapse;
+        table-layout: fixed;
+        width: 100%;
+        min-width: 500px;
       }
       table tbody tr {
         border: #eee 1px solid;
@@ -103,7 +115,6 @@
         padding: 0.5em 0;
         color: #ff5050;
       }
-
       tbody tr td:first-child:before {
         counter-increment: num;
         display: block;
@@ -130,185 +141,191 @@
         <div class="demoTableWrapper">
           <h2>首頁</h2>
           <!-- hyUI 標準頁面 -->
-          <table>
-            <thead>
-              <tr>
-                <th class="num">編號</th>
-                <th>頁面名稱</th>
-                <th>檔案名稱</th>
-                <th>備註</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td></td>
-                <td>首頁</td>
-                <!-- 連結放到a裡面就好 -->
-                <td><a href="mp.html"></a></td>
-                <td><span class="gray"></span></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>首頁</td>
-                <!-- 連結放到a裡面就好 -->
-                <td><a href="mp2.html"></a></td>
-                <td><span class="gray"></span></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>首頁-white</td>
-                <!-- 連結放到a裡面就好 -->
-                <td><a href="mp_w.html"></a></td>
-                <td><span class="gray"></span></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>flex</td>
-                <!-- 連結放到a裡面就好 -->
-                <td><a href="mp_template.html"></a></td>
-                <td><span class="gray"></span></td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="demoTableBox">
+            <table>
+              <thead>
+                <tr>
+                  <th class="num">編號</th>
+                  <th>頁面名稱</th>
+                  <th>檔案名稱</th>
+                  <th>備註</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td>首頁</td>
+                  <!-- 連結放到a裡面就好 -->
+                  <td><a href="mp.html"></a></td>
+                  <td><span class="gray"></span></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>首頁</td>
+                  <!-- 連結放到a裡面就好 -->
+                  <td><a href="mp2.html"></a></td>
+                  <td><span class="gray"></span></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>首頁-white</td>
+                  <!-- 連結放到a裡面就好 -->
+                  <td><a href="mp_w.html"></a></td>
+                  <td><span class="gray"></span></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>flex</td>
+                  <!-- 連結放到a裡面就好 -->
+                  <td><a href="mp_template.html"></a></td>
+                  <td><span class="gray"></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="demoTableWrapper">
           <h2>標準頁面</h2>
           <!-- hyUI 標準頁面 -->
-          <table>
-            <thead>
-              <tr>
-                <th class="num">編號</th>
-                <th>頁面名稱</th>
-                <th>檔案名稱</th>
-                <th>備註</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td></td>
-                <td>列表頁-條列</td>
-                <td><a href="lp.html"></a></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>列表頁-條列2</td>
-                <td><a href="lp2.html"></a></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>列表頁-表格</td>
-                <td><a href="lp_table.html"></a></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>列表頁-相簿</td>
-                <td><a href="lp_album.html"></a></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>內容頁</td>
-                <td><a href="cp.html"></a></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>內容頁-照片</td>
-                <td><a href="cp_album.html"></a></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>節點頁</td>
-                <td><a href="np.html"></a></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>轉寄友人</td>
-                <td><a href="fp.html"></a></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>意見信箱</td>
-                <td><a href="qp.html"></a></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>網站地圖</td>
-                <td><a href="sitemap.html"></a></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>404 網站錯誤</td>
-                <td><a href="404.html"></a></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="demoTableBox">
+            <table>
+              <thead>
+                <tr>
+                  <th class="num">編號</th>
+                  <th>頁面名稱</th>
+                  <th>檔案名稱</th>
+                  <th>備註</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td>列表頁-條列</td>
+                  <td><a href="lp.html"></a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>列表頁-條列2</td>
+                  <td><a href="lp2.html"></a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>列表頁-表格</td>
+                  <td><a href="lp_table.html"></a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>列表頁-相簿</td>
+                  <td><a href="lp_album.html"></a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>內容頁</td>
+                  <td><a href="cp.html"></a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>內容頁-照片</td>
+                  <td><a href="cp_album.html"></a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>節點頁</td>
+                  <td><a href="np.html"></a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>轉寄友人</td>
+                  <td><a href="fp.html"></a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>意見信箱</td>
+                  <td><a href="qp.html"></a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>網站地圖</td>
+                  <td><a href="sitemap.html"></a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>404 網站錯誤</td>
+                  <td><a href="404.html"></a></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="demoTableWrapper">
           <h2>特殊頁面+元件</h2>
-          <table>
-            <thead>
-              <tr>
-                <th class="num">編號</th>
-                <th>頁面名稱</th>
-                <th>檔案名稱</th>
-                <th>備註</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- <tr>
+          <div class="demoTableBox">
+            <table>
+              <thead>
+                <tr>
+                  <th class="num">編號</th>
+                  <th>頁面名稱</th>
+                  <th>檔案名稱</th>
+                  <th>備註</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- <tr>
                 <td></td>
                 <td>電子報</td>
                 <td><a href="epaper.html"></a></td>
                 <td></td>
               </tr> -->
-              <tr>
-                <td></td>
-                <td>表單</td>
-                <td><a href="form.html"></a></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>按鈕樣式</td>
-                <td><a href="button.html"></a></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>tab</td>
-                <td><a href="tabs.html"></a></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>accordion</td>
-                <td><a href="accordion.html"></a></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>燈箱</td>
-                <td><a href="popup.html"></a></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>...</td>
-                <td><a href="..."></a></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+                <tr>
+                  <td></td>
+                  <td>表單</td>
+                  <td><a href="form.html"></a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>按鈕樣式</td>
+                  <td><a href="button.html"></a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>tab</td>
+                  <td><a href="tabs.html"></a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>accordion</td>
+                  <td><a href="accordion.html"></a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>燈箱</td>
+                  <td><a href="popup.html"></a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>...</td>
+                  <td><a href="..."></a></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

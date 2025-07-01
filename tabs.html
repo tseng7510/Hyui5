@@ -214,8 +214,8 @@
       <!-- main Start -->
       <main class="innerPage">
         <a class="accessKeyItem" href="#aC" id="aC" accesskey="C" aria-label="主要內容區">:::</a>
-        <div class="container">
-          <div class="mainBox">
+        <div class="mainBox">
+          <div class="container">
             <!-- 主內容區 Start -->
             <section class="mainContentBox">
               <!-- breadcrumb Start -->
@@ -308,40 +308,38 @@
                   <div class="tabContentGroup">
                     <div class="tabContent">
                       <div class="tabContentIn">
-                        <code>
-                          tabFunction({<br />
-                          target: '.target1', // 執行目標，多組需要另外設定<br />
-                          modeSwitch: false, // 自動切換，尺寸以上tab功能，尺寸以下手風琴功能<br />
-                          openContent: false, // 展開所有內容，僅開啟模式切換時才可使用<br />
-                          openIndex: 0, // 開啟第幾個<br />
-                          width: 767, // 尺寸以上tab功能，尺寸以下手風琴功能<br />
-                          autoClose: true, // 自動關閉其他開啟內容<br />
-                          openSwitch: true, // 是否可開合/切換<br />
-                          });<br />
-                          上面的option是基礎預設，如不需要更改可以直接使用tabFunction('.target1')，如有多組tab<br />
-                          請另外設定target <br /><br />
-                        </code>
+                        tabFunction({<br />
+                        target: '.target1', // 執行目標，多組需要另外設定<br />
+                        modeSwitch: false, // 自動切換，尺寸以上tab功能，尺寸以下手風琴功能<br />
+                        openContent: false, // 展開所有內容，僅開啟模式切換時才可使用<br />
+                        openIndex: 0, // 開啟第幾個<br />
+                        width: 767, // 尺寸以上tab功能，尺寸以下手風琴功能<br />
+                        autoClose: true, // 自動關閉其他開啟內容<br />
+                        openSwitch: true, // 是否可開合/切換<br />
+                        });<br />
+                        上面的option是基礎預設，如不需要更改可以直接使用tabFunction('.target1')，如有多組tab<br />
+                        請另外設定target <br /><br />
                         無障礙相關(皆已由js設定)
 
                         <ul>
                           <li>
                             <a href="#">頁籤</a>
                             <ol>
-                              <li>父層增加<code>role="tablist"</code></li>
-                              <li><code>&lt;button&gt;</code>加上<code>role="tab"</code></li>
+                              <li>父層增加role="tablist"</li>
+                              <li>&lt;button&gt;加上role="tab"</li>
                             </ol>
                           </li>
                           <li>
                             <a href="#">內容</a>
                             <ol>
-                              <li><code>&lt;button&gt;</code>加上<code>role="tabpanel"</code></li>
+                              <li>&lt;button&gt;加上role="tabpanel"</li>
                             </ol>
                           </li>
                           <li>
                             <a href="#">讓頁籤項與頁籤內容產生關連</a>
                             <ol>
-                              <li>頁籤加<code>id="<i>ID</i>"</code>，對應的內容加<code>aria-labelledby="<i>ID</i>"</code><br />例如，第一個頁籤項<code>id="tabpanel_1"</code>，其控制的內容<code>aria-labelledby="tabpanel_1"</code></li>
-                              <li>內容區加<code>id="<i>ID</i>"</code>，對應的頁籤項加<code>aria-controls="<i>ID</i>"</code><br />例如，第一個頁籤項<code>aria-controls="tabpanel_1_con"</code>，其控制的內容<code>id="tabpanel_1_con"</code></li>
+                              <li>頁籤加id="<i>ID</i>"，對應的內容加aria-labelledby="<i>ID</i>"<br />例如，第一個頁籤項id="tabpanel_1"，其控制的內容aria-labelledby="tabpanel_1"</li>
+                              <li>內容區加id="<i>ID</i>"，對應的頁籤項加aria-controls="<i>ID</i>"<br />例如，第一個頁籤項aria-controls="tabpanel_1_con"，其控制的內容id="tabpanel_1_con"</li>
                             </ol>
                           </li>
                         </ul>
@@ -429,7 +427,7 @@
                   </div>
                 </div>
 
-                <p>＊此範例沒有處理一個頁面多組頁籤的情況，如有多組頁籤，要注意頁籤內容元件的<code>id</code>值不可重複</p>
+                <p>＊此範例沒有處理一個頁面多組頁籤的情況，如有多組頁籤，要注意頁籤內容元件的id值不可重複</p>
                 <p>＊ARIA 屬性設定參考 <a href="https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-manual.html" target="_blank">https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-manual.html</a></p>
 
                 <!-- tab End -->

@@ -12,6 +12,8 @@
   top: 50%;
   transform: translateY(-50%);
   border: none;
+  text-indent: -9999px;
+  overflow: hidden;
 
   @include screenMax('1200') {
     width: 30px;
@@ -37,11 +39,11 @@
     }
   }
 
-  &.prevSlider {
+  &.swiperPrev {
     left: 0;
   }
 
-  &.nextSlider {
+  &.swiperNext {
     right: 0;
 
     &::before {
@@ -358,11 +360,11 @@ button.autoPlaySwitch {
       transform-origin: center top;
     }
 
-    &.prevSlider {
+    &.swiperPrev {
       left: auto;
     }
 
-    &.nextSlider {
+    &.swiperNext {
       transform: translateY(0%);
 
       &::before {

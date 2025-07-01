@@ -1,0 +1,52 @@
+// tag
+.tagBox {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    @include liReset;
+
+    li {
+      @include screen('mobile') {
+        flex-grow: 1;
+      }
+    }
+
+    a,
+    button {
+      display: flex;
+      padding: 6px 16px;
+      align-items: center;
+      gap: 4px;
+      border-radius: var(--borderRadius2);
+      background: #fff;
+      box-shadow: 0px 2px 6px 0px rgba(38, 43, 67, 0.20);
+      line-height: 2;
+      color: #111;
+      text-decoration: none;
+
+      @include screen('tablet') {
+        padding: 4px 16px;
+      }
+
+      // &::before {
+      //   content: '';
+      //   width: 18px;
+      //   height: 18px;
+      //   background-image: url('../images/basic/icon/tag_dark.svg');
+      //   background-repeat: no-repeat;
+      //   background-size: contain;
+      // }
+      &.active,
+      &:hover {
+        color: #fff;
+        background: $colorPrimary;
+
+        i::before,
+        &::before {
+          filter: invert(100%);
+        }
+      }
+    }
+  }
+}

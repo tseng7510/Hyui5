@@ -214,8 +214,8 @@
       <!-- main Start -->
       <main class="innerPage">
         <a class="accessKeyItem" href="#aC" id="aC" accesskey="C" aria-label="主要內容區">:::</a>
-        <div class="container">
-          <div class="mainBox">
+        <div class="mainBox hasSide">
+          <div class="container">
             <!-- sideNav Start -->
             <aside class="sideNav" data-next-open="開啟下層選單" data-next-close="收合下層選單">
               <button id="sideNavBtn" type="button">次選單開關</button>
@@ -380,13 +380,27 @@
               <!-- tag Start -->
               <div class="tagBox">
                 <ul>
-                  <li><a href="#" class="active">全部</a></li>
-                  <li><a href="#">標籤一</a></li>
-                  <li><a href="#">標籤二</a></li>
-                  <li><a href="#">標籤三</a></li>
-                  <li><a href="#">標籤四</a></li>
-                  <li><a href="#">標籤五</a></li>
-                  <li><a href="#">標籤六</a></li>
+                  <li>
+                    <a href="#" class="active"><i class="i_tag_dark"></i>全部 <sub>(2)</sub></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="i_tag_dark"></i>標籤一</a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="i_tag_dark"></i>標籤二</a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="i_tag_dark"></i>標籤三</a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="i_tag_dark"></i>標籤四</a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="i_tag_dark"></i>標籤五</a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="i_tag_dark"></i>標籤六</a>
+                  </li>
                 </ul>
               </div>
               <!-- tag End -->
@@ -692,7 +706,9 @@
     <!-- Swiper -->
     <script src="vendor/swiper/swiper-bundle.min.js"></script>
     <!-- js -->
-    <script src="js/main.js"></script>
+    <script src="vendor/jquery-3.7.1.min.js"></script>
+    <script src="js/mainjq.js"></script>
+    <!-- <script src="js/main.js"></script> -->
     <script src="js/customize.js"></script>
   </body>
 </html>

@@ -268,6 +268,7 @@ function jsFadeToggle(element, time = 200) {
 // })
 
 function toggleSlider(elem, con) {
+  const body = document.querySelector('body');
   const targetSelect = document.querySelectorAll(elem);
   let checkDisplay;
   targetSelect.forEach((item) => {
@@ -303,7 +304,7 @@ function toggleSlider(elem, con) {
     });
   });
 
-  window.addEventListener('keydown', (e) => {
+  body.addEventListener('keydown', (e) => {
     targetSelect.forEach((item) => {
       const targetCon = item.parentNode.querySelector(con);
       const isInsideTarget = jsParents(e.target, targetCon).length === 0;
@@ -338,7 +339,7 @@ function toggleSlider(elem, con) {
   });
 
   // 點擊其他地方關閉;
-  window.addEventListener('click', (e) => {
+  body.addEventListener('click', (e) => {
     const targetSelectCon = document.querySelector(con);
     let isInsideTarget = jsParents(e.target, targetSelectCon).length === 0;
 
@@ -373,7 +374,7 @@ function jsParents(element, elementCheck) {
   const elements = typeof element === 'string' ? document.querySelectorAll(element) : element;
 
   // 取得每個元素的所有父節點，直到 <html>
-  function getParents(el) {
+  function _getParents(el) {
     while (el.parentNode && el.parentNode !== document.documentElement) {
       matched.push(el.parentNode);
       el = el.parentNode;
@@ -383,9 +384,9 @@ function jsParents(element, elementCheck) {
   // 處理集合與單一元素
   if (elements) {
     if (elements.length === undefined) {
-      getParents(elements);
+      _getParents(elements);
     } else if (elements.nodeName !== 'SELECT') {
-      elements.forEach(getParents);
+      elements.forEach(_getParents);
     }
   }
 
@@ -422,7 +423,7 @@ function jsParents(element, elementCheck) {
 function jsChildren(element, elementCheck) {
   const elementArr = typeof element === 'string' ? document.querySelectorAll(element) : element;
 
-  const getChildren = (item) => {
+  const _getChildren = (item) => {
     return [...item.childNodes].filter((child) => {
       if (child.nodeName === '#text') return;
       if (elementCheck === undefined) return true;
@@ -437,7 +438,7 @@ function jsChildren(element, elementCheck) {
       }
     });
   };
-  return (elementArr.length > 0 ? [...elementArr]?.map((i) => getChildren(i)) : getChildren(element)).flat();
+  return (elementArr.length > 0 ? [...elementArr]?.map((i) => _getChildren(i)) : _getChildren(element)).flat();
 }
 
 // 使用方式
@@ -478,16 +479,24 @@ function randomLetter(max, letter = 'abcdefghijklmnopqrstuvwxyz') {
 }
 
 // 改變標籤
+// 改變標籤
 function changeTag(oldTag, newTag) {
-  const newTagElem = document.createElement(newTag);
-  // 複製所有屬性和內容
-  newTagElem.innerHTML = oldTag.innerHTML;
-  [...oldTag.attributes].forEach((attr) => {
-    newTagElem.setAttribute(attr.name, attr.value);
-  });
+  // 檢查 oldTag 是否存在於 DOM 中
+  if (!oldTag || !oldTag.parentNode) return;
 
-  // 替換舊標籤
-  oldTag.parentNode.replaceChild(newTagElem, oldTag);
+  const newTagElem = document.createElement(newTag);
+  // 複製所有屬性
+  for (const attr of oldTag.attributes) {
+    newTagElem.setAttribute(attr.name, attr.value);
+  }
+
+  // 增加所有子節點
+  while (oldTag.firstChild) {
+    newTagElem.appendChild(oldTag.firstChild);
+  }
+
+  // 使用 replaceWith 替換舊標籤，語法更簡潔
+  oldTag.replaceWith(newTagElem);
 }
 
 // 增加透明黑底
@@ -495,184 +504,112 @@ const wrapper = document.querySelector('.wrapper');
 const overlay = document.createElement('div');
 overlay.classList.add('overlay');
 wrapper?.insertAdjacentElement('afterbegin', overlay);
+
 // -----------------------------------------------------------------------
 // -----  FontSize   -----------------------------------------------------
 // -----------------------------------------------------------------------
 
 function fontSize() {
-  const fontSize = document.querySelector('.fontSize'); // 控制的對象
-  if (fontSize === null) return;
-  const list = fontSize.querySelectorAll('ul button');
   const body = document.querySelector('body');
-  // 初始化 字體大小設定
-  let cookie = readCookie('FontSize');
+  // 更新按鈕狀態與目標區域的字體 class
+  function _updateView(buttons, target, activeClassName) {
+    const sizeClasses = ['smallSize', 'mediumSize', 'largeSize'];
 
-  list.forEach((v) => {
-    v.addEventListener('click', (e) => {
-      createCookie('FontSize', `${e.target.className}`, 356);
-      toggleBodyClass(e.target.className);
-      e.target.parentNode.classList.add('active');
-      e.target.setAttribute('aria-pressed', 'true');
-    });
-  });
-
-  // 移除 active 的 class 名稱
-  function toggleBodyClass(targetClassName) {
-    [...list].filter((item) => {
-      if (item.className === targetClassName) {
-        item.setAttribute('aria-pressed', 'true');
-        item.parentNode.classList.add('active');
-      } else {
-        item.setAttribute('aria-pressed', 'false');
-        item.parentNode.classList.remove('active');
-      }
+    // 更新按鈕的 ARIA 狀態和 active class
+    buttons.forEach((button) => {
+      const isTargetButton = button.classList.contains(activeClassName);
+      button.setAttribute('aria-pressed', isTargetButton);
+      button.parentNode.classList.toggle('active', isTargetButton);
     });
 
-    switch (targetClassName) {
-      case 'smallSize':
-        body.classList.remove('largeSize', 'mediumSize');
-        body.classList.add('smallSize');
-        break;
-      case 'mediumSize':
-        body.classList.remove('smallSize', 'largeSize');
-        body.classList.add('mediumSize');
-        break;
-      case 'largeSize':
-        body.classList.remove('smallSize', 'mediumSize');
-        body.classList.add('largeSize');
-        break;
-    }
+    // 更新目標元素的 class
+    target.classList.remove(...sizeClasses);
+    target.classList.add(activeClassName);
   }
 
   // 創造新的 字體大小設定
-  function createCookie(name, value, days) {
-    let _expires;
-    const _date = new Date();
+  function _createCookie(name, value, days) {
+    let expires = '';
     if (days) {
-      _date.setTime(_date.getTime() + days * 24 * 60 * 60 * 1000);
-      _expires = '; expires=' + _date.toGMTString();
-    } else {
-      _expires = '';
+      const date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = `; expires=${date.toUTCString()}`;
     }
-    document.cookie = name + '=' + value + _expires + '; path=/';
+    document.cookie = `${name}=${value || ''}${expires}; path=/`;
   }
 
   // 讀取瀏覽器上 字體大小設定
-  function readCookie(name) {
+  function _readCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
+    if (parts.length === 2) {
+      return parts.pop().split(';').shift();
+    }
+    return null;
   }
-  // 如果沒有cookie 則預設值為'medium'
-  if (!cookie) {
-    createCookie('FontSize', 'smallSize', 356);
-    toggleBodyClass('smallSize');
-  } else {
-    toggleBodyClass(cookie);
+
+  // 設定字體切換功能
+  function _setupFontSizeToggle(container, cookieName, target) {
+    if (!container || !target) return;
+
+    const buttons = container.querySelectorAll('ul button');
+    const buttonContainer = container.querySelector('ul');
+    const sizeClasses = ['smallSize', 'mediumSize', 'largeSize'];
+
+    if (!buttonContainer || buttons.length === 0) return;
+
+    // 使用事件委派 (Event Delegation)
+    buttonContainer.addEventListener('click', (e) => {
+      const button = e.target.closest('button');
+      if (!button) return;
+
+      const selectedSize = sizeClasses.find((cls) => button.classList.contains(cls));
+      if (selectedSize) {
+        _createCookie(cookieName, selectedSize, 365);
+        _updateView(buttons, target, selectedSize);
+      }
+    });
+
+    // 初始化
+    const cookieValue = _readCookie(cookieName);
+    const initialSize = sizeClasses.includes(cookieValue) ? cookieValue : 'smallSize';
+    if (!cookieValue) _createCookie(cookieName, initialSize, 365);
+    _updateView(buttons, target, initialSize);
   }
+
+  // 頁首字體大小設定
+  const fontSizeHeader = document.querySelector('header .fontSize');
+  if (fontSizeHeader) _setupFontSizeToggle(fontSizeHeader, 'FontSize', body);
+
+  // 內頁字體大小設定
+  const fontSizeInner = document.querySelector('.fontSizeInner'); // 控制的對象
+  const mainContent = document.querySelector('.mainContentBox .mainContent');
+  if (fontSizeInner && mainContent) _setupFontSizeToggle(fontSizeInner, 'FontSizeInner', mainContent);
 }
 // fontSize();
 window.addEventListener('load', () => fontSize());
 
 // -----------------------------------------------------------------------
-// -----  內頁fontSize   -----------------------------------------------------
-// -----------------------------------------------------------------------
-function fontSizeInner() {
-  const fontSize = document.querySelector('.fontSizeInner'); // 控制的對象
-
-  if (fontSize === null) return;
-
-  const list = fontSize.querySelectorAll('ul button');
-  const mainContent = document.querySelector('.mainContentBox .mainContent');
-  if (mainContent === null) return;
-  // 初始化 字體大小設定
-  let cookie = readCookie('FontSize');
-
-  list.forEach((v) => {
-    v.addEventListener('click', (e) => {
-      createCookie('FontSizeInner', `${e.target.className}`, 356);
-      toggleBodyClass(e.target.className);
-      e.target.parentNode.classList.add('active');
-      e.target.setAttribute('aria-pressed', 'true');
-    });
-  });
-
-  // 移除 active 的 class 名稱
-  function toggleBodyClass(targetClassName) {
-    [...list].filter((item) => {
-      if (item.className === targetClassName) {
-        item.setAttribute('aria-pressed', 'true');
-        item.parentNode.classList.add('active');
-      } else {
-        item.setAttribute('aria-pressed', 'false');
-        item.parentNode.classList.remove('active');
-      }
-    });
-
-    switch (targetClassName) {
-      case 'smallSize':
-        mainContent.classList.remove('largeSize', 'mediumSize');
-        mainContent.classList.add('smallSize');
-        break;
-      case 'mediumSize':
-        mainContent.classList.remove('smallSize', 'largeSize');
-        mainContent.classList.add('mediumSize');
-        break;
-      case 'largeSize':
-        mainContent.classList.remove('smallSize', 'mediumSize');
-        mainContent.classList.add('largeSize');
-        break;
-    }
-  }
-
-  // 創造新的 字體大小設定
-  function createCookie(name, value, days) {
-    let _expires;
-    const _date = new Date();
-    if (days) {
-      _date.setTime(_date.getTime() + days * 24 * 60 * 60 * 1000);
-      _expires = '; expires=' + _date.toGMTString();
-    } else {
-      _expires = '';
-    }
-    document.cookie = name + '=' + value + _expires + '; path=/';
-  }
-
-  // 讀取瀏覽器上 字體大小設定
-  function readCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-  }
-  // 如果沒有cookie 則預設值為'medium'
-  if (!cookie) {
-    createCookie('FontSize', 'smallSize', 356);
-    toggleBodyClass('smallSize');
-  } else {
-    toggleBodyClass(cookie);
-  }
-}
-// fontSizeInner();
-window.addEventListener('load', () => fontSizeInner());
-// -----------------------------------------------------------------------
 // -----  menu   ------------------------------------------------------
 // -----------------------------------------------------------------------
 function mainMenu(obj) {
+  const body = document.querySelector('body');
+  const header = document.querySelector('header');
+  const headTop = document.querySelector('.headTop');
   const { sticky = true, needLink = false, mega = false } = obj;
   const mainMenu = document.querySelector('.mainMenu');
-  if (mainMenu === null) return;
+  if (!mainMenu) return;
+
   const closeBtnText = mainMenu.dataset.closeBtn || '關閉選單';
-
   const menu = mainMenu.querySelector('nav');
+  if (!menu) return;
 
-  if (menu === null) return;
   // 有下層的增加 hasChild 的 class
   const checkChild = menu.querySelectorAll('li ul');
-
   checkChild.forEach((item) => item.parentNode.classList.add('hasChild'));
-
   const hasChild = menu.querySelectorAll('.hasChild');
 
+  // 檢查子選單是否超出視窗邊界
   function checkBorder(e) {
     if (mega) return;
     // 抓出該項目以下有多少層級
@@ -697,253 +634,18 @@ function mainMenu(obj) {
     }
   }
 
-  if (mega) {
-    menu.classList.add('megaMenu');
-    menu.classList.remove('menu');
-    const megaMenuChild = menu.querySelectorAll(' ul ul .hasChild > a');
-    megaMenuChild.forEach((i) => {
-      i.removeAttribute('aria-haspopup');
-    });
-  }
-
-  const handleMouseenter = (e) => {
-    if (window.outerWidth <= setRWDWidth) return;
+  // 滑鼠滑入
+  function _handleMouseenter(e) {
     e.target.classList.add('active');
     e.target.querySelector('a').setAttribute('aria-expanded', 'true');
     checkBorder(e.target);
-  };
+  }
 
-  const handleMouseleave = (e) => {
-    if (window.outerWidth <= setRWDWidth) return;
+  // 滑鼠滑出
+  function _handleMouseleave(e) {
     e.target.classList.remove('active');
     e.target.querySelector('a').setAttribute('aria-expanded', 'false');
     e.target.querySelector('ul').style.removeProperty('top');
-  };
-
-  //無障礙操作
-  const menuAllLi = menu.querySelectorAll('li');
-  const menuAllA = menu.querySelectorAll('a');
-  const lastA = menu.querySelectorAll('a')[menuAllLi.length - 1];
-  const firstA = menu.querySelectorAll('a')[0];
-
-  menu.addEventListener('keydown', (e) => {
-    let checkTarget = [...menuAllA].map((i) => e.target === i);
-    if (!checkTarget || window.outerWidth <= setRWDWidth) return;
-    e.target.setAttribute('aria-expanded', 'true');
-
-    checkBorder(e.target.parentNode);
-    if (e.code === 'Tab' && !e.shiftKey) {
-      e.target.parentNode.classList.add('active');
-      const siblings = [...e.target.parentNode.parentNode.children].filter((child) => child !== e.target.parentNode);
-      siblings.forEach((j) => j.classList.remove('active'));
-      if (e.target === lastA) {
-        menuAllLi.forEach((j) => j.classList.remove('active'));
-      }
-    } else if (e.code === 'Tab' && e.shiftKey && e.target === firstA) {
-      menuAllLi.forEach((j) => j.classList.remove('active'));
-    }
-  });
-
-  // 手機版設定 ------------------------------------------------------------
-  // 新增手機版主選單
-  const header = document.querySelector('header');
-  const mobileMenu = document.createElement('nav');
-  mobileMenu.setAttribute('id', 'mobileMenu');
-  mobileMenu.setAttribute('aria-labelledby', 'mobileMainMenuBtn mobileMainMenuClose');
-
-  // 新增手機版主選單容器
-  const mobileMainMenuBox = document.createElement('div');
-  mobileMainMenuBox.classList.add('mobileMainMenuBox');
-
-  // 新增手機版主選單關閉按鈕
-  const mobileMainMenuClose = document.createElement('button');
-  mobileMainMenuClose.setAttribute('id', 'mobileMainMenuClose');
-  mobileMainMenuClose.setAttribute('aria-expanded', 'true');
-  mobileMainMenuClose.insertAdjacentHTML('afterbegin', closeBtnText);
-
-  // 複製主選單
-  const mainMenuClone = menu.cloneNode(true);
-  mainMenuClone.classList.remove('mainMenu', 'menu');
-  mainMenuClone.classList.add('mobileMainMenu');
-
-  // 複製top選單
-  const topNav = document.querySelector('.topNav');
-  if (topNav !== null) {
-    const topNavClone = topNav.cloneNode(true);
-
-    topNavClone.querySelector('.fontSize')?.remove();
-    topNavClone.querySelector('.topSearch')?.remove();
-    topNavClone.querySelector('#aU')?.remove();
-    // 將 top選單 加入到 手機版主選單
-    mobileMainMenuBox.insertAdjacentElement('beforeend', topNavClone);
-    changeTag(topNavClone, 'div');
-  }
-
-  // 將 關閉按鈕 加入到 手機版主選單
-  mobileMainMenuBox.insertAdjacentElement('afterbegin', mainMenuClone);
-  // 將 主選單 加入到 手機版主選單
-  mobileMainMenuBox.insertAdjacentElement('beforeend', mobileMainMenuClose);
-  // 將 手機版主選單 加入到 手機版主選單(多包一層div)
-  mobileMenu.insertAdjacentElement('afterbegin', mobileMainMenuBox);
-  // 將 手機版主選單 加入到 header 前
-  header?.insertAdjacentElement('beforebegin', mobileMenu);
-  // 轉換標籤
-  changeTag(mainMenuClone, 'div');
-
-  hasChild.forEach((i) => {
-    // 無障礙設定 -- pc
-    const id = `menu_${randomLetter(3)}${randomFloor(0, 999)}`;
-    const childA = i.querySelector('a');
-    const childUl = i.querySelector('ul');
-    childA.setAttribute('aria-expanded', 'false');
-    childA.setAttribute('aria-haspopup', 'true');
-    childA.setAttribute('id', id);
-    childA.setAttribute('aria-controls', `${id}_con`);
-    childUl.setAttribute('id', `${id}_con`);
-    childUl.setAttribute('aria-labelledby', id);
-
-    // 滑鼠滑過
-    i.addEventListener('mouseenter', handleMouseenter);
-    i.addEventListener('mouseleave', handleMouseleave);
-  });
-
-  // 點擊選單按鈕 執行 展開側邊選單函式
-  const body = document.querySelector('body');
-  const mobileMainMenuBtn = document.querySelector('#mobileMainMenuBtn');
-
-  mobileMainMenuBtn?.setAttribute('aria-controls', 'mobileMenu');
-  mobileMainMenuBtn?.setAttribute('aria-expanded', 'false');
-  mobileMainMenuBtn?.setAttribute('aria-pressed', 'false');
-  mobileMainMenuBtn?.setAttribute('aria-haspopup', 'true');
-
-  // 展開側邊選單函式
-  function showSidebar() {
-    mobileMenu.style.opacity = '1';
-    mobileMenu.style.display = 'block';
-    mobileMainMenuBtn?.setAttribute('aria-expanded', 'true');
-    mobileMainMenuBtn?.setAttribute('aria-pressed', 'true');
-
-    setTimeout(() => {
-      mobileMenu.style.transform = `translateX(0px)`;
-      mobileMenu.classList.add('open');
-    }, 0);
-    mobileMainMenuClose.focus();
-    body.classList.add('noscroll');
-    jsFadeIn(overlay);
-    overlay.style.zIndex = '90';
-    overlay.style.top = '0';
-  }
-  // 隱藏側邊選單函式
-  function hideSidebar() {
-    jsFadeOut(overlay);
-    mobileMenu.style.transform = `translateX(-100%)`;
-    mobileMainMenuBtn?.setAttribute('aria-expanded', 'false');
-    mobileMainMenuBtn?.setAttribute('aria-pressed', 'false');
-
-    setTimeout(() => {
-      mobileMenu.removeAttribute('style');
-    }, 300);
-
-    mobileMenu.classList.remove('open');
-    body.classList.remove('noscroll');
-    mobileMainMenuBtn?.focus();
-    jsFadeOut(overlay);
-    overlay.style.zIndex = '';
-  }
-
-  mobileMainMenuBtn?.addEventListener('click', (e) => {
-    e.preventDefault();
-    showSidebar();
-  });
-
-  mobileMainMenuClose.addEventListener('click', (e) => {
-    hideSidebar();
-    mobileMainMenuBtn?.focus();
-  });
-  overlay.addEventListener('click', () => hideSidebar());
-
-  // 手機版選單展開功能
-  const mobileMenuLiHasChild = mobileMenu.querySelectorAll('li.hasChild');
-
-  mobileMenuLiHasChild.forEach((i) => {
-    let childControl;
-
-    if (!needLink) {
-      childControl = i.querySelector('a');
-      childControl.setAttribute('role', 'button');
-    } else {
-      i.classList.add('needLink');
-      const nextA = i.querySelector('a');
-      const nextBtn = document.createElement('button');
-      nextBtn.classList.add('nextLvl');
-      nextA.insertAdjacentElement('afterend', nextBtn);
-      nextBtn.setAttribute('id', nextA.getAttribute('id'));
-      childControl = nextBtn;
-    }
-
-    // 無障礙設定 -- mobile
-    const id = `mobileMenu_${randomLetter(3)}${randomFloor(0, 999)}`;
-    const childUl = i.querySelector('ul');
-    childControl.setAttribute('aria-expanded', 'false');
-    childControl.setAttribute('aria-haspopup', 'true');
-    childControl.setAttribute('id', id);
-    childControl.setAttribute('aria-controls', `${id}_con`);
-    childUl.setAttribute('id', `${id}_con`);
-    childUl.setAttribute('aria-labelledby', id);
-
-    childControl.addEventListener('click', (e) => {
-      if (!childControl.parentNode.classList.contains('hasChild')) return;
-      if (!needLink) {
-        e.preventDefault();
-      }
-      toggleAccordion(childControl, 'ul');
-    });
-  });
-
-  // 手機版鍵盤無障礙設定
-  const allMobileMenuTarget = mobileMenu.querySelectorAll('a,button,input,select');
-  window.addEventListener('keydown', (e) => {
-    if (e.code === 'Escape' && mobileMainMenuBtn.getAttribute('aria-expanded') === 'true') {
-      hideSidebar();
-    } else if (e.code === 'Tab' && !e.shiftKey && e.target === mobileMainMenuClose) {
-      e.preventDefault();
-      allMobileMenuTarget[0].focus();
-    } else if (e.code === 'Tab' && e.shiftKey && e.target === allMobileMenuTarget[0]) {
-      e.preventDefault();
-      mobileMainMenuClose.focus();
-    }
-  });
-
-  // 是否選單固定
-  if (sticky) {
-    const header = document.querySelector('header');
-    const headTop = document.querySelector('.headTop');
-
-    const menu = document.querySelector('.mainMenu');
-    const headerMargin = parseInt(window.getComputedStyle(header).marginBottom.replace('px', ''));
-
-    window.addEventListener('scroll', function () {
-      if (window.outerWidth > setRWDWidth) {
-        if (headTop.clientHeight < window.scrollY) {
-          menu.classList.add('sticky');
-          headTop.style.marginBottom = `${headerMargin + menu.clientHeight}px`;
-        } else {
-          menu.classList.remove('sticky');
-          headTop.style.marginBottom = `${headerMargin}px`;
-        }
-      } else {
-        headTop.removeAttribute('style');
-      }
-    });
-
-    window.addEventListener('resize', function () {
-      if (window.outerWidth <= setRWDWidth) {
-        headTop.removeAttribute('style');
-      } else {
-        body.classList.remove('noscroll');
-        hideSidebar();
-      }
-    });
   }
 
   // 選單層級展開fn
@@ -970,15 +672,247 @@ function mainMenu(obj) {
       }
     });
   }
+
+  // 桌面版選單初始化與事件綁定
+  function _initDesktopMenu() {
+    // 是否為megaMenu
+    if (mega) {
+      menu.classList.add('megaMenu');
+      menu.classList.remove('menu');
+      const megaMenuChild = menu.querySelectorAll(' ul ul .hasChild > a');
+      megaMenuChild.forEach((i) => {
+        i.removeAttribute('aria-haspopup');
+      });
+    }
+
+    // 是否選單固定
+    if (sticky) {
+      const menu = document.querySelector('.mainMenu');
+      const headerMargin = parseInt(window.getComputedStyle(header).marginBottom.replace('px', ''));
+
+      window.addEventListener('scroll', function () {
+        if (window.outerWidth > setRWDWidth) {
+          if (headTop.clientHeight < window.scrollY) {
+            menu.classList.add('sticky');
+            headTop.style.marginBottom = `${headerMargin + menu.clientHeight}px`;
+          } else {
+            menu.classList.remove('sticky');
+            headTop.style.marginBottom = `${headerMargin}px`;
+          }
+        } else {
+          headTop.removeAttribute('style');
+        }
+      });
+    }
+
+    //無障礙操作
+    const menuAllLi = menu.querySelectorAll('li');
+    const menuAllA = menu.querySelectorAll('a');
+    const lastA = menu.querySelectorAll('a')[menuAllLi.length - 1];
+    const firstA = menu.querySelectorAll('a')[0];
+
+    menu.addEventListener('keydown', (e) => {
+      let checkTarget = [...menuAllA].map((i) => e.target === i);
+      if (!checkTarget || window.outerWidth <= setRWDWidth) return;
+      e.target.setAttribute('aria-expanded', 'true');
+
+      checkBorder(e.target.parentNode);
+      if (e.code === 'Tab' && !e.shiftKey) {
+        e.target.parentNode.classList.add('active');
+        const siblings = [...e.target.parentNode.parentNode.children].filter((child) => child !== e.target.parentNode);
+        siblings.forEach((j) => j.classList.remove('active'));
+        if (e.target === lastA) {
+          menuAllLi.forEach((j) => j.classList.remove('active'));
+        }
+      } else if (e.code === 'Tab' && e.shiftKey && e.target === firstA) {
+        menuAllLi.forEach((j) => j.classList.remove('active'));
+      }
+    });
+
+    hasChild.forEach((i) => {
+      const id = `menu_${randomLetter(3)}${randomFloor(0, 999)}`;
+      const childA = i.querySelector('a');
+      const childUl = i.querySelector('ul');
+      childA.setAttribute('aria-expanded', 'false');
+      childA.setAttribute('aria-haspopup', 'true');
+      childA.setAttribute('id', id);
+      childA.setAttribute('aria-controls', `${id}_con`);
+      childUl.setAttribute('id', `${id}_con`);
+      childUl.setAttribute('aria-labelledby', id);
+
+      // 滑鼠滑過
+      i.addEventListener('mouseenter', _handleMouseenter);
+      i.addEventListener('mouseleave', _handleMouseleave);
+    });
+  }
+
+  _initDesktopMenu();
+
+  // 手機版選單初始化與事件綁定
+  function _initMobileMenu() {
+    const header = document.querySelector('header');
+    const mobileMenu = document.createElement('nav');
+    mobileMenu.setAttribute('id', 'mobileMenu');
+    mobileMenu.setAttribute('aria-labelledby', 'mobileMainMenuBtn');
+
+    // 新增手機版主選單容器
+    const mobileMainMenuBox = document.createElement('div');
+    mobileMainMenuBox.classList.add('mobileMainMenuBox');
+
+    // 複製主選單
+    const mainMenuClone = menu.cloneNode(true);
+    mainMenuClone.classList.remove('mainMenu', 'menu');
+    mainMenuClone.classList.add('mobileMainMenu');
+
+    // 複製top選單
+    const topNav = document.querySelector('.topNav');
+    if (topNav) {
+      const topNavClone = topNav.cloneNode(true);
+
+      topNavClone.querySelector('.fontSize')?.remove();
+      topNavClone.querySelector('.topSearch')?.remove();
+      topNavClone.querySelector('#aU')?.remove();
+      // 將 top選單 加入到 手機版主選單
+      mobileMainMenuBox.insertAdjacentElement('beforeend', topNavClone);
+      changeTag(topNavClone, 'div');
+    }
+
+    // 將 關閉按鈕 加入到 手機版主選單
+    mobileMainMenuBox.insertAdjacentElement('afterbegin', mainMenuClone);
+    // 將 手機版主選單 加入到 手機版主選單(多包一層div)
+    mobileMenu.insertAdjacentElement('afterbegin', mobileMainMenuBox);
+    // 將 手機版主選單 加入到 header 前
+    header?.insertAdjacentElement('beforebegin', mobileMenu);
+    // 轉換標籤
+    changeTag(mainMenuClone, 'div');
+
+    // 點擊選單按鈕 執行 展開側邊選單函式
+    const mobileMainMenuBtn = document.querySelector('#mobileMainMenuBtn');
+    mobileMainMenuBtn.setAttribute('aria-controls', 'mobileMenu');
+    mobileMainMenuBtn.setAttribute('aria-expanded', 'false');
+    mobileMainMenuBtn.setAttribute('aria-pressed', 'false');
+    mobileMainMenuBtn.setAttribute('aria-haspopup', 'true');
+
+    // 展開側邊選單函式
+    function _showSidebar() {
+      mobileMenu.style.opacity = '1';
+      mobileMenu.style.display = 'block';
+      mobileMainMenuBtn.setAttribute('aria-expanded', 'true');
+      mobileMainMenuBtn.setAttribute('aria-pressed', 'true');
+
+      setTimeout(() => {
+        mobileMenu.style.transform = `translateX(0px)`;
+        mobileMenu.classList.add('open');
+      }, 0);
+      mobileMainMenuBtn.classList.add('active');
+      body.classList.add('noscroll');
+      jsFadeIn(overlay);
+      overlay.style.zIndex = '90';
+    }
+    // 隱藏側邊選單函式
+    function _hideSidebar(overlayFN = true) {
+      mobileMenu.style.transform = `translateX(-100%)`;
+      mobileMainMenuBtn.setAttribute('aria-expanded', 'false');
+      mobileMainMenuBtn.setAttribute('aria-pressed', 'false');
+
+      setTimeout(() => {
+        mobileMenu.removeAttribute('style');
+      }, 300);
+
+      mobileMenu.classList.remove('open');
+      body.classList.remove('noscroll');
+      mobileMainMenuBtn.classList.remove('active');
+      overlay.style.zIndex = '';
+      if (overlayFN) jsFadeOut(overlay);
+    }
+
+    mobileMainMenuBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (mobileMainMenuBtn.getAttribute('aria-expanded') === 'true') {
+        _hideSidebar();
+      } else {
+        _showSidebar();
+      }
+      mobileMainMenuBtn.focus();
+    });
+
+    overlay.addEventListener('click', () => _hideSidebar());
+
+    // 手機版選單展開功能
+    const mobileMenuLiHasChild = mobileMenu.querySelectorAll('li.hasChild');
+
+    mobileMenuLiHasChild.forEach((i) => {
+      let childControl;
+
+      if (!needLink) {
+        childControl = i.querySelector('a');
+        childControl.setAttribute('role', 'button');
+      } else {
+        i.classList.add('needLink');
+        const nextA = i.querySelector('a');
+        const nextBtn = document.createElement('button');
+        nextBtn.classList.add('nextLvl');
+        nextA.insertAdjacentElement('afterend', nextBtn);
+        nextBtn.setAttribute('id', nextA.getAttribute('id'));
+        childControl = nextBtn;
+      }
+
+      // 無障礙設定 -- mobile
+      const id = `mobileMenu_${randomLetter(3)}${randomFloor(0, 999)}`;
+      const childUl = i.querySelector('ul');
+      childControl.setAttribute('aria-expanded', 'false');
+      childControl.setAttribute('aria-haspopup', 'true');
+      childControl.setAttribute('id', id);
+      childControl.setAttribute('aria-controls', `${id}_con`);
+      childUl.setAttribute('id', `${id}_con`);
+      childUl.setAttribute('aria-labelledby', id);
+
+      childControl.addEventListener('click', (e) => {
+        if (!childControl.parentNode.classList.contains('hasChild')) return;
+        if (!needLink) {
+          e.preventDefault();
+        }
+        toggleAccordion(childControl, 'ul');
+      });
+    });
+
+    // 手機版鍵盤無障礙設定
+    const allMobileMenuTarget = mobileMenu.querySelectorAll('a,button,input,select');
+    body.addEventListener('keydown', (e) => {
+      if (e.code === 'Escape' && mobileMainMenuBtn.getAttribute('aria-expanded') === 'true') {
+        _hideSidebar();
+      } else if (e.code === 'Tab' && !e.shiftKey && e.target === mobileMainMenuBtn && mobileMainMenuBtn.getAttribute('aria-expanded') === 'true') {
+        e.preventDefault();
+        allMobileMenuTarget[0].focus();
+      } else if (e.code === 'Tab' && e.shiftKey && e.target === allMobileMenuTarget[0]) {
+        e.preventDefault();
+        mobileMainMenuBtn.focus();
+      }
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.outerWidth <= setRWDWidth) {
+        headTop.removeAttribute('style');
+      } else {
+        body.classList.remove('noscroll');
+        _hideSidebar();
+      }
+    });
+    const mobileSearchBtn = document.querySelector('#mobileSearchBtn');
+    if (!mobileSearchBtn) return;
+    mobileSearchBtn.addEventListener('click', () => _hideSidebar(false));
+  }
+  _initMobileMenu();
 }
 
 // -----------------------------------------------------------------------
 // -----  search   ------------------------------------------------------
 // -----------------------------------------------------------------------
 function webSearch() {
-  const webSearch = document.querySelector('header .webSearch');
+  const body = document.querySelector('body');
+  const webSearch = document.querySelector('.webSearch');
 
-  if (webSearch === null) return;
+  if (!webSearch) return;
   // console.warn('網站搜尋功能: webSearch 無法抓到(請檢查Html結構)，或是沒有使用到此功能');
   // return;
 
@@ -988,8 +922,8 @@ function webSearch() {
   const webSearchAllTarget = webSearch.querySelectorAll('a, button, input, select, textarea');
   const id = `ws_${randomLetter(3)}${randomFloor(0, 999)}`;
 
-  // 桌機搜尋按鈕進行設定與事件綁定
-  if (webSearchBtn !== null) {
+  if (webSearchBtn) {
+    // 桌機搜尋按鈕進行設定與事件綁定
     webSearchBtn.setAttribute('aria-controls', `${id}_con`);
     webSearchBtn.setAttribute('aria-expanded', 'false');
     webSearchBtn.setAttribute('aria-pressed', 'false');
@@ -1010,36 +944,42 @@ function webSearch() {
   webSearch.setAttribute('id', `${id}_con`);
   webSearch.setAttribute('aria-labelledby', `topSearchBtn mobileSearchBtn`);
 
-  // 6. 切換搜尋展開/關閉的函式
-  function toggleContent(elem, focus = false) {
-    const header = document.querySelector('header');
-    overlay.style.top = `${header.offsetHeight}px`;
+  //  切換搜尋展開/關閉的函式
+  function toggleContent(elem) {
     const isExpanded = elem.getAttribute('aria-expanded') === 'true';
     if (isExpanded) {
-      elem.setAttribute('aria-expanded', 'false');
-      elem.setAttribute('aria-pressed', 'false');
-      elem.classList.remove('active');
-      jsSlideUp(webSearch);
-      setTimeout(() => {
-        elem.focus();
-      });
-      jsFadeOut(overlay);
+      _hideSearchBox(elem);
     } else {
-      elem.setAttribute('aria-expanded', 'true');
-      elem.setAttribute('aria-pressed', 'true');
-      elem.classList.add('active');
-      // 清空搜尋區塊內第一個可編輯項目的值（例如輸入框）
-      setTimeout(() => {
-        if (webSearchAllTarget[0]) webSearchAllTarget[0].value = '';
-        if (webSearchAllTarget[0]) webSearchAllTarget[0].focus();
-      });
-      jsSlideDown(webSearch);
-      jsFadeIn(overlay);
+      _showSearchBox(elem);
     }
   }
 
+  function _showSearchBox(elem) {
+    elem.setAttribute('aria-expanded', 'true');
+    elem.setAttribute('aria-pressed', 'true');
+    elem.classList.add('active');
+    // 清空搜尋區塊內第一個可編輯項目的值（例如輸入框）
+    setTimeout(() => {
+      if (webSearchAllTarget[0]) webSearchAllTarget[0].value = '';
+      if (webSearchAllTarget[0]) webSearchAllTarget[0].focus();
+    });
+    jsSlideDown(webSearch);
+    jsFadeIn(overlay);
+  }
+
+  function _hideSearchBox(elem, overLayFn = true) {
+    elem.setAttribute('aria-expanded', 'false');
+    elem.setAttribute('aria-pressed', 'false');
+    elem.classList.remove('active');
+    jsSlideUp(webSearch);
+    setTimeout(() => {
+      elem.focus();
+    });
+    if (overLayFn) jsFadeOut(overlay);
+  }
+
   // 鍵盤事件設定，支援 Tab、Enter、Alt+S 快捷鍵以及 Escape 關閉
-  window.addEventListener('keydown', (e) => {
+  body.addEventListener('keydown', (e) => {
     const isSearchBtn = e.target === webSearchBtn || e.target === mobileSearchBtn;
     const searchBtn = window.outerWidth >= setRWDWidth ? webSearchBtn : mobileSearchBtn;
     const checkExpanded = e.target.getAttribute('aria-expanded');
@@ -1083,7 +1023,7 @@ function webSearch() {
   });
 
   // 點擊其他地方時關閉搜尋面板
-  window.addEventListener('click', (e) => {
+  body.addEventListener('click', (e) => {
     const isInsideSearch = jsParents(e.target, webSearch).length === 0;
 
     searchTargetSelect.forEach((item) => {
@@ -1096,6 +1036,9 @@ function webSearch() {
       }
     });
   });
+  const mobileMainMenuBtn = document.querySelector('#mobileMainMenuBtn');
+  if (!mobileMainMenuBtn) return;
+  mobileMainMenuBtn.addEventListener('click', () => _hideSearchBox(mobileSearchBtn, false));
 }
 // webSearch();
 window.addEventListener('load', () => webSearch());
@@ -1108,7 +1051,7 @@ function tabFunction(obj) {
   const { target, autoClose = true, openContent = false, modeSwitch = false, windowWidth = setRWDWidth, openIndex = 0, openSwitch = true } = obj;
 
   const tabSet = document.querySelector(target);
-  if (tabSet === null) return;
+  if (!tabSet) return;
 
   const tabBtnBox = tabSet.querySelector('.tabBtnBox');
   const tabItems = tabSet.querySelector('.tabItems');
@@ -1206,11 +1149,11 @@ function tabFunction(obj) {
       let index;
       //左右操作tab
       if (e.code === 'ArrowRight') {
-        index = ([...tabBtn].indexOf(e.target) + 1) % tabBtn.length;
+        index = [...tabBtn].indexOf(e.target) + 1;
         tabBtn[index].focus();
         checkTarget(index);
       } else if (e.code === 'ArrowLeft') {
-        index = ([...tabBtn].indexOf(e.target) - 1 + tabBtn.length) % tabBtn.length;
+        index = [...tabBtn].indexOf(e.target) - 1 + tabBtn.length;
         tabBtn[index].focus();
         checkTarget(index);
       }
@@ -1373,8 +1316,8 @@ function tabFunction(obj) {
 function accordionFunction(obj) {
   const { target, openContent = false, openDefault = false, openIndex = 0, autoClose = true, openSwitch = true, info } = obj;
 
-  const accordionSet = target === undefined ? document.querySelector(obj) : document.querySelector(target);
-  if (accordionSet === null) return;
+  const accordionSet = document.querySelector(target);
+  if (!accordionSet) return;
   // console.warn('手風琴功能: accordionSet 無法抓到(請檢查Html結構)，或是沒有使用到此功能');
   // return;
 
@@ -1391,12 +1334,15 @@ function accordionFunction(obj) {
       const controls = `${id}_con`;
 
       // 增加展開說明文字
+      let accordionStateOuter;
       let accordionState;
       if (openSwitch) {
-        accordionState = document.createElement('div');
-        accordionState.classList.add('accordionState');
+        let accordionStateOuter = document.createElement('div');
+        accordionState = document.createElement('span');
+        accordionStateOuter.classList.add('accordionState');
         accordionState.insertAdjacentHTML('afterbegin', infoOpen);
-        accordion.insertAdjacentElement('beforeend', accordionState);
+        accordionStateOuter.insertAdjacentElement('beforeend', accordionState);
+        accordion.insertAdjacentElement('beforeend', accordionStateOuter);
       }
 
       //button
@@ -1424,13 +1370,13 @@ function accordionFunction(obj) {
       accordionBtns[openIndex].parentElement.classList.add('active');
       accordionBtns[openIndex].setAttribute('aria-expanded', 'true');
       jsSlideDown(accordionCons[openIndex]);
-      if (openSwitch) accordionBtns[openIndex].querySelector('.accordionState').textContent = infoClose;
+      if (openSwitch) accordionBtns[openIndex].querySelector('.accordionState span').textContent = infoClose;
     }
   }
   accordionInit(openIndex);
 
   function accordionFn(btn, i) {
-    const accordionState = btn.querySelector('.accordionState');
+    const accordionState = btn.querySelector('.accordionState span');
     jsSlideToggle(accordionCons[i]);
     accordionSet.dataset.nowIndex = i;
     let infoText = accordionState.textContent === infoClose ? infoOpen : infoClose;
@@ -1443,7 +1389,7 @@ function accordionFunction(obj) {
     const siblingsMobileAccordionBtns = [...accordionBtns].filter((value) => value !== accordionBtns[i]);
     siblingsMobileAccordionBtns.forEach((value) => {
       value.parentElement.classList.remove('active');
-      value.querySelector('.accordionState').textContent = infoOpen;
+      value.querySelector('.accordionState span').textContent = infoOpen;
     });
     const siblingsAccordionCons = [...accordionCons].filter((value) => value !== accordionCons[i]);
     siblingsAccordionCons.forEach((value) => jsSlideUp(value));
@@ -1475,7 +1421,7 @@ function accordionFunction(obj) {
 function fatFooter() {
   const fatFooterBtn = document.querySelector('#fatFooterBtn');
 
-  if (fatFooterBtn === null) return;
+  if (!fatFooterBtn) return;
 
   const fatFooterCon = document.querySelectorAll('.fatFooter nav > ul > li > ul');
 
@@ -1543,13 +1489,16 @@ window.addEventListener('load', () => fatFooter());
 // -----  sideNav   ------------------------------------------------------
 // -----------------------------------------------------------------------
 function sideNav(options) {
-  const { showDefault = true, needLink = false, duration = 200 } = options;
+  const body = document.querySelector('body');
+  const { showDefault = true, needLink = false, duration = 200, floatType = true } = options;
   const mainBox = document.querySelector('.innerPage .mainBox');
-  if (mainBox === null) return;
+  if (!mainBox) return;
   const sideNav = mainBox.querySelector('.sideNav');
+  if (!sideNav) return;
   const mainContentBox = mainBox.querySelector('.mainContentBox');
 
-  mainBox.classList.add('hasSide');
+  floatType ? sideNav.classList.add('typeA') : sideNav.classList.add('typeB');
+
   const nextOpen = sideNav.dataset.nextOpen || '開啟下層選單 ';
   const nextClose = sideNav.dataset.nextClose || '收合下層選單';
 
@@ -1566,13 +1515,13 @@ function sideNav(options) {
 
   if (sideNavBtn) {
     // 統一設定無障礙相關屬性與過渡效果
-    const setTransitionBtn = (btn, expanded, left = null, toLeft = null) => {
+    function setTransitionBtn(btn, expanded, left = null, toLeft = null) {
       btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
       btn.setAttribute('aria-haspopup', 'true');
       btn.setAttribute('aria-controls', 'sideMenu');
       btn.classList.toggle('active');
 
-      if (window.outerWidth <= setRWDWidth) {
+      if (window.outerWidth <= setRWDWidth && floatType) {
         mainContentBox.removeAttribute('style');
         btn.style.transitionProperty = 'left';
         btn.style.transitionDuration = `${duration}ms`;
@@ -1585,24 +1534,36 @@ function sideNav(options) {
           btn.style.removeProperty('transition-property');
         }, duration);
       }
-    };
+    }
     setTransitionBtn(sideNavBtn, showDefault);
 
-    const setTransition = (elem, width, toWidth) => {
-      elem.style.overflow = 'hidden';
-      elem.style.transitionProperty = 'width';
-      elem.style.transitionDuration = `${duration}ms`;
-      elem.style.width = `${width}px`;
-      setTimeout(() => {
-        elem.style.width = `${toWidth}px`;
-      });
-      setTimeout(() => {
-        sideMenu.style.removeProperty('width');
-        sideMenu.style.removeProperty('overflow');
-        elem.style.removeProperty('transition-duration');
-        elem.style.removeProperty('transition-property');
-      }, duration);
-    };
+    function setTransition(elem, width, toWidth, dn) {
+      if (floatType) {
+        if (!dn) {
+          elem.style.display = 'block';
+        }
+        elem.style.overflow = 'hidden';
+        elem.style.transitionProperty = 'width';
+        elem.style.transitionDuration = `${duration}ms`;
+        elem.style.width = `${width}px`;
+        setTimeout(() => {
+          elem.style.width = `${toWidth}px`;
+        });
+        setTimeout(() => {
+          sideMenu.style.removeProperty('width');
+          sideMenu.style.removeProperty('overflow');
+          elem.style.removeProperty('transition-duration');
+          elem.style.removeProperty('transition-property');
+        }, duration);
+        if (dn) {
+          setTimeout(() => {
+            elem.style.display = 'none';
+          }, duration);
+        }
+      } else {
+        jsSlideToggle(sideMenu);
+      }
+    }
 
     const sideMenuWidth = sideMenu.dataset.width;
     sideNavBtn.addEventListener('click', () => {
@@ -1611,8 +1572,7 @@ function sideNav(options) {
 
       if (isClosed) {
         // ---- 開啟選單 ----
-        sideMenu.style.display = 'block';
-        setTransition(sideMenu, 0, sideMenuWidth);
+        setTransition(sideMenu, 0, sideMenuWidth, false);
         setTransitionBtn(sideNavBtn, true, 0, sideMenuWidth);
         // 若為 mobile 模式，更新按鈕位置
         if (window.outerWidth > setRWDWidth) {
@@ -1620,11 +1580,8 @@ function sideNav(options) {
         }
       } else {
         // ---- 關閉選單 ----
-        setTransition(sideMenu, sideMenuWidth, 0);
+        setTransition(sideMenu, sideMenuWidth, 0, true);
         setTransitionBtn(sideNavBtn, false, sideMenuWidth, 0);
-        setTimeout(() => {
-          sideMenu.style.display = 'none';
-        }, duration);
       }
     });
   }
@@ -1692,7 +1649,7 @@ function sideNav(options) {
 
   let checkRwd = window.outerWidth < setRWDWidth;
   // 鍵盤無障礙設定（僅限 RWD 狀態下有效）
-  window.addEventListener('keydown', (e) => {
+  body.addEventListener('keydown', (e) => {
     if (checkRwd && sideNavBtn.getAttribute('aria-expanded') === 'true') {
       const focusable = [...allTarget].filter((item) => item.getBoundingClientRect().height !== 0);
       const lastFocusable = focusable[focusable.length - 1];
@@ -1711,24 +1668,31 @@ function sideNav(options) {
   // 視窗載入與重置事件：調整響應式設定
   const checkRwdFn = () => {
     sideNavWidth = sideNav.offsetWidth;
-
     if (window.outerWidth <= setRWDWidth) {
       checkRwd = true;
       mainContentBox.removeAttribute('style');
       sideNavBtn.classList.remove('active');
       sideNavBtn.setAttribute('aria-expanded', 'false');
-      sideNavBtn.style.left = '';
-      sideNavBtn.style.top = `80px`;
-      sideMenu.removeAttribute('style');
+      if (floatType) {
+        sideNavBtn.style.left = '';
+        sideNavBtn.style.top = `80px`;
+        sideMenu.removeAttribute('style');
+      } else {
+        jsSlideUp(sideMenu);
+      }
     } else if (window.outerWidth > setRWDWidth && checkRwd === true) {
       checkRwd = false;
       sideNavBtn.classList.add('active');
       sideNavBtn.setAttribute('aria-expanded', 'true');
       sideMenu.removeAttribute('style');
-      mainContentBox.style.width = `calc(100% - ${hasSideNavGap + sideNav.offsetWidth}px)`;
+      if (floatType) {
+        mainContentBox.style.width = `calc(100% - ${hasSideNavGap + sideNav.offsetWidth}px)`;
+      } else {
+        jsSlideDown(sideMenu);
+      }
     }
   };
-  window.addEventListener('load', () => checkRwdFn());
+  checkRwdFn();
   window.addEventListener('resize', () => checkRwdFn());
 }
 
@@ -1738,7 +1702,7 @@ function sideNav(options) {
 
 function tableAddDataAttributes() {
   const el = document.querySelectorAll('.tableList');
-  if (el === null) return;
+  if (!el) return;
   el.forEach((i) => {
     const tableItem = i.querySelectorAll('table');
     tableItem.forEach((i) => {
@@ -1766,19 +1730,19 @@ window.addEventListener('load', () => tableAddDataAttributes());
 
 function scrollTables() {
   const el = document.querySelectorAll('.tableScroll');
-  if (el === null) return;
+  if (!el) return;
 
   el.forEach((elem) => {
     const table = elem.querySelector('table');
     const caption = elem.querySelector('caption');
     const prevBtn = elem.querySelector('.scrollTablePrevBtn');
     const nextBtn = elem.querySelector('.scrollTableNextBtn');
-    if (prevBtn === null || nextBtn === null) {
+    if (!prevBtn || !nextBtn) {
       console.error('表格捲動功能: prevBtn 或 nextBtn 無法抓到，請檢查Html結構');
       return;
     }
 
-    if (caption !== null) {
+    if (caption) {
       let captionMargin = parseInt(window.getComputedStyle(caption).marginBottom.replace('px', '')) || 0;
 
       prevBtn.style.top = `${caption.offsetHeight + captionMargin}px`;
@@ -1801,6 +1765,7 @@ function scrollTables() {
       tableScrollLeft = tableScrollIn.scrollLeft;
       tableClientWidth = tableScrollIn.clientWidth;
       tableScrollWidth = table.scrollWidth;
+
       if (tableScrollLeft >= 0 && tableScrollLeft + tableClientWidth < tableScrollWidth) {
         nextBtn.style.display = 'block';
       } else {
@@ -1813,14 +1778,16 @@ function scrollTables() {
       }
     }
 
-    window.addEventListener('load', () => checkScroll(tableScrollLeft, tableClientWidth, tableScrollWidth));
+    checkScroll(tableScrollLeft, tableClientWidth, tableScrollWidth);
     window.addEventListener('resize', () => checkScroll(tableScrollLeft, tableClientWidth, tableScrollWidth));
 
-    prevBtn.addEventListener('click', () => {
-      tableScrollIn.scrollLeft -= 100;
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      tableScrollIn.scrollBy({ left: -100, behavior: 'smooth' });
     });
-    nextBtn.addEventListener('click', () => {
-      tableScrollIn.scrollLeft += 100;
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      tableScrollIn.scrollBy({ left: 100, behavior: 'smooth' });
     });
   });
 }
@@ -1833,7 +1800,7 @@ window.addEventListener('load', () => scrollTables());
 function swiperAutoPlaysFn(swiper, elem) {
   const autoPlaySwitch = swiper.el.parentNode.parentNode.querySelector('.autoPlaySwitch');
 
-  if (autoPlaySwitch === null) return;
+  if (!autoPlaySwitch) return;
   let nowState = swiper.autoplay.running ? true : false;
   let infoPlay = autoPlaySwitch.dataset.infoPlay;
   let infoStop = autoPlaySwitch.dataset.infoStop;
@@ -1865,6 +1832,7 @@ function swiperAutoPlaysFn(swiper, elem) {
 // -----   swiper無障礙功能   -----------------------------------
 // -----------------------------------------------------------------------
 function swiperA11Fn(swiper) {
+  // 圓點
   let noActive = 0;
   swiper.slides.filter((elem, i) => {
     if (elem.classList.contains('swiper-slide-thumb-active')) {
@@ -1890,15 +1858,46 @@ function swiperA11Fn(swiper) {
       sibling.forEach((j) => j.setAttribute('aria-pressed', 'false'));
     });
   });
+
+  // swiperAutoPlay切換功能
+  const autoPlaySwitch = swiper.el.parentNode.parentNode.querySelector('.autoPlaySwitch');
+
+  if (!autoPlaySwitch) return;
+  let nowState = swiper.autoplay.running ? true : false;
+  let infoPlay = autoPlaySwitch.dataset.infoPlay;
+  let infoStop = autoPlaySwitch.dataset.infoStop;
+  nowState ? autoPlaySwitch.classList.add('stop') : autoPlaySwitch.classList.add('play');
+  autoPlaySwitch.setAttribute('aria-label', infoStop);
+  autoPlaySwitch.setAttribute('data-altlabel', infoPlay);
+
+  autoPlaySwitch.addEventListener('click', (e) => {
+    if (nowState) {
+      nowState = false;
+      swiper.autoplay.stop();
+      autoPlaySwitch.classList.add('play');
+      autoPlaySwitch.classList.remove('stop');
+      autoPlaySwitch.setAttribute('aria-label', infoPlay);
+      autoPlaySwitch.setAttribute('data-altlabel', infoStop);
+    } else {
+      nowState = true;
+      swiper.autoplay.start();
+      autoPlaySwitch.classList.add('stop');
+      autoPlaySwitch.classList.remove('play');
+      autoPlaySwitch.setAttribute('aria-label', infoStop);
+      autoPlaySwitch.setAttribute('data-altlabel', infoPlay);
+    }
+  });
+  swiper.slides.length === 1 ? autoPlaySwitch.remove() : null;
 }
 
 function swiperNavKeyDownFn(swiper, mainSwiper) {
-  if (swiper === null) return;
+  const body = document.querySelector('body');
+  if (!swiper) return;
   swiper.slides.forEach((elem, idx) => {
     elem.dataset.swiperSlideIndex = idx;
   });
 
-  window.addEventListener('keydown', (e) => {
+  body.addEventListener('keydown', (e) => {
     if (e.code === 'Enter' && e.target.parentNode.dataset.swiperSlideIndex !== undefined) {
       let index = e.target.parentNode.dataset.swiperSlideIndex;
       let swiperSlide = e.target.parentNode.parentNode.querySelectorAll('.item');
@@ -1916,7 +1915,7 @@ function swiperNavKeyDownFn(swiper, mainSwiper) {
 // -----------------------------------------------------------------------
 function formEye() {
   const checkEye = document.querySelector('.formEyes');
-  if (checkEye === null) return;
+  if (!checkEye) return;
   const password = checkEye.parentNode.querySelector('.password');
   const showPassword = checkEye.dataset.show;
   const hidePassword = checkEye.dataset.hide;
@@ -1941,34 +1940,13 @@ function formEye() {
 window.addEventListener('load', () => formEye());
 
 // -----------------------------------------------------------------------
-// -----   fieldset legend 寬度設定 ---------------------------------------
-// -----------------------------------------------------------------------
-function legendWidth() {
-  const allFieldset = document.querySelectorAll('fieldset');
-  if (allFieldset === null) return;
-
-  allFieldset.forEach((elem) => {
-    const legend = elem.querySelector('legend');
-    if (legend === null) return;
-    const legendWidth = legend.offsetWidth;
-    const legendHeight = legend.offsetHeight;
-    const legendBox = document.createElement('div');
-    legendBox.className = 'legendBox';
-    legendBox.style.width = `${legendWidth}px`;
-    legendBox.style.height = `${legendHeight}px`;
-    elem.insertAdjacentElement('afterbegin', legendBox);
-    legendBox.insertAdjacentElement('afterbegin', legend);
-  });
-}
-// legendWidth();
-// -----------------------------------------------------------------------
 // -----   scroll top   ------------------------------------------------
 // -----------------------------------------------------------------------
 
 function scrollTopFn() {
   const scrollTop = document.querySelector('#scrollTop');
   let scrollY = window.scrollY;
-  if (scrollTop === null) return;
+  if (!scrollTop) return;
 
   function scrollFN() {
     scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
@@ -1994,10 +1972,11 @@ window.addEventListener('load', () => scrollTopFn());
 // -----------------------------------------------------------------------
 
 function noticeBoxFn() {
+  const body = document.querySelector('body');
   const allNoticeBox = document.querySelectorAll('[class^="formNotice"]');
   // const noticeClose =
 
-  if (allNoticeBox === null) return;
+  if (!allNoticeBox) return;
 
   allNoticeBox.forEach((elem) => {
     const noticeClose = elem.querySelector('.noticeClose');
@@ -2009,7 +1988,7 @@ function noticeBoxFn() {
     elem.setAttribute('aria-labelledby', id);
   });
 
-  window.addEventListener('click', (e) => {
+  body.addEventListener('click', (e) => {
     const checkCloseBtn = e.target;
     if (checkCloseBtn.classList.contains('noticeClose')) {
       checkCloseBtn.parentNode.style.display = 'none';
@@ -2045,7 +2024,8 @@ addFile();
 // -----------------------------------------------------------------------
 
 function a11yKeyCode() {
-  window.addEventListener('keydown', (e) => {
+  const body = document.querySelector('body');
+  body.addEventListener('keydown', (e) => {
     switch (e.altKey && e.code) {
       case true && 'KeyU':
         const aU = document.querySelector('#aU');
@@ -2076,11 +2056,11 @@ function fancyBoxFn() {
 
     let lang;
     checkLang.forEach((elem) => {
-      const path = elem.attributes.src.value;
+      const path = elem.attributes.src?.value;
       if (path === undefined) return;
       const match = path?.match(/fancybox\/l10n/);
       const fancyboxPath = match ? match[0] : null;
-      if (fancyboxPath === null) return;
+      if (!fancyboxPath) return;
       const fileName = path?.split('/').pop();
       const locale = fileName?.split('.')[0];
       lang = locale;
@@ -2103,7 +2083,7 @@ function fancyBoxFn() {
 
     // 進入網頁開啟燈箱
     let showPopup = document.querySelector('.showPopup');
-    if (showPopup !== null) {
+    if (showPopup) {
       Fancybox.show(
         [
           {

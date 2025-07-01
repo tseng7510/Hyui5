@@ -84,7 +84,7 @@ section {
       }
 
       &:not(:hover) {
-        h3 {
+        .title {
           color: $colorWord;
         }
       }
@@ -95,7 +95,7 @@ section {
       line-height: 2;
     }
 
-    h3 {
+    .title {
       @include lineClamp(4);
       margin: 0;
       font-size: Rem(16);
@@ -133,7 +133,7 @@ section {
         }
 
         &:not(:hover) {
-          h3 {
+          .title {
             color: $colorWord;
           }
         }
@@ -160,7 +160,7 @@ section {
         }
       }
 
-      h3 {
+      .title {
         @include lineClamp(2);
         margin: 0;
         font-size: Rem(18);
@@ -492,7 +492,7 @@ section {
       }
 
       &:not(:hover) {
-        h3 {
+        .title {
           color: $colorWord;
         }
       }
@@ -503,7 +503,7 @@ section {
       line-height: 2;
     }
 
-    h3 {
+    .title {
       @include lineClamp(1);
       margin: 0;
       font-size: Rem(16);
@@ -566,7 +566,7 @@ section {
         }
 
         &:not(:hover) {
-          h3 {
+          .title {
             color: $colorWord;
           }
         }
@@ -592,7 +592,7 @@ section {
         }
       }
 
-      h3 {
+      .title {
         margin: 0;
         font-size: Rem(18);
         line-height: 1.4;

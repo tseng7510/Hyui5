@@ -39,6 +39,11 @@
     display: block;
   }
 
+  &:focus-visible {
+    outline-offset: -2px !important;
+  }
+
+  &::after,
   &::before {
     content: '';
     position: absolute;
@@ -49,20 +54,13 @@
     height: 2px;
     background: #fff;
     box-shadow: #fff 0 7px 0 0, #fff 0 -7px 0 0;
-    transition: 0.2s linear;
+    @include transition(0.3)
   }
 
   &::after {
-    position: absolute;
-    content: '';
-    width: 20px;
-    height: 2px;
-    background: $colorPrimary;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    box-shadow: none;
     opacity: 0;
-    transition: 0.2s linear;
+    @include transition(0.3)
   }
 
   // &:hover {
@@ -75,6 +73,18 @@
   //     transform: translate(-50%, -50%) rotate(-45deg);
   //   }
   // }
+
+  &.active {
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+      box-shadow: none;
+    }
+
+    &::after {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
 }
 
 // 手機版選單 ------------------------------------------------------------
@@ -83,10 +93,10 @@
   background: $colorPrimary;
   position: fixed;
   left: 0;
-  top: 0;
+  top: 60px;
   bottom: 0;
   z-index: 99;
-  padding: 50px 20px 20px;
+  padding: 30px 20px 20px;
   display: none;
   transform: translateX(-100%);
   @include transition(0.3);

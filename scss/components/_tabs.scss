@@ -1,11 +1,12 @@
 .tabSet {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 15px;
 
   .tabBtnBox {
     overflow-x: auto;
     display: flex;
+    padding-bottom: 5px;
   }
 
   .tabItems {

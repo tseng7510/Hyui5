@@ -90,7 +90,6 @@
 
   .formList {
     display: flex;
-    flex-wrap: wrap;
     gap: 5px;
 
     input {
@@ -101,6 +100,10 @@
       @include screen('mobile') {
         flex-grow: 1;
       }
+    }
+
+    button {
+      white-space: nowrap;
     }
   }
 
