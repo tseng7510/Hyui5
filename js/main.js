@@ -586,7 +586,6 @@ function fontSize() {
   const mainContent = document.querySelector('.mainContentBox .mainContent');
   if (fontSizeInner && mainContent) _setupFontSizeToggle(fontSizeInner, 'FontSizeInner', mainContent);
 }
-// fontSize();
 window.addEventListener('load', () => fontSize());
 
 // -----------------------------------------------------------------------
@@ -972,7 +971,6 @@ function webSearch() {
     elem.setAttribute('aria-pressed', 'false');
     elem.classList.remove('active');
     jsSlideUp(webSearch);
-    console.log(overLayFn);
 
     if (overLayFn) {
       jsFadeOut(overlay);
@@ -1485,7 +1483,6 @@ function fatFooter() {
     }
   }
 }
-// fatFooter();
 window.addEventListener('load', () => fatFooter());
 
 // -----------------------------------------------------------------------
@@ -1705,7 +1702,7 @@ function sideNav(options) {
 
 function tableAddDataAttributes() {
   const el = document.querySelectorAll('.tableList');
-  if (!el) return;
+  if (el.length === 0) return;
   el.forEach((i) => {
     const tableItem = i.querySelectorAll('table');
     tableItem.forEach((i) => {
@@ -1724,7 +1721,6 @@ function tableAddDataAttributes() {
     });
   }
 }
-// tableAddDataAttributes();
 window.addEventListener('load', () => tableAddDataAttributes());
 
 // -----------------------------------------------------------------------
@@ -1733,7 +1729,7 @@ window.addEventListener('load', () => tableAddDataAttributes());
 
 function scrollTables() {
   const el = document.querySelectorAll('.tableScroll');
-  if (!el) return;
+  if (el.length === 0) return;
 
   el.forEach((elem) => {
     const table = elem.querySelector('table');
@@ -1794,7 +1790,6 @@ function scrollTables() {
     });
   });
 }
-// scrollTables();
 window.addEventListener('load', () => scrollTables());
 
 // -----------------------------------------------------------------------
@@ -1967,7 +1962,6 @@ function scrollTopFn() {
     });
   });
 }
-// scrollTopFn();
 window.addEventListener('load', () => scrollTopFn());
 
 // -----------------------------------------------------------------------
@@ -1979,7 +1973,7 @@ function noticeBoxFn() {
   const allNoticeBox = document.querySelectorAll('[class^="formNotice"]');
   // const noticeClose =
 
-  if (!allNoticeBox) return;
+  if (allNoticeBox.length === 0) return;
 
   allNoticeBox.forEach((elem) => {
     const noticeClose = elem.querySelector('.noticeClose');
@@ -1998,7 +1992,6 @@ function noticeBoxFn() {
     }
   });
 }
-// noticeBoxFn();
 window.addEventListener('load', () => noticeBoxFn());
 
 // -----------------------------------------------------------------------
@@ -2006,6 +1999,8 @@ window.addEventListener('load', () => noticeBoxFn());
 // -----------------------------------------------------------------------
 function addFile() {
   const addFileName = document.querySelectorAll('.downloadFile');
+  if (addFileName.length === 0) return;
+
   addFileName.forEach((i) => {
     i.addEventListener('change', pushFileName);
   });
@@ -2022,6 +2017,101 @@ function addFile() {
   }
 }
 addFile();
+
+// -----------------------------------------------------------------------
+// -----  橫式跑馬燈   -----------------------------------------------------
+// -----------------------------------------------------------------------
+
+function marquee() {
+  const marquee = document.querySelectorAll('.marqueeSliderH');
+  if (marquee.length === 0) return;
+  marquee.forEach((i) => {
+    const marqueeBox = i.querySelector('.marqueeBox');
+    const marqueeBoxWidth = marqueeBox.offsetWidth;
+    const marqueeList = i.querySelector('.marqueeList');
+    const marqueeListWidth = marqueeList.offsetWidth;
+    const autoPlaySwitch = i.querySelector('.autoPlaySwitch');
+
+    let isPaused = false;
+    let isHover = false;
+    let sliderMovePx = 0;
+
+    window.addEventListener('resize', () => {
+      marqueeBoxWidth = marqueeBox.offsetWidth;
+      marqueeListWidth = marqueeList.offsetWidth;
+    });
+
+    for (let i = 0; (marqueeListWidth * i) / marqueeBoxWidth < 1; i++) {
+      let cloneList = marqueeList.cloneNode(true);
+
+      cloneList.querySelectorAll('a').forEach((value) => {
+        value.setAttribute('tabindex', '-1');
+      });
+      marqueeList.insertAdjacentElement('afterend', cloneList);
+    }
+    let allList = marqueeBox.querySelectorAll('.marqueeList');
+    function marqueeMove() {
+      requestAnimationFrame(marqueeMove);
+      if (isHover || isPaused) return;
+      sliderMovePx++;
+
+      if (sliderMovePx <= marqueeListWidth) {
+        allList.forEach((value) => {
+          value.style.transform = `translateX(-${sliderMovePx}px)`;
+        });
+      } else {
+        sliderMovePx = 0;
+      }
+    }
+    marqueeMove();
+    marqueeBox.addEventListener('mouseenter', () => {
+      isHover = true;
+    });
+    marqueeBox.addEventListener('mouseleave', () => {
+      isHover = false;
+    });
+    marqueeBox.addEventListener('keyup', (e) => {
+      if (e.code === 'Tab') {
+        e.preventDefault();
+        sliderMovePx = -1;
+        setTimeout(() => {
+          isPaused = true;
+        });
+        autoPlaySwitch.classList.add('play');
+        autoPlaySwitch.classList.remove('stop');
+        autoPlaySwitch.setAttribute('aria-label', infoPlay);
+        autoPlaySwitch.setAttribute('data-altlabel', infoStop);
+      }
+    });
+
+    // autoPlay切換功能
+
+    if (!autoPlaySwitch) return;
+    let infoPlay = autoPlaySwitch.dataset.infoPlay;
+    let infoStop = autoPlaySwitch.dataset.infoStop;
+    autoPlaySwitch.classList.add('stop');
+    autoPlaySwitch.setAttribute('aria-label', infoStop);
+    autoPlaySwitch.setAttribute('data-altlabel', infoPlay);
+
+    autoPlaySwitch.addEventListener('click', (e) => {
+      if (!isPaused) {
+        isPaused = true;
+        autoPlaySwitch.classList.add('play');
+        autoPlaySwitch.classList.remove('stop');
+        autoPlaySwitch.setAttribute('aria-label', infoPlay);
+        autoPlaySwitch.setAttribute('data-altlabel', infoStop);
+      } else {
+        isPaused = false;
+        autoPlaySwitch.classList.add('stop');
+        autoPlaySwitch.classList.remove('play');
+        autoPlaySwitch.setAttribute('aria-label', infoStop);
+        autoPlaySwitch.setAttribute('data-altlabel', infoPlay);
+      }
+    });
+  });
+}
+
+window.addEventListener('load', () => marquee());
 // -----------------------------------------------------------------------
 // -----  無障礙快捷鍵盤組合 a11yKeyCode   ----------------------------------
 // -----------------------------------------------------------------------
@@ -2045,7 +2135,6 @@ function a11yKeyCode() {
     }
   });
 }
-// a11yKeyCode();
 window.addEventListener('load', () => a11yKeyCode());
 
 // -----------------------------------------------------------------------
@@ -2053,62 +2142,61 @@ window.addEventListener('load', () => a11yKeyCode());
 // -----------------------------------------------------------------------
 function fancyBoxFn() {
   const fancyBoxElem = document.querySelectorAll('[data-fancybox]');
-  if (fancyBoxElem.length > 0) {
-    // 確認引入語系
-    let checkLang = document.querySelectorAll('script');
+  if (fancyBoxElem.length === 0) return;
+  // 確認引入語系
+  let checkLang = document.querySelectorAll('script');
 
-    let lang;
-    checkLang.forEach((elem) => {
-      const path = elem.attributes.src?.value;
-      if (path === undefined) return;
-      const match = path?.match(/fancybox\/l10n/);
-      const fancyboxPath = match ? match[0] : null;
-      if (!fancyboxPath) return;
-      const fileName = path?.split('/').pop();
-      const locale = fileName?.split('.')[0];
-      lang = locale;
-    });
+  let lang;
+  checkLang.forEach((elem) => {
+    const path = elem.attributes.src?.value;
+    if (path === undefined) return;
+    const match = path?.match(/fancybox\/l10n/);
+    const fancyboxPath = match ? match[0] : null;
+    if (!fancyboxPath) return;
+    const fileName = path?.split('/').pop();
+    const locale = fileName?.split('.')[0];
+    lang = locale;
+  });
 
-    // 一般設定
-    Fancybox.bind('[data-fancybox]', {
-      l10n: Fancybox.l10n[lang],
-      on: {
-        '*': (fancyboxRef, eventName) => {
-          // 關閉按鈕無障礙問題
-          if (eventName === 'done') {
-            let closeBtn = fancyboxRef.container?.querySelector('[data-fancybox-close]');
-            closeBtn?.insertAdjacentHTML('afterbegin', `<span>${fancyboxRef.options.l10n.CLOSE}</span>`);
-            closeBtn.setAttribute('aria-label', fancyboxRef.options.l10n.CLOSE);
-          }
-        },
-      },
-    });
-
-    // 進入網頁開啟燈箱
-    let showPopup = document.querySelector('.showPopup');
-    if (showPopup) {
-      Fancybox.show(
-        [
-          {
-            src: `#${showPopup.getAttribute('id')}`,
-            type: 'inline',
-          },
-        ],
-        {
-          l10n: Fancybox.l10n[lang],
-          on: {
-            '*': (fancyboxRef, eventName) => {
-              // 關閉按鈕無障礙問題
-              if (eventName === 'done') {
-                let closeBtn = fancyboxRef.container?.querySelector('[data-fancybox-close]');
-                closeBtn?.insertAdjacentHTML('afterbegin', `<span>${fancyboxRef.options.l10n.CLOSE}</span>`);
-                closeBtn.setAttribute('aria-label', fancyboxRef.options.l10n.CLOSE);
-              }
-            },
-          },
+  // 一般設定
+  Fancybox.bind('[data-fancybox]', {
+    l10n: Fancybox.l10n[lang],
+    on: {
+      '*': (fancyboxRef, eventName) => {
+        // 關閉按鈕無障礙問題
+        if (eventName === 'done') {
+          let closeBtn = fancyboxRef.container?.querySelector('[data-fancybox-close]');
+          closeBtn?.insertAdjacentHTML('afterbegin', `<span>${fancyboxRef.options.l10n.CLOSE}</span>`);
+          closeBtn.setAttribute('aria-label', fancyboxRef.options.l10n.CLOSE);
         }
-      );
-    }
+      },
+    },
+  });
+
+  // 進入網頁開啟燈箱
+  let showPopup = document.querySelector('.showPopup');
+  if (showPopup) {
+    Fancybox.show(
+      [
+        {
+          src: `#${showPopup.getAttribute('id')}`,
+          type: 'inline',
+        },
+      ],
+      {
+        l10n: Fancybox.l10n[lang],
+        on: {
+          '*': (fancyboxRef, eventName) => {
+            // 關閉按鈕無障礙問題
+            if (eventName === 'done') {
+              let closeBtn = fancyboxRef.container?.querySelector('[data-fancybox-close]');
+              closeBtn?.insertAdjacentHTML('afterbegin', `<span>${fancyboxRef.options.l10n.CLOSE}</span>`);
+              closeBtn.setAttribute('aria-label', fancyboxRef.options.l10n.CLOSE);
+            }
+          },
+        },
+      }
+    );
   }
 }
 

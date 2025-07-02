@@ -140,13 +140,13 @@ window.addEventListener('load', () => {
   //跑馬燈
   const marqueeSlider = new Swiper('.marqueeSlider .swiper', {
     direction: 'vertical',
-    // 切換點
     // 切換箭頭
     navigation: {
       nextEl: '.marqueeSlider .swiperNext', //自行設定樣式
       prevEl: '.marqueeSlider .swiperPrev', //自行設定樣式
       disabledClass: 'swiperArrow-disabled', //不可點選樣式
     },
+    freeMode: true,
     autoplay: {
       delay: 5000,
     },

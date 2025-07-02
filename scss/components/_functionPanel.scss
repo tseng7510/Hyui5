@@ -15,7 +15,7 @@
 
     &::before {
       content: '';
-      background-image: url('../images/basic/icon/back_dark.svg');
+      background-image: url('../images/basic/icon/back_dk.svg');
     }
   }
 
@@ -25,7 +25,7 @@
 
     &::before {
       content: '';
-      background-image: url('../images/basic/icon/print_dark.svg');
+      background-image: url('../images/basic/icon/print_dk.svg');
     }
   }
 
@@ -35,7 +35,7 @@
 
     &::before {
       content: '';
-      background-image: url('../images/basic/icon/email_dark.svg');
+      background-image: url('../images/basic/icon/email_dk.svg');
     }
   }
 }
@@ -134,7 +134,7 @@
     content: '';
     width: 20px;
     height: 20px;
-    background-image: url('../images/basic/icon/search_dark.svg');
+    background-image: url('../images/basic/icon/search_dk.svg');
     background-repeat: no-repeat;
     background-size: contain;
     filter: invert(100%);

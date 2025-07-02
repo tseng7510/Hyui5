@@ -1395,10 +1395,40 @@ $(window).on('load', function () {
   scrollTables();
 });
 // -----------------------------------------------------------------------
-// -----   swiperAutoPlay切換功能   -----------------------------------
+// -----   swiper無障礙功能   -----------------------------------
 // -----------------------------------------------------------------------
-function swiperAutoPlaysFn(swiper, elem) {
-  const autoPlaySwitch = $(swiper.el).parents().find('.autoPlaySwitch');
+function swiperA11Fn(swiper) {
+  if ($(swiper).length === 0) return;
+
+  let noActive = 0;
+  $(swiper.slides).filter(function (i) {
+    if ($(this).hasClass('swiper-slide-thumb-active')) {
+      noActive = i;
+    }
+  });
+
+  const swiperSlide = $(swiper.el).find('.item');
+  swiperSlide.each(function (i) {
+    $(this).attr({
+      role: 'button',
+      tabindex: '0',
+    });
+
+    if (i === noActive) {
+      $(this).attr('aria-pressed', 'true');
+    } else {
+      $(this).attr('aria-pressed', 'false');
+    }
+  });
+
+  swiperSlide.on('click', function (e) {
+    $(this).attr('aria-pressed', 'true');
+    $(this).parent().siblings().find('.item').attr('aria-pressed', 'false');
+  });
+
+  //swiperAutoPlay切換功能
+  const autoPlaySwitch = $(swiper.el).parent().parent().find('.autoPlaySwitch');
+
   if (autoPlaySwitch.length === 0) return;
   let nowState = swiper.autoplay.running ? true : false;
   let infoPlay = autoPlaySwitch.data('infoPlay');
@@ -1431,40 +1461,6 @@ function swiperAutoPlaysFn(swiper, elem) {
     }
   });
   swiper.slides.length === 1 ? autoPlaySwitch.remove() : null;
-}
-
-// -----------------------------------------------------------------------
-// -----   swiper無障礙功能   -----------------------------------
-// -----------------------------------------------------------------------
-function swiperA11Fn(swiper) {
-  const body = $('body');
-  if ($(swiper).length === 0) return;
-
-  let noActive = 0;
-  $(swiper.slides).filter(function (i) {
-    if ($(this).hasClass('swiper-slide-thumb-active')) {
-      noActive = i;
-    }
-  });
-
-  const swiperSlide = $(swiper.el).find('.item');
-  swiperSlide.each(function (i) {
-    $(this).attr({
-      role: 'button',
-      tabindex: '0',
-    });
-
-    if (i === noActive) {
-      $(this).attr('aria-pressed', 'true');
-    } else {
-      $(this).attr('aria-pressed', 'false');
-    }
-  });
-
-  swiperSlide.on('click', function (e) {
-    $(this).attr('aria-pressed', 'true');
-    $(this).parent().siblings().find('.item').attr('aria-pressed', 'false');
-  });
 }
 
 function swiperNavKeyDownFn(swiper, mainSwiper) {
@@ -1602,10 +1598,140 @@ function addFile() {
 $(window).on('load', function () {
   addFile();
 });
+
+// -----------------------------------------------------------------------
+// -----  橫式跑馬燈   -----------------------------------------------------
+// -----------------------------------------------------------------------
+function marquee() {
+  // 選取所有跑馬燈元件並進行迭代
+  $('.marqueeSliderH').each(function () {
+    const marquee = $(this); // 當前的跑馬燈元件
+    const marqueeBox = marquee.find('.marqueeBox'); // 跑馬燈可視區域
+    const marqueeList = marquee.find('.marqueeList'); // 跑馬燈內容列表
+    const autoPlaySwitch = marquee.find('.autoPlaySwitch'); // 播放/暫停按鈕
+
+    // 如果找不到必要的元素，則不執行
+    if (marqueeList.length === 0) return;
+
+    // 使用 let 宣告，以便在 resize 事件中更新
+    let marqueeBoxWidth = marqueeBox.width();
+    let marqueeListWidth = marqueeList.width();
+
+    // 狀態變數
+    let isPaused = false; // 是否手動暫停
+    let isHover = false; // 滑鼠是否懸停
+    let sliderMovePx = 0; // 已移動的像素
+
+    // 監聽視窗大小變化，動態更新寬度
+    $(window).on('resize', () => {
+      marqueeBoxWidth = marqueeBox.width();
+      marqueeListWidth = marqueeList.width();
+    });
+
+    // --- 複製跑馬燈內容以實現無縫滾動 ---
+    // 避免 marqueeListWidth 為 0 時產生錯誤
+    if (marqueeListWidth > 0) {
+      // 計算需要複製多少個列表才能填滿可視區域，確保無縫滾動
+      const clonesNeeded = Math.ceil(marqueeBoxWidth / marqueeListWidth);
+      for (let i = 0; i < clonesNeeded; i++) {
+        const $cloneList = marqueeList.clone();
+        // 將複製出來的項目的 tabindex 設為 -1，避免鍵盤使用者重複選取
+        $cloneList.find('a').attr('tabindex', '-1');
+        // 將複製的列表附加到容器中
+        marqueeBox.append($cloneList);
+      }
+    }
+
+    // 取得所有跑馬燈列表（包含原始和複製的）
+    const $allList = marqueeBox.find('.marqueeList');
+
+    // --- 動畫邏輯 ---
+    function marqueeMove() {
+      // 使用 requestAnimationFrame 實現流暢動畫
+      requestAnimationFrame(marqueeMove);
+
+      // 如果滑鼠懸停或手動暫停，則停止動畫
+      if (isHover || isPaused) return;
+
+      sliderMovePx++;
+
+      // 移動所有列表
+      if (sliderMovePx <= marqueeListWidth) {
+        $allList.css('transform', `translateX(-${sliderMovePx}px)`);
+      } else {
+        // 當第一個列表完全滾出可視區後，重置移動距離，實現無縫循環
+        sliderMovePx = 0;
+      }
+    }
+    marqueeMove();
+
+    // --- 事件處理 ---
+    // 滑鼠懸停時暫停
+    marqueeBox.on('mouseenter', () => {
+      isHover = true;
+    });
+    marqueeBox.on('mouseleave', () => {
+      isHover = false;
+    });
+
+    // 提前宣告 infoPlay 和 infoStop 變數以確保作用域正確
+    let infoPlay, infoStop;
+    if (autoPlaySwitch.length) {
+      infoPlay = autoPlaySwitch.data('info-play');
+      infoStop = autoPlaySwitch.data('info-stop');
+    }
+
+    // 鍵盤操作 (Tab鍵)，讓使用者可以透過鍵盤暫停跑馬燈
+    marqueeBox.on('keyup', function (e) {
+      if (e.code === 'Tab') {
+        e.preventDefault();
+        sliderMovePx = -1; // 立即停止滾動
+        setTimeout(() => {
+          isPaused = true;
+        });
+
+        // 更新按鈕狀態
+        if (autoPlaySwitch.length) {
+          autoPlaySwitch.addClass('play').removeClass('stop');
+          autoPlaySwitch.attr('aria-label', infoPlay);
+          autoPlaySwitch.attr('data-altlabel', infoStop);
+        }
+      }
+    });
+
+    // --- 播放/暫停按鈕功能 ---
+    if (autoPlaySwitch.length === 0) return;
+
+    // 初始化按鈕狀態為 "播放中" (顯示 "stop" 圖示)
+    autoPlaySwitch.addClass('stop');
+    autoPlaySwitch.attr('aria-label', infoStop);
+    autoPlaySwitch.attr('data-altlabel', infoPlay);
+
+    // 點擊事件：切換播放/暫停狀態
+    autoPlaySwitch.on('click', function (e) {
+      if (!isPaused) {
+        isPaused = true;
+        $(this).addClass('play').removeClass('stop');
+        $(this).attr('aria-label', infoPlay);
+        $(this).attr('data-altlabel', infoStop);
+      } else {
+        isPaused = false;
+        $(this).addClass('stop').removeClass('play');
+        $(this).attr('aria-label', infoStop);
+        $(this).attr('data-altlabel', infoPlay);
+      }
+    });
+  });
+}
+
+// 確保在 DOM 載入完成後執行
+$(window).on('load', function () {
+  marquee();
+});
+
 // -----------------------------------------------------------------------
 // -----  無障礙快捷鍵盤組合 a11yKeyCode   ----------------------------------
 // -----------------------------------------------------------------------
-
 function a11yKeyCode() {
   const body = $('body');
   body.on('keydown', (e) => {
