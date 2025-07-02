@@ -5437,7 +5437,8 @@ section:last-child {
   color: #fff;
 }
 
-*:has(.full) .mpSlider {
+*:has(.full) .mpSlider,
+*:has(.full) .swiperBox {
   margin-top: 0;
 }
 
