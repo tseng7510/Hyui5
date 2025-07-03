@@ -2657,6 +2657,7 @@ button.active, button:hover {
   display: flex;
   align-items: flex-start;
   gap: 12px;
+  flex-shrink: 0;
 }
 .sideNav button#sideNavBtn {
   width: 35px;
