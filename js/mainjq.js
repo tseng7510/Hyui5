@@ -1365,7 +1365,7 @@ function scrollTables() {
       tableClientWidth = tableScrollIn.outerWidth();
       tableScrollWidth = table.outerWidth();
 
-      if (tableScrollLeft >= 0 && tableScrollLeft + tableClientWidth < tableScrollWidth) {
+      if (tableScrollLeft === 0 && tableScrollLeft + tableClientWidth < tableScrollWidth) {
         nextBtn.removeAttr('style');
       } else {
         nextBtn.hide();

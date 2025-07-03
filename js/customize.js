@@ -7,8 +7,8 @@ mainMenu({
 
 // 側邊選單
 sideNav({
-  needLink: true, // 如果同時需要連結和下層功能時
-  floatType: false, // 切換是否由左側展開或是下方展開
+  needLink: false, // 如果同時需要連結和下層功能時
+  floatType: true, // 切換是否由左側展開或是下方展開
 });
 
 // tab功能

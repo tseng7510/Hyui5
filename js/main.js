@@ -1765,7 +1765,7 @@ function scrollTables() {
       tableClientWidth = tableScrollIn.clientWidth;
       tableScrollWidth = table.scrollWidth;
 
-      if (tableScrollLeft >= 0 && tableScrollLeft + tableClientWidth < tableScrollWidth) {
+      if (tableScrollLeft === 0 && tableScrollLeft + tableClientWidth < tableScrollWidth) {
         nextBtn.style.display = 'block';
       } else {
         nextBtn.style.display = 'none';
