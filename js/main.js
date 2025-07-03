@@ -1540,7 +1540,7 @@ function sideNav(options) {
     function setTransition(elem, width, toWidth, dn) {
       if ((window.outerWidth <= setRWDWidth && floatType) || window.outerWidth > setRWDWidth) {
         if (!dn) {
-          elem.style.display = 'block';
+          elem.removeAttribute('style');
         }
         elem.style.overflow = 'hidden';
         elem.style.transitionProperty = 'width';
