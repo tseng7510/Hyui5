@@ -5303,12 +5303,14 @@ footer a {
 }
 footer .footerBox {
   padding: 28px 0;
+}
+footer .footerBox .container {
   display: flex;
   justify-content: space-between;
   gap: 20px;
 }
 @media screen and (max-width: 991px) {
-  footer .footerBox {
+  footer .footerBox .container {
     flex-direction: column;
   }
 }

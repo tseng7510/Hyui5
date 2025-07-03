@@ -639,8 +639,13 @@ function webSearch() {
     });
     $(elem).removeClass('active');
     webSearch.slideUp(200);
-    $(elem).focus();
-    if (overLayFn) overlay.fadeOut(100);
+
+    if (overLayFn) {
+      overlay.fadeOut(100);
+      setTimeout(() => {
+        $(elem).focus();
+      });
+    }
   }
 
   // 鍵盤事件設定，支援 Tab、Enter、Alt+S 快捷鍵以及 Escape 關閉
@@ -697,6 +702,7 @@ function webSearch() {
       }
     });
   });
+
   $('#mobileMainMenuBtn').on('click', function () {
     _hideSearchBox('#mobileSearchBtn', false);
   });
@@ -1268,7 +1274,6 @@ function sideNav(options) {
   const checkRwdFn = () => {
     sideNavWidth = sideNav.offsetWidth;
     if ($(window).outerWidth() <= setRWDWidth) {
-      console.log('a');
       checkRwd = true;
       mainContentBox.removeAttr('style');
       sideNavBtn.removeClass('active');
@@ -1314,7 +1319,7 @@ function tableAddDataAttributes() {
     trList.each(function () {
       const tdList = $(this).find('td');
       tdList.each(function (i) {
-        $(this).data('tdTitle', thList.eq(i).text());
+        $(this).attr('data-td-title', thList.eq(i).text());
       });
     });
   }
@@ -1329,7 +1334,6 @@ $(window).on('load', function () {
 function scrollTables() {
   const el = $('.tableScroll');
   if (el.length === 0) return;
-
   el.each(function () {
     const _this = $(this);
     const table = $(this).find('table');
@@ -1352,33 +1356,31 @@ function scrollTables() {
     $(this).append(tableScrollIn);
     tableScrollIn.append(table);
 
-    let tableScrollLeft = tableScrollIn.scrollLeft();
-    let tableClientWidth = tableScrollIn.outerWidth();
-    let tableScrollWidth = table.outerWidth();
-
     tableScrollIn.on('scroll', () => {
-      checkScroll(tableScrollLeft, tableClientWidth, tableScrollWidth);
+      checkScroll();
     });
 
-    function checkScroll(tableScrollLeft, tableClientWidth, tableScrollWidth) {
-      tableScrollLeft = tableScrollIn.scrollLeft();
-      tableClientWidth = tableScrollIn.outerWidth();
-      tableScrollWidth = table.outerWidth();
+    function checkScroll() {
+      let tableScrollLeft = tableScrollIn.scrollLeft();
+      let tableClientWidth = tableScrollIn.outerWidth();
+      let tableScrollWidth = table.outerWidth();
 
-      if (tableScrollLeft === 0 && tableScrollLeft + tableClientWidth < tableScrollWidth) {
-        nextBtn.removeAttr('style');
+      console.log(tableScrollLeft === 0, tableScrollLeft, tableClientWidth, tableScrollWidth);
+
+      if (tableScrollLeft >= 0 && tableScrollLeft + tableClientWidth < tableScrollWidth) {
+        nextBtn.css('display', 'block');
       } else {
         nextBtn.hide();
       }
-      if (tableScrollIn.scrollLeft > 0) {
+      if (tableScrollLeft > 0) {
         prevBtn.css('display', 'block');
       } else {
         prevBtn.hide();
       }
     }
-    checkScroll(tableScrollLeft, tableClientWidth, tableScrollWidth);
+    checkScroll();
     $(window).on('resize', function () {
-      checkScroll(tableScrollLeft, tableClientWidth, tableScrollWidth);
+      checkScroll();
     });
 
     prevBtn.on('click', function (e) {
