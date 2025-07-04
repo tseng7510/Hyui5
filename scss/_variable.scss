@@ -1,12 +1,13 @@
+@use 'sass:color';
 //-------------------------------------------------------------顏色---------//
 // 定義顏色 此顏色可自由變換
 $colorPrimary: #0156A2; //主色
-$colorPrimaryLight: mix($colorPrimary, #fff, 10%); //主色淺色
-$colorPrimaryDark: mix($colorPrimary, #000, 90%); //主色深色
+$colorPrimaryLight: color.mix($colorPrimary, #fff, 10%); //主色淺色
+$colorPrimaryDark: color.mix($colorPrimary, #000, 90%); //主色深色
 
 $colorSecondary: #326DC7; //輔色
-$colorSecondaryLight: mix($colorSecondary, #fff, 10%); //輔色淺色
-$colorSecondaryDark: mix($colorSecondary, #000, 90%); //輔色深色
+$colorSecondaryLight: color.mix($colorSecondary, #fff, 10%); //輔色淺色
+$colorSecondaryDark: color.mix($colorSecondary, #000, 90%); //輔色深色
 
 // word顏色設定
 $colorWord: #333333;
@@ -25,7 +26,7 @@ $hoverShadow: #80CBD7;
 
 // link顏色設定
 $aColor: $colorSecondary;
-$aHover: mix($aColor, #000, 90%);
+$aHover: color.mix($aColor, #000, 90%);
 
 //btn
 $btnPrimary: $colorPrimary;
@@ -37,7 +38,7 @@ $btnSecondaryHover: $colorSecondaryDark;
 $btnSecondaryLightHover: $colorSecondaryLight;
 
 $btnNormal: #DEE0E3;
-$btnNormalHover: mix($btnNormal, #000, 90%);
+$btnNormalHover: color.mix($btnNormal, #000, 90%);
 $btnNormalOutline: #69707D;
 $btnNormalLightHover: #F1F1F1;
 $btnDisabled: $colorDisabled;

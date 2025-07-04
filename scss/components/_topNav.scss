@@ -7,6 +7,8 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
+    position: relative;
+    z-index: 60;
 
     @include screen('tablet') {
       display: none;

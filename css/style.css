@@ -2319,6 +2319,8 @@ header .topNav {
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  position: relative;
+  z-index: 60;
 }
 @media screen and (max-width: 991px) {
   header .topNav {
@@ -3983,6 +3985,14 @@ button.active, button:hover {
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
+}
+@media screen and (max-width: 991px) {
+  #mobileMenu .topNav .language ul {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+  }
 }
 
 .menu {

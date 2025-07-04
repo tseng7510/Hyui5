@@ -325,6 +325,15 @@
           transform: translateY(-50%);
         }
       }
+
+      ul {
+        @include screen('tablet') {
+          position: relative;
+          top: auto;
+          left: auto;
+          transform: none;
+        }
+      }
     }
   }
 }
