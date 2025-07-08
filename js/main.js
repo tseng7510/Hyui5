@@ -1150,11 +1150,13 @@ function tabFunction(obj) {
       let index;
       //左右操作tab
       if (e.code === 'ArrowRight') {
-        index = [...tabBtn].indexOf(e.target) + 1;
+        index = ([...tabBtn].indexOf(e.target) + 1) % tabBtn.length;
         tabBtn[index].focus();
         checkTarget(index);
       } else if (e.code === 'ArrowLeft') {
-        index = [...tabBtn].indexOf(e.target) - 1 + tabBtn.length;
+        index = ([...tabBtn].indexOf(e.target) - 1 + tabBtn.length) % tabBtn.length;
+        console.log(index);
+
         tabBtn[index].focus();
         checkTarget(index);
       }

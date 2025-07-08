@@ -810,11 +810,11 @@ function tabFunction(obj) {
       let index;
       //左右操作tab
       if (e.code === 'ArrowRight') {
-        index = $(e.target).index() + 1;
+        index = ($(e.target).index() + 1) % tabBtn.length;
         tabBtn.eq(index).focus();
         checkTarget(index);
       } else if (e.code === 'ArrowLeft') {
-        index = $(e.target).index() - 1;
+        index = ($(e.target).index() - 1 + tabBtn.length) % tabBtn.length;
         if (index < 0) index = 0;
         tabBtn.eq(index).focus();
         checkTarget(index);
