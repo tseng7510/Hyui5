@@ -4802,7 +4802,7 @@ button.autoPlaySwitch:hover {
   position: fixed;
   right: 22px;
   bottom: 20%;
-  z-index: 40;
+  z-index: 90;
   display: flex;
   flex-direction: column;
   gap: 10px;
