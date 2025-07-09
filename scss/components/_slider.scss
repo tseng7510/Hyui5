@@ -31,7 +31,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     transform-origin: center;
-    background-image: url('../images/basic/icon/arrow_left.svg');
+    background-image: url('../images/basic/icon/arrow_back_dk.svg');
 
     @include screenMax('1200') {
       width: 30px;

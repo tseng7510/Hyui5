@@ -110,27 +110,27 @@
 
       &.firstArrow {
         a::before {
-          background-image: url('../images/basic/icon/first_page.svg');
+          background-image: url('../images/basic/icon/first_page_dk.svg');
         }
       }
 
       &.lastArrow {
         a::before {
           transform: scale(-1) translate(50%, 50%);
-          background-image: url('../images/basic/icon/first_page.svg');
+          background-image: url('../images/basic/icon/first_page_dk.svg');
         }
       }
 
       &.prevArrow {
         a::before {
-          background-image: url('../images/basic/icon/arrow_left.svg');
+          background-image: url('../images/basic/icon/arrow_left_dk.svg');
         }
       }
 
       &.nextArrow {
         a::before {
           transform: scale(-1) translate(50%, 50%);
-          background-image: url('../images/basic/icon/arrow_left.svg');
+          background-image: url('../images/basic/icon/arrow_left_dk.svg');
         }
       }
     }

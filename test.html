@@ -28,7 +28,7 @@
       </div>
       <button id="btn1" type="submit">send</button>
     </form>
-    <form class="formBox" action="">
+    <!-- <form class="formBox" action="">
       <div class="gridBox">
         <div class="formList inline">
           <label class="formListTitle" for="formItem2"><em aria-label="必填">*</em>E-mail</label>
@@ -41,7 +41,7 @@
         </div>
       </div>
       <button id="btn2" type="submit">send</button>
-    </form>
+    </form> -->
     <script src="js/main.js"></script>
     <script>
       const errorText = '<div class="formNoticeError" id="notice_rna952_con" role="alert" aria-labelledby="notice_rna952"><span>您輸入的帳號密碼有誤！</span><button type="button" class="noticeClose" aria-label="關閉提醒" id="notice_rna952" aria-controls="notice_rna952_con"></button></div>';
@@ -55,14 +55,14 @@
         }
       });
 
-      const input2 = document.querySelector('#formItem2');
-      const button2 = document.querySelector('#btn2');
-      button2.addEventListener('click', () => {
-        if (input2.value === '') {
-          jsParents(input2, '.formList')[0].classList.add('error');
-          jsParents(input2, '.formList')[0].querySelector('.formAlert').insertAdjacentHTML('beforeend', errorText);
-        }
-      });
+      // const input2 = document.querySelector('#formItem2');
+      // const button2 = document.querySelector('#btn2');
+      // button2.addEventListener('click', () => {
+      //   if (input2.value === '') {
+      //     jsParents(input2, '.formList')[0].classList.add('error');
+      //     jsParents(input2, '.formList')[0].querySelector('.formAlert').insertAdjacentHTML('beforeend', errorText);
+      //   }
+      // });
     </script>
   </body>
 </html>
