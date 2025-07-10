@@ -1488,7 +1488,7 @@ function swiperNavKeyDownFn(swiper, mainSwiper) {
 function formEye() {
   const checkEye = $('.formEyes');
   if (checkEye.length === 0) return;
-  const password = checkEye.parent().find('.password');
+  const password = checkEye.parent().find('input');
   const showPassword = checkEye.data('show');
 
   const hidePassword = checkEye.data('hide');
@@ -1546,40 +1546,7 @@ function scrollTopFn() {
 $(window).on('load', function () {
   scrollTopFn();
 });
-// -----------------------------------------------------------------------
-// -----  form notice訊息區塊關閉按鈕   -------------------------------------
-// -----------------------------------------------------------------------
 
-function noticeBoxFn() {
-  const body = $('body');
-  const allNoticeBox = $('[class^="formNotice"]');
-  // const noticeClose =
-
-  if (allNoticeBox.length === 0) return;
-
-  allNoticeBox.each(function () {
-    const noticeClose = $(this).find('.noticeClose');
-    const id = `notice_${randomLetter(3)}${randomFloor(0, 999)}`;
-    noticeClose.attr({
-      id: id,
-      'aria-controls': `${id}_con`,
-    });
-    $(this).attr({
-      id: `${id}_con`,
-      role: 'alert',
-      'aria-labelledby': id,
-    });
-  });
-
-  body.on('click', function (e) {
-    if ($(e.target).hasClass('noticeClose')) {
-      $(e.target).parent().hide();
-    }
-  });
-}
-$(window).on('load', function () {
-  noticeBoxFn();
-});
 // -----------------------------------------------------------------------
 // -----  form 檔案上傳  ---------------------------------------------------
 // -----------------------------------------------------------------------

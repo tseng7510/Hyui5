@@ -944,9 +944,9 @@ function webSearch() {
   webSearch.setAttribute('aria-labelledby', `topSearchBtn mobileSearchBtn`);
 
   //  切換搜尋展開/關閉的函式
-  function toggleContent(elem) {
-    const isExpanded = elem.getAttribute('aria-expanded') === 'true';
-    if (isExpanded) {
+  function toggleContent(elem, close = true) {
+    const isExpanded = elem?.getAttribute('aria-expanded') === 'true';
+    if (isExpanded && close) {
       _hideSearchBox(elem);
     } else {
       _showSearchBox(elem);
@@ -954,16 +954,16 @@ function webSearch() {
   }
 
   function _showSearchBox(elem) {
-    elem.setAttribute('aria-expanded', 'true');
-    elem.setAttribute('aria-pressed', 'true');
-    elem.classList.add('active');
+    elem?.setAttribute('aria-expanded', 'true');
+    elem?.setAttribute('aria-pressed', 'true');
+    elem?.classList.add('active');
     // 清空搜尋區塊內第一個可編輯項目的值（例如輸入框）
     setTimeout(() => {
       if (webSearchAllTarget[0]) webSearchAllTarget[0].value = '';
       if (webSearchAllTarget[0]) webSearchAllTarget[0].focus();
     });
     jsSlideDown(webSearch);
-    jsFadeIn(overlay);
+    window.outerWidth < setRWDWidth ? jsFadeIn(overlay) : null;
   }
 
   function _hideSearchBox(elem, overLayFn = true) {
@@ -1009,7 +1009,7 @@ function webSearch() {
 
       // Alt+S
     } else if (e.altKey && e.code === 'KeyS') {
-      toggleContent(searchBtn, true);
+      toggleContent(searchBtn, false);
 
       // Escape
     } else if (e.code === 'Escape') {
@@ -1916,7 +1916,7 @@ function swiperNavKeyDownFn(swiper, mainSwiper) {
 function formEye() {
   const checkEye = document.querySelector('.formEyes');
   if (!checkEye) return;
-  const password = checkEye.parentNode.querySelector('.password');
+  const password = checkEye.parentNode.querySelector('input');
   const showPassword = checkEye.dataset.show;
   const hidePassword = checkEye.dataset.hide;
   checkEye.setAttribute('aria-label', showPassword);
@@ -1965,36 +1965,6 @@ function scrollTopFn() {
   });
 }
 window.addEventListener('load', () => scrollTopFn());
-
-// -----------------------------------------------------------------------
-// -----  form notice訊息區塊關閉按鈕   -------------------------------------
-// -----------------------------------------------------------------------
-
-function noticeBoxFn() {
-  const body = document.querySelector('body');
-  const allNoticeBox = document.querySelectorAll('[class^="formNotice"]');
-  // const noticeClose =
-
-  if (allNoticeBox.length === 0) return;
-
-  allNoticeBox.forEach((elem) => {
-    const noticeClose = elem.querySelector('.noticeClose');
-    const id = `notice_${randomLetter(3)}${randomFloor(0, 999)}`;
-    noticeClose.setAttribute('id', id);
-    noticeClose.setAttribute('aria-controls', `${id}_con`);
-    elem.setAttribute('id', `${id}_con`);
-    elem.setAttribute('role', 'alert');
-    elem.setAttribute('aria-labelledby', id);
-  });
-
-  body.addEventListener('click', (e) => {
-    const checkCloseBtn = e.target;
-    if (checkCloseBtn.classList.contains('noticeClose')) {
-      checkCloseBtn.parentNode.style.display = 'none';
-    }
-  });
-}
-window.addEventListener('load', () => noticeBoxFn());
 
 // -----------------------------------------------------------------------
 // -----  form 檔案上傳  ---------------------------------------------------

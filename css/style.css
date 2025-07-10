@@ -1195,6 +1195,39 @@ nav ul {
   }
 }
 
+.iconDemo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  color: #4a4a4a;
+}
+.iconDemo.w {
+  background: #000;
+  color: #cacaca;
+}
+.iconDemo.w table td:nth-child(odd):has([class^=i_]) {
+  border: 1px solid #505050;
+}
+.iconDemo table td:nth-child(odd) {
+  text-align: center;
+  width: 30px;
+}
+.iconDemo table td:nth-child(odd):has([class^=i_]) {
+  border: 1px solid #ccc;
+}
+.iconDemo table td:nth-child(odd) [class^=i_] {
+  margin: 0 auto;
+}
+.iconDemo table td:nth-child(even) {
+  padding-left: 10px;
+}
+
+[class^=i_] {
+  display: block;
+  height: 20px;
+  width: 20px;
+}
 [class^=i_]::before {
   content: "";
   display: block;
@@ -1637,36 +1670,232 @@ nav ul {
   background-image: url("../images/basic/icon/logout_w.svg");
 }
 
-.i_mail_w::before {
-  background-image: url("../images/basic/icon/email_w.svg");
-}
-
 .i_mail_dk::before {
   background-image: url("../images/basic/icon/mail_dk.svg");
 }
 
-.i_formEyes_dk::before {
-  background-image: url("../images/basic/icon/visibility_off_dk.svg");
+.i_mail_w::before {
+  background-image: url("../images/basic/icon/mail_w.svg");
 }
 
-.i_lock_w::before {
-  background-image: url("../images/basic/icon/lock_w.svg");
+.i_menu_dk::before {
+  background-image: url("../images/basic/icon/menu_dk.svg");
+}
+
+.i_menu_w::before {
+  background-image: url("../images/basic/icon/menu_w.svg");
+}
+
+.i_more_vert_dk::before {
+  background-image: url("../images/basic/icon/more_vert_dk.svg");
+}
+
+.i_more_vert_w::before {
+  background-image: url("../images/basic/icon/more_vert_w.svg");
+}
+
+.i_new_releases_dk::before {
+  background-image: url("../images/basic/icon/new_releases_dk.svg");
+}
+
+.i_new_releases_w::before {
+  background-image: url("../images/basic/icon/new_releases_w.svg");
+}
+
+.i_notifications_dk::before {
+  background-image: url("../images/basic/icon/notifications_dk.svg");
+}
+
+.i_notifications_w::before {
+  background-image: url("../images/basic/icon/notifications_w.svg");
+}
+
+.i_open_in_new_dk::before {
+  background-image: url("../images/basic/icon/open_in_new_dk.svg");
+}
+
+.i_open_in_new_w::before {
+  background-image: url("../images/basic/icon/open_in_new_w.svg");
+}
+
+.i_palette_dk::before {
+  background-image: url("../images/basic/icon/palette_dk.svg");
+}
+
+.i_palette_w::before {
+  background-image: url("../images/basic/icon/palette_w.svg");
+}
+
+.i_pause_dk::before {
+  background-image: url("../images/basic/icon/pause_dk.svg");
+}
+
+.i_pause_w::before {
+  background-image: url("../images/basic/icon/pause_w.svg");
+}
+
+.i_person_dk::before {
+  background-image: url("../images/basic/icon/person_dk.svg");
+}
+
+.i_person_w::before {
+  background-image: url("../images/basic/icon/person_w.svg");
+}
+
+.i_play_arrow_dk::before {
+  background-image: url("../images/basic/icon/play_arrow_dk.svg");
+}
+
+.i_play_arrow_w::before {
+  background-image: url("../images/basic/icon/play_arrow_w.svg");
+}
+
+.i_print_dk::before {
+  background-image: url("../images/basic/icon/print_dk.svg");
+}
+
+.i_print_w::before {
+  background-image: url("../images/basic/icon/print_w.svg");
+}
+
+.i_refresh_dk::before {
+  background-image: url("../images/basic/icon/refresh_dk.svg");
 }
 
 .i_refresh_w::before {
   background-image: url("../images/basic/icon/refresh_w.svg");
 }
 
+.i_remove_dk::before {
+  background-image: url("../images/basic/icon/remove_dk.svg");
+}
+
+.i_remove_w::before {
+  background-image: url("../images/basic/icon/remove_w.svg");
+}
+
 .i_search_dk::before {
   background-image: url("../images/basic/icon/search_dk.svg");
+}
+
+.i_search_w::before {
+  background-image: url("../images/basic/icon/search_w.svg");
+}
+
+.i_select_arrow_dk::before {
+  background-image: url("../images/basic/icon/select_arrow_dk.svg");
+}
+
+.i_select_arrow_w::before {
+  background-image: url("../images/basic/icon/select_arrow_w.svg");
+}
+
+.i_settings_dk::before {
+  background-image: url("../images/basic/icon/settings_dk.svg");
+}
+
+.i_settings_w::before {
+  background-image: url("../images/basic/icon/settings_w.svg");
+}
+
+.i_share_dk::before {
+  background-image: url("../images/basic/icon/share_dk.svg");
+}
+
+.i_share_w::before {
+  background-image: url("../images/basic/icon/share_w.svg");
+}
+
+.i_slash_dk::before {
+  background-image: url("../images/basic/icon/slash_dk.svg");
+}
+
+.i_slash_w::before {
+  background-image: url("../images/basic/icon/slash_w.svg");
+}
+
+.i_star_dk::before {
+  background-image: url("../images/basic/icon/star_dk.svg");
+}
+
+.i_star_w::before {
+  background-image: url("../images/basic/icon/star_w.svg");
+}
+
+.i_swap_vert_dk::before {
+  background-image: url("../images/basic/icon/swap_vert_dk.svg");
+}
+
+.i_swap_vert_w::before {
+  background-image: url("../images/basic/icon/swap_vert_w.svg");
+}
+
+.i_sync_dk::before {
+  background-image: url("../images/basic/icon/sync_dk.svg");
+}
+
+.i_sync_w::before {
+  background-image: url("../images/basic/icon/sync_w.svg");
+}
+
+.i_tag_dk::before {
+  background-image: url("../images/basic/icon/tag_dk.svg");
+}
+
+.i_tag_w::before {
+  background-image: url("../images/basic/icon/tag_w.svg");
+}
+
+.i_tooltip_dk::before {
+  background-image: url("../images/basic/icon/info_dk.svg");
+}
+
+.i_tooltip_w::before {
+  background-image: url("../images/basic/icon/info_w.svg");
+}
+
+.i_upload_dk::before {
+  background-image: url("../images/basic/icon/upload_dk.svg");
+}
+
+.i_upload_w::before {
+  background-image: url("../images/basic/icon/upload_w.svg");
+}
+
+.i_visibility_dk::before {
+  background-image: url("../images/basic/icon/visibility_dk.svg");
+}
+
+.i_visibility_w::before {
+  background-image: url("../images/basic/icon/visibility_w.svg");
+}
+
+.i_visibility_off_dk::before {
+  background-image: url("../images/basic/icon/visibility_off_dk.svg");
+}
+
+.i_visibility_off_w::before {
+  background-image: url("../images/basic/icon/visibility_off_w.svg");
+}
+
+.i_voice_dk::before {
+  background-image: url("../images/basic/icon/voice_dk.svg");
 }
 
 .i_voice_w::before {
   background-image: url("../images/basic/icon/voice_w.svg");
 }
 
-.i_tag_dk::before {
-  background-image: url("../images/basic/icon/tag_dk.svg");
+.i_warning_dk::before {
+  background-image: url("../images/basic/icon/warning_dk.svg");
+}
+
+.i_warning_w::before {
+  background-image: url("../images/basic/icon/warning_w.svg");
+}
+
+.i_warning::before {
+  background-image: url("../images/basic/icon/warning.svg");
 }
 
 button {
@@ -2074,7 +2303,7 @@ button.active, button:hover {
   width: 24px;
   height: 24px;
   display: block;
-  background: url("../images/basic/icon/select_arrow_dk.svg") no-repeat center;
+  background: url("../images/basic/icon/select_arrow.svg") no-repeat center;
   z-index: 9;
   position: absolute;
   right: 5px;
@@ -2139,7 +2368,10 @@ button.active, button:hover {
     width: 100%;
   }
 }
-.formBox .formList .formContent .formEyes {
+.formBox .formList .formContent.inline {
+  align-items: center;
+}
+.formBox .formList .formEyes {
   position: absolute;
   right: 12px;
   top: 10px;
@@ -2151,11 +2383,8 @@ button.active, button:hover {
   border-radius: 0;
   background: url("../images/basic/icon/visibility_off_dk.svg") no-repeat center;
 }
-.formBox .formList .formContent .formEyes.active {
-  background: url("../images/basic/icon/visibility_dk.svg") no-repeat center;
-}
-.formBox .formList .formContent.inline {
-  align-items: center;
+.formBox .formList .formEyes.active {
+  background: url("../images/basic/icon/visibility_dk.svg") no-repeat 0px -1px;
 }
 .formBox .formList input,
 .formBox .formList select,
