@@ -49,8 +49,7 @@
     z-index: 2;
     aspect-ratio: 1/1;
     display: block;
-    background: url('../images/basic/icon/search_dk.svg') center no-repeat;
-    filter: invert(100%);
+    background: url('../images/basic/icon/search_w.svg') center no-repeat;
     width: 28px;
     height: 28px;
     left: 50%;
@@ -103,6 +102,7 @@
     }
 
     button {
+      flex-shrink: 0;
       white-space: nowrap;
     }
   }

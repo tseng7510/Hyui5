@@ -170,14 +170,26 @@
   .col {
     &:nth-child(1) {
       flex: 1 1 flexWidth($flexTemplateGap, 3);
+
+      @include screen('tablet') {
+        flex: 1 1 flexWidth($flexTemplateGap, 6);
+      }
     }
 
     &:nth-child(2) {
       flex: 1 1 flexWidth($flexTemplateGap, 6);
+
+      @include screen('tablet') {
+        flex: 1 1 100%
+      }
     }
 
     &:nth-child(3) {
       flex: 1 1 flexWidth($flexTemplateGap, 3);
+
+      @include screen('tablet') {
+        flex: 1 1 flexWidth($flexTemplateGap, 6);
+      }
     }
   }
 }
@@ -186,14 +198,26 @@
   .col {
     &:nth-child(1) {
       flex: 1 1 flexWidth($flexTemplateGap, 3);
+
+      @include screen('tablet') {
+        flex: 1 1 flexWidth($flexTemplateGap, 6);
+      }
     }
 
     &:nth-child(2) {
       flex: 1 1 flexWidth($flexTemplateGap, 3);
+
+      @include screen('tablet') {
+        flex: 1 1 flexWidth($flexTemplateGap, 6);
+      }
     }
 
     &:nth-child(3) {
       flex: 1 1 flexWidth($flexTemplateGap, 6);
+
+      @include screen('tablet') {
+        flex: 1 1 100%
+      }
     }
   }
 }
@@ -202,14 +226,26 @@
   .col {
     &:nth-child(1) {
       flex: 1 1 flexWidth($flexTemplateGap, 6);
+
+      @include screen('tablet') {
+        flex: 1 1 100%
+      }
     }
 
     &:nth-child(2) {
       flex: 1 1 flexWidth($flexTemplateGap, 3);
+
+      @include screen('tablet') {
+        flex: 1 1 flexWidth($flexTemplateGap, 6);
+      }
     }
 
     &:nth-child(3) {
       flex: 1 1 flexWidth($flexTemplateGap, 3);
+
+      @include screen('tablet') {
+        flex: 1 1 flexWidth($flexTemplateGap, 6);
+      }
     }
   }
 }
@@ -220,15 +256,39 @@
     &:nth-child(1) {
       flex-shrink: 0;
       flex: 1 1 flexWidth($flexTemplateGap, 2);
+
+      @include screenMax('1200') {
+        flex: 1 1 flexWidth($flexTemplateGap, 3);
+      }
+
+      @include screen('tablet') {
+        flex: 1 1 flexWidth($flexTemplateGap, 6);
+      }
     }
 
     &:nth-child(2) {
       flex-shrink: 0;
       flex: 1 1 flexWidth($flexTemplateGap, 2);
+
+      @include screenMax('1200') {
+        flex: 1 1 flexWidth($flexTemplateGap, 3);
+      }
+
+      @include screen('tablet') {
+        flex: 1 1 flexWidth($flexTemplateGap, 6);
+      }
     }
 
     &:nth-child(3) {
       flex: 1 1 flexWidth($flexTemplateGap, 8);
+
+      @include screenMax('1200') {
+        flex: 1 1 flexWidth($flexTemplateGap, 6);
+      }
+
+      @include screen('tablet') {
+        flex: 1 1 100%
+      }
     }
   }
 }

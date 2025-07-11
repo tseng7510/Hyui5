@@ -612,8 +612,10 @@ function webSearch() {
     overlay.css('top', `${$('header').height()}px`);
     if (isExpanded) {
       _hideSearchBox(elem);
+      body.removeClass('noscroll');
     } else {
       _showSearchBox(elem);
+      body.addClass('noscroll');
     }
   }
 
@@ -1147,9 +1149,6 @@ function sideNav(options) {
 
     function setTransition(elem, width, toWidth, dn) {
       if (($(window).outerWidth() <= setRWDWidth && floatType) || $(window).outerWidth() > setRWDWidth) {
-        if (!dn) {
-          elem.css('display', 'block');
-        }
         elem.css({
           overflow: 'hidden',
           width: `${width}px`,

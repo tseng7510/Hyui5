@@ -79,6 +79,7 @@
     margin: 12px 0 0 auto;
     color: #333;
     font-size: Rem(14);
+    flex-shrink: 0;
 
     @include screen('mobile') {
       padding: 10px;

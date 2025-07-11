@@ -267,7 +267,7 @@ function jsFadeToggle(element, time = 200) {
 //   jsFadeToggle(a);
 // })
 
-function toggleSlider(elem, con) {
+function toggleSlider(elem, con, autoClose = true) {
   const body = document.querySelector('body');
   const targetSelect = document.querySelectorAll(elem);
   let checkDisplay;
@@ -338,20 +338,22 @@ function toggleSlider(elem, con) {
     });
   });
 
-  // 點擊其他地方關閉;
-  body.addEventListener('click', (e) => {
-    const targetSelectCon = document.querySelector(con);
-    let isInsideTarget = jsParents(e.target, targetSelectCon).length === 0;
+  if (autoClose) {
+    // 點擊其他地方關閉;
+    body.addEventListener('click', (e) => {
+      const targetSelectCon = document.querySelector(con);
+      let isInsideTarget = jsParents(e.target, targetSelectCon).length === 0;
 
-    targetSelect.forEach((item) => {
-      if (item.getAttribute('aria-expanded') === 'true' && e.target !== item && isInsideTarget) {
-        item.setAttribute('aria-expanded', 'false');
-        item.setAttribute('aria-pressed', 'false');
-        item.classList.remove('active');
-        jsSlideUp(targetSelectCon);
-      }
+      targetSelect.forEach((item) => {
+        if (item.getAttribute('aria-expanded') === 'true' && e.target !== item && isInsideTarget) {
+          item.setAttribute('aria-expanded', 'false');
+          item.setAttribute('aria-pressed', 'false');
+          item.classList.remove('active');
+          jsSlideUp(targetSelectCon);
+        }
+      });
     });
-  });
+  }
 
   window.addEventListener('resize', (e) => {
     if (!checkDisplay) return;
@@ -948,8 +950,10 @@ function webSearch() {
     const isExpanded = elem?.getAttribute('aria-expanded') === 'true';
     if (isExpanded && close) {
       _hideSearchBox(elem);
+      body.classList.remove('noscroll');
     } else {
       _showSearchBox(elem);
+      body.classList.add('noscroll');
     }
   }
 
@@ -1440,7 +1444,6 @@ function fatFooter() {
 
   fatFooterBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    fatFooterBtn.setAttribute('aria-expanded', fatFooterBtn.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
     fatFooterCon.forEach((i) => toggleFatFooter(i, 400));
   });
 
@@ -1466,6 +1469,8 @@ function fatFooter() {
         element.style.removeProperty('transition-duration');
         element.style.removeProperty('transition-property');
       }, speed);
+      fatFooterBtn.setAttribute('aria-expanded', 'true');
+      fatFooterBtn.classList.remove('active');
     } else {
       let totalHeight2 = element.offsetHeight;
       element.style.overflow = 'hidden';
@@ -1482,6 +1487,8 @@ function fatFooter() {
         element.style.removeProperty('transition-duration');
         element.style.removeProperty('transition-property');
       }, speed);
+      fatFooterBtn.setAttribute('aria-expanded', 'false');
+      fatFooterBtn.classList.add('active');
     }
   }
 }
@@ -1541,9 +1548,6 @@ function sideNav(options) {
 
     function setTransition(elem, width, toWidth, dn) {
       if ((window.outerWidth <= setRWDWidth && floatType) || window.outerWidth > setRWDWidth) {
-        if (!dn) {
-          elem.removeAttribute('style');
-        }
         elem.style.overflow = 'hidden';
         elem.style.transitionProperty = 'width';
         elem.style.transitionDuration = `${duration}ms`;
@@ -1556,12 +1560,10 @@ function sideNav(options) {
           sideMenu.style.removeProperty('overflow');
           elem.style.removeProperty('transition-duration');
           elem.style.removeProperty('transition-property');
-        }, duration);
-        if (dn) {
-          setTimeout(() => {
+          if (dn) {
             elem.style.display = 'none';
-          }, duration);
-        }
+          }
+        }, duration);
       } else if (window.outerWidth <= setRWDWidth && !floatType) {
         jsSlideToggle(sideMenu);
       }
@@ -1574,6 +1576,7 @@ function sideNav(options) {
 
       if (isClosed) {
         // ---- 開啟選單 ----
+        sideMenu.style.display = 'block';
         setTransition(sideMenu, 0, sideMenuWidth, false);
         setTransitionBtn(sideNavBtn, true, 0, sideMenuWidth);
         // 若為 mobile 模式，更新按鈕位置

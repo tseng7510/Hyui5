@@ -286,7 +286,7 @@
   &.typeA {
     @include screen('tablet') {
       position: fixed;
-      z-index: 80;
+      z-index: 50;
       left: 0;
       top: var(--sideFixTop);
       gap: 0;

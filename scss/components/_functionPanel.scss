@@ -56,6 +56,7 @@
   position: relative;
   background: #e0e0e0;
   @include transition(0.3);
+  overflow: hidden;
 
   @include screen('tablet') {
     width: 42px;
@@ -134,10 +135,9 @@
     content: '';
     width: 20px;
     height: 20px;
-    background-image: url('../images/basic/icon/search_dk.svg');
+    background-image: url('../images/basic/icon/search_w.svg');
     background-repeat: no-repeat;
     background-size: contain;
-    filter: invert(100%);
   }
 }
 

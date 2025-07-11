@@ -1,7 +1,7 @@
 // 設定當物件被:focus-visible時的效果
 *:focus-visible {
   outline: $colorAccessibility 2px solid;
-  outline-offset: 1px;
+  outline-offset: -2px;
 }
 
 header h1 a,

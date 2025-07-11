@@ -2,7 +2,7 @@
 header {
   width: 100%;
   position: relative;
-  z-index: 50;
+  z-index: 55;
 
   @include screen('tablet') {
     position: fixed;

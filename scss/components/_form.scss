@@ -131,35 +131,6 @@
       }
     }
 
-    .select {
-      position: relative;
-      isolation: isolate;
-
-      &::before {
-        content: '';
-        width: 24px;
-        height: 24px;
-        display: block;
-        background: url('../images/basic/icon/select_arrow.svg') no-repeat center;
-        z-index: 9;
-        position: absolute;
-        right: 5px;
-        top: 10px;
-        pointer-events: none;
-      }
-
-      & > select {
-        width: 100%;
-        padding-right: 30px;
-
-        &[disabled] {
-          background: $formDisabled;
-          opacity: 1;
-        }
-      }
-
-    }
-
     .inputFile {
       flex-grow: 1;
       min-width: 200px;
@@ -265,13 +236,6 @@
           opacity: 0.75;
         }
       }
-    }
-
-    select {
-      min-width: 110px;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
     }
 
     textarea {
@@ -658,6 +622,38 @@
       flex-wrap: wrap;
     }
   }
+}
+
+.select {
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    display: block;
+    background: url('../images/basic/icon/select_arrow_dk.svg') no-repeat center;
+    z-index: 9;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    pointer-events: none;
+  }
+
+  & > select {
+    width: 100%;
+    padding-right: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &[disabled] {
+      background: $formDisabled;
+      opacity: 1;
+    }
+  }
+
 }
 
 // captcha

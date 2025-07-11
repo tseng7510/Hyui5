@@ -79,8 +79,8 @@
 
         &::before {
           content: '';
-          width: 20px;
-          height: 20px;
+          width: 24px;
+          height: 24px;
           background-repeat: no-repeat;
           background-size: contain;
           position: absolute;
@@ -95,8 +95,8 @@
       &.nextArrow {
         a {
           &::before {
-            width: 12px;
-            height: 12px;
+            width: 24px;
+            height: 24px;
           }
         }
       }
