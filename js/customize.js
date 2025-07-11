@@ -22,6 +22,7 @@ tabFunction({
 // mp2 最新消息
 tabFunction({
   target: '.target3',
+  modeSwitch: true, // 自動切換，尺寸以上tab功能，尺寸以下手風琴功能<br />
 });
 
 // 手風琴功能
