@@ -918,7 +918,7 @@ function tabFunction(obj) {
         //展開目前手風琴內容
         tabpanelBtn.eq(nowOpen).addClass('active');
         tabpanelBtn.eq(nowOpen).attr('aria-expanded', 'true');
-        tabpanelBtn.eq(nowOpen).focus();
+        // tabpanelBtn.eq(nowOpen).focus();
         tabContentIn[nowOpen].removeAttribute('style');
       }
     } else if ($(window).outerWidth() >= windowWidth && modeSwitch) {
@@ -944,7 +944,7 @@ function tabFunction(obj) {
 
       //展開目前Tab內容
       tabContent.eq(nowOpen).removeAttr('style');
-      tabBtn.eq(nowOpen).focus();
+      // tabBtn.eq(nowOpen).focus();
 
       //隱藏其他Tab內容
       tabContent.eq(nowOpen).siblings().hide();

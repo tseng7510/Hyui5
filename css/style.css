@@ -721,6 +721,7 @@ input:not([type=checkBox], [type=radio]) {
 select,
 input:not([type=checkBox], [type=radio]) {
   height: 44px;
+  line-height: 44px;
 }
 
 a {
@@ -2454,44 +2455,40 @@ button.active, button:hover {
 .formBox .formList .formEyes.active {
   background: url("../images/basic/icon/visibility_dk.svg") no-repeat 0px -1px;
 }
-.formBox .formList input,
+.formBox .formList input:not([type=checkBox], [type=radio]),
 .formBox .formList select,
 .formBox .formList textarea {
   color: #333333;
-  padding: 8px 12px;
+  padding: 0px 12px;
   border-radius: var(--borderRadius2);
   border: 1px solid #DEE0E3;
   background: #FFF;
-}
-.formBox .formList input:not([type=checkBox], [type=radio]),
-.formBox .formList select:not([type=checkBox], [type=radio]),
-.formBox .formList textarea:not([type=checkBox], [type=radio]) {
   flex-grow: 1;
 }
-.formBox .formList input::-moz-placeholder, .formBox .formList select::-moz-placeholder, .formBox .formList textarea::-moz-placeholder {
+.formBox .formList input:not([type=checkBox], [type=radio])::-moz-placeholder, .formBox .formList select::-moz-placeholder, .formBox .formList textarea::-moz-placeholder {
   color: #333333;
 }
-.formBox .formList input::placeholder,
+.formBox .formList input:not([type=checkBox], [type=radio])::placeholder,
 .formBox .formList select::placeholder,
 .formBox .formList textarea::placeholder {
   color: #333333;
 }
-.formBox .formList input:focus-visible,
+.formBox .formList input:not([type=checkBox], [type=radio]):focus-visible,
 .formBox .formList select:focus-visible,
 .formBox .formList textarea:focus-visible {
   outline-color: #0156A2;
   outline-offset: 0;
 }
-.formBox .formList input[disabled],
+.formBox .formList input:not([type=checkBox], [type=radio])[disabled],
 .formBox .formList select[disabled],
 .formBox .formList textarea[disabled] {
   background: #DEE0E3;
   cursor: not-allowed;
 }
-.formBox .formList input[disabled]::-moz-placeholder, .formBox .formList select[disabled]::-moz-placeholder, .formBox .formList textarea[disabled]::-moz-placeholder {
+.formBox .formList input:not([type=checkBox], [type=radio])[disabled]::-moz-placeholder, .formBox .formList select[disabled]::-moz-placeholder, .formBox .formList textarea[disabled]::-moz-placeholder {
   opacity: 0.75;
 }
-.formBox .formList input[disabled]::placeholder,
+.formBox .formList input:not([type=checkBox], [type=radio])[disabled]::placeholder,
 .formBox .formList select[disabled]::placeholder,
 .formBox .formList textarea[disabled]::placeholder {
   opacity: 0.75;
@@ -2816,7 +2813,7 @@ button.active, button:hover {
 }
 .select > select {
   width: 100%;
-  padding-right: 30px;
+  padding-right: 30px !important;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -6003,6 +6000,10 @@ header h1 img {
   .wrapper {
     padding-top: 60px;
   }
+}
+.wrapper > * {
+  width: 100%;
+  flex-shrink: 0;
 }
 
 main {

@@ -806,7 +806,7 @@ function mainMenu(obj) {
         mobileMenu.classList.add('open');
       }, 0);
       mobileMainMenuBtn.classList.add('active');
-      body.classList.add('noscroll');
+      if (window.outerWidth < setRWDWidth) body.classList.add('noscroll');
       jsFadeIn(overlay);
       overlay.style.zIndex = '90';
     }
@@ -953,7 +953,7 @@ function webSearch() {
       body.classList.remove('noscroll');
     } else {
       _showSearchBox(elem);
-      body.classList.add('noscroll');
+      if (window.outerWidth < setRWDWidth) body.classList.add('noscroll');
     }
   }
 
@@ -1268,7 +1268,7 @@ function tabFunction(obj) {
         //展開目前手風琴內容
         tabpanelBtn[nowOpen].classList.add('active');
         tabpanelBtn[nowOpen].setAttribute('aria-expanded', 'true');
-        tabpanelBtn[nowOpen].focus();
+        // tabpanelBtn[nowOpen].focus();
         tabContentIn[nowOpen].removeAttribute('style');
       }
     } else if (window.outerWidth >= windowWidth && modeSwitch) {
@@ -1294,7 +1294,7 @@ function tabFunction(obj) {
 
       //展開目前Tab內容
       tabContent[nowOpen].removeAttribute('style');
-      tabBtn[nowOpen].focus();
+      // tabBtn[nowOpen].focus();
 
       //隱藏其他Tab內容
       const siblingsPanel = [...tabContent].filter((value) => value !== tabContent[nowOpen]);
@@ -1400,6 +1400,9 @@ function accordionFunction(obj) {
     });
     const siblingsAccordionCons = [...accordionCons].filter((value) => value !== accordionCons[i]);
     siblingsAccordionCons.forEach((value) => jsSlideUp(value));
+    console.log(btn);
+
+    btn.focus();
   }
 
   // 是否可開合/切換

@@ -205,18 +205,15 @@
     }
 
     // 預設
-    input,
+    input:not([type="checkBox"], [type="radio"]),
     select,
     textarea {
       color: $colorWord;
-      padding: 8px 12px;
+      padding: 0px 12px;
       border-radius: var(--borderRadius2);
       border: 1px solid $tableNormal;
       background: #FFF;
-
-      &:not([type="checkBox"], [type="radio"]) {
-        flex-grow: 1;
-      }
+      flex-grow: 1;
 
       &::placeholder {
         color: $colorWord;
@@ -643,7 +640,7 @@
 
   & > select {
     width: 100%;
-    padding-right: 30px;
+    padding-right: 30px !important;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
