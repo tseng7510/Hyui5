@@ -1159,8 +1159,6 @@ function tabFunction(obj) {
         checkTarget(index);
       } else if (e.code === 'ArrowLeft') {
         index = ([...tabBtn].indexOf(e.target) - 1 + tabBtn.length) % tabBtn.length;
-        console.log(index);
-
         tabBtn[index].focus();
         checkTarget(index);
       }
@@ -1195,6 +1193,15 @@ function tabFunction(obj) {
     siblingsPanel.forEach((value) => {
       jsSlideUp(value);
     });
+    setTimeout(() => {
+      let btnClientRect = btn.getBoundingClientRect();
+      if (btnClientRect.y < 0) {
+        window.scrollTo({
+          top: window.scrollY + btnClientRect.y - btnClientRect.height - 20,
+          behavior: 'smooth',
+        });
+      }
+    }, 200);
   }
 
   function removeAttributeFn(item) {
@@ -1400,9 +1407,15 @@ function accordionFunction(obj) {
     });
     const siblingsAccordionCons = [...accordionCons].filter((value) => value !== accordionCons[i]);
     siblingsAccordionCons.forEach((value) => jsSlideUp(value));
-    console.log(btn);
-
-    btn.focus();
+    setTimeout(() => {
+      let btnClientRect = btn.getBoundingClientRect();
+      if (btnClientRect.y < 0) {
+        window.scrollTo({
+          top: window.scrollY + btnClientRect.y - btnClientRect.height - 20,
+          behavior: 'smooth',
+        });
+      }
+    }, 200);
   }
 
   // 是否可開合/切換

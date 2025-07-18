@@ -720,7 +720,7 @@ function tabFunction(obj) {
   const { target, autoClose = true, openContent = false, modeSwitch = false, windowWidth = setRWDWidth, openIndex = 0, openSwitch = true } = obj;
 
   const tabSet = $(target);
-  if (target.length === 0) return;
+  if (tabSet.length === 0) return;
 
   const tabItems = tabSet.find('.tabItems');
   const tabBtn = tabSet.find('.tabBtn');
@@ -847,6 +847,16 @@ function tabFunction(obj) {
     mobileTabBtn.eq(i).parents('.tabContent').siblings().find('.mobileTabBtn').removeClass('active');
     mobileTabBtn.eq(i).parents('.tabContent').siblings().find('.mobileTabBtn').attr('aria-expanded', 'false');
     mobileTabBtn.eq(i).parents('.tabContent').siblings().find('.tabContentIn').slideUp(200);
+
+    setTimeout(() => {
+      let btnClientRect = btn.get(0).getBoundingClientRect();
+      if (btnClientRect.y < 0) {
+        window.scrollTo({
+          top: window.scrollY + btnClientRect.y - btnClientRect.height - 20,
+          behavior: 'smooth',
+        });
+      }
+    }, 200);
   }
 
   function removeAttributeFn(item) {
@@ -919,7 +929,7 @@ function tabFunction(obj) {
         tabpanelBtn.eq(nowOpen).addClass('active');
         tabpanelBtn.eq(nowOpen).attr('aria-expanded', 'true');
         // tabpanelBtn.eq(nowOpen).focus();
-        tabContentIn[nowOpen].removeAttribute('style');
+        tabContentIn[nowOpen].removeAttr('style');
       }
     } else if ($(window).outerWidth() >= windowWidth && modeSwitch) {
       //增加上方選單
@@ -1043,6 +1053,16 @@ function accordionFunction(obj) {
     accordionBtn.eq(i).parent().siblings().find('.accordionBtn').removeClass('active');
     accordionBtn.eq(i).parent().siblings().find('.accordionState span').html(infoOpen);
     accordionCon.eq(i).parent().siblings().find('.accordionContent').slideUp(200);
+
+    setTimeout(() => {
+      let btnClientRect = btn.get(0).getBoundingClientRect();
+      if (btnClientRect.y < 0) {
+        window.scrollTo({
+          top: window.scrollY + btnClientRect.y - btnClientRect.height - 20,
+          behavior: 'smooth',
+        });
+      }
+    }, 200);
   }
 
   // 是否可開合/切換
@@ -1363,8 +1383,6 @@ function scrollTables() {
       let tableScrollLeft = tableScrollIn.scrollLeft();
       let tableClientWidth = tableScrollIn.outerWidth();
       let tableScrollWidth = table.outerWidth();
-
-      console.log(tableScrollLeft === 0, tableScrollLeft, tableClientWidth, tableScrollWidth);
 
       if (tableScrollLeft >= 0 && tableScrollLeft + tableClientWidth < tableScrollWidth) {
         nextBtn.css('display', 'block');
