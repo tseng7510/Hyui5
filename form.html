@@ -269,15 +269,21 @@
                   <div class="gridBox">
                     <div class="formList inline">
                       <label class="formListTitle" for="formItem7"><em aria-label="必填">*</em>帳號</label>
-                      <input type="text" name="username" id="formItem7" autocomplete="username" placeholder="請輸入帳號" required />
+                      <div class="formContent">
+                        <input type="text" name="username" id="formItem7" autocomplete="username" placeholder="請輸入帳號" required />
+                      </div>
                     </div>
                     <div class="formList inline">
                       <label class="formListTitle" for="formItem8"><em aria-label="必填">*</em>帳號</label>
-                      <input type="text" name="username" id="formItem8" autocomplete="username" placeholder="請輸入帳號" required disabled />
+                      <div class="formContent">
+                        <input type="text" name="username" id="formItem8" autocomplete="username" placeholder="請輸入帳號" required disabled />
+                      </div>
                     </div>
                     <div class="formList inline error">
                       <label class="formListTitle" for="formItem9"><em aria-label="必填">*</em>帳號</label>
-                      <input type="text" name="username" id="formItem9" autocomplete="username" placeholder="請輸入帳號" required />
+                      <div class="formContent">
+                        <input type="text" name="username" id="formItem9" autocomplete="username" placeholder="請輸入帳號" required />
+                      </div>
                     </div>
                     <div class="formList inline">
                       <label class="formListTitle" for="formItem10"><em aria-label="必填">*</em>E-mail</label>
@@ -307,10 +313,12 @@
                     </div>
                     <div class="formList inline noFull">
                       <label class="formListTitle" for="formItem9"><em aria-label="必填">*</em>密碼</label>
-                      <div class="inputBox">
-                        <i class="i_lock_dk"></i>
-                        <input type="password" name="password" id="formItem90" placeholder="請輸入密碼" required />
-                        <button class="formEyes" type="button" data-show="顯示密碼" data-hide="隱藏密碼"></button>
+                      <div class="formContent">
+                        <div class="inputBox">
+                          <i class="i_lock_dk"></i>
+                          <input type="password" name="password" id="formItem90" placeholder="請輸入密碼" required />
+                          <button class="formEyes" type="button" data-show="顯示密碼" data-hide="隱藏密碼"></button>
+                        </div>
                       </div>
                     </div>
 
@@ -432,12 +440,14 @@
                     </div>
                     <div class="formList inline noFull">
                       <label class="formListTitle" for="formItem4Select">下拉選單(Inline)</label>
-                      <div class="select">
-                        <select name="" id="formItem4Select">
-                          <option value="">請選擇</option>
-                          <option value="option">option</option>
-                          <option value="option">option</option>
-                        </select>
+                      <div class="formContent">
+                        <div class="select">
+                          <select name="" id="formItem4Select">
+                            <option value="">請選擇</option>
+                            <option value="option">option</option>
+                            <option value="option">option</option>
+                          </select>
+                        </div>
                       </div>
                     </div>
                     <fieldset class="formList inline">
