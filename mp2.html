@@ -218,49 +218,53 @@
         <!-- mpSlider Start -->
         <section>
           <div class="container">
-            <div class="mpSlider flexTpl_12">
-              <!-- 如果需要自動播放，無障礙需要增加此按鈕 -->
-              <button type="button" class="autoPlaySwitch" data-info-play="暫停中，點我播放" data-info-stop="播放中，點我暫停"></button>
-              <div class="swiperBox">
-                <!-- swiper 上一張-->
-                <button class="swiperPrev swiperArrow">上一筆</button>
-                <div class="swiper">
-                  <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                      <a href="#">
-                        <div class="pic">
-                          <img src="images/demo/banner2.png" alt="第1張圖說" />
+            <div class="flexTpl_12">
+              <div class="col">
+                <div class="mpSlider">
+                  <!-- 如果需要自動播放，無障礙需要增加此按鈕 -->
+                  <button type="button" class="autoPlaySwitch" data-info-play="暫停中，點我播放" data-info-stop="播放中，點我暫停"></button>
+                  <div class="swiperBox">
+                    <!-- swiper 上一張-->
+                    <button class="swiperPrev swiperArrow">上一筆</button>
+                    <div class="swiper">
+                      <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                          <a href="#">
+                            <div class="pic">
+                              <img src="images/demo/banner2.png" alt="第1張圖說" />
+                            </div>
+                            <div class="contentBox">
+                              <div class="infoBox">
+                                <div class="title">主標題文字</div>
+                                <div class="subtitle">副標題副標題文字</div>
+                                <div class="description">內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字</div>
+                              </div>
+                            </div>
+                          </a>
                         </div>
-                        <div class="contentBox">
-                          <div class="infoBox">
-                            <div class="title">主標題文字</div>
-                            <div class="subtitle">副標題副標題文字</div>
-                            <div class="description">內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字</div>
-                          </div>
+                        <div class="swiper-slide">
+                          <a href="#">
+                            <div class="pic">
+                              <img src="images/demo/banner2.png" alt="第1張圖說" />
+                            </div>
+                            <div class="contentBox">
+                              <div class="infoBox">
+                                <div class="title">主標題文字</div>
+                                <div class="subtitle">副標題副標題文字</div>
+                                <div class="description">內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字</div>
+                              </div>
+                            </div>
+                          </a>
                         </div>
-                      </a>
+                      </div>
                     </div>
-                    <div class="swiper-slide">
-                      <a href="#">
-                        <div class="pic">
-                          <img src="images/demo/banner2.png" alt="第1張圖說" />
-                        </div>
-                        <div class="contentBox">
-                          <div class="infoBox">
-                            <div class="title">主標題文字</div>
-                            <div class="subtitle">副標題副標題文字</div>
-                            <div class="description">內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字</div>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
+                    <!-- swiper 下一張-->
+                    <button class="swiperNext swiperArrow">下一筆</button>
                   </div>
+                  <!--分頁-->
+                  <div class="swiperPagination"></div>
                 </div>
-                <!-- swiper 下一張-->
-                <button class="swiperNext swiperArrow">下一筆</button>
               </div>
-              <!--分頁-->
-              <div class="swiperPagination"></div>
             </div>
           </div>
         </section>
@@ -268,47 +272,49 @@
 
         <section>
           <div class="container">
-            <div class="blockTypeF flexTpl_12">
+            <div class="flexTpl_12">
               <div class="col">
-                <div class="tabSet target1">
-                  <div class="tabBtnBox">
-                    <div class="tabItems">
-                      <button type="button" class="tabBtn">館藏目錄</button>
-                      <button type="button" class="tabBtn">電子資源</button>
-                    </div>
-                  </div>
-                  <div class="tabContentGroup">
-                    <div class="tabContent">
-                      <div class="tabContentIn">
-                        <form action="" class="formBox">
-                          <div class="formList inline">
-                            <label class="srOnly" for="formItem8">帳號</label>
-                            <div class="formContent inline">
-                              <div class="inputBox">
-                                <input type="text" name="username" id="formItem8" placeholder="請輸入帳號" />
-                                <i class="i_search_dk"></i>
-                              </div>
-                              <button class="btnPrimary submit" type="submit">查詢</button>
-                            </div>
-                          </div>
-                        </form>
+                <div class="blockTypeF">
+                  <div class="tabSet tabFunction1">
+                    <div class="tabBtnBox">
+                      <div class="tabItems">
+                        <button type="button" class="tabBtn">館藏目錄</button>
+                        <button type="button" class="tabBtn">電子資源</button>
                       </div>
                     </div>
-                    <div class="tabContent">
-                      <div class="tabContentIn">
-                        2
-                        <form action="" class="formBox">
-                          <div class="formList inline">
-                            <label class="srOnly" for="formItem8">帳號</label>
-                            <div class="formContent inline">
-                              <div class="inputBox">
-                                <input type="text" name="username" id="formItem8" placeholder="請輸入帳號" />
-                                <i class="i_search_dk"></i>
+                    <div class="tabContentGroup">
+                      <div class="tabContent">
+                        <div class="tabContentIn">
+                          <form action="" class="formBox">
+                            <div class="formList inline">
+                              <label class="srOnly" for="formItem8">帳號</label>
+                              <div class="formContent inline">
+                                <div class="inputBox">
+                                  <input type="text" name="username" id="formItem8" placeholder="請輸入帳號" />
+                                  <i class="i_search_dk"></i>
+                                </div>
+                                <button class="btnPrimary submit" type="submit">查詢</button>
                               </div>
-                              <button class="btnPrimary submit" type="submit">查詢</button>
                             </div>
-                          </div>
-                        </form>
+                          </form>
+                        </div>
+                      </div>
+                      <div class="tabContent">
+                        <div class="tabContentIn">
+                          2
+                          <form action="" class="formBox">
+                            <div class="formList inline">
+                              <label class="srOnly" for="formItem8">帳號</label>
+                              <div class="formContent inline">
+                                <div class="inputBox">
+                                  <input type="text" name="username" id="formItem8" placeholder="請輸入帳號" />
+                                  <i class="i_search_dk"></i>
+                                </div>
+                                <button class="btnPrimary submit" type="submit">查詢</button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -320,156 +326,158 @@
 
         <section>
           <div class="container">
-            <div class="blockTypeG flexTpl_12">
+            <div class="flexTpl_12">
               <div class="col">
                 <h2 class="sectionTitle">新書展示</h2>
-                <div class="tabSet target2">
-                  <div class="tabBtnBox">
-                    <div class="tabItems">
-                      <button type="button" class="tabBtn">頁籤項一</button>
-                      <button type="button" class="tabBtn">頁籤項二</button>
-                      <button type="button" class="tabBtn">頁籤項三</button>
-                      <button type="button" class="tabBtn">頁籤項四</button>
+                <div class="blockTypeG">
+                  <div class="tabSet tabFunction2">
+                    <div class="tabBtnBox">
+                      <div class="tabItems">
+                        <button type="button" class="tabBtn">頁籤項一</button>
+                        <button type="button" class="tabBtn">頁籤項二</button>
+                        <button type="button" class="tabBtn">頁籤項三</button>
+                        <button type="button" class="tabBtn">頁籤項四</button>
+                      </div>
                     </div>
-                  </div>
-                  <div class="tabContentGroup">
-                    <div class="tabContent">
-                      <div class="tabContentIn">
-                        <div class="multipleSlider">
-                          <!-- 如果需要自動播放，無障礙需要增加此按鈕 -->
-                          <button type="button" class="autoPlaySwitch" data-info-play="暫停中，點我播放" data-info-stop="播放中，點我暫停"></button>
-                          <div class="swiperBox">
-                            <!-- swiper 左邊箭頭-->
-                            <button type="button" class="swiperPrev swiperArrow"></button>
-                            <div class="swiper">
-                              <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                  <a class="item">
-                                    <div class="pic">
-                                      <img src="images/demo/image2.png" alt />
-                                    </div>
-                                    <div class="caption"><span>第1張圖說</span></div>
-                                  </a>
-                                </div>
-                                <div class="swiper-slide">
-                                  <a class="item">
-                                    <div class="pic">
-                                      <img src="images/demo/image2.png" alt />
-                                    </div>
-                                    <div class="caption"><span>第1張圖說</span></div>
-                                  </a>
-                                </div>
-                                <div class="swiper-slide">
-                                  <a class="item">
-                                    <div class="pic">
-                                      <img src="images/demo/image2.png" alt />
-                                    </div>
-                                    <div class="caption"><span>第1張圖說</span></div>
-                                  </a>
-                                </div>
-                                <div class="swiper-slide">
-                                  <a class="item">
-                                    <div class="pic">
-                                      <img src="images/demo/image2.png" alt />
-                                    </div>
-                                    <div class="caption"><span>第1張圖說</span></div>
-                                  </a>
-                                </div>
-                                <div class="swiper-slide">
-                                  <a class="item">
-                                    <div class="pic">
-                                      <img src="images/demo/image2.png" alt />
-                                    </div>
-                                    <div class="caption"><span>第1張圖說</span></div>
-                                  </a>
-                                </div>
-                                <div class="swiper-slide">
-                                  <a class="item">
-                                    <div class="pic">
-                                      <img src="images/demo/image2.png" alt />
-                                    </div>
-                                    <div class="caption"><span>第1張圖說</span></div>
-                                  </a>
+                    <div class="tabContentGroup">
+                      <div class="tabContent">
+                        <div class="tabContentIn">
+                          <div class="multipleSlider">
+                            <!-- 如果需要自動播放，無障礙需要增加此按鈕 -->
+                            <button type="button" class="autoPlaySwitch" data-info-play="暫停中，點我播放" data-info-stop="播放中，點我暫停"></button>
+                            <div class="swiperBox">
+                              <!-- swiper 左邊箭頭-->
+                              <button type="button" class="swiperPrev swiperArrow"></button>
+                              <div class="swiper">
+                                <div class="swiper-wrapper">
+                                  <div class="swiper-slide">
+                                    <a class="item">
+                                      <div class="pic">
+                                        <img src="images/demo/image2.png" alt />
+                                      </div>
+                                      <div class="caption"><span>第1張圖說</span></div>
+                                    </a>
+                                  </div>
+                                  <div class="swiper-slide">
+                                    <a class="item">
+                                      <div class="pic">
+                                        <img src="images/demo/image2.png" alt />
+                                      </div>
+                                      <div class="caption"><span>第1張圖說</span></div>
+                                    </a>
+                                  </div>
+                                  <div class="swiper-slide">
+                                    <a class="item">
+                                      <div class="pic">
+                                        <img src="images/demo/image2.png" alt />
+                                      </div>
+                                      <div class="caption"><span>第1張圖說</span></div>
+                                    </a>
+                                  </div>
+                                  <div class="swiper-slide">
+                                    <a class="item">
+                                      <div class="pic">
+                                        <img src="images/demo/image2.png" alt />
+                                      </div>
+                                      <div class="caption"><span>第1張圖說</span></div>
+                                    </a>
+                                  </div>
+                                  <div class="swiper-slide">
+                                    <a class="item">
+                                      <div class="pic">
+                                        <img src="images/demo/image2.png" alt />
+                                      </div>
+                                      <div class="caption"><span>第1張圖說</span></div>
+                                    </a>
+                                  </div>
+                                  <div class="swiper-slide">
+                                    <a class="item">
+                                      <div class="pic">
+                                        <img src="images/demo/image2.png" alt />
+                                      </div>
+                                      <div class="caption"><span>第1張圖說</span></div>
+                                    </a>
+                                  </div>
                                 </div>
                               </div>
+                              <button type="button" class="swiperNext swiperArrow"></button>
+                              <!-- swiper 右邊箭頭-->
                             </div>
-                            <button type="button" class="swiperNext swiperArrow"></button>
-                            <!-- swiper 右邊箭頭-->
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="tabContent">
-                      <div class="tabContentIn">
-                        <div class="multipleSlider">
-                          <!-- 如果需要自動播放，無障礙需要增加此按鈕 -->
-                          <button type="button" class="autoPlaySwitch" data-info-play="暫停中，點我播放" data-info-stop="播放中，點我暫停"></button>
-                          <div class="swiperBox">
-                            <!-- swiper 左邊箭頭-->
-                            <button type="button" class="swiperPrev swiperArrow"></button>
-                            <div class="swiper">
-                              <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                  <a class="item">
-                                    <div class="pic">
-                                      <img src="images/demo/image3.png" alt />
-                                    </div>
-                                    <div class="caption"><span>第1張圖說</span></div>
-                                  </a>
-                                </div>
-                                <div class="swiper-slide">
-                                  <a class="item">
-                                    <div class="pic">
-                                      <img src="images/demo/image3.png" alt />
-                                    </div>
-                                    <div class="caption"><span>第1張圖說</span></div>
-                                  </a>
-                                </div>
-                                <div class="swiper-slide">
-                                  <a class="item">
-                                    <div class="pic">
-                                      <img src="images/demo/image3.png" alt />
-                                    </div>
-                                    <div class="caption"><span>第1張圖說</span></div>
-                                  </a>
-                                </div>
-                                <div class="swiper-slide">
-                                  <a class="item">
-                                    <div class="pic">
-                                      <img src="images/demo/image3.png" alt />
-                                    </div>
-                                    <div class="caption"><span>第1張圖說</span></div>
-                                  </a>
-                                </div>
-                                <div class="swiper-slide">
-                                  <a class="item">
-                                    <div class="pic">
-                                      <img src="images/demo/image3.png" alt />
-                                    </div>
-                                    <div class="caption"><span>第1張圖說</span></div>
-                                  </a>
-                                </div>
-                                <div class="swiper-slide">
-                                  <a class="item">
-                                    <div class="pic">
-                                      <img src="images/demo/image3.png" alt />
-                                    </div>
-                                    <div class="caption"><span>第1張圖說</span></div>
-                                  </a>
+                      <div class="tabContent">
+                        <div class="tabContentIn">
+                          <div class="multipleSlider">
+                            <!-- 如果需要自動播放，無障礙需要增加此按鈕 -->
+                            <button type="button" class="autoPlaySwitch" data-info-play="暫停中，點我播放" data-info-stop="播放中，點我暫停"></button>
+                            <div class="swiperBox">
+                              <!-- swiper 左邊箭頭-->
+                              <button type="button" class="swiperPrev swiperArrow"></button>
+                              <div class="swiper">
+                                <div class="swiper-wrapper">
+                                  <div class="swiper-slide">
+                                    <a class="item">
+                                      <div class="pic">
+                                        <img src="images/demo/image3.png" alt />
+                                      </div>
+                                      <div class="caption"><span>第1張圖說</span></div>
+                                    </a>
+                                  </div>
+                                  <div class="swiper-slide">
+                                    <a class="item">
+                                      <div class="pic">
+                                        <img src="images/demo/image3.png" alt />
+                                      </div>
+                                      <div class="caption"><span>第1張圖說</span></div>
+                                    </a>
+                                  </div>
+                                  <div class="swiper-slide">
+                                    <a class="item">
+                                      <div class="pic">
+                                        <img src="images/demo/image3.png" alt />
+                                      </div>
+                                      <div class="caption"><span>第1張圖說</span></div>
+                                    </a>
+                                  </div>
+                                  <div class="swiper-slide">
+                                    <a class="item">
+                                      <div class="pic">
+                                        <img src="images/demo/image3.png" alt />
+                                      </div>
+                                      <div class="caption"><span>第1張圖說</span></div>
+                                    </a>
+                                  </div>
+                                  <div class="swiper-slide">
+                                    <a class="item">
+                                      <div class="pic">
+                                        <img src="images/demo/image3.png" alt />
+                                      </div>
+                                      <div class="caption"><span>第1張圖說</span></div>
+                                    </a>
+                                  </div>
+                                  <div class="swiper-slide">
+                                    <a class="item">
+                                      <div class="pic">
+                                        <img src="images/demo/image3.png" alt />
+                                      </div>
+                                      <div class="caption"><span>第1張圖說</span></div>
+                                    </a>
+                                  </div>
                                 </div>
                               </div>
+                              <button type="button" class="swiperNext swiperArrow"></button>
+                              <!-- swiper 右邊箭頭-->
                             </div>
-                            <button type="button" class="swiperNext swiperArrow"></button>
-                            <!-- swiper 右邊箭頭-->
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="tabContent">
-                      <div class="tabContentIn">swiper3</div>
-                    </div>
-                    <div class="tabContent">
-                      <div class="tabContentIn">swiper4</div>
+                      <div class="tabContent">
+                        <div class="tabContentIn">swiper3</div>
+                      </div>
+                      <div class="tabContent">
+                        <div class="tabContentIn">swiper4</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -480,116 +488,118 @@
 
         <section>
           <div class="container">
-            <div class="blockTypeH flexTpl_9_3">
+            <div class="flexTpl_9_3">
               <div class="col">
                 <h2 class="sectionTitle">最新消息</h2>
-                <div class="tabSet target3">
-                  <div class="tabBtnBox">
-                    <div class="tabItems">
-                      <button type="button" class="tabBtn">館藏目錄</button>
-                      <button type="button" class="tabBtn">電子資源</button>
-                      <button type="button" class="tabBtn">館藏目錄</button>
-                      <button type="button" class="tabBtn">館藏目錄</button>
-                      <button type="button" class="tabBtn">電子資源</button>
-                    </div>
-                  </div>
-                  <div class="tabContentGroup">
-                    <div class="tabContent">
-                      <div class="tabContentIn">
-                        <div class="blockTypeI">
-                          <ul class="listBox">
-                            <li>
-                              <a href="#">
-                                <time datetime="2025/02/01">2025/02/01</time>
-                                <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
-                                <div class="tag">總館</div>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <time datetime="2025/02/01">2025/02/01</time>
-                                <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
-                                <div class="tag">總館</div>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <time datetime="2025/02/01">2025/02/01</time>
-                                <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
-                                <div class="tag">總館</div>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <time datetime="2025/02/01">2025/02/01</time>
-                                <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
-                                <div class="tag">總館</div>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <time datetime="2025/02/01">2025/02/01</time>
-                                <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
-                                <div class="tag">總館</div>
-                              </a>
-                            </li>
-                          </ul>
-                          <a href="#" class="indexBtn btnPrimary">看更多</a>
-                        </div>
+                <div class="blockTypeH">
+                  <div class="tabSet tabFunction3">
+                    <div class="tabBtnBox">
+                      <div class="tabItems">
+                        <button type="button" class="tabBtn">館藏目錄</button>
+                        <button type="button" class="tabBtn">電子資源</button>
+                        <button type="button" class="tabBtn">館藏目錄</button>
+                        <button type="button" class="tabBtn">館藏目錄</button>
+                        <button type="button" class="tabBtn">電子資源</button>
                       </div>
                     </div>
-                    <div class="tabContent">
-                      <div class="tabContentIn">
-                        <div class="blockTypeI">
-                          <ul class="listBox">
-                            <li>
-                              <a href="#">
-                                <time datetime="2025/02/01">2025/02/01</time>
-                                <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
-                                <div class="tag">總館</div>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <time datetime="2025/02/01">2025/02/01</time>
-                                <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
-                                <div class="tag">總館</div>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <time datetime="2025/02/01">2025/02/01</time>
-                                <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
-                                <div class="tag">總館</div>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <time datetime="2025/02/01">2025/02/01</time>
-                                <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
-                                <div class="tag">總館</div>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <time datetime="2025/02/01">2025/02/01</time>
-                                <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
-                                <div class="tag">總館</div>
-                              </a>
-                            </li>
-                          </ul>
-                          <a href="#" class="indexBtn btnPrimary">看更多</a>
+                    <div class="tabContentGroup">
+                      <div class="tabContent">
+                        <div class="tabContentIn">
+                          <div class="blockTypeI">
+                            <ul class="listBox">
+                              <li>
+                                <a href="#">
+                                  <time datetime="2025/02/01">2025/02/01</time>
+                                  <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
+                                  <div class="tag">總館</div>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#">
+                                  <time datetime="2025/02/01">2025/02/01</time>
+                                  <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
+                                  <div class="tag">總館</div>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#">
+                                  <time datetime="2025/02/01">2025/02/01</time>
+                                  <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
+                                  <div class="tag">總館</div>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#">
+                                  <time datetime="2025/02/01">2025/02/01</time>
+                                  <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
+                                  <div class="tag">總館</div>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#">
+                                  <time datetime="2025/02/01">2025/02/01</time>
+                                  <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
+                                  <div class="tag">總館</div>
+                                </a>
+                              </li>
+                            </ul>
+                            <a href="#" class="indexBtn btnPrimary">看更多</a>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="tabContent">
-                      <div class="tabContentIn">list3</div>
-                    </div>
-                    <div class="tabContent">
-                      <div class="tabContentIn">list4</div>
-                    </div>
-                    <div class="tabContent">
-                      <div class="tabContentIn">list5</div>
+                      <div class="tabContent">
+                        <div class="tabContentIn">
+                          <div class="blockTypeI">
+                            <ul class="listBox">
+                              <li>
+                                <a href="#">
+                                  <time datetime="2025/02/01">2025/02/01</time>
+                                  <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
+                                  <div class="tag">總館</div>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#">
+                                  <time datetime="2025/02/01">2025/02/01</time>
+                                  <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
+                                  <div class="tag">總館</div>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#">
+                                  <time datetime="2025/02/01">2025/02/01</time>
+                                  <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
+                                  <div class="tag">總館</div>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#">
+                                  <time datetime="2025/02/01">2025/02/01</time>
+                                  <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
+                                  <div class="tag">總館</div>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#">
+                                  <time datetime="2025/02/01">2025/02/01</time>
+                                  <div class="title">「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題之產業因應實務研討會」 圓滿辦理完竣「生成式AI面臨著作權議題 服務照顧</div>
+                                  <div class="tag">總館</div>
+                                </a>
+                              </li>
+                            </ul>
+                            <a href="#" class="indexBtn btnPrimary">看更多</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tabContent">
+                        <div class="tabContentIn">list3</div>
+                      </div>
+                      <div class="tabContent">
+                        <div class="tabContentIn">list4</div>
+                      </div>
+                      <div class="tabContent">
+                        <div class="tabContentIn">list5</div>
+                      </div>
                     </div>
                   </div>
                 </div>

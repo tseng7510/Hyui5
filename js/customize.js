@@ -13,15 +13,15 @@ sideNav({
 
 // tab功能
 tabFunction({
-  target: '.target1',
+  target: '.tabFunction1',
 });
 // mp2 新書展示
 tabFunction({
-  target: '.target2',
+  target: '.tabFunction2',
 });
 // mp2 最新消息
 tabFunction({
-  target: '.target3',
+  target: '.tabFunction3',
   modeSwitch: true, // 自動切換，尺寸以上tab功能，尺寸以下手風琴功能<br />
 });
 
