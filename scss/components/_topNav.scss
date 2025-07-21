@@ -139,7 +139,7 @@ header {
 
       &.active,
       &:hover {
-        background: darken($navSurface, 10%);
+        background: $navSurfaceHover;
       }
     }
   }

@@ -6,8 +6,8 @@
 }
 
 header {
-  color: #e6eef6;
-  color: #ebf0f9;
+  color: rgb(229.6, 238.1, 245.7);
+  color: rgb(234.5, 240.4, 249.4);
   background: linear-gradient(270deg, #057BB7 0%, #0156A2 100%);
 }
 header h1 a {

@@ -1,5 +1,4 @@
 'use strict';
-const setRWDWidth = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--RWDWidth'));
 
 // -----------------------------------------------------------------------
 // -----  支援js時，移除no-js  -------------------------------------------------------
@@ -11,12 +10,16 @@ document.documentElement.classList.remove('no-js');
 // -----------------------------------------------------------------------
 
 // 亂數數字
-function randomFloor(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+function _randomNumber(max) {
+  let letter = '1234567890';
+  let number = '';
+
+  for (let i = 0; i < max; i++) number += letter.charAt(Math.floor(Math.random() * letter.length));
+  return number;
 }
 
 // 亂數英文字
-function randomLetter(max, letter = 'abcdefghijklmnopqrstuvwxyz') {
+function _randomLetter(max, letter = 'abcdefghijklmnopqrstuvwxyz') {
   let text = '';
 
   for (let i = 0; i < max; i++) text += letter.charAt(Math.floor(Math.random() * letter.length));
@@ -44,7 +47,7 @@ function toggleSlider(elem, con) {
   const targetSelect = $(elem);
   let checkDisplay;
   targetSelect.each(function () {
-    let id = `ts_${randomLetter(3)}${randomFloor(0, 999)}`;
+    let id = `ts_${_randomLetter(3)}${_randomNumber(3)}`;
     let targetSelectCon = $(con);
 
     checkDisplay = targetSelectCon.css('display') === 'none';
@@ -152,10 +155,6 @@ function toggleSlider(elem, con) {
   });
 }
 
-// 增加透明黑底
-$('.wrapper').prepend('<div class="overlay"></div>');
-const overlay = $('.overlay');
-
 // -----------------------------------------------------------------------
 // -----  FontSize   -----------------------------------------------------
 // -----------------------------------------------------------------------
@@ -249,6 +248,13 @@ $(window).on('load', function () {
 // -----  menu   ------------------------------------------------------
 // -----------------------------------------------------------------------
 function mainMenu(obj) {
+  const setRWDWidth = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--RWDWidth'));
+  // 增加透明黑底
+  if ($('.overlay').length === 0) {
+    const $overlay = $('<div>').addClass('overlay');
+    $('body').prepend($overlay);
+  }
+
   const body = $('body');
   const header = $('header');
   const headTop = $('.headTop');
@@ -265,7 +271,7 @@ function mainMenu(obj) {
 
   const hasChild = menu.find('.hasChild');
 
-  function checkBorder(e) {
+  function _checkBorder(e) {
     if (mega) return;
     // 抓出該項目以下有多少層級
     const nextUl = e.find('ul');
@@ -294,7 +300,7 @@ function mainMenu(obj) {
   function _handleMouseenter(e) {
     $(e.currentTarget).addClass('active');
     $(e.currentTarget).children('a').attr('aria-expanded', 'true');
-    checkBorder($(e.currentTarget));
+    _checkBorder($(e.currentTarget));
   }
 
   // 滑鼠滑出
@@ -305,7 +311,7 @@ function mainMenu(obj) {
   }
 
   // 選單層級展開fn
-  function toggleAccordion(item, con) {
+  function _toggleAccordion(item, con) {
     let content = $(item).parent().children(con);
     if (content.css('display') !== 'none') {
       $(item).attr('aria-expanded', 'false');
@@ -365,7 +371,7 @@ function mainMenu(obj) {
       if (!checkTarget || $(window).outerWidth() <= setRWDWidth) return;
       $(e.target).attr('aria-expanded', 'true');
 
-      checkBorder($(e.target).parent('li'));
+      _checkBorder($(e.target).parent('li'));
       if (e.code === 'Tab' && !e.shiftKey) {
         $(e.target).parent('li').addClass('active');
         $(e.target).parent('li').siblings().removeClass('active');
@@ -378,7 +384,7 @@ function mainMenu(obj) {
     });
     hasChild.each(function () {
       // 無障礙設定
-      const id = `menu_${randomLetter(3)}${randomFloor(0, 999)}`;
+      const id = `menu_${_randomLetter(3)}${_randomNumber(3)}`;
       const childA = $(this).children('a');
       const childUl = $(this).children('ul');
       childA.attr('aria-expanded', 'false');
@@ -512,7 +518,7 @@ function mainMenu(obj) {
       }
 
       // 無障礙設定 -- mobile
-      const id = `mobileMenu_${randomLetter(3)}${randomFloor(0, 999)}`;
+      const id = `mobileMenu_${_randomLetter(3)}${_randomNumber(3)}`;
       const childUl = $(this).children('ul');
       childControl.attr({
         'aria-expanded': 'false',
@@ -529,7 +535,7 @@ function mainMenu(obj) {
         if (!needLink) {
           e.preventDefault();
         }
-        toggleAccordion($(this), 'ul');
+        _toggleAccordion($(this), 'ul');
       });
     });
 
@@ -567,6 +573,13 @@ function mainMenu(obj) {
 // -----------------------------------------------------------------------
 
 function webSearch() {
+  const setRWDWidth = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--RWDWidth'));
+  // 增加透明黑底
+  if ($('.overlay').length === 0) {
+    const $overlay = $('<div>').addClass('overlay');
+    $('body').prepend($overlay);
+  }
+
   const body = $('body');
   const webSearch = $('.webSearch');
 
@@ -578,7 +591,7 @@ function webSearch() {
   const webSearchBtn = $(' #topSearchBtn');
   const searchTargetSelect = $('#topSearchBtn, #mobileSearchBtn');
   const webSearchAllTarget = webSearch.find('a, button, input, select, textarea');
-  const id = `ws_${randomLetter(3)}${randomFloor(0, 999)}`;
+  const id = `ws_${_randomLetter(3)}${_randomNumber(3)}`;
 
   // 桌機搜尋按鈕進行設定與事件綁定
   webSearchBtn.attr({
@@ -588,7 +601,7 @@ function webSearch() {
     'aria-haspopup': 'true',
   });
   webSearchBtn.on('click', function (e) {
-    toggleContent(webSearchBtn);
+    _toggleContent(webSearchBtn);
   });
 
   // 行動版搜尋按鈕設定及事件綁定
@@ -598,7 +611,7 @@ function webSearch() {
     'aria-pressed': 'false',
     'aria-haspopup': 'true',
   });
-  mobileSearchBtn.on('click', () => toggleContent(mobileSearchBtn));
+  mobileSearchBtn.on('click', () => _toggleContent(mobileSearchBtn));
 
   // 搜尋內容區塊設定 ARIA 標記，建立與觸發按鈕的關聯
   webSearch.attr({
@@ -607,7 +620,7 @@ function webSearch() {
   });
 
   //  切換搜尋展開/關閉的函式
-  function toggleContent(elem, focus = false) {
+  function _toggleContent(elem, focus = false) {
     const isExpanded = $(elem).attr('aria-expanded') === 'true';
     overlay.css('top', `${$('header').height()}px`);
     if (isExpanded) {
@@ -677,15 +690,15 @@ function webSearch() {
       });
       // Alt + S;
     } else if (e.altKey && e.code === 'KeyS') {
-      toggleContent(searchBtn, true);
+      _toggleContent(searchBtn, true);
       // Escape
     } else if (e.code === 'Escape') {
       const checkDisplay = webSearch.css('display');
       if (checkDisplay === 'none') return;
       if ($(window).outerWidth() >= setRWDWidth && webSearchBtn) {
-        toggleContent(webSearchBtn, true);
+        _toggleContent(webSearchBtn, true);
       } else if ($(window).outerWidth() < setRWDWidth && mobileSearchBtn) {
-        toggleContent(mobileSearchBtn, true);
+        _toggleContent(mobileSearchBtn, true);
       }
     }
   });
@@ -728,11 +741,11 @@ function tabFunction(obj) {
   const tabContentIn = tabSet.find('.tabContentIn');
 
   //初始設定
-  function tabInit(targetIndex) {
+  function _tabInit(targetIndex) {
     tabItems.attr('role', 'tablist');
 
     tabBtn.each(function (i) {
-      const id = `tab_${randomLetter(3)}${randomFloor(0, 999)}`;
+      const id = `tab_${_randomLetter(3)}${_randomNumber(3)}`;
       const controls = `${id}_con`;
 
       $(this).attr({
@@ -747,12 +760,12 @@ function tabFunction(obj) {
       if (tabContent.eq(i).length === 0) {
         console.error(`tab功能: ${obj.target}內容數量與按鈕數量不符`);
       } else {
-        setAttributeFn(tabContent.eq(i), 'tabpanel', controls, id);
+        _setAttributeFn(tabContent.eq(i), 'tabpanel', controls, id);
       }
 
       //模式切換-新增按鈕
       if (modeSwitch) {
-        const mobileTabBtn = createMobileTabBtn(id, controls, $(this).html());
+        const mobileTabBtn = _createMobileTabBtn(id, controls, $(this).html());
         tabContent.eq(i).prepend(mobileTabBtn);
       }
     });
@@ -763,13 +776,13 @@ function tabFunction(obj) {
   }
 
   // 創建移動版選項按鈕
-  function createMobileTabBtn(id, controls, textContent) {
+  function _createMobileTabBtn(id, controls, textContent) {
     const mobileTabBtn = $(`<button id="${id}" aria-controls="${controls}" class="mobileTabBtn" aria-expanded="false" type="button">${textContent}</button>`);
     return mobileTabBtn;
   }
 
   //執行
-  tabInit(openIndex);
+  _tabInit(openIndex);
 
   //切換動作
   function checkTarget(targetIndex) {
@@ -830,12 +843,12 @@ function tabFunction(obj) {
       tabSet.on('click', function (e) {
         if (!$(e.target).hasClass('mobileTabBtn')) return;
         let index = $(e.target).parents('.tabContent').index();
-        mobileTabFn(mobileTabBtn.eq(index), index, mobileTabBtn);
+        _mobileTabFn(mobileTabBtn.eq(index), index, mobileTabBtn);
       });
     }
   }
 
-  function mobileTabFn(btn, i, mobileTabBtn) {
+  function _mobileTabFn(btn, i, mobileTabBtn) {
     tabContentIn.eq(i).slideToggle(200);
     tabSet.attr('nowIndex', i);
     let check = btn.attr('aria-expanded') === 'true' ? false : true;
@@ -859,10 +872,10 @@ function tabFunction(obj) {
     }, 200);
   }
 
-  function removeAttributeFn(item) {
+  function _removeAttributeFn(item) {
     item.removeAttr('aria-labelledby,role,id');
   }
-  function setAttributeFn(item, role, id, labelledby) {
+  function _setAttributeFn(item, role, id, labelledby) {
     item.attr({
       role: role,
       id: id,
@@ -870,7 +883,7 @@ function tabFunction(obj) {
     });
   }
   //模式切換-RWD
-  function checkRWD() {
+  function _checkRWD() {
     const tabpanelBtn = tabSet.find('.tabContent .mobileTabBtn');
     const nowOpen = tabSet.attr('nowIndex');
 
@@ -907,13 +920,13 @@ function tabFunction(obj) {
         //顯示所有tab內容標籤
         tabContent.eq(i).removeAttr('style');
         //移除tab內容標籤
-        removeAttributeFn(tabContent.eq(i));
+        _removeAttributeFn(tabContent.eq(i));
 
         //顯示手風琴標籤按鈕
         tabpanelBtn.eq(i).removeAttr('style');
         // tabpanelBtn.eq(i).removeAttr('aria-hidden');
         //新增手風琴內容標籤
-        setAttributeFn(tabContentIn.eq(i), 'region', controls, id);
+        _setAttributeFn(tabContentIn.eq(i), 'region', controls, id);
         tabContentIn.eq(i).hide();
       });
 
@@ -943,13 +956,13 @@ function tabFunction(obj) {
         //顯示所有Tab內容
         tabContentIn.eq(i).removeAttr('style');
         //移除Tab內容標籤
-        removeAttributeFn(tabContentIn.eq(i));
+        _removeAttributeFn(tabContentIn.eq(i));
         tabContentIn.eq(i).removeAttr('style');
 
         //隱藏Tab標籤按鈕
         tabpanelBtn.eq(i).hide();
         //新增Tab內容標籤
-        setAttributeFn(tabContent.eq(i), 'tabpanel', controls, id);
+        _setAttributeFn(tabContent.eq(i), 'tabpanel', controls, id);
       });
 
       //展開目前Tab內容
@@ -960,8 +973,8 @@ function tabFunction(obj) {
       tabContent.eq(nowOpen).siblings().hide();
     }
   }
-  checkRWD();
-  window.addEventListener('resize', checkRWD);
+  _checkRWD();
+  window.addEventListener('resize', _checkRWD);
 }
 
 // tabFunction({
@@ -991,10 +1004,10 @@ function accordionFunction(obj) {
   const accordionCon = accordionSet.find('.accordionContent');
 
   //初始設定
-  function accordionInit(targetIndex) {
+  function _accordionInit(targetIndex) {
     accordionSet.attr('nowIndex', targetIndex);
     accordionBtn.each(function (i) {
-      const id = `accordion_${randomLetter(3)}${randomFloor(0, 999)}`;
+      const id = `accordion_${_randomLetter(3)}${_randomNumber(3)}`;
       const controls = `${id}_con`;
 
       // 增加展開說明文字
@@ -1036,9 +1049,9 @@ function accordionFunction(obj) {
       if (openSwitch) accordionBtn.eq(openIndex).find('.accordionState span').html(infoClose);
     }
   }
-  accordionInit(openIndex);
+  _accordionInit(openIndex);
 
-  function accordionFn(btn, i) {
+  function _accordionFn(btn, i) {
     const accordionState = btn.find('.accordionState span');
     accordionCon.eq(i).slideToggle(200);
     accordionSet.attr('nowIndex', i);
@@ -1071,7 +1084,7 @@ function accordionFunction(obj) {
     accordionBtn.each(function (i) {
       $(this).on('click', function (e) {
         e.preventDefault();
-        accordionFn($(this), i);
+        _accordionFn($(this), i);
       });
     });
   }
@@ -1125,6 +1138,13 @@ $(window).on('load', function () {
 // -----  sideNav   ------------------------------------------------------
 // -----------------------------------------------------------------------
 function sideNav(options) {
+  const setRWDWidth = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--RWDWidth'));
+  // 增加透明黑底
+  if ($('.overlay').length === 0) {
+    const $overlay = $('<div>').addClass('overlay');
+    $('body').prepend($overlay);
+  }
+
   const body = $('body');
   const { showDefault = true, needLink = false, duration = 200, floatType = true } = options;
   const mainBox = $('.innerPage .mainBox');
@@ -1148,7 +1168,7 @@ function sideNav(options) {
 
   if (sideNavBtn) {
     // 統一設定無障礙相關屬性與過渡效果
-    function setTransitionBtn(btn, expanded, left = null, toLeft = null) {
+    function _setTransitionBtn(btn, expanded, left = null, toLeft = null) {
       btn.attr({
         'aria-expanded': expanded ? 'true' : 'false',
         'aria-haspopup': 'true',
@@ -1165,9 +1185,9 @@ function sideNav(options) {
         );
       }
     }
-    setTransitionBtn(sideNavBtn, showDefault);
+    _setTransitionBtn(sideNavBtn, showDefault);
 
-    function setTransition(elem, width, toWidth, dn) {
+    function _setTransition(elem, width, toWidth, dn) {
       if (($(window).outerWidth() <= setRWDWidth && floatType) || $(window).outerWidth() > setRWDWidth) {
         elem.css({
           overflow: 'hidden',
@@ -1195,16 +1215,16 @@ function sideNav(options) {
 
       if (isClosed) {
         // ---- 開啟選單 ----
-        setTransition(sideMenu, 0, sideMenuWidth, false);
-        setTransitionBtn(sideNavBtn, true, 0, sideMenuWidth);
+        _setTransition(sideMenu, 0, sideMenuWidth, false);
+        _setTransitionBtn(sideNavBtn, true, 0, sideMenuWidth);
         // 若為 mobile 模式，更新按鈕位置
         if ($(window).outerWidth() > setRWDWidth) {
           mainContentBox.css('width', `calc(100% - ${hasSideNavGap + sideNavWidth}px)`);
         }
       } else {
         // ---- 關閉選單 ----
-        setTransition(sideMenu, sideMenuWidth, 0, true);
-        setTransitionBtn(sideNavBtn, false, sideMenuWidth, 0);
+        _setTransition(sideMenu, sideMenuWidth, 0, true);
+        _setTransitionBtn(sideNavBtn, false, sideMenuWidth, 0);
       }
     });
   }
@@ -1222,7 +1242,7 @@ function sideNav(options) {
 
   // 設定所有含子選單項目的無障礙與點擊處理
   sideMenu.find('.hasChild').each(function (e) {
-    const uid = `sn_${randomLetter(3)}${randomFloor(0, 999)}`;
+    const uid = `sn_${_randomLetter(3)}${_randomNumber(3)}`;
     let childControl;
     if (!needLink) {
       childControl = $(this).find('a');
@@ -1242,7 +1262,7 @@ function sideNav(options) {
     });
     childControl.on('click', function (e) {
       e.preventDefault();
-      toggleAccordion(childControl, 'ul', $(this));
+      _toggleAccordion(childControl, 'ul', $(this));
     });
     childUl.attr({
       id: `${uid}_con`,
@@ -1251,7 +1271,7 @@ function sideNav(options) {
   });
 
   // 手風琴切換函式
-  function toggleAccordion(control, selector, parent) {
+  function _toggleAccordion(control, selector, parent) {
     const content = control.parent().children(selector);
     const isVisible = content.css('display') !== 'none';
     control.attr('aria-expanded', isVisible ? 'false' : 'true');
@@ -1290,7 +1310,7 @@ function sideNav(options) {
   });
 
   // 視窗載入與重置事件：調整響應式設定
-  const checkRwdFn = () => {
+  function _checkRwdFn() {
     sideNavWidth = sideNav.offsetWidth;
     if ($(window).outerWidth() <= setRWDWidth) {
       checkRwd = true;
@@ -1317,9 +1337,9 @@ function sideNav(options) {
         sideMenu.slideDown(200);
       }
     }
-  };
-  $(window).on('load', checkRwdFn);
-  $(window).on('resize', checkRwdFn);
+  }
+  $(window).on('load', _checkRwdFn);
+  $(window).on('resize', _checkRwdFn);
 }
 
 // -----------------------------------------------------------------------
@@ -1330,8 +1350,8 @@ function tableAddDataAttributes() {
   const el = $('.tableList');
   if (el.length === 0) return;
   el.find('table').addClass('loaded');
-  setTrAttr(el.find('table'));
-  function setTrAttr(elem) {
+  _setTrAttr(el.find('table'));
+  function _setTrAttr(elem) {
     const thList = elem.find('th');
     const trList = elem.find('tr');
 
@@ -1376,10 +1396,10 @@ function scrollTables() {
     tableScrollIn.append(table);
 
     tableScrollIn.on('scroll', () => {
-      checkScroll();
+      _checkScroll();
     });
 
-    function checkScroll() {
+    function _checkScroll() {
       let tableScrollLeft = tableScrollIn.scrollLeft();
       let tableClientWidth = tableScrollIn.outerWidth();
       let tableScrollWidth = table.outerWidth();
@@ -1395,9 +1415,9 @@ function scrollTables() {
         prevBtn.hide();
       }
     }
-    checkScroll();
+    _checkScroll();
     $(window).on('resize', function () {
-      checkScroll();
+      _checkScroll();
     });
 
     prevBtn.on('click', function (e) {
@@ -1544,13 +1564,13 @@ function scrollTopFn() {
   let scrollY = window.scrollY;
   if (scrollTop.length === 0) return;
 
-  function scrollFN() {
+  function _scrollFN() {
     scrollY > 100 ? scrollTop.addClass('active') : scrollTop.removeClass('active');
   }
 
   $(window).on('scroll', function (e) {
     scrollY = window.scrollY;
-    scrollFN();
+    _scrollFN();
   });
 
   scrollTop.on('click', function (e) {
@@ -1569,9 +1589,9 @@ $(window).on('load', function () {
 // -----------------------------------------------------------------------
 function addFile() {
   const addFileName = $('.downloadFile');
-  addFileName.on('change', pushFileName);
+  addFileName.on('change', _pushFileName);
 
-  function pushFileName(e) {
+  function _pushFileName(e) {
     let fileLen = e.target.files.length;
     const uploadInput = $(e.target).parent().find('.fileName');
     let allFileName = [];
@@ -1632,9 +1652,9 @@ function marquee() {
     const $allList = marqueeBox.find('.marqueeList');
 
     // --- 動畫邏輯 ---
-    function marqueeMove() {
+    function _marqueeMove() {
       // 使用 requestAnimationFrame 實現流暢動畫
-      requestAnimationFrame(marqueeMove);
+      requestAnimationFrame(_marqueeMove);
 
       // 如果滑鼠懸停或手動暫停，則停止動畫
       if (isHover || isPaused) return;
@@ -1649,7 +1669,7 @@ function marquee() {
         sliderMovePx = 0;
       }
     }
-    marqueeMove();
+    _marqueeMove();
 
     // --- 事件處理 ---
     // 滑鼠懸停時暫停
@@ -1744,7 +1764,7 @@ $(window).on('load', function () {
 // -----   fancyBox新增需要綁定才有效果   -----------------------------------
 // -----------------------------------------------------------------------
 
-function fancyBoxFn() {
+function PopupFn() {
   const fancyBoxElem = document.querySelectorAll('[data-fancybox]');
   if (fancyBoxElem.length > 0) {
     // 確認引入語系
@@ -1805,4 +1825,4 @@ function fancyBoxFn() {
   }
 }
 
-window.addEventListener('load', () => fancyBoxFn());
+window.addEventListener('load', () => PopupFn());
