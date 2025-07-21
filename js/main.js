@@ -588,7 +588,7 @@ window.addEventListener('load', () => FontSize());
 // -----------------------------------------------------------------------
 // -----  menu   ------------------------------------------------------
 // -----------------------------------------------------------------------
-function MainMenu(obj) {
+function mainMenu(obj) {
   // RWD切換判斷，與_variable.scss 的 --RWDWidth連動
   const setRWDWidth = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--RWDWidth'));
   // 增加透明黑底
@@ -943,7 +943,7 @@ function MainMenu(obj) {
 // -----------------------------------------------------------------------
 // -----  search   ------------------------------------------------------
 // -----------------------------------------------------------------------
-function WebSearch() {
+function webSearch() {
   // RWD切換判斷，與_variable.scss 的 --RWDWidth連動
   const setRWDWidth = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--RWDWidth'));
   // 增加透明黑底
@@ -1090,12 +1090,12 @@ function WebSearch() {
   if (!mobileMainMenuBtn) return;
   mobileMainMenuBtn.addEventListener('click', () => _hideSearchBox(mobileSearchBtn, false));
 }
-window.addEventListener('load', () => WebSearch());
+window.addEventListener('load', () => webSearch());
 
 // -----------------------------------------------------------------------
 // -----  sideNav   ------------------------------------------------------
 // -----------------------------------------------------------------------
-function SideNav(options) {
+function sideNav(options) {
   // RWD切換判斷，與_variable.scss 的 --RWDWidth連動
   const setRWDWidth = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--RWDWidth'));
   const body = document.querySelector('body');
@@ -1305,7 +1305,7 @@ function SideNav(options) {
 // -----  Tab   ------------------------------------------------------
 // -----------------------------------------------------------------------
 
-function TabFunction(obj) {
+function tabFunction(obj) {
   // RWD切換判斷，與_variable.scss 的 --RWDWidth連動
   const setRWDWidth = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--RWDWidth'));
   const { target, autoClose = true, openContent = false, modeSwitch = false, windowWidth = setRWDWidth, openIndex = 0, openSwitch = true } = obj;
@@ -1577,7 +1577,7 @@ function TabFunction(obj) {
 // -----------------------------------------------------------------------
 // -----   Accordion設定   ------------------------------------------------
 // -----------------------------------------------------------------------
-function AccordionFunction(obj) {
+function accordionFunction(obj) {
   const { target, openContent = false, openDefault = false, openIndex = 0, autoClose = true, openSwitch = true } = obj;
 
   const accordionSet = document.querySelector(target);
@@ -1691,7 +1691,7 @@ function AccordionFunction(obj) {
 // -----------------------------------------------------------------------
 // -----  fatFooter   ------------------------------------------------------
 // -----------------------------------------------------------------------
-function FatFooter() {
+function fatFooter() {
   const fatFooterBtn = document.querySelector('#fatFooterBtn');
 
   if (!fatFooterBtn) return;
@@ -1758,13 +1758,13 @@ function FatFooter() {
     }
   }
 }
-window.addEventListener('load', () => FatFooter());
+window.addEventListener('load', () => fatFooter());
 
 // -----------------------------------------------------------------------
 // -----   tableList樣式 加上 data-title   -------------------------------
 // -----------------------------------------------------------------------
 
-function TableAddDataAttributes() {
+function tableAddDataAttributes() {
   const el = document.querySelectorAll('.tableList');
   if (el.length === 0) return;
   el.forEach((i) => {
@@ -1785,13 +1785,13 @@ function TableAddDataAttributes() {
     });
   }
 }
-window.addEventListener('load', () => TableAddDataAttributes());
+window.addEventListener('load', () => tableAddDataAttributes());
 
 // -----------------------------------------------------------------------
 // -----   scrollTables   ------------------------------------------------
 // -----------------------------------------------------------------------
 
-function ScrollTables() {
+function scrollTables() {
   const el = document.querySelectorAll('.tableScroll');
   if (el.length === 0) return;
 
@@ -1854,12 +1854,12 @@ function ScrollTables() {
     });
   });
 }
-window.addEventListener('load', () => ScrollTables());
+window.addEventListener('load', () => scrollTables());
 
 // -----------------------------------------------------------------------
 // -----   swiper無障礙功能   -----------------------------------
 // -----------------------------------------------------------------------
-function SwiperA11Fn(swiper) {
+function swiperA11Fn(swiper) {
   // 圓點
   let noActive = 0;
   swiper.slides.filter((elem, i) => {
@@ -1918,7 +1918,7 @@ function SwiperA11Fn(swiper) {
   swiper.slides.length === 1 ? autoPlaySwitch.remove() : null;
 }
 
-function SwiperNavKeyDownFn(swiper, mainSwiper) {
+function swiperNavKeyDownFn(swiper, mainSwiper) {
   const body = document.querySelector('body');
   if (!swiper) return;
   swiper.slides.forEach((elem, idx) => {
@@ -1941,7 +1941,7 @@ function SwiperNavKeyDownFn(swiper, mainSwiper) {
 // -----------------------------------------------------------------------
 // -----   表單密碼顯示設定   ------------------------------------------------
 // -----------------------------------------------------------------------
-function FormEye() {
+function formEye() {
   const checkEye = document.querySelector('.formEyes');
   if (!checkEye) return;
   const password = checkEye.parentNode.querySelector('input');
@@ -1965,13 +1965,13 @@ function FormEye() {
   });
 }
 // formEye();
-window.addEventListener('load', () => FormEye());
+window.addEventListener('load', () => formEye());
 
 // -----------------------------------------------------------------------
 // -----   scroll top   ------------------------------------------------
 // -----------------------------------------------------------------------
 
-function ScrollTopFn() {
+function scrollTopFn() {
   const scrollTop = document.querySelector('#scrollTop');
   let scrollY = window.scrollY;
   if (!scrollTop) return;
@@ -1992,12 +1992,12 @@ function ScrollTopFn() {
     });
   });
 }
-window.addEventListener('load', () => ScrollTopFn());
+window.addEventListener('load', () => scrollTopFn());
 
 // -----------------------------------------------------------------------
 // -----  form 檔案上傳  ---------------------------------------------------
 // -----------------------------------------------------------------------
-function AddFile() {
+function addFile() {
   const addFileName = document.querySelectorAll('.downloadFile');
   if (addFileName.length === 0) return;
 
@@ -2016,13 +2016,13 @@ function AddFile() {
     uploadInput.textContent = allFileName.join(', ');
   }
 }
-window.addEventListener('load', () => AddFile());
+window.addEventListener('load', () => addFile());
 
 // -----------------------------------------------------------------------
 // -----  橫式跑馬燈   -----------------------------------------------------
 // -----------------------------------------------------------------------
 
-function Marquee() {
+function marquee() {
   const marquee = document.querySelectorAll('.marqueeSliderH');
   if (marquee.length === 0) return;
   marquee.forEach((i) => {
@@ -2110,13 +2110,13 @@ function Marquee() {
     });
   });
 }
-window.addEventListener('load', () => Marquee());
+window.addEventListener('load', () => marquee());
 
 // -----------------------------------------------------------------------
 // -----  無障礙快捷鍵盤組合 a11yKeyCode   ----------------------------------
 // -----------------------------------------------------------------------
 
-function A11yKeyCode() {
+function a11yKeyCode() {
   const body = document.querySelector('body');
   body.addEventListener('keydown', (e) => {
     switch (e.altKey && e.code) {
@@ -2135,12 +2135,12 @@ function A11yKeyCode() {
     }
   });
 }
-window.addEventListener('load', () => A11yKeyCode());
+window.addEventListener('load', () => a11yKeyCode());
 
 // -----------------------------------------------------------------------
 // -----   fancyBox新增需要綁定才有效果   -----------------------------------
 // -----------------------------------------------------------------------
-function PopupFn() {
+function popupFn() {
   const fancyBoxElem = document.querySelectorAll('[data-fancybox]');
   if (fancyBoxElem.length === 0) return;
   // 確認引入語系
@@ -2199,4 +2199,4 @@ function PopupFn() {
     );
   }
 }
-window.addEventListener('load', () => PopupFn());
+window.addEventListener('load', () => popupFn());

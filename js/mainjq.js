@@ -27,7 +27,7 @@ function _randomLetter(max, letter = 'abcdefghijklmnopqrstuvwxyz') {
 }
 
 // 改變標籤
-function changeTag(oldTag, newTag) {
+function _changeTag(oldTag, newTag) {
   let newTagElem = $(`<${newTag}></${newTag}>`);
   $.each(oldTag[0].attributes, function (index, attr) {
     newTagElem.attr(attr.name, attr.value);
@@ -37,12 +37,12 @@ function changeTag(oldTag, newTag) {
 }
 
 // 取得隱藏元素寬度
-function getHiddenElementWidth(element) {
+function _getHiddenElementWidth(element) {
   const rect = element[0].getBoundingClientRect();
   return rect.width;
 }
 
-function toggleSlider(elem, con) {
+function _toggleSlider(elem, con) {
   const body = $('body');
   const targetSelect = $(elem);
   let checkDisplay;
@@ -251,9 +251,9 @@ function mainMenu(obj) {
   const setRWDWidth = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--RWDWidth'));
   // 增加透明黑底
   if ($('.overlay').length === 0) {
-    const $overlay = $('<div>').addClass('overlay');
-    $('body').prepend($overlay);
+    $('body').prepend('<div class="overlay"></div>');
   }
+  let overlay = $('.overlay');
 
   const body = $('body');
   const header = $('header');
@@ -283,7 +283,7 @@ function mainMenu(obj) {
     if (hasChildLi.length <= 1) return;
 
     // 確定選項的寬度 * 選項有幾層，由於第一層是直接向下不會左右展開，所以需要-1
-    const checkUlWidth = getHiddenElementWidth(hasChildLi.last()) * hasChildLi.length - 1 || 0;
+    const checkUlWidth = _getHiddenElementWidth(hasChildLi.last()) * hasChildLi.length - 1 || 0;
 
     //查詢第一層的位置
     const objectRect = hasChildLi.last().offset();
@@ -422,7 +422,7 @@ function mainMenu(obj) {
       // 將 top選單 加入到 手機版主選單
       mobileMainMenuBox.prepend(topNavClone);
 
-      changeTag(topNavClone, 'div');
+      _changeTag(topNavClone, 'div');
     }
 
     // 將 主選單 加入到 手機版主選單
@@ -432,7 +432,7 @@ function mainMenu(obj) {
     // 將 手機版主選單 加入到 header 前
     header.before(mobileMenu);
     // 轉換標籤
-    changeTag(mainMenuClone, 'div');
+    _changeTag(mainMenuClone, 'div');
 
     // 點擊選單按鈕 執行 展開側邊選單函式
     const mobileMainMenuBtn = $('#mobileMainMenuBtn');
@@ -576,9 +576,9 @@ function webSearch() {
   const setRWDWidth = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--RWDWidth'));
   // 增加透明黑底
   if ($('.overlay').length === 0) {
-    const $overlay = $('<div>').addClass('overlay');
-    $('body').prepend($overlay);
+    $('body').prepend('<div class="overlay"></div>');
   }
+  let overlay = $('.overlay');
 
   const body = $('body');
   const webSearch = $('.webSearch');
@@ -730,6 +730,8 @@ $(window).on('load', function () {
 // -----------------------------------------------------------------------
 
 function tabFunction(obj) {
+  const setRWDWidth = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--RWDWidth'));
+
   const { target, autoClose = true, openContent = false, modeSwitch = false, windowWidth = setRWDWidth, openIndex = 0, openSwitch = true } = obj;
 
   const tabSet = $(target);
@@ -1139,11 +1141,6 @@ $(window).on('load', function () {
 // -----------------------------------------------------------------------
 function sideNav(options) {
   const setRWDWidth = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--RWDWidth'));
-  // 增加透明黑底
-  if ($('.overlay').length === 0) {
-    const $overlay = $('<div>').addClass('overlay');
-    $('body').prepend($overlay);
-  }
 
   const body = $('body');
   const { showDefault = true, needLink = false, duration = 200, floatType = true } = options;
@@ -1188,6 +1185,8 @@ function sideNav(options) {
     _setTransitionBtn(sideNavBtn, showDefault);
 
     function _setTransition(elem, width, toWidth, dn) {
+      console.log(width, typeof width, toWidth, typeof toWidth);
+
       if (($(window).outerWidth() <= setRWDWidth && floatType) || $(window).outerWidth() > setRWDWidth) {
         elem.css({
           overflow: 'hidden',
@@ -1203,6 +1202,8 @@ function sideNav(options) {
           setTimeout(() => {
             elem.hide();
           }, duration);
+        } else {
+          elem.show();
         }
       } else if ($(window).outerWidth() <= setRWDWidth && !floatType) {
         sideMenu.slideToggle(200);
@@ -1210,6 +1211,7 @@ function sideNav(options) {
     }
 
     const sideMenuWidth = sideMenu.attr('width');
+
     sideNavBtn.on('click', function (e) {
       const isClosed = sideMenu.css('display') === 'none';
 
@@ -1764,7 +1766,7 @@ $(window).on('load', function () {
 // -----   fancyBox新增需要綁定才有效果   -----------------------------------
 // -----------------------------------------------------------------------
 
-function PopupFn() {
+function popupFn() {
   const fancyBoxElem = document.querySelectorAll('[data-fancybox]');
   if (fancyBoxElem.length > 0) {
     // 確認引入語系
@@ -1825,4 +1827,4 @@ function PopupFn() {
   }
 }
 
-window.addEventListener('load', () => PopupFn());
+window.addEventListener('load', () => popupFn());

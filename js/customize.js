@@ -36,13 +36,13 @@ accordionFunction({
 });
 
 window.addEventListener('load', () => {
-  toggleSlider('header .subNavList .language > button', 'header .subNavList .language ul'); //語系開關切換
-  toggleSlider('header .navList .language > button', 'header .navList .language ul'); //語系開關切換
-  toggleSlider('#mobileMenu .language > button', '#mobileMenu .language ul'); //語系開關切換手機版
-  toggleSlider('header .fontSize > button', 'header .fontSize ul'); //文字大小展開開關切換
-  toggleSlider('.shareBox .share', '.shareBox .shareBoxList'); //分享開關切換
-  toggleSlider('.contentSearchBtn', '.contentSearchBox', false); //LP 內容搜尋
-  toggleSlider('.floatNav .floatSwitchBtn', '.floatNav .typeA'); //LP 內容搜尋
+  _toggleSlider('header .subNavList .language > button', 'header .subNavList .language ul'); //語系開關切換
+  _toggleSlider('header .navList .language > button', 'header .navList .language ul'); //語系開關切換
+  _toggleSlider('#mobileMenu .language > button', '#mobileMenu .language ul'); //語系開關切換手機版
+  _toggleSlider('header .fontSize > button', 'header .fontSize ul'); //文字大小展開開關切換
+  _toggleSlider('.shareBox .share', '.shareBox .shareBoxList'); //分享開關切換
+  _toggleSlider('.contentSearchBtn', '.contentSearchBox', false); //LP 內容搜尋
+  _toggleSlider('.floatNav .floatSwitchBtn', '.floatNav .typeA'); //LP 內容搜尋
 
   //mp2 多筆swiper輪播
   const multipleSlider = document.querySelectorAll('.blockTypeG .multipleSlider');
