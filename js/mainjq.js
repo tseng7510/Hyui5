@@ -42,7 +42,7 @@ function _getHiddenElementWidth(element) {
   return rect.width;
 }
 
-function _toggleSlider(elem, con) {
+function _toggleDropdown(elem, con) {
   const body = $('body');
   const targetSelect = $(elem);
   let checkDisplay;
@@ -240,7 +240,7 @@ function fontSize() {
 }
 
 // 確保在 DOM 載入完成後執行
-$(window).on('load', function () {
+$(window).on('DOMContentLoaded', function () {
   fontSize();
 });
 
@@ -722,7 +722,7 @@ function webSearch() {
     _hideSearchBox('#mobileSearchBtn', false);
   });
 }
-$(window).on('load', function () {
+$(window).on('DOMContentLoaded', function () {
   webSearch();
 });
 // -----------------------------------------------------------------------
@@ -1133,7 +1133,7 @@ function fatFooter() {
     });
   });
 }
-$(window).on('load', function () {
+$(window).on('DOMContentLoaded', function () {
   fatFooter();
 });
 // -----------------------------------------------------------------------
@@ -1340,7 +1340,7 @@ function sideNav(options) {
       }
     }
   }
-  $(window).on('load', _checkRwdFn);
+  $(window).on('DOMContentLoaded', _checkRwdFn);
   $(window).on('resize', _checkRwdFn);
 }
 
@@ -1365,7 +1365,7 @@ function tableAddDataAttributes() {
     });
   }
 }
-$(window).on('load', function () {
+$(window).on('DOMContentLoaded', function () {
   tableAddDataAttributes();
 });
 // -----------------------------------------------------------------------
@@ -1432,7 +1432,7 @@ function scrollTables() {
     });
   });
 }
-$(window).on('load', function () {
+$(window).on('DOMContentLoaded', function () {
   scrollTables();
 });
 // -----------------------------------------------------------------------
@@ -1554,7 +1554,7 @@ function formEye() {
     }
   });
 }
-$(window).on('load', function () {
+$(window).on('DOMContentLoaded', function () {
   formEye();
 });
 // -----------------------------------------------------------------------
@@ -1582,7 +1582,7 @@ function scrollTopFn() {
     });
   });
 }
-$(window).on('load', function () {
+$(window).on('DOMContentLoaded', function () {
   scrollTopFn();
 });
 
@@ -1603,7 +1603,7 @@ function addFile() {
     uploadInput.html(allFileName.join(', '));
   }
 }
-$(window).on('load', function () {
+$(window).on('DOMContentLoaded', function () {
   addFile();
 });
 
@@ -1733,7 +1733,7 @@ function marquee() {
 }
 
 // 確保在 DOM 載入完成後執行
-$(window).on('load', function () {
+$(window).on('DOMContentLoaded', function () {
   marquee();
 });
 
@@ -1759,7 +1759,7 @@ function a11yKeyCode() {
     }
   });
 }
-$(window).on('load', function () {
+$(window).on('DOMContentLoaded', function () {
   a11yKeyCode();
 });
 // -----------------------------------------------------------------------
@@ -1827,4 +1827,4 @@ function popupFn() {
   }
 }
 
-window.addEventListener('load', () => popupFn());
+window.addEventListener('DOMContentLoaded', () => popupFn());

@@ -35,19 +35,21 @@ accordionFunction({
   openSwitch: true, // 是否可開合/切換
 });
 
-window.addEventListener('load', () => {
-  _toggleSlider('header .subNavList .language > button', 'header .subNavList .language ul'); //語系開關切換
-  _toggleSlider('header .navList .language > button', 'header .navList .language ul'); //語系開關切換
-  _toggleSlider('#mobileMenu .language > button', '#mobileMenu .language ul'); //語系開關切換手機版
-  _toggleSlider('header .fontSize > button', 'header .fontSize ul'); //文字大小展開開關切換
-  _toggleSlider('.shareBox .share', '.shareBox .shareBoxList'); //分享開關切換
-  _toggleSlider('.contentSearchBtn', '.contentSearchBox', false); //LP 內容搜尋
-  _toggleSlider('.floatNav .floatSwitchBtn', '.floatNav .typeA'); //LP 內容搜尋
+window.addEventListener('DOMContentLoaded', () => {
+  _toggleDropdown('header .subNavList .language > button', 'header .subNavList .language ul'); //語系開關切換
+  _toggleDropdown('header .navList .language > button', 'header .navList .language ul'); //語系開關切換
+  _toggleDropdown('#mobileMenu .language > button', '#mobileMenu .language ul'); //語系開關切換手機版
+  _toggleDropdown('header .fontSize > button', 'header .fontSize ul'); //文字大小展開開關切換
+  _toggleDropdown('.shareBox .share', '.shareBox .shareBoxList'); //分享開關切換
+  _toggleDropdown('.contentSearchBtn', '.contentSearchBox', false); //LP 內容搜尋
+  _toggleDropdown('.floatNav .floatSwitchBtn', '.floatNav .typeA'); //LP 內容
 
-  //mp2 多筆swiper輪播
+  // -----  MP2 多筆swiper輪播   ---------------------------------------------------
   const multipleSlider = document.querySelectorAll('.blockTypeG .multipleSlider');
 
   multipleSlider.forEach((item, index) => {
+    console.log(item);
+
     let multipleSwiper = new Swiper(item.querySelector('.swiper'), {
       slideToClickedSlide: true,
       slidesPerView: 5,
@@ -137,7 +139,7 @@ window.addEventListener('load', () => {
     },
   });
 
-  //跑馬燈
+  // -----  跑馬燈   ---------------------------------------------------
   const marqueeSlider = new Swiper('.marqueeSlider .swiper', {
     direction: 'vertical',
     // 切換箭頭
@@ -157,7 +159,7 @@ window.addEventListener('load', () => {
     },
   });
 
-  //cp_album
+  // -----  cp_album   ---------------------------------------------------
   const sliderFor = new Swiper('.sliderFor .swiper', {
     slidesPerView: 1,
     effect: 'fade',

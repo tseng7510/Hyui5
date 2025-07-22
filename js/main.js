@@ -263,7 +263,7 @@ function _jsFadeToggle(element, time = 200) {
 //   jsFadeToggle(a);
 // })
 
-function _toggleSlider(elem, con, autoClose = true) {
+function _toggleDropdown(elem, con, autoClose = true) {
   const body = document.querySelector('body');
   const targetSelect = document.querySelectorAll(elem);
   let checkDisplay;
