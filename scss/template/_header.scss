@@ -54,7 +54,7 @@ header {
 
       @include screen('tablet') {
         height: 60px;
-        font-size: 28px;
+        font-size: Rem(28);
         color: #fff;
       }
     }

@@ -2850,7 +2850,6 @@ table caption {
 }
 table caption .summary {
   display: block;
-  font-size: 1em;
   font-weight: normal;
 }
 
@@ -5104,7 +5103,7 @@ button.autoPlaySwitch {
   align-items: center;
   justify-content: center;
   padding: 9px 15px 10px;
-  font-size: 13px;
+  font-size: 0.8125rem;
   width: 44px;
   height: 44px;
   line-height: 1;
@@ -5971,7 +5970,7 @@ header h1 a {
 @media screen and (max-width: 991px) {
   header h1 a {
     height: 60px;
-    font-size: 28px;
+    font-size: 1.75rem;
     color: #fff;
   }
 }
