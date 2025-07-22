@@ -43,7 +43,7 @@ main {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 h1 {
-  font-size: 2em;
+  font-size: 2rem;
   margin: 0.67em 0;
 }
 
@@ -69,7 +69,7 @@ hr {
 pre {
   font-family: monospace, monospace;
   /* 1 */
-  font-size: 1em;
+  font-size: 1rem;
   /* 2 */
 }
 
@@ -113,7 +113,7 @@ kbd,
 samp {
   font-family: monospace, monospace;
   /* 1 */
-  font-size: 1em;
+  font-size: 1rem;
   /* 2 */
 }
 
@@ -4048,7 +4048,7 @@ button.active, button:hover {
 .pagination li[class*=Arrow] a {
   color: transparent;
   border: none;
-  font-size: 0px;
+  font-size: 0;
   position: relative;
   background: #fff;
 }
