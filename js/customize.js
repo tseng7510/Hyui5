@@ -48,8 +48,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const multipleSlider = document.querySelectorAll('.blockTypeG .multipleSlider');
 
   multipleSlider.forEach((item, index) => {
-    console.log(item);
-
     let multipleSwiper = new Swiper(item.querySelector('.swiper'), {
       slideToClickedSlide: true,
       slidesPerView: 5,
@@ -101,6 +99,8 @@ window.addEventListener('DOMContentLoaded', () => {
     },
     on: {
       init: function (swiper) {
+        console.log(swiper);
+
         swiperA11Fn(swiper);
       },
     },
