@@ -5,7 +5,7 @@
   margin: 0;
   padding: 6px 18px;
   border: none;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   font-weight: 400;
   gap: 6px;
   line-height: 2;
@@ -60,24 +60,26 @@ button {
   align-items: center;
   @include btn($colorPrimary);
 
+  // border
   &.bd {
-    color: $colorPrimary;
-    border: 1px solid $colorPrimary;
+    color: $btnPrimary;
+    border: 1px solid $btnPrimary;
     background: none;
 
     &:hover {
-      color: $colorPrimary;
+      color: $btnPrimary;
       background: $colorPrimaryLight;
     }
   }
 
+  // no border
   &.nbd {
-    color: $colorPrimary;
+    color: $btnPrimary;
     background: none;
     border: none;
 
     &:hover {
-      color: $colorPrimary;
+      color: $btnPrimary;
       background: $colorPrimaryLight;
     }
   }
@@ -96,6 +98,7 @@ button {
   align-items: center;
   @include btn($colorSecondary);
 
+  // border
   &.bd {
     color: $colorSecondary;
     border: 1px solid $colorSecondary;
@@ -107,6 +110,7 @@ button {
     }
   }
 
+  // no border
   &.nbd {
     color: $colorSecondary;
     background: none;
@@ -132,6 +136,7 @@ button {
   align-items: center;
   @include btn($btnNormal);
 
+  // border
   &.bd {
     border: 1px solid $btnNormal;
     background: none;
@@ -142,6 +147,7 @@ button {
     }
   }
 
+  // no border
   &.nbd {
     background: none;
     border: none;

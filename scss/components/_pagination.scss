@@ -18,7 +18,7 @@
     }
 
     button {
-      border-radius: var(--borderRadius2);
+      border-radius: var(--borderRadius4);
       line-height: 2;
     }
   }
@@ -55,7 +55,7 @@
       gap: 10px;
       color: $colorWord;
       background: #DEE0E3;
-      border-radius: var(--borderRadius2);
+      border-radius: var(--borderRadius4);
       text-decoration: none;
 
       &:hover {

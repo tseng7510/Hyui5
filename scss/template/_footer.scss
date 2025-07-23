@@ -22,6 +22,13 @@ footer {
         flex-direction: column;
       }
     }
+
+    .infoBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 13px;
+    }
   }
 
   .footerLogo {
@@ -66,7 +73,6 @@ footer {
     @include liReset;
     font-size: Rem(15);
 
-
     li {
       @include screen('tablet') {
         flex-grow: 1;
@@ -85,13 +91,6 @@ footer {
     gap: 12px;
     @include liReset;
     font-size: Rem(15);
-  }
-
-  .infoBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 13px;
   }
 
   .footerIcon {

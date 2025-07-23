@@ -4,7 +4,7 @@
 :root {
   --RWDWidth: 991px;
   --sideFixTop: 80px;
-  --borderRadius: 8px;
+  --borderRadius8: 8px;
   --borderRadius2: 4px;
 }
 
@@ -601,7 +601,7 @@ header h1 a:focus-visible,
   line-height: 1.45em;
   font-size: 0.813em;
   margin: 0 0.5em 0.5em;
-  border-radius: var(--borderRadius);
+  border-radius: var(--borderRadius8);
 }
 
 * {
@@ -1024,7 +1024,7 @@ nav ul {
 }
 .flexTemplate .card {
   padding: 20px;
-  border-radius: var(--borderRadius);
+  border-radius: var(--borderRadius8);
   box-shadow: 0px 4px 16px -4px rgba(34, 34, 34, 0.3);
 }
 
@@ -2001,7 +2001,7 @@ button {
   margin: 0;
   padding: 6px 18px;
   border: none;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   font-weight: 400;
   gap: 6px;
   line-height: 2;
@@ -2046,7 +2046,7 @@ button.active, button:hover {
   margin: 0;
   padding: 6px 18px;
   border: none;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   font-weight: 400;
   gap: 6px;
   line-height: 2;
@@ -2089,7 +2089,7 @@ button.active, button:hover {
   margin: 0;
   padding: 6px 18px;
   border: none;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   font-weight: 400;
   gap: 6px;
   line-height: 2;
@@ -2132,7 +2132,7 @@ button.active, button:hover {
   margin: 0;
   padding: 6px 18px;
   border: none;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   font-weight: 400;
   gap: 6px;
   line-height: 2;
@@ -2392,7 +2392,7 @@ button.active, button:hover {
   min-width: 200px;
   color: #333333;
   padding: 4px 12px;
-  border-radius: var(--borderRadius);
+  border-radius: var(--borderRadius8);
   border: 1px solid #DEE0E3;
   background: #FFF;
   align-self: stretch;
@@ -2408,7 +2408,7 @@ button.active, button:hover {
   right: 5px;
   top: 5px;
   padding: 0px 16px;
-  border-radius: var(--borderRadius);
+  border-radius: var(--borderRadius8);
   cursor: pointer;
 }
 .formBox .formList .inputFile .downloadFile {
@@ -2460,7 +2460,7 @@ button.active, button:hover {
 .formBox .formList textarea {
   color: #333333;
   padding: 0px 12px;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   border: 1px solid #DEE0E3;
   background: #FFF;
   flex-grow: 1;
@@ -2640,7 +2640,7 @@ button.active, button:hover {
   position: absolute;
   top: 9px;
   left: 0;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   pointer-events: none;
 }
 .formBox .inputOption:has([type=checkbox]) [type=checkbox] {
@@ -2709,7 +2709,7 @@ button.active, button:hover {
   padding: 4px 42px 4px 12px;
   color: #333;
   background: #DEE0E3;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   isolation: isolate;
 }
 .formBox [class^=formNotice]::before {
@@ -3090,7 +3090,7 @@ header .topNav {
 }
 .topNav .navList > ul a {
   padding: 5px 10px;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   font-weight: 400;
   line-height: 1.4;
   display: block;
@@ -3182,7 +3182,7 @@ button {
   margin: 0;
   padding: 6px 18px;
   border: none;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   font-weight: 400;
   gap: 6px;
   line-height: 2;
@@ -3227,7 +3227,7 @@ button.active, button:hover {
   margin: 0;
   padding: 6px 18px;
   border: none;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   font-weight: 400;
   gap: 6px;
   line-height: 2;
@@ -3270,7 +3270,7 @@ button.active, button:hover {
   margin: 0;
   padding: 6px 18px;
   border: none;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   font-weight: 400;
   gap: 6px;
   line-height: 2;
@@ -3313,7 +3313,7 @@ button.active, button:hover {
   margin: 0;
   padding: 6px 18px;
   border: none;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   font-weight: 400;
   gap: 6px;
   line-height: 2;
@@ -3410,7 +3410,7 @@ button.active, button:hover {
   letter-spacing: 2px;
   color: #fff;
   background: #0156A2;
-  border-radius: var(--borderRadius);
+  border-radius: var(--borderRadius8);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   transition: none;
 }
@@ -3433,7 +3433,7 @@ button.active, button:hover {
 .sideNav #sideMenu {
   flex-grow: 1;
   overflow: hidden;
-  border-radius: var(--borderRadius);
+  border-radius: var(--borderRadius8);
   background: #FFF;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   position: sticky;
@@ -3480,7 +3480,7 @@ button.active, button:hover {
   width: 30px;
   position: relative;
   margin: 0 0 0 auto;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   overflow: hidden;
 }
 .sideNav #sideMenu .sideMenuContent .sideNavBox > ul .hasChild.needLink button::before {
@@ -3511,7 +3511,7 @@ button.active, button:hover {
 }
 .sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li {
   background: #F8F8F8;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
 }
 .sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li > a {
   flex-grow: 1;
@@ -3522,7 +3522,7 @@ button.active, button:hover {
   padding: 8px 12px;
   line-height: 2;
   isolation: isolate;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   background: #F8F8F8;
   position: relative;
 }
@@ -3539,7 +3539,7 @@ button.active, button:hover {
   bottom: 0;
   background: linear-gradient(90deg, #00428E 0%, #057BB7 100%);
   opacity: 0;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   transition: all 0.3s ease;
 }
 .sideNav #sideMenu .sideMenuContent .sideNavBox > ul > li > a i {
@@ -3616,7 +3616,7 @@ button.active, button:hover {
   .sideNav.typeA button#sideNavBtn {
     width: 30px;
     position: fixed;
-    border-radius: 0 var(--borderRadius) var(--borderRadius) 0;
+    border-radius: 0 var(--borderRadius8) var(--borderRadius8) 0;
     order: 4;
     top: 0;
   }
@@ -3878,7 +3878,7 @@ button.active, button:hover {
   margin-top: 16px;
 }
 .contentSearchBox .btnBox button {
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
 }
 
 .tagBox ul {
@@ -3900,7 +3900,7 @@ button.active, button:hover {
   padding: 6px 16px;
   align-items: center;
   gap: 4px;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   background: #fff;
   box-shadow: 0px 2px 6px 0px rgba(38, 43, 67, 0.2);
   line-height: 2;
@@ -4000,7 +4000,7 @@ button.active, button:hover {
   color: #3772CC;
 }
 .pagination .formInline button {
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   line-height: 2;
 }
 .pagination ul {
@@ -4034,7 +4034,7 @@ button.active, button:hover {
   gap: 10px;
   color: #333333;
   background: #DEE0E3;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   text-decoration: none;
 }
 .pagination li a:hover {
@@ -4095,7 +4095,7 @@ button.active, button:hover {
     top: 100%;
     right: 10px;
     background: #fff;
-    border-radius: var(--borderRadius);
+    border-radius: var(--borderRadius8);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   }
 }
@@ -4225,7 +4225,7 @@ button.active, button:hover {
     display: block;
     background: rgba(0, 0, 0, 0.1);
     position: relative;
-    border-radius: var(--borderRadius);
+    border-radius: var(--borderRadius8);
     margin: 0;
     width: 100%;
     padding: 3px 30px 3px 16px;
@@ -4261,7 +4261,7 @@ button.active, button:hover {
     display: block;
     background: rgba(0, 0, 0, 0.1);
     position: relative;
-    border-radius: var(--borderRadius);
+    border-radius: var(--borderRadius8);
     margin: 0;
     width: 100%;
     padding: 3px 30px 3px 16px;
@@ -4281,7 +4281,7 @@ button.active, button:hover {
   list-style: none;
   display: none;
   background: #fff;
-  border-radius: var(--borderRadius);
+  border-radius: var(--borderRadius8);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
@@ -4933,7 +4933,7 @@ button.active, button:hover {
   left: 50%;
   transform: translateX(-50%);
   padding: 13px 30px 8px;
-  border-radius: 0 0 var(--borderRadius) var(--borderRadius);
+  border-radius: 0 0 var(--borderRadius8) var(--borderRadius8);
 }
 .fatFooter #fatFooterBtn::before {
   content: "";
@@ -5393,7 +5393,7 @@ button.autoPlaySwitch:hover {
   position: relative;
   padding: 0 16px 0 0;
   font-size: 1.125rem;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   background: #fff;
   box-shadow: 0px 2px 6px 0px rgba(38, 43, 67, 0.2);
   overflow: hidden;
@@ -5442,7 +5442,7 @@ button.autoPlaySwitch:hover {
 .accordion .accordionState {
   margin-left: 10px;
   padding: 4px 16px;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   background: #DEE0E3;
   align-self: flex-start;
   white-space: nowrap;
@@ -5640,7 +5640,7 @@ button.autoPlaySwitch:hover {
   color: #fff;
   text-decoration: none;
   padding: 10px 10px;
-  border-radius: var(--borderRadius) 0 0 var(--borderRadius);
+  border-radius: var(--borderRadius8) 0 0 var(--borderRadius8);
   font-size: 0.875rem;
   line-height: 1.5;
 }
@@ -5783,7 +5783,7 @@ button.autoPlaySwitch:hover {
   text-decoration: none;
   text-align: left;
   color: #fff;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6072,6 +6072,12 @@ footer .footerBox .container {
     flex-direction: column;
   }
 }
+footer .footerBox .infoBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 13px;
+}
 footer .footerLogo {
   margin: 0 0 10px;
 }
@@ -6128,12 +6134,6 @@ footer .footerInfo {
   padding: 0;
   list-style: none;
   font-size: 0.9375rem;
-}
-footer .infoBox {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 13px;
 }
 footer .footerIcon {
   display: flex;
@@ -6749,7 +6749,7 @@ section:last-child {
   display: flex;
   padding: 16px;
   gap: 12px;
-  border-radius: var(--borderRadius);
+  border-radius: var(--borderRadius8);
   border: 1px solid #DEE0E3;
   background: #fff;
   text-decoration: none;
@@ -7088,7 +7088,7 @@ section:last-child {
   display: flex;
   gap: 16px 32px;
   flex-wrap: wrap;
-  border-radius: var(--borderRadius);
+  border-radius: var(--borderRadius8);
   border: 1px solid #DEE0E3;
   background: #fff;
   color: #555555;
@@ -7250,7 +7250,7 @@ section:last-child {
   width: 130px;
   padding: 5px 10px;
   text-align: center;
-  border-radius: var(--borderRadius2);
+  border-radius: var(--borderRadius4);
   border: 1px solid #fff;
 }
 

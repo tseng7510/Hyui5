@@ -107,6 +107,6 @@ $screenSize: (
 :root {
   --RWDWidth: #{map-get($screenSize, tablet)}; //RWD切換尺寸設定，以下切換js為手機板相關設定
   --sideFixTop: 80px; //側邊選單top固定位置
-  --borderRadius: 8px; //圓角設定
+  --borderRadius8: 8px; //圓角設定
   --borderRadius2: 4px; //圓角設定
 }

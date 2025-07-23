@@ -11,7 +11,7 @@
       display: block;
       background: rgba(#000, 0.1);
       position: relative;
-      border-radius: var(--borderRadius);
+      border-radius: var(--borderRadius8);
       margin: 0;
       width: 100%;
       padding: 3px 30px 3px 16px;
@@ -55,7 +55,7 @@
       display: block;
       background: rgba(#000, 0.1);
       position: relative;
-      border-radius: var(--borderRadius);
+      border-radius: var(--borderRadius8);
       margin: 0;
       width: 100%;
       padding: 3px 30px 3px 16px;
@@ -74,7 +74,7 @@
     @include liReset;
     display: none;
     background: #fff;
-    border-radius: var(--borderRadius);
+    border-radius: var(--borderRadius8);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     overflow: hidden;
 
