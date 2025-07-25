@@ -21,6 +21,17 @@
       border-radius: var(--borderRadius4);
       line-height: 2;
     }
+
+    .count {
+      padding: 0;
+      background: none;
+      color: $colorPrimary;
+      font-weight: 500;
+
+      &.active {
+        text-decoration: underline;
+      }
+    }
   }
 
   ul {

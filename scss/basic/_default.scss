@@ -84,13 +84,13 @@ input:not([type="checkBox"], [type="radio"]) {
 
 select,
 input:not([type="checkBox"], [type="radio"]) {
-  height: 44px;
-  line-height: 44px;
+  min-height: 44px;
+  line-height: 1;
 }
 
 a {
   color: $aColor;
-  @include transition(0.3);
+  // @include transition(0.3);
 
   &:hover {
     color: $colorPrimary;

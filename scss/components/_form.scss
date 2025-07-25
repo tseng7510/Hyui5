@@ -28,7 +28,6 @@
       border-top: 2px solid $tableNormal;
 
       .formListTitle {
-        width: var(--titleWidth) !important;
         flex-shrink: 0;
       }
 
@@ -36,19 +35,18 @@
         @include screen('mobile') {
           padding-left: 0 !important;
           padding-top: 20px !important;
-
-          .formListTitle {
-            width: 100% !important;
-          }
         }
       }
 
-      & > .formList {
+      & > *:not(.formBtnBox) {
+        border-bottom: 1px dashed $tableNormal;
+      }
+
+      .formList {
         // flex-direction: row;
         flex-wrap: nowrap;
         flex-grow: 1;
         padding: 20px 0;
-        border-bottom: 1px dashed $tableNormal;
 
         &.inline {
           flex-wrap: nowrap;
@@ -60,6 +58,15 @@
 
             legend {
               margin-bottom: 5px;
+            }
+          }
+
+          .formListTitle {
+            padding: 10px 0;
+            width: var(--titleWidth);
+
+            @include screen('mobile') {
+              width: 100%;
             }
           }
         }
@@ -115,14 +122,11 @@
 
   .formList {
     display: flex;
-    // flex-wrap: wrap;
     flex-direction: column;
     gap: 8px;
 
     .formListTitle {
-      padding: 10px 0;
       line-height: 1.4;
-      white-space: nowrap;
       color: $colorWord;
 
       @include screen('mobile') {
@@ -359,33 +363,16 @@
   fieldset {
     position: relative;
 
-    .legend {
-      width: var(--titleWidth);
-      display: block;
-      position: relative;
-    }
-
     &.inline {
-      display: flex;
-      flex-direction: row;
-      padding-left: calc(var(--titleWidth) + $itemGap) !important;
-      position: relative;
-
       .legendBox {
         flex-shrink: 0;
         flex-grow: 1;
       }
 
       legend {
+        float: left;
         width: var(--titleWidth);
-        position: absolute;
-        left: 0;
-        top: 0px;
         transform: none;
-
-        @include screen('mobile') {
-          position: relative;
-        }
       }
     }
   }
@@ -609,14 +596,6 @@
       textarea {
         width: 100%;
       }
-    }
-  }
-
-  [class*="flexTpl"] {
-    flex-wrap: nowrap;
-
-    @include screen('tablet') {
-      flex-wrap: wrap;
     }
   }
 }

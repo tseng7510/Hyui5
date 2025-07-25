@@ -681,13 +681,12 @@ input:not([type=checkBox], [type=radio]) {
 
 select,
 input:not([type=checkBox], [type=radio]) {
-  height: 44px;
-  line-height: 44px;
+  min-height: 44px;
+  line-height: 1;
 }
 
 a {
   color: #326DC7;
-  transition: all 0.3s ease;
 }
 a:hover {
   color: #0156A2;
@@ -2153,6 +2152,11 @@ button.active, button:hover {
   outline-offset: 1px;
   box-shadow: none;
 }
+.popupB .f-button:focus:not(:focus-visible),
+.popupS .f-button:focus:not(:focus-visible) {
+  outline: #C40000 2px solid;
+  outline-offset: -2px;
+}
 
 .popupB {
   max-width: 1000px;
@@ -2224,7 +2228,6 @@ button.active, button:hover {
   border-top: 2px solid #DEE0E3;
 }
 .formBox:has(.gridBox) .gridBox .formListTitle {
-  width: var(--titleWidth) !important;
   flex-shrink: 0;
 }
 @media screen and (max-width: 767px) {
@@ -2232,50 +2235,58 @@ button.active, button:hover {
     padding-left: 0 !important;
     padding-top: 20px !important;
   }
-  .formBox:has(.gridBox) .gridBox .formList .formListTitle {
-    width: 100% !important;
-  }
 }
-.formBox:has(.gridBox) .gridBox > .formList {
+.formBox:has(.gridBox) .gridBox > *:not(.formBtnBox) {
+  border-bottom: 1px dashed #DEE0E3;
+}
+.formBox:has(.gridBox) .gridBox .formList {
   flex-wrap: nowrap;
   flex-grow: 1;
   padding: 20px 0;
-  border-bottom: 1px dashed #DEE0E3;
 }
-.formBox:has(.gridBox) .gridBox > .formList.inline {
+.formBox:has(.gridBox) .gridBox .formList.inline {
   flex-wrap: nowrap;
 }
 @media screen and (max-width: 767px) {
-  .formBox:has(.gridBox) .gridBox > .formList.inline {
+  .formBox:has(.gridBox) .gridBox .formList.inline {
     flex-direction: column !important;
     gap: 8px;
     align-items: stretch;
   }
-  .formBox:has(.gridBox) .gridBox > .formList.inline legend {
+  .formBox:has(.gridBox) .gridBox .formList.inline legend {
     margin-bottom: 5px;
   }
 }
-.formBox:has(.gridBox) .gridBox > .formList .formContent {
-  flex-grow: 1;
-}
-.formBox:has(.gridBox) .gridBox > .formList .formContent:has(.formList) {
-  gap: 0;
-}
-.formBox:has(.gridBox) .gridBox > .formList .formList {
-  padding: 12px 0;
+.formBox:has(.gridBox) .gridBox .formList.inline .formListTitle {
+  padding: 10px 0;
+  width: var(--titleWidth);
 }
 @media screen and (max-width: 767px) {
-  .formBox:has(.gridBox) .gridBox > .formList .formList {
+  .formBox:has(.gridBox) .gridBox .formList.inline .formListTitle {
     width: 100%;
   }
 }
-.formBox:has(.gridBox) .gridBox > .formList .formList:first-child {
+.formBox:has(.gridBox) .gridBox .formList .formContent {
+  flex-grow: 1;
+}
+.formBox:has(.gridBox) .gridBox .formList .formContent:has(.formList) {
+  gap: 0;
+}
+.formBox:has(.gridBox) .gridBox .formList .formList {
+  padding: 12px 0;
+}
+@media screen and (max-width: 767px) {
+  .formBox:has(.gridBox) .gridBox .formList .formList {
+    width: 100%;
+  }
+}
+.formBox:has(.gridBox) .gridBox .formList .formList:first-child {
   padding-top: 0;
 }
-.formBox:has(.gridBox) .gridBox > .formList .formList legend {
+.formBox:has(.gridBox) .gridBox .formList .formList legend {
   top: 13px;
 }
-.formBox:has(.gridBox) .gridBox > .formList .formList + .formList {
+.formBox:has(.gridBox) .gridBox .formList .formList + .formList {
   border-top: 1px dashed #DEE0E3;
 }
 .formBox:has(.gridBox) .gridBox .inline legend {
@@ -2295,9 +2306,7 @@ button.active, button:hover {
   gap: 8px;
 }
 .formBox .formList .formListTitle {
-  padding: 10px 0;
   line-height: 1.4;
-  white-space: nowrap;
   color: #333333;
 }
 @media screen and (max-width: 767px) {
@@ -2504,32 +2513,14 @@ button.active, button:hover {
 .formBox fieldset {
   position: relative;
 }
-.formBox fieldset .legend {
-  width: var(--titleWidth);
-  display: block;
-  position: relative;
-}
-.formBox fieldset.inline {
-  display: flex;
-  flex-direction: row;
-  padding-left: calc(var(--titleWidth) + 14px) !important;
-  position: relative;
-}
 .formBox fieldset.inline .legendBox {
   flex-shrink: 0;
   flex-grow: 1;
 }
 .formBox fieldset.inline legend {
+  float: left;
   width: var(--titleWidth);
-  position: absolute;
-  left: 0;
-  top: 0px;
   transform: none;
-}
-@media screen and (max-width: 767px) {
-  .formBox fieldset.inline legend {
-    position: relative;
-  }
 }
 .formBox .noFull > *:not(label, [type=checkBox], [type=radio]) {
   width: -moz-fit-content;
@@ -2704,14 +2695,6 @@ button.active, button:hover {
 .formBox [class*=flexTpl]:not(:has(.inline)) select,
 .formBox [class*=flexTpl]:not(:has(.inline)) textarea {
   width: 100%;
-}
-.formBox [class*=flexTpl] {
-  flex-wrap: nowrap;
-}
-@media screen and (max-width: 991px) {
-  .formBox [class*=flexTpl] {
-    flex-wrap: wrap;
-  }
 }
 
 .select {
@@ -3921,6 +3904,15 @@ button.active, button:hover {
 .pagination .formInline button {
   border-radius: var(--borderRadius4);
   line-height: 2;
+}
+.pagination .formInline .count {
+  padding: 0;
+  background: none;
+  color: #0156A2;
+  font-weight: 500;
+}
+.pagination .formInline .count.active {
+  text-decoration: underline;
 }
 .pagination ul {
   margin: 0;
@@ -5933,22 +5925,22 @@ main.innerPage {
   padding-top: 40px;
   background: #F8F8F8;
 }
-main .hasSide .container {
+main *:has(aside) .container {
   display: flex;
   justify-content: space-between;
   gap: 40px;
 }
 @media screen and (max-width: 991px) {
-  main .hasSide .container {
+  main *:has(aside) .container {
     flex-direction: column;
   }
 }
-main .hasSide .mainContentBox {
+main *:has(aside) .mainContentBox {
   flex-grow: 1;
   transition: all 0.3s ease;
 }
 @media screen and (max-width: 991px) {
-  main .hasSide .mainContentBox {
+  main *:has(aside) .mainContentBox {
     width: 100%;
   }
 }
@@ -6992,7 +6984,7 @@ section:last-child {
   gap: 30px;
 }
 
-.cpInfo {
+.contentInfo {
   background: #DEE0E3;
   color: #333333;
   border-left: #326DC7 5px solid;
@@ -7029,21 +7021,21 @@ section:last-child {
   }
 }
 
-.cpLinkBox > ul {
+.contentLinkBox > ul {
   border-top: #97A3B6 3px solid;
   border-bottom: #97A3B6 3px solid;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.cpLinkBox > ul li {
+.contentLinkBox > ul li {
   padding: 12px 8px 12px 25px;
   position: relative;
 }
-.cpLinkBox > ul li:not(:last-child) {
+.contentLinkBox > ul li:not(:last-child) {
   border-bottom: #DEE0E3 1px solid;
 }
-.cpLinkBox > ul li::before {
+.contentLinkBox > ul li::before {
   content: "";
   width: 3px;
   height: 12px;
@@ -7053,10 +7045,10 @@ section:last-child {
   left: 8px;
   top: 25px;
 }
-.cpLinkBox > ul li a {
+.contentLinkBox > ul li a {
   text-decoration: none;
 }
-.cpLinkBox > ul li a:not(:hover) {
+.contentLinkBox > ul li a:not(:hover) {
   color: #333333;
 }
 

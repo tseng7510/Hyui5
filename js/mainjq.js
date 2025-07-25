@@ -764,7 +764,7 @@ function sideNav(options) {
 // -----------------------------------------------------------------------
 function tabFunction(obj) {
   const setRWDWidth = parseInt($(':root').css('--RWDWidth'));
-  const { target, autoClose = true, openContent = false, modeSwitch = false, windowWidth = setRWDWidth, openIndex = 0, openSwitch = true } = obj;
+  const { target, autoClose = true, openContent = false, modeSwitch = false, windowWidth = setRWDWidth, openSwitch = true } = obj;
 
   const $tabSet = $(target);
   if (!$tabSet.length) return;
@@ -773,6 +773,7 @@ function tabFunction(obj) {
   const $tabBtn = $tabSet.find('.tabBtn');
   const $tabContent = $tabSet.find('.tabContent');
   const $tabContentIn = $tabSet.find('.tabContentIn');
+  const defaultIndex = $($tabBtn).index($tabSet.find('.active'));
 
   function _tabInit(targetIndex) {
     $tabItems.attr('role', 'tablist');
@@ -810,7 +811,7 @@ function tabFunction(obj) {
     return $(`<button class="mobileTabBtn" id="${id}" aria-controls="${controls}" type="button" aria-expanded="false">${textContent}</button>`);
   }
 
-  _tabInit(openIndex);
+  _tabInit(defaultIndex);
 
   function _checkTarget(targetIndex) {
     $tabSet.data('nowIndex', targetIndex);
@@ -962,15 +963,17 @@ function tabFunction(obj) {
 // -----   Accordion設定   ------------------------------------------------
 // -----------------------------------------------------------------------
 function accordionFunction(obj) {
-  const { target, openContent = false, openDefault = false, openIndex = 0, autoClose = true, openSwitch = true } = obj;
+  const { target, openContent = false, openDefault = false, autoClose = true, openSwitch = true } = obj;
 
   const $accordionSet = $(target);
   if (!$accordionSet.length) return;
 
   const infoOpen = $accordionSet.data('state-open');
   const infoClose = $accordionSet.data('state-close');
+  const $accordionList = $accordionSet.find('.accordionList');
   const $accordionBtns = $accordionSet.find('.accordionBtn');
   const $accordionCons = $accordionSet.find('.accordionContent');
+  const defaultIndex = $accordionList.index($accordionSet.find('.active'));
 
   function _accordionInit(targetIndex) {
     $accordionSet.data('nowIndex', targetIndex);
@@ -1007,13 +1010,13 @@ function accordionFunction(obj) {
     });
 
     if (openDefault) {
-      $accordionBtns.eq(openIndex).parent().addClass('active');
-      $accordionBtns.eq(openIndex).attr('aria-expanded', 'true');
-      $accordionCons.eq(openIndex).slideDown(200);
-      if (openSwitch) $accordionBtns.eq(openIndex).find('.accordionState span').text(infoClose);
+      $accordionBtns.eq(defaultIndex).parent().addClass('active');
+      $accordionBtns.eq(defaultIndex).attr('aria-expanded', 'true');
+      $accordionCons.eq(defaultIndex).slideDown(200);
+      if (openSwitch) $accordionBtns.eq(defaultIndex).find('.accordionState span').text(infoClose);
     }
   }
-  _accordionInit(openIndex);
+  _accordionInit(defaultIndex);
 
   function _accordionFn($btn, i) {
     const $accordionState = $btn.find('.accordionState span');

@@ -24,7 +24,7 @@
         <a class="accessKeyItem" href="#aU" id="aU" accesskey="U" aria-label="功能區塊">:::</a>
         <div class="headTop">
           <div class="container">
-            <button id="mobileMainMenuBtn" type="button">主選單</button>
+            <button type="button" id="mobileMainMenuBtn">主選單</button>
             <h1>
               <a href="index.html"><img src="images/footer_logo.png" alt="網站標題" />HyUI<span>Kit5</span></a>
             </h1>
@@ -62,13 +62,13 @@
                 <!-- language End -->
 
                 <div class="topSearch sliderFn">
-                  <button id="topSearchBtn" type="button">網站搜尋</button>
+                  <button type="button" id="topSearchBtn">網站搜尋</button>
                 </div>
               </div>
             </nav>
             <!-- navigation End -->
             <!-- Search Start -->
-            <button id="mobileSearchBtn" type="button" aria-label="搜尋按鈕"></button>
+            <button type="button" id="mobileSearchBtn" aria-label="搜尋按鈕"></button>
             <div class="webSearch" role="search">
               <div class="webSearchContent">
                 <div class="formList">
@@ -237,7 +237,7 @@
                 <a class="functionPanelBtn email" href="#">Email</a>
 
                 <div class="shareBox">
-                  <button class="functionPanelBtn share">share分享按鈕</button>
+                  <button type="button" class="functionPanelBtn share">share分享按鈕</button>
                   <div class="shareBoxList">
                     <ul>
                       <li>
@@ -299,7 +299,7 @@
                   <div class="tabBtnBox">
                     <div class="tabItems">
                       <button type="button" class="tabBtn"><span>頁籤項ㄧ</span></button>
-                      <button type="button" class="tabBtn">頁籤項二</button>
+                      <button type="button" class="tabBtn active">頁籤項二</button>
                       <button type="button" class="tabBtn">頁籤項三</button>
                       <button type="button" class="tabBtn">頁籤項四</button>
                       <button type="button" class="tabBtn">頁籤項五</button>
@@ -312,12 +312,12 @@
                         target: '.target1', // 執行目標，多組需要另外設定<br />
                         modeSwitch: false, // 自動切換，尺寸以上tab功能，尺寸以下手風琴功能<br />
                         openContent: false, // 展開所有內容，僅開啟模式切換時才可使用<br />
-                        openIndex: 0, // 開啟第幾個<br />
                         width: 767, // 尺寸以上tab功能，尺寸以下手風琴功能<br />
                         autoClose: true, // 自動關閉其他開啟內容<br />
                         openSwitch: true, // 是否可開合/切換<br />
                         });<br />
                         上面的option是基礎預設，如不需要更改可以直接使用tabFunction('.target1')，如有多組tab<br />
+                        預設第幾個開啟在按鈕上設定class active即<br/><br />
                         請另外設定target <br /><br />
                         無障礙相關(皆已由js設定)
 
@@ -343,6 +343,7 @@
                             </ol>
                           </li>
                         </ul>
+                      </div>
                       </div>
                     </div>
                     <div class="tabContent" role="tabpanel">
@@ -558,7 +559,7 @@
     <!-- wrapper End -->
 
     <!-- 回到頂部 Start -->
-    <button id="scrollTop" type="button" aria-label="回到頂部">TOP</button>
+    <button type="button" id="scrollTop" aria-label="回到頂部">TOP</button>
     <!-- 回到頂部 End -->
 
     <!-- fancyBox -->

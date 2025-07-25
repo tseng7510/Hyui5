@@ -24,7 +24,7 @@
         <a class="accessKeyItem" href="#aU" id="aU" accesskey="U" aria-label="功能區塊">:::</a>
         <div class="headTop">
           <div class="container">
-            <button id="mobileMainMenuBtn" type="button">主選單</button>
+            <button type="button" id="mobileMainMenuBtn">主選單</button>
             <h1>
               <a href="index.html"><img src="images/footer_logo.png" alt="網站標題" />HyUI<span>Kit5</span></a>
             </h1>
@@ -62,13 +62,13 @@
                 <!-- language End -->
 
                 <div class="topSearch sliderFn">
-                  <button id="topSearchBtn" type="button">網站搜尋</button>
+                  <button type="button" id="topSearchBtn">網站搜尋</button>
                 </div>
               </div>
             </nav>
             <!-- navigation End -->
             <!-- Search Start -->
-            <button id="mobileSearchBtn" type="button" aria-label="搜尋按鈕"></button>
+            <button type="button" id="mobileSearchBtn" aria-label="搜尋按鈕"></button>
             <div class="webSearch" role="search">
               <div class="webSearchContent">
                 <div class="formList">
@@ -214,12 +214,12 @@
       <!-- main Start -->
       <main class="innerPage">
         <a class="accessKeyItem" href="#aC" id="aC" accesskey="C" aria-label="主要內容區">:::</a>
-        <div class="mainBox hasSide">
+        <div class="mainBox">
           <div class="container">
             <!-- sideNav Start -->
             <aside class="sideNav" data-next-open="開啟下層選單" data-next-close="收合下層選單">
-              <button id="sideNavBtn" type="button">次選單開關</button>
-              <nav id="sideMenu" aria-label="側選單">
+              <button type="button" id="sideNavBtn">次選單開關</button>
+              <nav id="sideMenu" aria-label="側選單" role="navigation">
                 <div class="sideMenuContent">
                   <div class="sideTitle">側選單標題</div>
                   <div class="sideNavBox">
@@ -294,7 +294,7 @@
                 <a class="functionPanelBtn email" href="#">Email</a>
 
                 <div class="shareBox">
-                  <button class="functionPanelBtn share">share分享按鈕</button>
+                  <button type="button" class="functionPanelBtn share">share分享按鈕</button>
                   <div class="shareBoxList">
                     <ul>
                       <li>
@@ -351,55 +351,59 @@
               <div class="mainContent">
                 <!-- 內容 Start -->
                 <div class="notionInfo">註：<span>* </span>為必填(選)欄位，不能為空白。</div>
-                <form action="" class="formBox">
-                  <div class="gridBox">
-                    <div class="formList inline">
-                      <label class="formListTitle" for="formItem11"><em aria-label="必填">*</em>您的電子信箱</label>
-                      <div class="formContent">
-                        <div class="inputBox">
-                          <i class="i_mail_dk"></i>
-                          <input type="email" name="email" id="formItem11" placeholder="請輸入電子信箱" />
-                        </div>
-                        <div class="formNoticeWarning">
-                          <span>這似乎不是一個正常的Email格式</span>
-                          <button type="button" class="noticeClose" aria-label="關閉提醒"></button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="formList inline">
-                      <label class="formListTitle" for="formItem11"><em aria-label="必填">*</em>收件者電子信箱</label>
-                      <div class="formContent">
-                        <div class="inputBox">
-                          <i class="i_mail_dk"></i>
-                          <input type="email" name="email" id="formItem11" placeholder="請輸入電子信箱" />
-                        </div>
-                        <div class="formNoticeInfo">
-                          <span>多個帳號請用 ; 隔開。</span>
-                          <button type="button" class="noticeClose" aria-label="關閉提醒"></button>
+                <form action="">
+                  <div class="formBox">
+                    <div class="gridBox">
+                      <div class="formList inline">
+                        <label class="formListTitle" for="formItem11"><em aria-label="必填">*</em>您的電子信箱</label>
+                        <div class="formContent">
+                          <div class="inputBox">
+                            <i class="i_mail_dk"></i>
+                            <input type="email" name="email" id="formItem11" placeholder="請輸入電子信箱" />
+                          </div>
+                          <div role="alert" id="alert1">
+                            <div class="formNoticeWarning">
+                              <span>這似乎不是一個正常的Email格式</span>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                      <div class="formList inline">
+                        <label class="formListTitle" for="formItem12"><em aria-label="必填">*</em>收件者電子信箱</label>
+                        <div class="formContent">
+                          <div class="inputBox">
+                            <i class="i_mail_dk"></i>
+                            <input type="email" name="email" id="formItem12" placeholder="請輸入電子信箱" />
+                          </div>
+                          <div role="alert" id="alert2">
+                            <div class="formNoticeInfo">
+                              <span>多個帳號請用 ; 隔開。</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-                    <div class="formList inline">
-                      <label class="formListTitle" for="formItem10"><em aria-label="必填">*</em>內容</label>
-                      <div class="formContent">
-                        <textarea name="" id="formItem10"></textarea>
+                      <div class="formList inline">
+                        <label class="formListTitle" for="formItem10"><em aria-label="必填">*</em>內容</label>
+                        <div class="formContent">
+                          <textarea name="" id="formItem10"></textarea>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="formList inline">
-                      <label class="formListTitle" for="code"><em aria-label="必填">*</em>驗證碼</label>
-                      <div class="formContent inline">
-                        <img src="images/basic/captcha.gif" class="captcha" alt="驗證碼圖片" tabindex="0" />
-                        <button class="btnPrimary" type="button"><i class="i_voice_w"></i>語音播放</button>
-                        <button class="btnPrimary" type="button"><i class="i_refresh_w"></i>重新整理</button>
-                        <input type="text" name="" id="code" placeholder="請輸入文字" />
+                      <div class="formList inline">
+                        <label class="formListTitle" for="code"><em aria-label="必填">*</em>驗證碼</label>
+                        <div class="formContent inline">
+                          <img src="images/basic/captcha.gif" class="captcha" alt="驗證碼圖片" tabindex="0" />
+                          <button type="button" class="btnPrimary"><i class="i_voice_w"></i>語音播放</button>
+                          <button type="button" class="btnPrimary"><i class="i_refresh_w"></i>重新整理</button>
+                          <input type="text" name="" id="code" placeholder="請輸入文字" />
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="formBtnBox">
-                      <button class="btnSecondary" type="reset">清除</button>
-                      <button class="btnPrimary" type="submit">送出</button>
+                      <div class="formBtnBox">
+                        <button type="reset" class="btnSecondary">清除</button>
+                        <button type="submit" class="btnPrimary">送出</button>
+                      </div>
                     </div>
                   </div>
                 </form>
@@ -531,7 +535,7 @@
     <!-- wrapper End -->
 
     <!-- 回到頂部 Start -->
-    <button id="scrollTop" type="button" aria-label="回到頂部">TOP</button>
+    <button type="button" id="scrollTop" aria-label="回到頂部">TOP</button>
     <!-- 回到頂部 End -->
 
     <!-- fancyBox -->

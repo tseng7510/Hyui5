@@ -1280,16 +1280,16 @@ function sideNav(options) {
 function tabFunction(obj) {
   // RWD切換判斷，與_variable.scss 的 --RWDWidth連動
   const setRWDWidth = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--RWDWidth'));
-  const { target, autoClose = true, openContent = false, modeSwitch = false, windowWidth = setRWDWidth, openIndex = 0, openSwitch = true } = obj;
+  const { target, autoClose = true, openContent = false, modeSwitch = false, windowWidth = setRWDWidth, openSwitch = true } = obj;
 
   const tabSet = document.querySelector(target);
   if (!tabSet) return;
 
-  const tabBtnBox = tabSet.querySelector('.tabBtnBox');
   const tabItems = tabSet.querySelector('.tabItems');
   const tabBtn = tabSet.querySelectorAll('.tabBtn');
   const tabContent = tabSet.querySelectorAll('.tabContent');
   const tabContentIn = tabSet.querySelectorAll('.tabContentIn');
+  const defaultIndex = [...tabBtn].indexOf(tabItems.querySelector('.active')) === -1 ? 0 : [...tabBtn].indexOf(tabItems.querySelector('.active'));
 
   //初始設定
   function _tabInit(targetIndex) {
@@ -1335,7 +1335,7 @@ function tabFunction(obj) {
   }
 
   //執行
-  _tabInit(openIndex);
+  _tabInit(defaultIndex);
 
   //切換動作
   function _checkTarget(targetIndex) {
@@ -1540,7 +1540,6 @@ function tabFunction(obj) {
 //   target: '.target1', // 執行目標，多組需要另外設定
 //   modeSwitch: false, // 自動切換，尺寸以上tab功能，尺寸以下手風琴功能
 //   openContent: false, // 展開所有內容，僅開啟模式切換時才可使用
-//   openIndex: 0, // 開啟第幾個
 //   width: 767, // 尺寸以上tab功能，尺寸以下手風琴功能
 //   autoClose: true, // 自動關閉其他開啟內容
 //   openSwitch: true, // 是否可開合/切換
@@ -1550,7 +1549,7 @@ function tabFunction(obj) {
 // -----   Accordion設定   ------------------------------------------------
 // -----------------------------------------------------------------------
 function accordionFunction(obj) {
-  const { target, openContent = false, openDefault = false, openIndex = 0, autoClose = true, openSwitch = true } = obj;
+  const { target, openContent = false, openDefault = false, autoClose = true, openSwitch = true } = obj;
 
   const accordionSet = document.querySelector(target);
   if (!accordionSet) return;
@@ -1559,12 +1558,13 @@ function accordionFunction(obj) {
 
   const infoOpen = accordionSet.dataset.stateOpen;
   const infoClose = accordionSet.dataset.stateClose;
+  const accordionList = accordionSet.querySelectorAll('.accordionList');
   const accordionBtns = accordionSet.querySelectorAll('.accordionBtn');
   const accordionCons = accordionSet.querySelectorAll('.accordionContent');
+  const defaultIndex = [...accordionList].indexOf(accordionSet.querySelector('.active')) === -1 ? 0 : [...accordionList].indexOf(accordionSet.querySelector('.active'));
 
   //初始設定
-  function _accordionInit(targetIndex) {
-    accordionSet.dataset.nowIndex = targetIndex;
+  function _accordionInit() {
     accordionBtns.forEach((accordion, i) => {
       const id = `accordion_${_randomLetter(3)}${_randomNumber(3)}`;
       const controls = `${id}_con`;
@@ -1603,13 +1603,13 @@ function accordionFunction(obj) {
     });
 
     if (openDefault) {
-      accordionBtns[openIndex].parentElement.classList.add('active');
-      accordionBtns[openIndex].setAttribute('aria-expanded', 'true');
-      _jsSlideDown(accordionCons[openIndex]);
-      if (openSwitch) accordionBtns[openIndex].querySelector('.accordionState span').textContent = infoClose;
+      accordionBtns[defaultIndex].parentElement.classList.add('active');
+      accordionBtns[defaultIndex].setAttribute('aria-expanded', 'true');
+      _jsSlideDown(accordionCons[defaultIndex]);
+      if (openSwitch) accordionBtns[defaultIndex].querySelector('.accordionState span').textContent = infoClose;
     }
   }
-  _accordionInit(openIndex);
+  _accordionInit();
 
   function _accordionFn(btn, i) {
     const accordionState = btn.querySelector('.accordionState span');
@@ -2140,6 +2140,7 @@ function popupFn() {
           let closeBtn = fancyboxRef.container?.querySelector('[data-fancybox-close]');
           closeBtn?.insertAdjacentHTML('afterbegin', `<span>${fancyboxRef.options.l10n.CLOSE}</span>`);
           closeBtn.setAttribute('aria-label', fancyboxRef.options.l10n.CLOSE);
+          closeBtn.focus();
         }
       },
     },
@@ -2164,6 +2165,7 @@ function popupFn() {
               let closeBtn = fancyboxRef.container?.querySelector('[data-fancybox-close]');
               closeBtn?.insertAdjacentHTML('afterbegin', `<span>${fancyboxRef.options.l10n.CLOSE}</span>`);
               closeBtn.setAttribute('aria-label', fancyboxRef.options.l10n.CLOSE);
+              closeBtn.focus();
             }
           },
         },

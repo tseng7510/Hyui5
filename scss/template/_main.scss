@@ -21,7 +21,7 @@ main {
     background: #F8F8F8;
   }
 
-  .hasSide {
+  *:has(aside) {
     .container {
       display: flex;
       justify-content: space-between;
