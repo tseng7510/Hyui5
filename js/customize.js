@@ -7,13 +7,24 @@ mainMenu({
 
 // 側邊選單
 sideNav({
-  needLink: false, // 如果同時需要連結和下層功能時
-  floatType: true, // 切換是否由左側展開或是下方展開
+  needLink: true, // 如果同時需要連結和下層功能時
+  float: false, // 切換是否由左側展開或是下方展開
+  showDefault: true, // 是否預設顯示
 });
 
+// tabFunction({
+// target: '.target1', // 執行目標，多組需要另外設定
+// modeSwitch: false, // 自動切換，尺寸以上tab功能，尺寸以下手風琴功能
+// openContent: false, // 展開所有內容，僅開啟模式切換時才可使用
+// openIndex: 0, // 開啟第幾個
+// width: 767, // 尺寸以上tab功能，尺寸以下手風琴功能
+// autoClose: true, // 自動關閉其他開啟內容
+// openSwitch: true, // 是否可開合/切換
+// });
 // tab功能
 tabFunction({
   target: '.tabFunction1',
+  modeSwitch: true,
 });
 // mp2 新書展示
 tabFunction({
@@ -99,8 +110,6 @@ window.addEventListener('DOMContentLoaded', () => {
     },
     on: {
       init: function (swiper) {
-        console.log(swiper);
-
         swiperA11Fn(swiper);
       },
     },
@@ -160,7 +169,7 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   // -----  cp_album   ---------------------------------------------------
-  const sliderFor = new Swiper('.sliderFor .swiper', {
+  const sliderFor = new Swiper('.thumbsAlbum .sliderFor .swiper', {
     slidesPerView: 1,
     effect: 'fade',
     fadeEffect: {
@@ -176,7 +185,7 @@ window.addEventListener('DOMContentLoaded', () => {
     lazy: true,
     thumbs: {
       swiper: {
-        el: '.navSlider .swiper',
+        el: '.thumbsAlbum .navSlider .swiper',
         spaceBetween: 20,
         slideToClickedSlide: true,
         slidesPerView: 4,
@@ -208,7 +217,7 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   swiperNavKeyDownFn(sliderFor.thumbs.swiper, sliderFor);
 
-  // -----  CP 輪播   ---------------------------------------------------
+  // -----  mp/mp2 link 輪播   ---------------------------------------------------
   const linkSlider = new Swiper('.linkSlider .swiper', {
     slidesPerView: 1,
     spaceBetween: 20,

@@ -57,57 +57,12 @@ body {
   }
 }
 
-// main
-main {
-  width: 100%;
+.container {
+  max-width: $domWidth;
+  padding: 0 30px;
+  margin: 0 auto;
   position: relative;
-  padding-bottom: 80px;
-  flex-grow: 1;
-
-  &.innerPage {
-    padding-top: 40px;
-    background: #F8F8F8;
-  }
-
-  .hasSide {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-
-    @include screen('tablet') {
-      flex-direction: column;
-    }
-
-    .mainContentBox {
-      flex-grow: 1;
-      @include transition(0.3);
-
-      @include screen('tablet') {
-        width: 100%;
-      }
-    }
-  }
-
-  .mainContentBox {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-    .pageTitle {
-      font-size: Rem(36);
-      margin: 0;
-      font-weight: 600;
-    }
-
-    .mainContent {
-      width: 100%;
-    }
-  }
-
-  &.innerPage:not(.hasSide) section {
-    width: 100%;
-    margin: 0 auto;
-  }
+  box-sizing: content-box;
 }
 
 .codeBox {
@@ -222,15 +177,6 @@ h6 {
   }
 }
 
-
-.container {
-  max-width: calc($domWidth + 60px);
-  width: 100%;
-  padding: 0 30px;
-  margin: 0 auto;
-  position: relative;
-}
-
 .overlay {
   position: fixed;
   z-index: 55;
@@ -272,6 +218,7 @@ nav {
 }
 
 .goCenter {
+  width: fit-content;
   position: absolute;
   top: -2.2em;
   left: 0;
@@ -351,41 +298,6 @@ nav {
   figcaption {
     line-height: 1.4;
     margin-top: 5px;
-  }
-}
-
-.navFloat {
-  position: fixed;
-  right: 22px;
-  top: 30%;
-
-  @include screen('tablet') {
-    right: 10px;
-  }
-
-  ul {
-    @include liReset;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    li {
-      line-height: 0;
-    }
-
-    a {
-      display: block;
-      line-height: 0;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      @include transition(0.3);
-
-      @include screen('tablet') {
-        width: 40px;
-        height: 40px;
-      }
-    }
   }
 }
 

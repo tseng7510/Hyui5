@@ -13,7 +13,7 @@
 
   ul.typeA {
     @include liReset;
-    // display: none;
+    display: none;
 
     li {
       line-height: 0;

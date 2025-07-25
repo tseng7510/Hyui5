@@ -8,27 +8,25 @@ footer {
     text-decoration: none;
   }
 
-  .footerBox {
-    padding: 28px 0;
+  padding: 28px 0;
 
-    .container {
+  .container {
 
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
 
 
-      @include screen('tablet') {
-        flex-direction: column;
-      }
-    }
-
-    .infoBox {
-      display: flex;
+    @include screen('tablet') {
       flex-direction: column;
-      justify-content: space-between;
-      gap: 13px;
     }
+  }
+
+  .infoBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 13px;
   }
 
   .footerLogo {

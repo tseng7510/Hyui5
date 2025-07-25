@@ -7,11 +7,6 @@
   @include screen('tablet') {
     padding-top: 60px;
   }
-
-  & > * {
-    width: 100%;
-    flex-shrink: 0;
-  }
 }
 
 // main

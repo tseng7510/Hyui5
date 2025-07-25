@@ -79,8 +79,8 @@ $tableNormal: $colorDisabled;
 //-------------------------------------------------------------字型--------//
 
 // 字型設定
-$arial: Arial, '微軟正黑體', 'Microsoft JhengHei', '蘋果儷中黑', 'Apple LiGothic Medium', sans-serif, '0xe804';
-$NotoSansTC: 'Noto Sans TC', Arial, '微軟正黑體', 'Microsoft JhengHei', '蘋果儷中黑', 'Apple LiGothic Medium', sans-serif, '0xe804';
+$arial: Arial, '微軟正黑體', 'PingFang TC', 'Microsoft JhengHei', 'Apple LiGothic Medium', sans-serif;
+$NotoSansTC: 'Noto Sans TC', Arial, 'PingFang TC', '微軟正黑體', 'Microsoft JhengHei', 'Apple LiGothic Medium', sans-serif;
 //-------------------------------------------------------------版面------//
 
 //基本文字大小
@@ -108,5 +108,5 @@ $screenSize: (
   --RWDWidth: #{map-get($screenSize, tablet)}; //RWD切換尺寸設定，以下切換js為手機板相關設定
   --sideFixTop: 80px; //側邊選單top固定位置
   --borderRadius8: 8px; //圓角設定
-  --borderRadius2: 4px; //圓角設定
+  --borderRadius4: 4px; //圓角設定
 }

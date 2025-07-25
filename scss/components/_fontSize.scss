@@ -56,12 +56,19 @@
       border-radius: 50px;
       overflow: hidden;
       box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-      padding: 10px;
       background: #fff;
       list-style: none;
 
-      li + li {
-        margin-top: 5px;
+      li {
+        padding: 5px 10px;
+
+        &:first-child {
+          padding: 10px 10px 0px;
+        }
+
+        &:last-child {
+          padding: 0px 10px 10px;
+        }
       }
 
       button {

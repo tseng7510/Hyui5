@@ -5,7 +5,7 @@
   --RWDWidth: 991px;
   --sideFixTop: 80px;
   --borderRadius8: 8px;
-  --borderRadius2: 4px;
+  --borderRadius4: 4px;
 }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -614,7 +614,7 @@ header h1 a:focus-visible,
 }
 
 body {
-  font-family: "Noto Sans TC", Arial, "微軟正黑體", "Microsoft JhengHei", "蘋果儷中黑", "Apple LiGothic Medium", sans-serif, "0xe804";
+  font-family: "Noto Sans TC", Arial, "PingFang TC", "微軟正黑體", "Microsoft JhengHei", "Apple LiGothic Medium", sans-serif;
   font-size: 1rem;
   line-height: 2;
   letter-spacing: 0.6px;
@@ -654,51 +654,12 @@ body .mainContent.largeSize {
   }
 }
 
-main {
-  width: 100%;
-  position: relative;
-  padding-bottom: 80px;
-  flex-grow: 1;
-}
-main.innerPage {
-  padding-top: 40px;
-  background: #F8F8F8;
-}
-main .hasSide {
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-}
-@media screen and (max-width: 991px) {
-  main .hasSide {
-    flex-direction: column;
-  }
-}
-main .hasSide .mainContentBox {
-  flex-grow: 1;
-  transition: all 0.3s ease;
-}
-@media screen and (max-width: 991px) {
-  main .hasSide .mainContentBox {
-    width: 100%;
-  }
-}
-main .mainContentBox {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-main .mainContentBox .pageTitle {
-  font-size: 2.25rem;
-  margin: 0;
-  font-weight: 600;
-}
-main .mainContentBox .mainContent {
-  width: 100%;
-}
-main.innerPage:not(.hasSide) section {
-  width: 100%;
+.container {
+  max-width: 1400px;
+  padding: 0 30px;
   margin: 0 auto;
+  position: relative;
+  box-sizing: content-box;
 }
 
 .codeBox {
@@ -813,14 +774,6 @@ h6 + p {
   margin-top: 0;
 }
 
-.container {
-  max-width: 1460px;
-  width: 100%;
-  padding: 0 30px;
-  margin: 0 auto;
-  position: relative;
-}
-
 .overlay {
   position: fixed;
   z-index: 55;
@@ -863,6 +816,8 @@ nav ul {
 }
 
 .goCenter {
+  width: -moz-fit-content;
+  width: fit-content;
   position: absolute;
   top: -2.2em;
   left: 0;
@@ -938,42 +893,6 @@ nav ul {
 .pic figcaption {
   line-height: 1.4;
   margin-top: 5px;
-}
-
-.navFloat {
-  position: fixed;
-  right: 22px;
-  top: 30%;
-}
-@media screen and (max-width: 991px) {
-  .navFloat {
-    right: 10px;
-  }
-}
-.navFloat ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.navFloat ul li {
-  line-height: 0;
-}
-.navFloat ul a {
-  display: block;
-  line-height: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-@media screen and (max-width: 991px) {
-  .navFloat ul a {
-    width: 40px;
-    height: 40px;
-  }
 }
 
 [data-fancybox-close] span {
@@ -4349,12 +4268,17 @@ button.active, button:hover {
   border-radius: 50px;
   overflow: hidden;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-  padding: 10px;
   background: #fff;
   list-style: none;
 }
-.fontSize.sliderFn ul li + li {
-  margin-top: 5px;
+.fontSize.sliderFn ul li {
+  padding: 5px 10px;
+}
+.fontSize.sliderFn ul li:first-child {
+  padding: 10px 10px 0px;
+}
+.fontSize.sliderFn ul li:last-child {
+  padding: 0px 10px 10px;
 }
 .fontSize.sliderFn ul button {
   width: 38px;
@@ -4962,7 +4886,7 @@ button.active, button:hover {
   display: flex;
 }
 .fatFooter nav > ul {
-  gap: 5px 30px;
+  gap: 5px 20px;
 }
 @media screen and (max-width: 991px) {
   .fatFooter nav > ul {
@@ -5276,36 +5200,34 @@ button.autoPlaySwitch:hover {
   color: #fff;
 }
 
-.cpAlbum {
+.thumbsAlbum {
   width: 100%;
 }
-
-.sliderFor {
+.thumbsAlbum .sliderFor {
   position: relative;
 }
-.sliderFor .autoPlaySwitch {
+.thumbsAlbum .sliderFor .autoPlaySwitch {
   position: absolute;
   left: 20px;
   top: 20px;
   z-index: 5;
 }
-.sliderFor .pic {
+.thumbsAlbum .sliderFor .pic {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-.sliderFor .pic img {
+.thumbsAlbum .sliderFor .pic img {
   aspect-ratio: 16/9;
 }
-
-.navSlider {
+.thumbsAlbum .navSlider {
   position: relative;
   isolation: isolate;
 }
-.navSlider .swiperArrow {
+.thumbsAlbum .navSlider .swiperArrow {
   background: rgba(255, 255, 255, 0.4);
 }
-.navSlider .item {
+.thumbsAlbum .navSlider .item {
   cursor: pointer;
   display: block;
   height: 100%;
@@ -5316,14 +5238,14 @@ button.autoPlaySwitch:hover {
   position: relative;
   overflow: hidden;
 }
-.navSlider .item:focus-visible .caption, .navSlider .item:hover .caption {
+.thumbsAlbum .navSlider .item:focus-visible .caption, .thumbsAlbum .navSlider .item:hover .caption {
   transform: translateY(0);
 }
-.navSlider .item:focus-visible {
+.thumbsAlbum .navSlider .item:focus-visible {
   outline-width: 4px;
   outline-offset: -4px;
 }
-.navSlider .swiperDots {
+.thumbsAlbum .navSlider .swiperDots {
   position: absolute;
   bottom: 0;
   transform: translateY(100%);
@@ -5331,15 +5253,15 @@ button.autoPlaySwitch:hover {
   justify-content: center;
   padding: 10px 0;
 }
-.navSlider .pic {
+.thumbsAlbum .navSlider .pic {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-.navSlider .pic img {
+.thumbsAlbum .navSlider .pic img {
   aspect-ratio: 4/3;
 }
-.navSlider .caption {
+.thumbsAlbum .navSlider .caption {
   width: 100%;
   text-align: center;
   padding: 5px 10px;
@@ -5350,11 +5272,11 @@ button.autoPlaySwitch:hover {
   transition: all 0.3s ease;
 }
 @media screen and (max-width: 767px) {
-  .navSlider .caption {
+  .thumbsAlbum .navSlider .caption {
     transform: translateY(0);
   }
 }
-.navSlider .caption span {
+.thumbsAlbum .navSlider .caption span {
   -webkit-line-clamp: 1;
   display: -webkit-box !important;
   -webkit-box-orient: vertical;
@@ -5561,6 +5483,7 @@ button.autoPlaySwitch:hover {
   margin: 0;
   padding: 0;
   list-style: none;
+  display: none;
 }
 .floatNav ul.typeA li {
   line-height: 0;
@@ -5999,10 +5922,6 @@ header h1 img {
     padding-top: 60px;
   }
 }
-.wrapper > * {
-  width: 100%;
-  flex-shrink: 0;
-}
 
 main {
   width: 100%;
@@ -6055,24 +5974,22 @@ footer {
   width: 100%;
   color: #333333;
   position: relative;
+  padding: 28px 0;
 }
 footer a {
   text-decoration: none;
 }
-footer .footerBox {
-  padding: 28px 0;
-}
-footer .footerBox .container {
+footer .container {
   display: flex;
   justify-content: space-between;
   gap: 20px;
 }
 @media screen and (max-width: 991px) {
-  footer .footerBox .container {
+  footer .container {
     flex-direction: column;
   }
 }
-footer .footerBox .infoBox {
+footer .infoBox {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -6734,17 +6651,17 @@ section:last-child {
   background: rgb(0.9, 77.4, 145.8);
 }
 
-.np ul {
+.nodeList ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 @media screen and (max-width: 767px) {
-  .np ul {
+  .nodeList ul {
     gap: 10px;
   }
 }
-.np a.card {
+.nodeList a.card {
   height: 100%;
   display: flex;
   padding: 16px;
@@ -6754,32 +6671,32 @@ section:last-child {
   background: #fff;
   text-decoration: none;
 }
-.np a.card:not(:hover) {
+.nodeList a.card:not(:hover) {
   color: #333333;
 }
-.np a.card .num::after {
+.nodeList a.card .num::after {
   content: ".";
 }
-.np a.card p {
+.nodeList a.card p {
   margin: 0;
 }
-.np a.card:hover {
+.nodeList a.card:hover {
   color: #0156A2;
   border-color: #0156A2;
 }
 
-.lpListBox {
+.listGroup ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.lpListBox li {
+.listGroup li {
   border-top: 1px solid #DEE0E3;
 }
-.lpListBox li:last-child {
+.listGroup li:last-child {
   border-bottom: 1px solid #DEE0E3;
 }
-.lpListBox li a {
+.listGroup li a {
   display: flex;
   gap: 24px;
   padding: 24px 16px 24px 48px;
@@ -6787,15 +6704,15 @@ section:last-child {
   text-decoration: none;
 }
 @media screen and (max-width: 991px) {
-  .lpListBox li a {
+  .listGroup li a {
     flex-direction: column;
     gap: 5px 24px;
   }
 }
-.lpListBox li a:not(:hover) {
+.listGroup li a:not(:hover) {
   color: #333333;
 }
-.lpListBox li a .num {
+.listGroup li a .num {
   width: 24px;
   text-align: right;
   color: #000;
@@ -6803,10 +6720,10 @@ section:last-child {
   left: 0;
   top: 26px;
 }
-.lpListBox li a .num::after {
+.listGroup li a .num::after {
   content: ".";
 }
-.lpListBox li a .title {
+.listGroup li a .title {
   font-weight: 600;
   font-size: 1.125rem;
   -webkit-line-clamp: 8;
@@ -6814,22 +6731,22 @@ section:last-child {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.lpListBox li a .dept {
+.listGroup li a .dept {
   margin: 0 0 0 auto;
 }
 @media screen and (max-width: 991px) {
-  .lpListBox li a .dept {
+  .listGroup li a .dept {
     margin: 0 auto 0 0;
   }
 }
-.lpListBox li a .dept,
-.lpListBox li a time {
+.listGroup li a .dept,
+.listGroup li a time {
   min-width: 90px;
   font-weight: 400;
   color: #555555;
 }
 
-.lp2ListBox {
+.listPhoto ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -6838,58 +6755,58 @@ section:last-child {
   gap: 32px;
 }
 @media screen and (max-width: 991px) {
-  .lp2ListBox {
+  .listPhoto {
     flex-direction: row;
     flex-wrap: wrap;
   }
 }
 @media screen and (max-width: 575px) {
-  .lp2ListBox {
+  .listPhoto {
     gap: 24px;
   }
 }
 @media screen and (min-width: 992px) {
-  .lp2ListBox li:nth-child(even) .col:has(.pic) {
+  .listPhoto li:nth-child(even) .col:has(.pic) {
     order: 10;
   }
 }
 @media screen and (max-width: 991px) {
-  .lp2ListBox li {
+  .listPhoto li {
     width: calc((100% - 32px * (2 - 1)) / 2);
   }
 }
 @media screen and (max-width: 575px) {
-  .lp2ListBox li {
+  .listPhoto li {
     width: 100%;
     padding-bottom: 24px;
     border-bottom: 1px solid #DEE0E3;
   }
 }
-.lp2ListBox li a {
+.listPhoto li a {
   padding: 16px 16px 16px 48px;
   display: block;
   position: relative;
   text-decoration: none;
 }
 @media screen and (max-width: 991px) {
-  .lp2ListBox li a {
+  .listPhoto li a {
     padding: 0;
   }
-  .lp2ListBox li a [class*=flexTpl] {
+  .listPhoto li a [class*=flexTpl] {
     flex-direction: column;
   }
-  .lp2ListBox li a .col {
+  .listPhoto li a .col {
     width: 100% !important;
   }
 }
-.lp2ListBox li a:not(:hover) {
+.listPhoto li a:not(:hover) {
   color: #333333;
 }
-.lp2ListBox li a .col:has(.pic) {
+.listPhoto li a .col:has(.pic) {
   display: flex;
   gap: 10px;
 }
-.lp2ListBox li a .num {
+.listPhoto li a .num {
   width: 30px;
   text-align: right;
   color: #000;
@@ -6899,7 +6816,7 @@ section:last-child {
   top: 18px;
 }
 @media screen and (max-width: 991px) {
-  .lp2ListBox li a .num {
+  .listPhoto li a .num {
     text-align: left;
     width: auto;
     position: relative;
@@ -6907,10 +6824,10 @@ section:last-child {
     margin-bottom: 10px;
   }
 }
-.lp2ListBox li a .num::after {
+.listPhoto li a .num::after {
   content: ".";
 }
-.lp2ListBox li a .pic {
+.listPhoto li a .pic {
   width: 100%;
   max-width: 412px;
   flex-shrink: 0;
@@ -6918,21 +6835,21 @@ section:last-child {
   overflow: hidden;
 }
 @media screen and (max-width: 991px) {
-  .lp2ListBox li a .pic {
+  .listPhoto li a .pic {
     max-width: none;
   }
 }
-.lp2ListBox li a .pic img {
+.listPhoto li a .pic img {
   aspect-ratio: 4/3;
 }
-.lp2ListBox li a .infoBox {
+.listPhoto li a .infoBox {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
   gap: 10px;
 }
-.lp2ListBox li a .title {
+.listPhoto li a .title {
   font-weight: 500;
   font-size: 1.75rem;
   line-height: 1.5;
@@ -6943,21 +6860,21 @@ section:last-child {
   letter-spacing: 1.2px;
 }
 @media screen and (max-width: 991px) {
-  .lp2ListBox li a .title {
+  .listPhoto li a .title {
     font-size: 1.375rem;
   }
 }
-.lp2ListBox li a .subInfo {
+.listPhoto li a .subInfo {
   display: flex;
   gap: 10px;
 }
-.lp2ListBox li a .dept,
-.lp2ListBox li a time {
+.listPhoto li a .dept,
+.listPhoto li a time {
   min-width: 90px;
   font-weight: 400;
   color: #555555;
 }
-.lp2ListBox li a .con {
+.listPhoto li a .con {
   max-height: 160px;
   -webkit-line-clamp: 5;
   display: -webkit-box !important;
@@ -6966,7 +6883,7 @@ section:last-child {
   color: #333333;
 }
 
-.lpAlbumListBox {
+.listAlbum ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -6975,55 +6892,55 @@ section:last-child {
   gap: 32px;
 }
 @media screen and (max-width: 767px) {
-  .lpAlbumListBox {
+  .listAlbum {
     gap: 20px;
   }
 }
-.lpAlbumListBox li {
+.listAlbum li {
   width: calc((100% - 32px * (4 - 1)) / 4);
   background: #fff;
   box-shadow: 0px 4px 16px -4px rgba(38, 43, 67, 0.3);
   transition: all 0.3s ease;
 }
 @media screen and (max-width: 991px) {
-  .lpAlbumListBox li {
+  .listAlbum li {
     width: calc((100% - 32px * (3 - 1)) / 3);
   }
 }
 @media screen and (max-width: 767px) {
-  .lpAlbumListBox li {
+  .listAlbum li {
     width: calc((100% - 20px * (2 - 1)) / 2);
   }
 }
 @media screen and (max-width: 575px) {
-  .lpAlbumListBox li {
+  .listAlbum li {
     width: 100%;
   }
 }
-.lpAlbumListBox li:hover {
+.listAlbum li:hover {
   transform: translate(-5px, -5px);
   box-shadow: 5px 9px 16px -4px rgba(38, 43, 67, 0.3);
 }
-.lpAlbumListBox li a {
+.listAlbum li a {
   display: flex;
   flex-direction: column;
   position: relative;
   padding: 0;
   text-decoration: none;
 }
-.lpAlbumListBox li a:not(:hover) {
+.listAlbum li a:not(:hover) {
   color: #333333;
 }
-.lpAlbumListBox li a .pic {
+.listAlbum li a .pic {
   max-width: 100%;
   flex-shrink: 0;
   line-height: 0;
   overflow: hidden;
 }
-.lpAlbumListBox li a .pic img {
+.listAlbum li a .pic img {
   aspect-ratio: 4/3;
 }
-.lpAlbumListBox li a .infoBox {
+.listAlbum li a .infoBox {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -7031,7 +6948,7 @@ section:last-child {
   gap: 10px;
   padding: 16px;
 }
-.lpAlbumListBox li a .title {
+.listAlbum li a .title {
   font-weight: 500;
   font-size: 1.5rem;
   line-height: 1.5;
@@ -7042,22 +6959,22 @@ section:last-child {
   letter-spacing: 1.2px;
 }
 @media screen and (max-width: 1300px) {
-  .lpAlbumListBox li a .title {
+  .listAlbum li a .title {
     font-size: 1.375rem;
   }
 }
-.lpAlbumListBox li a .subInfo {
+.listAlbum li a .subInfo {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
-.lpAlbumListBox li a .dept,
-.lpAlbumListBox li a time {
+.listAlbum li a .dept,
+.listAlbum li a time {
   min-width: 90px;
   font-weight: 400;
   color: #555555;
 }
-.lpAlbumListBox li a .con {
+.listAlbum li a .con {
   -webkit-line-clamp: 1;
   display: -webkit-box !important;
   -webkit-box-orient: vertical;
@@ -7067,11 +6984,9 @@ section:last-child {
   margin-bottom: 1rem;
 }
 
-.cp {
+.contentGroup {
   color: #111;
   font-size: 1.125rem;
-}
-.cp .template {
   display: flex;
   flex-direction: column;
   gap: 30px;

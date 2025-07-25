@@ -2,14 +2,15 @@
 @use "sass:map";
 //-------------------------------------------------------------mixin-media-------//
 // media query @include screen(desktop) { color: red; }
-$notebookMin: map-get($screenSize, notebook) + 1;
-$tabletMin: map-get($screenSize, tablet) + 1;
-$mobileMin: map-get($screenSize, mobile) + 1;
-$xsMobileMin: map-get($screenSize, xsMobile) + 1;
+$notebookMin: map.get($screenSize, notebook) + 1;
+$tabletMin: map.get($screenSize, tablet) + 1;
+$mobileMin: map.get($screenSize, mobile) + 1;
+$xsMobileMin: map.get($screenSize, xsMobile) + 1;
+$newabc: 1200;
 
 @mixin screen($size) {
   @if $size==notebook {
-    @media screen and (max-width: #{map-get($screenSize, notebook)}) {
+    @media screen and (max-width: #{map.get($screenSize, notebook)}) {
       @content;
     }
   }
@@ -21,7 +22,7 @@ $xsMobileMin: map-get($screenSize, xsMobile) + 1;
   }
 
   @else if $size==tablet {
-    @media screen and (max-width: #{map-get($screenSize, tablet)}) {
+    @media screen and (max-width: #{map.get($screenSize, tablet)}) {
       @content;
     }
   }
@@ -33,7 +34,7 @@ $xsMobileMin: map-get($screenSize, xsMobile) + 1;
   }
 
   @else if $size==mobile {
-    @media screen and (max-width: #{map-get($screenSize, mobile)}) {
+    @media screen and (max-width: #{map.get($screenSize, mobile)}) {
       @content;
     }
   }
@@ -45,7 +46,7 @@ $xsMobileMin: map-get($screenSize, xsMobile) + 1;
   }
 
   @else if $size==xsMobile {
-    @media screen and (max-width: #{map-get($screenSize, xsMobile)}) {
+    @media screen and (max-width: #{map.get($screenSize, xsMobile)}) {
       @content;
     }
   }

@@ -226,17 +226,17 @@ function mainMenu(obj) {
     if (mega) return;
     const $target = $(e);
     const $nextUl = $target.find('ul');
-    const $hasChildLi = $nextUl.last().parents('li');
+    const $hasChildLi = $target.parents('li');
 
     if ($hasChildLi.length <= 1) return;
 
-    const checkUlWidth = $hasChildLi.last().outerWidth() * $hasChildLi.length - 1 || 0;
-    const objectRect = $hasChildLi.last()[0].getBoundingClientRect();
+    const checkUlWidth = $hasChildLi.first().outerWidth() * ($hasChildLi.length - 1) || 0;
+    const objectRect = $hasChildLi.first()[0].getBoundingClientRect();
 
     if ($(window).width() < objectRect.left + checkUlWidth) {
-      $hasChildLi.last().addClass('leftSlider');
+      $hasChildLi.first().addClass('leftSlider');
     } else {
-      $hasChildLi.last().removeClass('leftSlider');
+      $hasChildLi.first().removeClass('leftSlider');
     }
   }
 
@@ -701,7 +701,7 @@ function sideNav(options) {
 
   function _toggleAccordion(control, selector, parent) {
     const $control = $(control);
-    const $content = $control.parent().children(selector);
+    const $content = $control.parent().find(selector);
     const isVisible = $content.is(':visible');
     $control.attr('aria-expanded', !isVisible);
     parent.toggleClass('active');
@@ -1166,11 +1166,11 @@ function scrollTables() {
 
     $prevBtn.on('click', function (e) {
       e.preventDefault();
-      $tableScrollIn[0].scrollBy({ left: -100, behavior: 'smooth' });
+      $tableScrollIn.animate({ scrollLeft: '-=100' }, 200);
     });
     $nextBtn.on('click', function (e) {
       e.preventDefault();
-      $tableScrollIn[0].scrollBy({ left: 100, behavior: 'smooth' });
+      $tableScrollIn.animate({ scrollLeft: '+=100' }, 200);
     });
   });
 }
