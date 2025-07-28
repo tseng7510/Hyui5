@@ -6013,8 +6013,8 @@ section:last-child {
   color: #fff;
 }
 
-*:has(.full) .mpSlider,
-*:has(.full) .swiperBox {
+*:has(.flexFull) .mpSlider,
+*:has(.flexFull) .swiperBox {
   margin-top: 0;
 }
 
