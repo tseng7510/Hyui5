@@ -1,4 +1,6 @@
 @charset "UTF-8";
+@import '../vendor/swiper/swiper-bundle.min.css';
+@import '../vendor/fancybox/fancybox.css';
 :root {
   --RWDWidth: 991px;
   --sideFixTop: 80px;
@@ -923,7 +925,7 @@ nav ul {
   margin-right: 20px;
 }
 
-*:has(.full) > .container {
+*:has(.flexFull) > .container {
   max-width: none;
   padding: 0;
   margin: 0;
