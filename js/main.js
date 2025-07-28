@@ -267,7 +267,12 @@ function _toggleDropdown(elem, con, autoClose = true) {
   const body = document.querySelector('body');
   const targetSelect = document.querySelector(elem);
   const targetSelectCon = document.querySelector(con);
-  if (!targetSelect || !targetSelectCon) return;
+  if (!targetSelectCon) return;
+
+  if (!targetSelect) {
+    targetSelectCon.style.display = 'block';
+    return;
+  }
   let checkDisplay = window.getComputedStyle(targetSelectCon).display === 'none';
   const id = `ts_${_randomLetter(3)}${_randomNumber(3)}`;
 

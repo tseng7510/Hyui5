@@ -151,67 +151,6 @@
 
   .searchContent {
     padding: 24px;
-    display: flex;
-    flex-direction: column;
-
-    fieldset.formList {
-      padding-left: 125px;
-      border: none;
-
-      legend {
-        position: absolute;
-        left: 0;
-      }
-    }
-
-    .formList {
-      padding: 12px 0;
-      display: flex;
-      gap: 5px;
-      position: relative;
-      margin: 0;
-
-      @include screen('mobile') {
-        flex-direction: column;
-      }
-
-      &:not(:last-child) {
-        border-bottom: 1px dashed #DEE0E3;
-      }
-
-      &:has(textarea) {
-        align-items: flex-start;
-      }
-
-      [type='date'] {
-        & + span {
-          display: block;
-          margin: 0 10px;
-
-          @include screen('mobile') {
-            display: none;
-          }
-        }
-      }
-    }
-
-    .label {
-      width: 120px;
-      white-space: nowrap;
-    }
-
-    input[type="text"],
-    textarea {
-      flex-grow: 1;
-
-      @include screen('mobile') {
-        width: 100%;
-      }
-    }
-
-    textarea {
-      height: 100px;
-    }
   }
 
   .btnBox {

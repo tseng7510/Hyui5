@@ -2215,101 +2215,43 @@ button.active, button:hover {
 .formBox {
   display: flex;
   flex-direction: column;
-  gap: 16px;
   --titleWidth: 160px;
 }
-.formBox .formGrp {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px 16px;
-  align-items: flex-start;
-}
-.formBox:has(.gridBox) .gridBox {
+.formBox .gridBox {
   border-top: 2px solid #DEE0E3;
 }
-.formBox:has(.gridBox) .gridBox .formListTitle {
-  flex-shrink: 0;
-}
-@media screen and (max-width: 767px) {
-  .formBox:has(.gridBox) .gridBox .formList {
-    padding-left: 0 !important;
-    padding-top: 20px !important;
-  }
-}
-.formBox:has(.gridBox) .gridBox > *:not(.formBtnBox) {
+.formBox .gridBox .formList {
   border-bottom: 1px dashed #DEE0E3;
 }
-.formBox:has(.gridBox) .gridBox .formList {
-  flex-wrap: nowrap;
-  flex-grow: 1;
-  padding: 20px 0;
-}
-.formBox:has(.gridBox) .gridBox .formList.inline {
-  flex-wrap: nowrap;
-}
-@media screen and (max-width: 767px) {
-  .formBox:has(.gridBox) .gridBox .formList.inline {
+@media screen and (max-width: 575px) {
+  .formBox .gridBox .formList {
+    padding-left: 0 !important;
+    padding-top: 20px !important;
     flex-direction: column !important;
-    gap: 8px;
-    align-items: stretch;
   }
-  .formBox:has(.gridBox) .gridBox .formList.inline legend {
-    margin-bottom: 5px;
-  }
-}
-.formBox:has(.gridBox) .gridBox .formList.inline .formListTitle {
-  padding: 10px 0;
-  width: var(--titleWidth);
 }
 @media screen and (max-width: 767px) {
-  .formBox:has(.gridBox) .gridBox .formList.inline .formListTitle {
-    width: 100%;
+  .formBox .gridBox .formList .formList {
+    flex-direction: column !important;
   }
-}
-.formBox:has(.gridBox) .gridBox .formList .formContent {
-  flex-grow: 1;
-}
-.formBox:has(.gridBox) .gridBox .formList .formContent:has(.formList) {
-  gap: 0;
-}
-.formBox:has(.gridBox) .gridBox .formList .formList {
-  padding: 12px 0;
-}
-@media screen and (max-width: 767px) {
-  .formBox:has(.gridBox) .gridBox .formList .formList {
-    width: 100%;
-  }
-}
-.formBox:has(.gridBox) .gridBox .formList .formList:first-child {
-  padding-top: 0;
-}
-.formBox:has(.gridBox) .gridBox .formList .formList legend {
-  top: 13px;
-}
-.formBox:has(.gridBox) .gridBox .formList .formList + .formList {
-  border-top: 1px dashed #DEE0E3;
-}
-.formBox:has(.gridBox) .gridBox .inline legend {
-  top: 20px;
 }
 .formBox .btnBox {
   display: flex;
   gap: 10px;
 }
-.formBox fieldset,
-.formBox legend {
-  all: unset;
-}
 .formBox .formList {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  padding: 12px 0;
 }
 .formBox .formList .formListTitle {
   line-height: 1.4;
   color: #333333;
+  padding: 10px 10px 10px 0;
+  width: var(--titleWidth);
+  flex-shrink: 0;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 575px) {
   .formBox .formList .formListTitle {
     width: auto;
     padding: 0px;
@@ -2354,11 +2296,14 @@ button.active, button:hover {
 .formBox .formList .formContent {
   flex-grow: 1;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  flex-direction: column;
   position: relative;
   isolation: isolate;
   gap: 8px;
+}
+.formBox .formList .formContent:not(.inline) {
+  flex-direction: column;
 }
 @media screen and (max-width: 767px) {
   .formBox .formList .formContent {
@@ -2367,6 +2312,16 @@ button.active, button:hover {
 }
 .formBox .formList .formContent.inline {
   align-items: center;
+}
+.formBox .formList .formContent:has(.formList) {
+  gap: 0;
+}
+.formBox .formList .formContent:has(.formList) .formList:first-child {
+  padding-top: 0;
+}
+.formBox .formList .formContent:has(.formList) .formList:last-child {
+  padding-bottom: 0;
+  border: none;
 }
 .formBox .formList .formEyes {
   position: absolute;
@@ -2456,45 +2411,230 @@ button.active, button:hover {
 .formBox .formList:not(.inline) legend {
   margin-bottom: 8px;
 }
-.formBox .inputBox {
+.formBox .formList .inputBox {
   flex-grow: 1;
   position: relative;
 }
-.formBox .inputBox input {
+.formBox .formList .inputBox input {
   width: 100%;
 }
-.formBox .inputBox i {
+.formBox .formList .inputBox i {
   position: absolute;
   top: 10px;
   z-index: 2;
 }
-.formBox .inputBox i::before {
+.formBox .formList .inputBox i::before {
   content: "";
   width: 24px;
   height: 24px;
   display: block;
 }
-.formBox .inputBox:has(i + input) i {
+.formBox .formList .inputBox:has(i + input) i {
   left: 10px;
 }
-.formBox .inputBox:has(i + input) input:not([type=checkBox], [type=radio]),
-.formBox .inputBox:has(i + input) select,
-.formBox .inputBox:has(i + input) textarea {
+.formBox .formList .inputBox:has(i + input) input:not([type=checkBox], [type=radio]),
+.formBox .formList .inputBox:has(i + input) select,
+.formBox .formList .inputBox:has(i + input) textarea {
   padding-left: 40px;
 }
-.formBox .inputBox * + i {
+.formBox .formList .inputBox * + i {
   right: 10px;
 }
-.formBox .inputBox * + i input:not([type=checkBox], [type=radio]),
-.formBox .inputBox * + i select,
-.formBox .inputBox * + i textarea {
+.formBox .formList .inputBox * + i input:not([type=checkBox], [type=radio]),
+.formBox .formList .inputBox * + i select,
+.formBox .formList .inputBox * + i textarea {
   padding-right: 52px;
 }
+.formBox .formList .inputOption {
+  cursor: pointer;
+}
+.formBox .formList .inputOption:has([type=checkbox]) {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  cursor: pointer;
+  padding: 4px 0;
+}
+.formBox .formList .inputOption:has([type=checkbox])::before {
+  content: "" !important;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #97A3B6;
+  position: absolute;
+  top: 9px;
+  left: 0;
+  border-radius: var(--borderRadius4);
+  pointer-events: none;
+}
+.formBox .formList .inputOption:has([type=checkbox]) [type=checkbox] {
+  width: 24px;
+  height: 24px;
+  margin-top: 4px;
+  opacity: 0;
+  cursor: pointer;
+}
+.formBox .formList .inputOption:has([type=checkbox]):has([type=checkbox]:focus-visible)::before {
+  border-color: #0156A2;
+  outline: 1px solid #0156A2;
+}
+.formBox .formList .inputOption:has([type=checkbox]):has([type=checkbox]:checked)::before {
+  background: url("../images/basic/icon/check_w.svg"), #0156A2;
+  border-color: #0156A2;
+  background-position: center center;
+}
+.formBox .formList .inputOption:has([type=radio]) {
+  padding: 4px 0;
+  position: relative;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+.formBox .formList .inputOption:has([type=radio])::before {
+  content: "" !important;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #97A3B6;
+  position: absolute;
+  top: 12px;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.formBox .formList .inputOption:has([type=radio]) [type=radio] {
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  cursor: pointer;
+}
+.formBox .formList .inputOption:has([type=radio]):has([type=radio]:focus-visible)::before {
+  outline: 2px solid red;
+  outline-offset: 2px;
+}
+.formBox .formList .inputOption:has([type=radio]):has([type=radio]:checked)::before {
+  background: #0156A2;
+  box-shadow: inset 0px 0px 0px 2px #fff;
+  border-color: #0156A2;
+}
+.formBox .formList .inputOption:has(input[disabled]) {
+  cursor: not-allowed !important;
+  opacity: 0.5;
+}
+.formBox .formList .inputOption:has(input[disabled]) input {
+  cursor: not-allowed !important;
+}
+.formBox .formList .inputOption label {
+  order: 2;
+}
+.formBox .formList [class^=formNotice] {
+  position: relative;
+  width: 100%;
+  padding: 4px 42px 4px 12px;
+  color: #333;
+  background: #DEE0E3;
+  border-radius: var(--borderRadius4);
+  isolation: isolate;
+}
+.formBox .formList [class^=formNotice]::before {
+  width: 20px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  z-index: 2;
+}
+.formBox .formList [class^=formNotice] .noticeClose {
+  position: absolute;
+  right: 5px;
+  top: 8px;
+  background: none;
+  border-radius: 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  background: url("../images/basic/icon/close_dk.svg") no-repeat center;
+  opacity: 0.4;
+}
+.formBox .formList [class^=formNoticeInfo] {
+  color: #00529B;
+  background-color: #CFE5FC;
+  padding-left: 42px;
+}
+.formBox .formList [class^=formNoticeInfo]:before {
+  content: "";
+  background-image: url("../images/basic/icon/info.svg");
+}
+.formBox .formList [class^=formNoticeSuccess] {
+  color: #00754B;
+  background-color: #CDF3E6;
+  padding-left: 42px;
+}
+.formBox .formList [class^=formNoticeSuccess]:before {
+  content: "";
+  background-image: url("../images/basic/icon/check_circle.svg");
+}
+.formBox .formList [class^=formNoticeWarning] {
+  color: #C23E00;
+  background-color: #FAECE6;
+  padding-left: 42px;
+}
+.formBox .formList [class^=formNoticeWarning]:before {
+  content: "";
+  background-image: url("../images/basic/icon/warning.svg");
+}
+.formBox .formList [class^=formNoticeError] {
+  color: #C40000;
+  background-color: #FDD7DE;
+  padding-left: 42px;
+}
+.formBox .formList [class^=formNoticeError]:before {
+  content: "";
+  background-image: url("../images/basic/icon/cancel.svg");
+}
+.formBox .formList .select {
+  position: relative;
+  isolation: isolate;
+}
+.formBox .formList .select::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  display: block;
+  background: url("../images/basic/icon/select_arrow_dk.svg") no-repeat center;
+  z-index: 9;
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  pointer-events: none;
+}
+.formBox .formList .select > select {
+  width: 100%;
+  padding-right: 30px !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.formBox .formList .select > select[disabled] {
+  background: #DEE0E3;
+  opacity: 1;
+}
 .formBox .inline {
-  flex-direction: row !important;
-  flex-wrap: wrap;
+  flex-direction: row;
   align-items: flex-start;
   gap: 14px;
+  flex-wrap: nowrap;
+}
+@media screen and (max-width: 575px) {
+  .formBox .inline {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .formBox .inline legend {
+    margin-bottom: 5px;
+  }
 }
 .formBox .inline label:has([type=checkbox]),
 .formBox .inline label:has([type=radio]) {
@@ -2511,13 +2651,11 @@ button.active, button:hover {
   flex-grow: 1;
 }
 .formBox fieldset {
+  all: unset;
   position: relative;
 }
-.formBox fieldset.inline .legendBox {
-  flex-shrink: 0;
-  flex-grow: 1;
-}
 .formBox fieldset.inline legend {
+  all: unset;
   float: left;
   width: var(--titleWidth);
   transform: none;
@@ -2530,154 +2668,6 @@ button.active, button:hover {
 .formBox .noFull .inputBox {
   width: -moz-fit-content;
   width: fit-content;
-}
-.formBox .inputOption {
-  cursor: pointer;
-}
-.formBox .inputOption:has([type=checkbox]) {
-  position: relative;
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-  cursor: pointer;
-  padding: 4px 0;
-}
-.formBox .inputOption:has([type=checkbox])::before {
-  content: "" !important;
-  width: 24px;
-  height: 24px;
-  border: 2px solid #97A3B6;
-  position: absolute;
-  top: 9px;
-  left: 0;
-  border-radius: var(--borderRadius4);
-  pointer-events: none;
-}
-.formBox .inputOption:has([type=checkbox]) [type=checkbox] {
-  width: 24px;
-  height: 24px;
-  margin-top: 4px;
-  opacity: 0;
-  cursor: pointer;
-}
-.formBox .inputOption:has([type=checkbox]):has([type=checkbox]:focus-visible)::before {
-  border-color: #0156A2;
-  outline: 1px solid #0156A2;
-}
-.formBox .inputOption:has([type=checkbox]):has([type=checkbox]:checked)::before {
-  background: url("../images/basic/icon/check_w.svg"), #0156A2;
-  border-color: #0156A2;
-  background-position: center center;
-}
-.formBox .inputOption:has([type=radio]) {
-  padding: 4px 0;
-  position: relative;
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-  cursor: pointer;
-}
-.formBox .inputOption:has([type=radio])::before {
-  content: "" !important;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #97A3B6;
-  position: absolute;
-  top: 12px;
-  left: 0;
-  border-radius: 50%;
-  pointer-events: none;
-}
-.formBox .inputOption:has([type=radio]) [type=radio] {
-  width: 20px;
-  height: 20px;
-  opacity: 0;
-  cursor: pointer;
-}
-.formBox .inputOption:has([type=radio]):has([type=radio]:focus-visible)::before {
-  outline: 2px solid red;
-  outline-offset: 2px;
-}
-.formBox .inputOption:has([type=radio]):has([type=radio]:checked)::before {
-  background: #0156A2;
-  box-shadow: inset 0px 0px 0px 2px #fff;
-  border-color: #0156A2;
-}
-.formBox .inputOption:has(input[disabled]) {
-  cursor: not-allowed !important;
-  opacity: 0.5;
-}
-.formBox .inputOption:has(input[disabled]) input {
-  cursor: not-allowed !important;
-}
-.formBox .inputOption label {
-  order: 2;
-}
-.formBox [class^=formNotice] {
-  position: relative;
-  width: 100%;
-  padding: 4px 42px 4px 12px;
-  color: #333;
-  background: #DEE0E3;
-  border-radius: var(--borderRadius4);
-  isolation: isolate;
-}
-.formBox [class^=formNotice]::before {
-  width: 20px;
-  height: 20px;
-  display: block;
-  position: absolute;
-  top: 10px;
-  left: 12px;
-  z-index: 2;
-}
-.formBox [class^=formNotice] .noticeClose {
-  position: absolute;
-  right: 5px;
-  top: 8px;
-  background: none;
-  border-radius: 0;
-  padding: 0;
-  width: 24px;
-  height: 24px;
-  background: url("../images/basic/icon/close_dk.svg") no-repeat center;
-  opacity: 0.4;
-}
-.formBox [class^=formNoticeInfo] {
-  color: #00529B;
-  background-color: #CFE5FC;
-  padding-left: 42px;
-}
-.formBox [class^=formNoticeInfo]:before {
-  content: "";
-  background-image: url("../images/basic/icon/info.svg");
-}
-.formBox [class^=formNoticeSuccess] {
-  color: #00754B;
-  background-color: #CDF3E6;
-  padding-left: 42px;
-}
-.formBox [class^=formNoticeSuccess]:before {
-  content: "";
-  background-image: url("../images/basic/icon/check_circle.svg");
-}
-.formBox [class^=formNoticeWarning] {
-  color: #C23E00;
-  background-color: #FAECE6;
-  padding-left: 42px;
-}
-.formBox [class^=formNoticeWarning]:before {
-  content: "";
-  background-image: url("../images/basic/icon/warning.svg");
-}
-.formBox [class^=formNoticeError] {
-  color: #C40000;
-  background-color: #FDD7DE;
-  padding-left: 42px;
-}
-.formBox [class^=formNoticeError]:before {
-  content: "";
-  background-image: url("../images/basic/icon/cancel.svg");
 }
 .formBox .formBtnBox {
   display: flex;
@@ -2696,36 +2686,7 @@ button.active, button:hover {
 .formBox [class*=flexTpl]:not(:has(.inline)) textarea {
   width: 100%;
 }
-
-.select {
-  position: relative;
-  isolation: isolate;
-}
-.select::before {
-  content: "";
-  width: 24px;
-  height: 24px;
-  display: block;
-  background: url("../images/basic/icon/select_arrow_dk.svg") no-repeat center;
-  z-index: 9;
-  position: absolute;
-  right: 5px;
-  top: 10px;
-  pointer-events: none;
-}
-.select > select {
-  width: 100%;
-  padding-right: 30px !important;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-.select > select[disabled] {
-  background: #DEE0E3;
-  opacity: 1;
-}
-
-img.captcha {
+.formBox img.captcha {
   padding: 0;
   line-height: 0;
   border-radius: 0;
@@ -3718,60 +3679,6 @@ button.active, button:hover {
 }
 .contentSearchBox .searchContent {
   padding: 24px;
-  display: flex;
-  flex-direction: column;
-}
-.contentSearchBox .searchContent fieldset.formList {
-  padding-left: 125px;
-  border: none;
-}
-.contentSearchBox .searchContent fieldset.formList legend {
-  position: absolute;
-  left: 0;
-}
-.contentSearchBox .searchContent .formList {
-  padding: 12px 0;
-  display: flex;
-  gap: 5px;
-  position: relative;
-  margin: 0;
-}
-@media screen and (max-width: 767px) {
-  .contentSearchBox .searchContent .formList {
-    flex-direction: column;
-  }
-}
-.contentSearchBox .searchContent .formList:not(:last-child) {
-  border-bottom: 1px dashed #DEE0E3;
-}
-.contentSearchBox .searchContent .formList:has(textarea) {
-  align-items: flex-start;
-}
-.contentSearchBox .searchContent .formList [type=date] + span {
-  display: block;
-  margin: 0 10px;
-}
-@media screen and (max-width: 767px) {
-  .contentSearchBox .searchContent .formList [type=date] + span {
-    display: none;
-  }
-}
-.contentSearchBox .searchContent .label {
-  width: 120px;
-  white-space: nowrap;
-}
-.contentSearchBox .searchContent input[type=text],
-.contentSearchBox .searchContent textarea {
-  flex-grow: 1;
-}
-@media screen and (max-width: 767px) {
-  .contentSearchBox .searchContent input[type=text],
-  .contentSearchBox .searchContent textarea {
-    width: 100%;
-  }
-}
-.contentSearchBox .searchContent textarea {
-  height: 100px;
 }
 .contentSearchBox .btnBox {
   display: flex;

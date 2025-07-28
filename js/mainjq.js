@@ -12,7 +12,11 @@ function _toggleDropdown(elem, con, autoClose = true) {
   const $targetSelect = $(elem);
   const $targetSelectCon = $(con);
 
-  if (!$targetSelect.length || !$targetSelectCon.length) return;
+  if (!$targetSelectCon.length) return;
+  if (!$targetSelect.length) {
+    $targetSelectCon.show();
+    return;
+  }
 
   const id = `ts_${_randomLetter(3)}${_randomNumber(3)}`;
 

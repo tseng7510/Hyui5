@@ -293,26 +293,37 @@
                 <button type="button" class="contentSearchBtn btnPrimary">條件查詢</button>
 
                 <div class="contentSearchBox">
-                  <form class="searchContent">
-                    <div class="formList">
-                      <label for="conSearchTitle" class="label">標題：</label>
-                      <input type="text" class="contentSearchInput" id="conSearchTitle" />
-                    </div>
-                    <div class="formList">
-                      <label for="conSearchTA" class="label">內文：</label>
-                      <textarea name="textarea" cols="30" rows="30" id="conSearchTA"></textarea>
-                    </div>
-                    <fieldset class="formList" aria-labelledby="tsearch">
-                      <legend class="label" id="tsearch">張貼日期</legend>
-                      <label for="startDate" class="srOnly">開始日期</label>
-                      <input type="date" name="" id="startDate" />
-                      <span>—</span>
-                      <label for="endDate" class="srOnly">結束日期</label>
-                      <input type="date" name="" id="endDate" />
-                    </fieldset>
-                    <div class="btnBox">
-                      <button type="reset" class="btnSecondary">重設</button>
-                      <button type="submit" class="btnPrimary">查詢</button>
+                  <form action="">
+                    <div class="formBox searchContent">
+                      <div class="formList inline">
+                        <label class="formListTitle" for="conSearchTitle">標題：</label>
+                        <div class="formContent">
+                          <input type="text" name="" id="conSearchTitle" placeholder="請輸入文字" required />
+                        </div>
+                      </div>
+
+                      <div class="formList inline">
+                        <label class="formListTitle" for="conSearchTA">內文：</label>
+                        <div class="formContent">
+                          <textarea name="textarea" cols="30" rows="10" id="conSearchTA"></textarea>
+                        </div>
+                      </div>
+
+                      <fieldset class="formList inline">
+                        <legend class="formListTitle">起始日期</legend>
+                        <div class="formContent inline">
+                          <label for="startDate1" class="srOnly">開始日期</label>
+                          <input type="date" name="" id="startDate1" />
+                          <span>—</span>
+                          <label for="endDate1" class="srOnly">結束日期</label>
+                          <input type="date" name="" id="endDate1" />
+                        </div>
+                      </fieldset>
+
+                      <div class="formBtnBox">
+                        <button type="reset" class="btnSecondary" type="reset">清除</button>
+                        <button type="submit" class="btnPrimary">送出</button>
+                      </div>
                     </div>
                   </form>
                 </div>
