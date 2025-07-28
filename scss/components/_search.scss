@@ -1,3 +1,7 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+
 *:has(.topSearch) {
   .webSearch {
     @include screen('tabletMin') {
@@ -135,7 +139,7 @@
 
       @include screen('tablet') {
         &:hover {
-          color: lighten($colorPrimary, 50);
+          color: color.scale($colorPrimary, $lightness: 50%);
         }
       }
     }

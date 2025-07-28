@@ -50,7 +50,6 @@
       line-height: 1.4;
       color: $colorWord;
       padding: 10px 10px 10px 0;
-      width: var(--titleWidth);
       flex-shrink: 0;
 
       @include screen('xsMobile') {
@@ -218,12 +217,6 @@
       color: $colorWord;
       font-size: Rem(15);
       font-weight: 400;
-    }
-
-    &:not(.inline) {
-      legend {
-        margin-bottom: 8px;
-      }
     }
 
     .inputBox {
@@ -507,6 +500,10 @@
       legend {
         margin-bottom: 5px;
       }
+    }
+
+    .formListTitle {
+      width: var(--titleWidth);
     }
 
     label:has([type="checkbox"]),

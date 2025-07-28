@@ -64,7 +64,7 @@ $noticeErrorBg: #FDD7DE;
 
 // nav
 $navSurface: $colorPrimary;
-$navSurfaceHover: darken($navSurface, 10%);
+$navSurfaceHover: color.scale($navSurface, $lightness: -10%);
 
 // form
 $formFocus: $colorPrimary;

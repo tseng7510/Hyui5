@@ -1,6 +1,4 @@
 @charset "UTF-8";
-@import '../vendor/swiper/swiper-bundle.min.css';
-@import '../vendor/fancybox/fancybox.css';
 :root {
   --RWDWidth: 991px;
   --sideFixTop: 80px;
@@ -2248,7 +2246,6 @@ button.active, button:hover {
   line-height: 1.4;
   color: #333333;
   padding: 10px 10px 10px 0;
-  width: var(--titleWidth);
   flex-shrink: 0;
 }
 @media screen and (max-width: 575px) {
@@ -2407,9 +2404,6 @@ button.active, button:hover {
   color: #333333;
   font-size: 0.9375rem;
   font-weight: 400;
-}
-.formBox .formList:not(.inline) legend {
-  margin-bottom: 8px;
 }
 .formBox .formList .inputBox {
   flex-grow: 1;
@@ -2635,6 +2629,9 @@ button.active, button:hover {
   .formBox .inline legend {
     margin-bottom: 5px;
   }
+}
+.formBox .inline .formListTitle {
+  width: var(--titleWidth);
 }
 .formBox .inline label:has([type=checkbox]),
 .formBox .inline label:has([type=radio]) {
@@ -3032,7 +3029,7 @@ header .topNav {
   transform: translate(-50%, -50%);
 }
 .subNavList .sliderFn > button.active, .subNavList .sliderFn > button:hover {
-  background: rgb(0.6871165644, 59.0920245399, 111.3128834356);
+  background: rgb(0.9, 77.4, 145.8);
 }
 
 button {
@@ -4029,7 +4026,7 @@ button.active, button:hover {
 }
 @media screen and (max-width: 991px) {
   .webSearch .hotKeyword a:hover {
-    color: rgb(163.5644171779, 211.5398773006, 254.4355828221);
+    color: rgb(82.5644171779, 173.0398773006, 253.9355828221);
   }
 }
 

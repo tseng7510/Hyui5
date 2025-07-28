@@ -1,10 +1,14 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+
 @import '_variable'; //變數
 
-// 外部套件
-@import '../vendor/swiper/swiper-bundle.min.css'; //swiper初始套件
-@import '../vendor/fancybox/fancybox.css'; //fancybox初始套件
+// // 外部套件
+// @import '../vendor/swiper/swiper-bundle.min.css'; //swiper初始套件
+// @import '../vendor/fancybox/fancybox.css'; //fancybox初始套件
 
-// 共通
+// // 共通
 @import 'basic/_normalize'; //reset
 @import 'basic/_mixin'; //mixin功能
 @import 'basic/_fontFamily'; //字型檔
@@ -47,4 +51,3 @@
 @import 'views/_cp'; //CP
 @import 'views/_404'; //CP
 @import 'views/_sitemap'; //sitemap
-// @import 'pages/_color';
