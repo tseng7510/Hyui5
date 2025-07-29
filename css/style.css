@@ -2652,6 +2652,7 @@ button.active, button:hover {
 .formBox fieldset {
   all: unset;
   position: relative;
+  box-sizing: border-box;
 }
 .formBox fieldset legend {
   all: unset;

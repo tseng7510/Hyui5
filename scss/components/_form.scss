@@ -530,6 +530,7 @@
   fieldset {
     all: unset;
     position: relative;
+    box-sizing: border-box;
 
     legend {
       all: unset;
