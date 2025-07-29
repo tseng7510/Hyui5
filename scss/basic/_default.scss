@@ -80,6 +80,7 @@ input:not([type="checkBox"], [type="radio"]) {
   border-radius: 4px;
   border: #DEE0E3 1px solid;
   background: #FFF;
+  box-sizing: border-box !important;
 }
 
 select,

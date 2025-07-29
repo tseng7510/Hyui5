@@ -265,6 +265,25 @@
                       </div>
                     </div>
 
+                    <div class="formList">
+                      <label class="formListTitle" for="formItem48">icon在前</label>
+                      <div class="formContent">
+                        <div class="inputBox">
+                          <i class="i_mail_dk"></i>
+                          <input type="text" name="" id="formItem48" placeholder="請輸入文字" required />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="formList">
+                      <label class="formListTitle" for="formItem48">icon在後</label>
+                      <div class="formContent">
+                        <div class="inputBox">
+                          <input type="text" name="" id="formItem48" placeholder="請輸入文字" required />
+                          <i class="i_mail_dk"></i>
+                        </div>
+                      </div>
+                    </div>
+
                     <h3>格線式表單</h3>
                     <!-- required為必填標記 -->
                     <div class="gridBox">
@@ -422,16 +441,16 @@
                             <input type="radio" name="radioGrp10" id="RC10" value="checked" checked />
                             <label for="RC10">Checked</label>
                           </div>
-                          <input type="text" name="" id="formItem44" placeholder="" />
-                          <label for="formItem44" class="srOnly">其他相目</label>
+                          <input type="text" name="" id="formItem47" placeholder="" />
+                          <label for="formItem47" class="srOnly">其他相目</label>
                         </div>
                       </fieldset>
 
                       <div class="formList inline">
-                        <label class="formListTitle" for="formItem3Select">下拉選單</label>
+                        <label class="formListTitle" for="formItem2Select">下拉選單</label>
                         <div class="formContent">
                           <div class="select">
-                            <select name="" id="formItem3Select" aria-labelledby="fieldset6">
+                            <select name="" id="formItem2Select">
                               <option value="">請選擇</option>
                               <option value="option">option</option>
                               <option value="option">option</option>
@@ -439,11 +458,38 @@
                           </div>
                         </div>
                       </div>
+                      <fieldset class="formList inline">
+                        <legend class="formListTitle">下拉選單</legend>
+                        <div class="formContent">
+                          <div class="flexTpl_2">
+                            <div class="col">
+                              <div class="select">
+                                <label class="srOnly" for="formItem3Select">下拉選單</label>
+                                <select name="" id="formItem3Select">
+                                  <option value="">請選擇</option>
+                                  <option value="option">option</option>
+                                  <option value="option">option</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="select">
+                                <label class="srOnly" for="formItem4Select">下拉選單</label>
+                                <select name="" id="formItem4Select">
+                                  <option value="">請選擇</option>
+                                  <option value="option">option</option>
+                                  <option value="option">option</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
                       <div class="formList inline noFull">
-                        <label class="formListTitle" for="formItem4Select">下拉選單(Inline)</label>
+                        <label class="formListTitle" for="formItem5Select">下拉選單(Inline)</label>
                         <div class="formContent">
                           <div class="select">
-                            <select name="" id="formItem4Select">
+                            <select name="" id="formItem5Select">
                               <option value="">請選擇</option>
                               <option value="option">option</option>
                               <option value="option">option</option>
@@ -516,21 +562,13 @@
                             <legend class="formListTitle"><em aria-label="必填">*</em>出生年月日</legend>
                             <div class="formContent inline">
                               <div class="select">
-                                <select name="" id="formItem5Select" required>
-                                  <option value="">請選擇</option>
-                                  <option value="option">option</option>
-                                  <option value="option">option</option>
-                                </select>
-                              </div>
-                              <label for="formItem5Select">年</label>
-                              <div class="select">
                                 <select name="" id="formItem6Select" required>
                                   <option value="">請選擇</option>
                                   <option value="option">option</option>
                                   <option value="option">option</option>
                                 </select>
                               </div>
-                              <label for="formItem6Select">月</label>
+                              <label for="formItem6Select">年</label>
                               <div class="select">
                                 <select name="" id="formItem7Select" required>
                                   <option value="">請選擇</option>
@@ -538,7 +576,15 @@
                                   <option value="option">option</option>
                                 </select>
                               </div>
-                              <label for="formItem7Select">日</label>
+                              <label for="formItem7Select">月</label>
+                              <div class="select">
+                                <select name="" id="formItem8Select" required>
+                                  <option value="">請選擇</option>
+                                  <option value="option">option</option>
+                                  <option value="option">option</option>
+                                </select>
+                              </div>
+                              <label for="formItem8Select">日</label>
                             </div>
                           </fieldset>
 
@@ -553,9 +599,9 @@
                         <legend class="formListTitle">聯絡方式</legend>
                         <div class="formContent">
                           <div class="formList inline">
-                            <label class="formListTitle" for="formItem8Select">國家區域</label>
+                            <label class="formListTitle" for="formItem9Select">國家區域</label>
                             <div class="select">
-                              <select name="" id="formItem8Select">
+                              <select name="" id="formItem9Select">
                                 <option value="">請選擇</option>
                                 <option value="option">option</option>
                                 <option value="option">option</option>
@@ -568,11 +614,11 @@
                               <div class="flexTpl_3_9">
                                 <div class="col">
                                   <label for="formItem16" class="srOnly">區碼</label>
-                                  <input type="text" id="formItem16" aria-label="區碼" />
+                                  <input type="text" id="formItem16" />
                                 </div>
                                 <div class="col">
                                   <label for="formItem17" class="srOnly">號碼</label>
-                                  <input type="text" id="formItem17" aria-label="號碼" />
+                                  <input type="text" id="formItem17" />
                                 </div>
                               </div>
                             </div>
@@ -608,17 +654,7 @@
                               <div class="flexTpl_2_2_8">
                                 <div class="col">
                                   <div class="select">
-                                    <label for="formItem9Select" class="srOnly">縣市</label>
-                                    <select name="" id="formItem9Select">
-                                      <option value="">請選擇</option>
-                                      <option value="option">option</option>
-                                      <option value="option">option</option>
-                                    </select>
-                                  </div>
-                                </div>
-                                <div class="col">
-                                  <div class="select">
-                                    <label for="formItem10Select" class="srOnly">區域</label>
+                                    <label for="formItem10Select" class="srOnly">縣市</label>
                                     <select name="" id="formItem10Select">
                                       <option value="">請選擇</option>
                                       <option value="option">option</option>
@@ -627,15 +663,25 @@
                                   </div>
                                 </div>
                                 <div class="col">
+                                  <div class="select">
+                                    <label for="formItem11Select" class="srOnly">區域</label>
+                                    <select name="" id="formItem11Select">
+                                      <option value="">請選擇</option>
+                                      <option value="option">option</option>
+                                      <option value="option">option</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="col">
                                   <label for="formItem19" class="srOnly">聯絡地址</label>
-                                  <input type="text" aria-label="聯絡地址" id="formItem19" name="" />
+                                  <input type="text" id="formItem19" name="" />
                                 </div>
                               </div>
                             </div>
                           </fieldset>
 
                           <fieldset class="formList inline">
-                            <legend class="formListTitle" id="fieldset14">寄送地址</legend>
+                            <legend class="formListTitle">寄送地址</legend>
                             <div class="formContent inline">
                               <div class="inputOption">
                                 <input type="checkbox" id="formItem20" />
@@ -644,17 +690,7 @@
                               <div class="flexTpl_2_2_8">
                                 <div class="col">
                                   <div class="select">
-                                    <label for="formItem11Select" class="srOnly">縣市</label>
-                                    <select name="" id="formItem11Select" aria-labelledby="fieldset14">
-                                      <option value="">請選擇</option>
-                                      <option value="option">option</option>
-                                      <option value="option">option</option>
-                                    </select>
-                                  </div>
-                                </div>
-                                <div class="col">
-                                  <div class="select">
-                                    <label for="formItem12Select" class="srOnly">區域</label>
+                                    <label for="formItem12Select" class="srOnly">縣市</label>
                                     <select name="" id="formItem12Select" aria-labelledby="fieldset14">
                                       <option value="">請選擇</option>
                                       <option value="option">option</option>
@@ -663,7 +699,17 @@
                                   </div>
                                 </div>
                                 <div class="col">
-                                  <input type="text" aria-label="聯絡地址" name="" id="formItem21" aria-labelledby="fieldset14" />
+                                  <div class="select">
+                                    <label for="formItem13Select" class="srOnly">區域</label>
+                                    <select name="" id="formItem13Select" aria-labelledby="fieldset14">
+                                      <option value="">請選擇</option>
+                                      <option value="option">option</option>
+                                      <option value="option">option</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <input type="text" name="" id="formItem21" aria-labelledby="fieldset14" />
                                   <label for="formItem21" class="srOnly">聯絡地址</label>
                                 </div>
                               </div>
@@ -723,10 +769,10 @@
                           </fieldset>
 
                           <div class="formList inline">
-                            <label class="formListTitle" for="formItem13Select">下拉選單</label>
+                            <label class="formListTitle" for="formItem14Select">下拉選單</label>
                             <div class="formContent">
                               <div class="select">
-                                <select name="" id="formItem13Select">
+                                <select name="" id="formItem14Select">
                                   <option value="">請選擇</option>
                                   <option value="option">option</option>
                                   <option value="option">option</option>
@@ -735,10 +781,10 @@
                             </div>
                           </div>
                           <div class="formList inline noFull">
-                            <label class="formListTitle" for="formItem14Select">下拉選單(Inline)</label>
+                            <label class="formListTitle" for="formItem15Select">下拉選單(Inline)</label>
                             <div class="formContent">
                               <div class="select">
-                                <select name="" id="formItem14Select">
+                                <select name="" id="formItem15Select">
                                   <option value="">請選擇</option>
                                   <option value="option">option</option>
                                   <option value="option">option</option>
@@ -786,8 +832,8 @@
                             </div>
                             <div class="col">
                               <div class="select">
-                                <label for="formItem15Select" class="srOnly">下拉選單</label>
-                                <select name="" id="formItem15Select">
+                                <label for="formItem16Select" class="srOnly">下拉選單</label>
+                                <select name="" id="formItem16Select">
                                   <option value="">請選擇</option>
                                   <option value="option">option</option>
                                   <option value="option">option</option>
@@ -811,8 +857,8 @@
                             </div>
                             <div class="col">
                               <div class="select">
-                                <label for="formItem16Select" class="srOnly">下拉選單</label>
-                                <select name="" id="formItem16Select">
+                                <label for="formItem17Select" class="srOnly">下拉選單</label>
+                                <select name="" id="formItem17Select">
                                   <option value="">請選擇</option>
                                   <option value="option">option</option>
                                   <option value="option">option</option>
@@ -851,8 +897,8 @@
                             </div>
                             <div class="col">
                               <div class="select">
-                                <label for="formItem17Select" class="srOnly">下拉選單</label>
-                                <select name="" id="formItem17Select" aria-labelledby="fieldset21">
+                                <label for="formItem18Select" class="srOnly">下拉選單</label>
+                                <select name="" id="formItem18Select">
                                   <option value="">請選擇</option>
                                   <option value="option">option</option>
                                   <option value="option">option</option>
@@ -946,7 +992,7 @@
                       </fieldset>
 
                       <fieldset class="formList inline">
-                        <legend class="formListTitle" id="fieldset24">col_4_4_4 (有Title)</legend>
+                        <legend class="formListTitle">col_4_4_4 (有Title)</legend>
                         <div class="formContent">
                           <div class="flexTpl_3">
                             <div class="col">
@@ -963,9 +1009,9 @@
                             </div>
                             <div class="col">
                               <div class="formList">
-                                <label class="formListTitle" for="formItem18Select">三欄 欄目C</label>
+                                <label class="formListTitle" for="formItem19Select">三欄 欄目C</label>
                                 <div class="select">
-                                  <select name="" id="formItem18Select">
+                                  <select name="" id="formItem19Select">
                                     <option value="">請選擇</option>
                                     <option value="option">option</option>
                                     <option value="option">option</option>
@@ -993,9 +1039,9 @@
                           </div>
                           <div class="col">
                             <div class="formList">
-                              <label class="formListTitle" for="formItem19Select">三欄 欄目B</label>
+                              <label class="formListTitle" for="formItem20Select">三欄 欄目B</label>
                               <div class="select">
-                                <select name="" id="formItem19Select" aria-labelledby="fieldset25">
+                                <select name="" id="formItem20Select">
                                   <option value="">請選擇</option>
                                   <option value="option">option</option>
                                   <option value="option">option</option>
@@ -1041,9 +1087,9 @@
                           </div>
                           <div class="col">
                             <div class="formList">
-                              <label class="formListTitle" for="formItem20Select">四欄 欄目C</label>
+                              <label class="formListTitle" for="formItem21Select">四欄 欄目C</label>
                               <div class="select">
-                                <select name="" id="formItem20Select">
+                                <select name="" id="formItem21Select">
                                   <option value="">請選擇</option>
                                   <option value="option">option</option>
                                   <option value="option">option</option>
@@ -1053,9 +1099,9 @@
                           </div>
                           <div class="col">
                             <div class="formList">
-                              <label class="formListTitle" for="formItem21Select">四欄 欄目D</label>
+                              <label class="formListTitle" for="formItem22Select">四欄 欄目D</label>
                               <div class="select">
-                                <select name="" id="formItem21Select">
+                                <select name="" id="formItem22Select">
                                   <option value="">請選擇</option>
                                   <option value="option">option</option>
                                   <option value="option">option</option>
@@ -1088,9 +1134,9 @@
                           </div>
                           <div class="col">
                             <div class="formList">
-                              <label class="formListTitle" for="formItem22Select">五欄 欄目D</label>
+                              <label class="formListTitle" for="formItem23Select">五欄 欄目D</label>
                               <div class="select">
-                                <select name="" id="formItem22Select">
+                                <select name="" id="formItem23Select">
                                   <option value="">請選擇</option>
                                   <option value="option">option</option>
                                   <option value="option">option</option>
@@ -1100,9 +1146,9 @@
                           </div>
                           <div class="col">
                             <div class="formList">
-                              <label class="formListTitle" for="formItem23Select">五欄 欄目E</label>
+                              <label class="formListTitle" for="formItem24Select">五欄 欄目E</label>
                               <div class="select">
-                                <select name="" id="formItem23Select">
+                                <select name="" id="formItem24Select">
                                   <option value="">請選擇</option>
                                   <option value="option">option</option>
                                   <option value="option">option</option>
@@ -1119,31 +1165,61 @@
                       <div class="flexTpl_2">
                         <div class="col">
                           <div class="formList">
-                            <label class="formListTitle" for="formItem30"><em aria-label="必填">*</em>一般狀態 + 顯示提示文字</label>
+                            <label class="formListTitle" for="formItem25Select"><em aria-label="必填">*</em>一般狀態 + 顯示提示文字</label>
                             <div class="formContent">
-                              <input type="text" name="" id="formItem30" aria-describedby="helpContent" placeholder="請輸入文字" required />
+                              <div class="select">
+                                <select name="" id="formItem25Select" required>
+                                  <option value="">請選擇</option>
+                                  <option value="option">option</option>
+                                  <option value="option">option</option>
+                                </select>
+                              </div>
                             </div>
                           </div>
                         </div>
                         <div class="col">
                           <div class="formList">
-                            <label class="formListTitle" for="formItem31"><em aria-label="必填">*</em>一般狀態 + 顯示提示文字</label>
+                            <label class="formListTitle" for="formItem26Select"><em aria-label="必填">*</em>一般狀態 + 顯示提示文字</label>
                             <div class="formContent">
-                              <input type="text" name="" id="formItem31" aria-describedby="helpContent" placeholder="請輸入文字" required />
+                              <div class="select">
+                                <select name="" id="formItem26Select" required>
+                                  <option value="">請選擇</option>
+                                  <option value="option">option</option>
+                                  <option value="option">option</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="flexTpl_2">
+                        <div class="col">
+                          <div class="formList">
+                            <label class="formListTitle" for="formItem43"><em aria-label="必填">*</em>一般狀態 + 顯示提示文字</label>
+                            <div class="formContent">
+                              <input type="text" name="" id="formItem43" aria-describedby="helpContent" placeholder="請輸入文字" required />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="formList">
+                            <label class="formListTitle" for="formItem44"><em aria-label="必填">*</em>一般狀態 + 顯示提示文字</label>
+                            <div class="formContent">
+                              <input type="text" name="" id="formItem44" aria-describedby="helpContent" placeholder="請輸入文字" required />
                             </div>
                           </div>
                         </div>
                       </div>
                       <div class="formList">
-                        <label class="formListTitle" for="formItem32"><em aria-label="必填">*</em>一般狀態 + 顯示提示文字</label>
+                        <label class="formListTitle" for="formItem45"><em aria-label="必填">*</em>一般狀態 + 顯示提示文字</label>
                         <div class="formContent">
-                          <input type="text" name="" id="formItem32" aria-describedby="helpContent" placeholder="請輸入文字" required />
+                          <input type="text" name="" id="formItem45" aria-describedby="helpContent" placeholder="請輸入文字" required />
                         </div>
                       </div>
                       <div class="formList">
-                        <label class="formListTitle" for="formItem33"><em aria-label="必填">*</em>一般狀態 + 顯示提示文字</label>
+                        <label class="formListTitle" for="formItem46"><em aria-label="必填">*</em>一般狀態 + 顯示提示文字</label>
                         <div class="formContent">
-                          <input type="text" name="" id="formItem33" aria-describedby="helpContent" placeholder="請輸入文字" required />
+                          <input type="text" name="" id="formItem46" aria-describedby="helpContent" placeholder="請輸入文字" required />
                         </div>
                       </div>
                     </div>

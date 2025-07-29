@@ -242,7 +242,7 @@
       }
 
       // icon在前面
-      &:has(i + input) {
+      &:has(i + *) {
         i {
           left: 10px;
         }
@@ -250,17 +250,19 @@
         input:not([type="checkBox"], [type="radio"]),
         select,
         textarea {
-          padding-left: 40px;
+          padding-left: 45px;
         }
       }
 
-      * + i {
-        right: 10px;
+      &:has(* + i) {
+        i {
+          right: 10px;
+        }
 
         input:not([type="checkBox"], [type="radio"]),
         select,
         textarea {
-          padding-right: 52px;
+          padding-right: 45px;
         }
       }
     }
@@ -535,7 +537,6 @@
     legend {
       all: unset;
       float: left;
-      width: var(--titleWidth);
       transform: none;
       box-sizing: border-box;
     }

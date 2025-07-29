@@ -677,6 +677,7 @@ input:not([type=checkBox], [type=radio]) {
   border-radius: 4px;
   border: #DEE0E3 1px solid;
   background: #FFF;
+  box-sizing: border-box !important;
 }
 
 select,
@@ -2425,21 +2426,21 @@ button.active, button:hover {
   height: 24px;
   display: block;
 }
-.formBox .formList .inputBox:has(i + input) i {
+.formBox .formList .inputBox:has(i + *) i {
   left: 10px;
 }
-.formBox .formList .inputBox:has(i + input) input:not([type=checkBox], [type=radio]),
-.formBox .formList .inputBox:has(i + input) select,
-.formBox .formList .inputBox:has(i + input) textarea {
-  padding-left: 40px;
+.formBox .formList .inputBox:has(i + *) input:not([type=checkBox], [type=radio]),
+.formBox .formList .inputBox:has(i + *) select,
+.formBox .formList .inputBox:has(i + *) textarea {
+  padding-left: 45px;
 }
-.formBox .formList .inputBox * + i {
+.formBox .formList .inputBox:has(* + i) i {
   right: 10px;
 }
-.formBox .formList .inputBox * + i input:not([type=checkBox], [type=radio]),
-.formBox .formList .inputBox * + i select,
-.formBox .formList .inputBox * + i textarea {
-  padding-right: 52px;
+.formBox .formList .inputBox:has(* + i) input:not([type=checkBox], [type=radio]),
+.formBox .formList .inputBox:has(* + i) select,
+.formBox .formList .inputBox:has(* + i) textarea {
+  padding-right: 45px;
 }
 .formBox .formList .inputOption {
   cursor: pointer;
@@ -2657,7 +2658,6 @@ button.active, button:hover {
 .formBox fieldset legend {
   all: unset;
   float: left;
-  width: var(--titleWidth);
   transform: none;
   box-sizing: border-box;
 }
