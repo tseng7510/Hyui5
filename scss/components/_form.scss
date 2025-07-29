@@ -531,13 +531,17 @@
     all: unset;
     position: relative;
 
-    &.inline {
-      legend {
-        all: unset;
-        float: left;
-        width: var(--titleWidth);
-        transform: none;
-      }
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    legend {
+      all: unset;
+      float: left;
+      width: var(--titleWidth);
+      transform: none;
     }
   }
 

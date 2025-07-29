@@ -2653,7 +2653,12 @@ button.active, button:hover {
   all: unset;
   position: relative;
 }
-.formBox fieldset.inline legend {
+.formBox fieldset::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.formBox fieldset legend {
   all: unset;
   float: left;
   width: var(--titleWidth);
