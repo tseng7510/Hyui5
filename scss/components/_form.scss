@@ -536,6 +536,7 @@
       float: left;
       width: var(--titleWidth);
       transform: none;
+      box-sizing: border-box;
     }
   }
 
