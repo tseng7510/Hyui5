@@ -609,7 +609,6 @@ function mainMenu(obj) {
     const nextUl = e.querySelectorAll('ul');
     //確定最後一層ul的父層li共有幾個
     const hasChildLi = _jsParents([...nextUl].at(-1), 'li');
-    console.log(nextUl);
 
     // 如果只有一層就不需要
     if (hasChildLi.length <= 1) return;
@@ -2004,10 +2003,10 @@ function marquee() {
   if (marquee.length === 0) return;
   marquee.forEach((i) => {
     const marqueeBox = i.querySelector('.marqueeBox');
-    const marqueeBoxWidth = marqueeBox.offsetWidth;
     const marqueeList = i.querySelector('.marqueeList');
-    const marqueeListWidth = marqueeList.offsetWidth;
     const autoPlaySwitch = i.querySelector('.autoPlaySwitch');
+    let marqueeBoxWidth = marqueeBox.offsetWidth;
+    let marqueeListWidth = marqueeList.offsetWidth;
 
     let isPaused = false;
     let isHover = false;

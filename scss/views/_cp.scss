@@ -78,3 +78,10 @@
     }
   }
 }
+
+.callout {
+  display: block;
+  padding: 32px;
+  border-left: 5px solid $colorSecondary;
+  background: #DEE0E3;
+}

@@ -116,15 +116,15 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   // -----  CP 輪播   ---------------------------------------------------
-  const cpSlider = new Swiper('.cpSlider .swiper', {
+  const lighBoxSlider = new Swiper('.lighBoxSlider .swiper', {
     slidesPerView: 1,
     spaceBetween: 20,
     slideToClickedSlide: true,
     loop: false,
     // 切換箭頭
     navigation: {
-      nextEl: '.cpSlider .swiperNext', //自行設定樣式
-      prevEl: '.cpSlider .swiperPrev', //自行設定樣式
+      nextEl: '.lighBoxSlider .swiperNext', //自行設定樣式
+      prevEl: '.lighBoxSlider .swiperPrev', //自行設定樣式
       disabledClass: 'swiperArrow-disabled', //不可點選樣式
     },
     breakpoints: {

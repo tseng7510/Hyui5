@@ -17,7 +17,7 @@
     }
 
     &:focus-visible {
-      outline: #e50012 2px solid;
+      outline: $colorAccessibility 2px solid;
       outline-offset: 1px;
       box-shadow: none;
     }
@@ -85,4 +85,8 @@
     justify-content: flex-end;
     gap: 10px;
   }
+}
+
+.fancybox__content {
+  color: #000;
 }

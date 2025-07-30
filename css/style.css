@@ -632,6 +632,65 @@ body .mainContent.largeSize {
   zoom: 1.25;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+@media screen and (max-width: 991px) {
+  .wrapper {
+    padding-top: 60px;
+  }
+}
+
+main {
+  width: 100%;
+  position: relative;
+  padding-bottom: 80px;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+main.innerPage {
+  padding-top: 40px;
+  background: #F8F8F8;
+}
+main:has(aside) .container {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+@media screen and (max-width: 991px) {
+  main:has(aside) .container {
+    flex-direction: column;
+  }
+}
+main:has(aside) .mainContentBox {
+  flex-grow: 1;
+  transition: all 0.3s ease;
+}
+@media screen and (max-width: 991px) {
+  main:has(aside) .mainContentBox {
+    width: 100%;
+  }
+}
+main .mainContentBox {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+main .mainContentBox .pageTitle {
+  font-size: 2.25rem;
+  margin: 0;
+  font-weight: 600;
+}
+main .mainContentBox .mainContent {
+  width: 100%;
+}
+main.innerPage:not(.hasSide) section {
+  width: 100%;
+  margin: 0 auto;
+}
+
 .noscroll {
   overflow: hidden;
   height: 100vh;
@@ -2149,7 +2208,7 @@ button.active, button:hover {
 }
 .popupB .f-button.is-close-btn:focus-visible,
 .popupS .f-button.is-close-btn:focus-visible {
-  outline: #e50012 2px solid;
+  outline: #C40000 2px solid;
   outline-offset: 1px;
   box-shadow: none;
 }
@@ -2204,6 +2263,10 @@ button.active, button:hover {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+}
+
+.fancybox__content {
+  color: #000;
 }
 
 .notionInfo {
@@ -5033,19 +5096,19 @@ button.autoPlaySwitch:hover {
   overflow: hidden;
 }
 
-.cpSlider {
+.lighBoxSlider {
   position: relative;
   isolation: isolate;
 }
-.cpSlider .swiperBox {
+.lighBoxSlider .swiperBox {
   padding: 0px 70px;
 }
 @media screen and (max-width: 991px) {
-  .cpSlider .swiperBox {
+  .lighBoxSlider .swiperBox {
     padding: 10px 40px;
   }
 }
-.cpSlider .item {
+.lighBoxSlider .item {
   cursor: pointer;
   display: block;
   height: 100%;
@@ -5054,14 +5117,14 @@ button.autoPlaySwitch:hover {
   justify-content: center;
   text-decoration: none;
 }
-.cpSlider .item:focus-visible .caption, .cpSlider .item:hover .caption {
+.lighBoxSlider .item:focus-visible .caption, .lighBoxSlider .item:hover .caption {
   transform: translateY(0);
 }
-.cpSlider .item:focus-visible {
+.lighBoxSlider .item:focus-visible {
   outline-width: 4px;
   outline-offset: -4px;
 }
-.cpSlider .swiperDots {
+.lighBoxSlider .swiperDots {
   position: absolute;
   bottom: 0;
   transform: translateY(100%);
@@ -5069,15 +5132,15 @@ button.autoPlaySwitch:hover {
   justify-content: center;
   padding: 10px 0;
 }
-.cpSlider .pic {
+.lighBoxSlider .pic {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-.cpSlider .pic img {
+.lighBoxSlider .pic img {
   aspect-ratio: 4/3;
 }
-.cpSlider .caption {
+.lighBoxSlider .caption {
   width: 100%;
   text-align: center;
   padding: 5px 10px;
@@ -5088,11 +5151,11 @@ button.autoPlaySwitch:hover {
   transition: all 0.3s ease;
 }
 @media screen and (max-width: 767px) {
-  .cpSlider .caption {
+  .lighBoxSlider .caption {
     transform: translateY(0);
   }
 }
-.cpSlider .caption span {
+.lighBoxSlider .caption span {
   -webkit-line-clamp: 1;
   display: -webkit-box !important;
   -webkit-box-orient: vertical;
@@ -5369,7 +5432,7 @@ button.autoPlaySwitch:hover {
   position: fixed;
   right: 22px;
   bottom: 20%;
-  z-index: 90;
+  z-index: 50;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -5560,6 +5623,9 @@ button.autoPlaySwitch:hover {
   position: absolute;
   top: -0.5px;
   right: -0.5px;
+}
+.fileDownloadBox .downloadFiles a:focus-visible {
+  outline-offset: 2px;
 }
 .fileDownloadBox .downloadFiles a:hover {
   filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.3));
@@ -5810,64 +5876,6 @@ header h1 span {
 }
 header h1 img {
   height: 100%;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-@media screen and (max-width: 991px) {
-  .wrapper {
-    padding-top: 60px;
-  }
-}
-
-main {
-  width: 100%;
-  position: relative;
-  padding-bottom: 80px;
-  flex-grow: 1;
-}
-main.innerPage {
-  padding-top: 40px;
-  background: #F8F8F8;
-}
-main *:has(aside) .container {
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-}
-@media screen and (max-width: 991px) {
-  main *:has(aside) .container {
-    flex-direction: column;
-  }
-}
-main *:has(aside) .mainContentBox {
-  flex-grow: 1;
-  transition: all 0.3s ease;
-}
-@media screen and (max-width: 991px) {
-  main *:has(aside) .mainContentBox {
-    width: 100%;
-  }
-}
-main .mainContentBox {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-main .mainContentBox .pageTitle {
-  font-size: 2.25rem;
-  margin: 0;
-  font-weight: 600;
-}
-main .mainContentBox .mainContent {
-  width: 100%;
-}
-main.innerPage:not(.hasSide) section {
-  width: 100%;
-  margin: 0 auto;
 }
 
 footer {
@@ -6958,6 +6966,13 @@ section:last-child {
 }
 .contentLinkBox > ul li a:not(:hover) {
   color: #333333;
+}
+
+.callout {
+  display: block;
+  padding: 32px;
+  border-left: 5px solid #326DC7;
+  background: #DEE0E3;
 }
 
 .wrapper:has(.errorPage) {

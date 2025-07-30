@@ -82,6 +82,10 @@
         right: -0.5px;
       }
 
+      &:focus-visible {
+        outline-offset: 2px
+      }
+
       &:hover {
         filter: drop-shadow(0 2px 1px rgba(#000, 0.3));
 
