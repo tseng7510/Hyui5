@@ -2535,8 +2535,8 @@ button.active, button:hover {
   cursor: pointer;
 }
 .formBox .formList .inputOption:has([type=checkbox]):has([type=checkbox]:focus-visible)::before {
-  border-color: #0156A2;
-  outline: 1px solid #0156A2;
+  outline: 2px solid red;
+  outline-offset: 2px;
 }
 .formBox .formList .inputOption:has([type=checkbox]):has([type=checkbox]:checked)::before {
   background: url("../images/basic/icon/check_w.svg"), #0156A2;
