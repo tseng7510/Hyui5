@@ -1,3 +1,9 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
 .listGroup {
   ul {
     @include liReset;

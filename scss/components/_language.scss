@@ -1,5 +1,10 @@
-//語言
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
 
+//語言
 .subNavList .language {
   position: relative;
   z-index: 50;

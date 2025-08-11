@@ -1,12 +1,13 @@
-@use "sass:math";
-@use "sass:map";
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *;
 //-------------------------------------------------------------mixin-media-------//
 // media query @include screen(desktop) { color: red; }
 $notebookMin: map.get($screenSize, notebook) + 1;
 $tabletMin: map.get($screenSize, tablet) + 1;
 $mobileMin: map.get($screenSize, mobile) + 1;
 $xsMobileMin: map.get($screenSize, xsMobile) + 1;
-$newabc: 1200;
 
 @mixin screen($size) {
   @if $size==notebook {

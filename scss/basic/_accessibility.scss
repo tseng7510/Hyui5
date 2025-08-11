@@ -1,3 +1,9 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
 // 設定當物件被:focus-visible時的效果
 *:focus-visible {
   outline: $colorAccessibility 2px solid;

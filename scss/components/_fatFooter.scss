@@ -1,3 +1,9 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
 .fatFooter {
   width: 100%;
   background: linear-gradient(180deg, #DEE0E3 0%, #F8F8F8 77%);

@@ -1,3 +1,9 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
 .sitemap {
   display: flex;
   flex-direction: column;
@@ -19,12 +25,22 @@
     border: 1px solid #bbb;
     padding: 0 12px;
     margin: 0 5px;
+
+    @include screen('mobile') {
+      font-size: Rem(14);
+      padding: 0 5px;
+      margin: 0 2px !important;
+    }
   }
 
   .accessKeyDefine {
     background: #DEE0E3;
     border-radius: 6px;
     padding: 24px 32px;
+
+    @include screen('mobile') {
+      padding: 20px 20px;
+    }
 
     ul {
       margin-bottom: 10px;
@@ -51,6 +67,10 @@
       @include screen('tablet') {
         flex-direction: column;
         padding: 0 20px;
+      }
+
+      @include screen('mobile') {
+        padding: 0px 15px;
       }
 
       .title {
@@ -100,10 +120,21 @@
       flex-direction: column;
       gap: 12px;
 
+      @include screen('mobile') {
+        list-style: none;
+        padding: 0;
+      }
+
       li {
         & > kbd {
           &:first-of-type {
             margin-left: 0;
+          }
+        }
+
+        br {
+          @include screen('mobileMin') {
+            display: none;
           }
         }
       }

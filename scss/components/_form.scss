@@ -1,4 +1,8 @@
-@use "sass:math";
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
 
 .notionInfo {
   color: $colorWord;
@@ -375,84 +379,6 @@
       }
     }
 
-    // form notice
-    [class^='formNotice'] {
-      position: relative;
-      width: 100%;
-      padding: 4px 42px 4px 12px;
-      color: $noticeNormalGWord;
-      background: $noticeNormalGBg;
-      border-radius: var(--borderRadius4);
-      isolation: isolate;
-
-      &::before {
-        width: 20px;
-        height: 20px;
-        display: block;
-        position: absolute;
-        top: 10px;
-        left: 12px;
-        z-index: 2;
-      }
-
-      .noticeClose {
-        position: absolute;
-        right: 5px;
-        top: 8px;
-        background: none;
-        border-radius: 0;
-        padding: 0;
-        width: 24px;
-        height: 24px;
-        background: url('../images/basic/icon/close_dk.svg') no-repeat center;
-        opacity: 0.4;
-      }
-    }
-
-    [class^='formNoticeInfo'] {
-      color: $noticeNormalWord;
-      background-color: $noticeNormalBg;
-      padding-left: 42px;
-
-      &:before {
-        content: '';
-        background-image: url('../images/basic/icon/info.svg');
-      }
-    }
-
-    [class^='formNoticeSuccess'] {
-      color: $noticeSuccessWord;
-      background-color: $noticeSuccessBg;
-      padding-left: 42px;
-
-      &:before {
-        content: '';
-        background-image: url('../images/basic/icon/check_circle.svg');
-      }
-    }
-
-    [class^='formNoticeWarning'] {
-      color: $noticeWarningWord;
-      background-color: $noticeWarningBg;
-      padding-left: 42px;
-
-      &:before {
-        content: '';
-        background-image: url('../images/basic/icon/warning.svg');
-      }
-    }
-
-    [class^='formNoticeError'] {
-      color: $noticeErrorWord;
-      background-color: $noticeErrorBg;
-      padding-left: 42px;
-
-      &:before {
-        content: '';
-        background-image: url('../images/basic/icon/cancel.svg');
-      }
-    }
-
     .select {
       position: relative;
       isolation: isolate;
@@ -586,5 +512,83 @@
     max-height: 2.5em;
     margin: 0 0.3em;
     border: 1px solid #ccc;
+  }
+}
+
+// form notice
+[class^='formNotice'] {
+  position: relative;
+  width: 100%;
+  padding: 4px 42px 4px 12px;
+  color: $noticeNormalGWord;
+  background: $noticeNormalGBg;
+  border-radius: var(--borderRadius4);
+  isolation: isolate;
+
+  &::before {
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    z-index: 2;
+  }
+
+  .noticeClose {
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    background: url('../images/basic/icon/close_dk.svg') no-repeat center;
+    opacity: 0.4;
+  }
+}
+
+[class^='formNoticeInfo'] {
+  color: $noticeNormalWord;
+  background-color: $noticeNormalBg;
+  padding-left: 42px;
+
+  &:before {
+    content: '';
+    background-image: url('../images/basic/icon/info.svg');
+  }
+}
+
+[class^='formNoticeSuccess'] {
+  color: $noticeSuccessWord;
+  background-color: $noticeSuccessBg;
+  padding-left: 42px;
+
+  &:before {
+    content: '';
+    background-image: url('../images/basic/icon/check_circle.svg');
+  }
+}
+
+[class^='formNoticeWarning'] {
+  color: $noticeWarningWord;
+  background-color: $noticeWarningBg;
+  padding-left: 42px;
+
+  &:before {
+    content: '';
+    background-image: url('../images/basic/icon/warning.svg');
+  }
+}
+
+[class^='formNoticeError'] {
+  color: $noticeErrorWord;
+  background-color: $noticeErrorBg;
+  padding-left: 42px;
+
+  &:before {
+    content: '';
+    background-image: url('../images/basic/icon/cancel.svg');
   }
 }

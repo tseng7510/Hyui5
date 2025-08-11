@@ -1,4 +1,8 @@
-@use "sass:math";
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "./mixin" as *; //mixin
 
 .testBox {
   position: fixed;
