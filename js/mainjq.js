@@ -218,10 +218,8 @@ function mainMenu(obj) {
   const $headTop = $('.headTop');
   const { sticky = true, needLink = false, mega = false } = obj;
   const $mainMenu = $('.mainMenu');
-  if (!$mainMenu.length) return;
 
   const $menu = $mainMenu.find('nav');
-  if (!$menu.length) return;
 
   $menu.find('li ul').parent().addClass('hasChild');
   const $hasChild = $menu.find('.hasChild');
@@ -288,10 +286,10 @@ function mainMenu(obj) {
       $(window).on('scroll', function () {
         if ($(window).width() > setRWDWidth) {
           if ($headTop.outerHeight() < $(window).scrollTop()) {
-            $mainMenu.addClass('sticky');
+            $header.addClass('sticky');
             $headTop.css('marginBottom', headerMargin + menuHeight);
           } else {
-            $mainMenu.removeClass('sticky');
+            $header.removeClass('sticky');
             $headTop.css('marginBottom', headerMargin);
           }
         } else {

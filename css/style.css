@@ -6142,14 +6142,6 @@ header .topNav {
     transform: translateX(0px);
   }
 }
-.mainMenu.sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #fff;
-}
-
 #mobileMainMenuBtn {
   display: none;
   width: 60px;
@@ -7706,6 +7698,13 @@ header {
     width: 100%;
     background: #0156A2;
   }
+}
+header.sticky .mainMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
 }
 header .headTop:has(.topSearch) .topNav {
   width: auto;

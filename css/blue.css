@@ -10,6 +10,9 @@ header {
   color: rgb(234.5, 240.4, 249.4);
   background: linear-gradient(270deg, #057BB7 0%, #0156A2 100%);
 }
+header.sticky .mainMenu {
+  background: linear-gradient(270deg, #057BB7 0%, #0156A2 100%);
+}
 header h1 a {
   color: #fff;
 }
@@ -90,9 +93,6 @@ header .mainMenu::before {
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.08);
-}
-header .mainMenu.sticky {
-  background: linear-gradient(270deg, #057BB7 0%, #0156A2 100%);
 }
 header .megaMenu ul li.hasChild > a::after,
 header .menu ul li.hasChild > a::after {

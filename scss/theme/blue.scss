@@ -9,6 +9,12 @@ header {
   color: $colorSecondaryLight;
   background: linear-gradient(270deg, #057BB7 0%, $colorPrimary 100%);
 
+  &.sticky {
+    .mainMenu {
+      background: linear-gradient(270deg, #057BB7 0%, $colorPrimary 100%);
+    }
+  }
+
   h1 a {
     color: #fff;
 
@@ -132,10 +138,6 @@ header {
       position: absolute;
       inset: 0;
       background: rgba(255, 255, 255, 0.08);
-    }
-
-    &.sticky {
-      background: linear-gradient(270deg, #057BB7 0%, $colorPrimary 100%);
     }
   }
 

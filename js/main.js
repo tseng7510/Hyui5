@@ -591,17 +591,13 @@ function mainMenu(obj) {
   const headTop = document.querySelector('.headTop');
   const { sticky = true, needLink = false, mega = false } = obj;
   const mainMenu = document.querySelector('.mainMenu');
-  if (!mainMenu) return;
+  if (mainMenu) {
+    const menu = mainMenu.querySelector('nav');
 
-  const closeBtnText = mainMenu.dataset.closeBtn || '關閉選單';
-  const menu = mainMenu.querySelector('nav');
-  if (!menu) return;
-
-  // 有下層的增加 hasChild 的 class
-  const checkChild = menu.querySelectorAll('li ul');
-  checkChild.forEach((item) => item.parentNode.classList.add('hasChild'));
-  const hasChild = menu.querySelectorAll('.hasChild');
-
+    // 有下層的增加 hasChild 的 class
+    const checkChild = menu.querySelectorAll('li ul');
+    checkChild.forEach((item) => item.parentNode.classList.add('hasChild'));
+  }
   // 檢查子選單是否超出視窗邊界
   function _checkBorder(e) {
     if (mega) return;
@@ -668,117 +664,102 @@ function mainMenu(obj) {
 
   // 桌面版選單初始化與事件綁定
   function _initDesktopMenu() {
-    // 是否為megaMenu
-    if (mega) {
-      menu.classList.add('megaMenu');
-      menu.classList.remove('menu');
-      const megaMenuChild = menu.querySelectorAll(' ul ul .hasChild > a');
-      megaMenuChild.forEach((i) => {
-        i.removeAttribute('aria-haspopup');
-      });
-    }
-
-    // 是否選單固定
-    if (sticky) {
-      const menu = document.querySelector('.mainMenu');
-      const headerMargin = parseInt(window.getComputedStyle(header).marginBottom.replace('px', ''));
-
-      window.addEventListener('scroll', function () {
-        if (window.outerWidth > setRWDWidth) {
-          if (headTop.clientHeight < window.scrollY) {
-            menu.classList.add('sticky');
-            headTop.style.marginBottom = `${headerMargin + menu.clientHeight}px`;
-          } else {
-            menu.classList.remove('sticky');
-            headTop.style.marginBottom = `${headerMargin}px`;
-          }
-        } else {
-          headTop.removeAttribute('style');
-        }
-      });
-    }
-
-    // 使用事件委派處理滑鼠移入和移出事件
-    menu.addEventListener(
-      'mouseenter',
-      (e) => {
-        if (e.target.matches('.hasChild')) {
-          _handleMouseenter(e);
-        }
-      },
-      true
-    );
-
-    menu.addEventListener(
-      'mouseleave',
-      (e) => {
-        if (e.target.matches('.hasChild')) {
-          _handleMouseleave(e);
-        }
-      },
-      true
-    );
-
-    //無障礙操作
-
-    menu.addEventListener('keydown', (e) => {
-      const checkHasSubmenu = e.target.parentNode.classList.contains('hasChild');
-      const lastTarget = [...e.target.closest('ul').querySelectorAll('a,button,input,textarea,select')].at(-1);
-      console.log(_jsParents(e.target, 'li'));
-
-      _checkBorder(e.target.parentNode);
-      if (window.outerWidth <= setRWDWidth) return;
-
-      if (e.code === 'Tab' && !e.shiftKey) {
-        const siblings = [...e.target.parentNode.parentNode.children].filter((child) => child !== e.target.parentNode);
-        if (checkHasSubmenu) {
-          e.target.parentNode.classList.add('active');
-          e.target.setAttribute('aria-expanded', 'true');
-        }
-        siblings.forEach((j) => {
-          j.classList.remove('active');
-          j.classList.contains('hasChild') ? j.querySelector('a').setAttribute('aria-expanded', 'false') : null;
+    if (mainMenu) {
+      const menu = mainMenu.querySelector('nav');
+      const hasChild = menu.querySelectorAll('.hasChild');
+      // 是否為megaMenu
+      if (mega) {
+        menu.classList.add('megaMenu');
+        menu.classList.remove('menu');
+        const megaMenuChild = menu.querySelectorAll(' ul ul .hasChild > a');
+        megaMenuChild.forEach((i) => {
+          i.removeAttribute('aria-haspopup');
         });
-        if (e.target === lastTarget) {
-          _jsParents(e.target, 'li').forEach((j) => j.classList.remove('active'));
-        }
-      } else if (e.code === 'Tab' && e.shiftKey) {
-        if (checkHasSubmenu) {
-          e.target.parentNode.classList.remove('active');
-          e.target.setAttribute('aria-expanded', 'false');
-        }
       }
-    });
 
-    // menu.addEventListener('keydown', (e) => {
-    //   let checkTarget = [...menuAllA].map((i) => e.target === i);
-    //   if (!checkTarget || window.outerWidth <= setRWDWidth) return;
-    //   e.target.setAttribute('aria-expanded', 'true');
+      // 是否選單固定
+      if (sticky) {
+        const headerMargin = parseInt(window.getComputedStyle(header).marginBottom.replace('px', ''));
 
-    //   _checkBorder(e.target.parentNode);
-    //   if (e.code === 'Tab' && !e.shiftKey) {
-    //     e.target.parentNode.classList.add('active');
-    //     const siblings = [...e.target.parentNode.parentNode.children].filter((child) => child !== e.target.parentNode);
-    //     siblings.forEach((j) => j.classList.remove('active'));
-    //     if (e.target === lastA) {
-    //       menuAllLi.forEach((j) => j.classList.remove('active'));
-    //     }
-    //   } else if (e.code === 'Tab' && e.shiftKey && e.target === firstA) {
-    //     menuAllLi.forEach((j) => j.classList.remove('active'));
-    //   }
-    // });
+        window.addEventListener('scroll', function () {
+          if (window.outerWidth > setRWDWidth) {
+            if (headTop.clientHeight < window.scrollY) {
+              header.classList.add('sticky');
+              headTop.style.marginBottom = `${headerMargin + mainMenu.clientHeight}px`;
+            } else {
+              header.classList.remove('sticky');
+              headTop.style.marginBottom = `${headerMargin}px`;
+            }
+          } else {
+            headTop.removeAttribute('style');
+          }
+        });
+      }
 
-    hasChild.forEach((i) => {
-      const id = `menu_${_randomLetter(3)}${_randomNumber(3)}`;
-      const childA = i.querySelector('a');
-      const childUl = i.querySelector('ul');
-      childA.setAttribute('aria-expanded', 'false');
-      childA.setAttribute('aria-haspopup', 'true');
-      childA.setAttribute('id', id);
-      childA.setAttribute('aria-controls', `${id}_con`);
-      childUl.setAttribute('id', `${id}_con`);
-      childUl.setAttribute('aria-labelledby', id);
-    });
+      // 使用事件委派處理滑鼠移入和移出事件
+      menu.addEventListener(
+        'mouseenter',
+        (e) => {
+          if (e.target.matches('.hasChild')) {
+            _handleMouseenter(e);
+          }
+        },
+        true
+      );
+
+      menu.addEventListener(
+        'mouseleave',
+        (e) => {
+          if (e.target.matches('.hasChild')) {
+            _handleMouseleave(e);
+          }
+        },
+        true
+      );
+
+      //無障礙操作
+
+      menu.addEventListener('keydown', (e) => {
+        const checkHasSubmenu = e.target.parentNode.classList.contains('hasChild');
+        const lastTarget = [...e.target.closest('ul').querySelectorAll('a,button,input,textarea,select')].at(-1);
+        console.log(_jsParents(e.target, 'li'));
+
+        _checkBorder(e.target.parentNode);
+        if (window.outerWidth <= setRWDWidth) return;
+
+        if (e.code === 'Tab' && !e.shiftKey) {
+          const siblings = [...e.target.parentNode.parentNode.children].filter((child) => child !== e.target.parentNode);
+          if (checkHasSubmenu) {
+            e.target.parentNode.classList.add('active');
+            e.target.setAttribute('aria-expanded', 'true');
+          }
+          siblings.forEach((j) => {
+            j.classList.remove('active');
+            j.classList.contains('hasChild') ? j.querySelector('a').setAttribute('aria-expanded', 'false') : null;
+          });
+          if (e.target === lastTarget) {
+            _jsParents(e.target, 'li').forEach((j) => j.classList.remove('active'));
+          }
+        } else if (e.code === 'Tab' && e.shiftKey) {
+          if (checkHasSubmenu) {
+            e.target.parentNode.classList.remove('active');
+            e.target.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+
+      hasChild.forEach((i) => {
+        const id = `menu_${_randomLetter(3)}${_randomNumber(3)}`;
+        const childA = i.querySelector('a');
+        const childUl = i.querySelector('ul');
+        childA.setAttribute('aria-expanded', 'false');
+        childA.setAttribute('aria-haspopup', 'true');
+        childA.setAttribute('id', id);
+        childA.setAttribute('aria-controls', `${id}_con`);
+        childUl.setAttribute('id', `${id}_con`);
+        childUl.setAttribute('aria-labelledby', id);
+      });
+    }
   }
 
   _initDesktopMenu();
@@ -795,9 +776,17 @@ function mainMenu(obj) {
     mobileMainMenuBox.classList.add('mobileMainMenuBox');
 
     // 複製主選單
-    const mainMenuClone = menu.cloneNode(true);
-    mainMenuClone.classList.remove('mainMenu', 'menu');
-    mainMenuClone.classList.add('mobileMainMenu');
+    if (mainMenu) {
+      const menu = mainMenu.querySelector('nav');
+      const mainMenuClone = menu.cloneNode(true);
+      mainMenuClone.classList.remove('mainMenu', 'menu');
+      mainMenuClone.classList.add('mobileMainMenu');
+      // 將 主選單 加入到 手機版主選單
+      mobileMainMenuBox.insertAdjacentElement('afterbegin', mainMenuClone);
+
+      // 轉換標籤
+      _changeTag(mainMenuClone, 'div');
+    }
 
     // 複製top選單
     const topNav = document.querySelector('.topNav');
@@ -812,14 +801,10 @@ function mainMenu(obj) {
       _changeTag(topNavClone, 'div');
     }
 
-    // 將 關閉按鈕 加入到 手機版主選單
-    mobileMainMenuBox.insertAdjacentElement('afterbegin', mainMenuClone);
     // 將 手機版主選單 加入到 手機版主選單(多包一層div)
     mobileMenu.insertAdjacentElement('afterbegin', mobileMainMenuBox);
     // 將 手機版主選單 加入到 header 前
     header?.insertAdjacentElement('beforebegin', mobileMenu);
-    // 轉換標籤
-    _changeTag(mainMenuClone, 'div');
 
     // 點擊選單按鈕 執行 展開側邊選單函式
     const mobileMainMenuBtn = document.querySelector('#mobileMainMenuBtn');

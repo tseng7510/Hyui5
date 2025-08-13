@@ -18,6 +18,16 @@ header {
     background: $colorPrimary;
   }
 
+  &.sticky {
+    .mainMenu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+    }
+  }
+
   .headTop {
 
     &:has(.topSearch) {
