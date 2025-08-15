@@ -107,14 +107,10 @@ button.autoPlaySwitch {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 9px 15px 10px;
-  font-size: Rem(13);
   width: 44px;
   height: 44px;
-  line-height: 1;
   margin: 0;
   border: none;
-  white-space: nowrap;
   position: relative;
 
   &.stop {

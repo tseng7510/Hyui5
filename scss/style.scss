@@ -37,9 +37,9 @@
 @use 'template/header'; //header
 @use 'template/main'; //main
 @use 'template/footer'; //footer
-@use 'views/mp'; //首頁
-@use 'views/np'; //NP
-@use 'views/lp'; //LP
-@use 'views/cp'; //CP
-@use 'views/page404'; //CP
-@use 'views/sitemap'; //sitemap
+@use 'pages/mp'; //首頁
+@use 'pages/np'; //NP
+@use 'pages/lp'; //LP
+@use 'pages/cp'; //CP
+@use 'pages/page404'; //CP
+@use 'pages/sitemap'; //sitemap
