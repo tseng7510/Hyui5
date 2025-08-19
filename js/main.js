@@ -1934,6 +1934,7 @@ window.addEventListener('load', () => formEye());
 
 function scrollTopFn() {
   const scrollTop = document.querySelector('#scrollTop');
+  const goCenter = document.querySelector('.goCenter');
   let scrollY = window.scrollY;
   if (!scrollTop) return;
 
@@ -1951,6 +1952,7 @@ function scrollTopFn() {
       top: 0,
       behavior: 'smooth',
     });
+    goCenter.focus();
   });
 }
 window.addEventListener('load', () => scrollTopFn());

@@ -1292,6 +1292,7 @@ formEye();
 // -----------------------------------------------------------------------
 function scrollTopFn() {
   const $scrollTop = $('#scrollTop');
+  const goCenter = $('.goCenter');
   if (!$scrollTop.length) return;
 
   function _scrollFn() {
@@ -1303,6 +1304,7 @@ function scrollTopFn() {
 
   $scrollTop.on('click', function () {
     $('html, body').animate({ scrollTop: 0 }, 'smooth');
+    goCenter.focus();
   });
 }
 scrollTopFn();
